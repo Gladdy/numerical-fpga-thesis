@@ -6,13 +6,13 @@ module Solver where
     -- EQUATIONS
     -- x0' = -x0
     dx :: Equation
-    dx state    = ODEState [-x !! 0] 0
+    dx state    = [-x !! 0]
                 where
                     x = xs state
     -- x0' = x1
     -- x1' = x0
     sineEQ :: Equation
-    sineEQ state    = ODEState [x0,x1] 0
+    sineEQ state    = [x0,x1]
                     where
                         x = xs state
                         x0 = x !! 1
@@ -23,7 +23,7 @@ module Solver where
     euler time equation initState   = ODEState newX newT
                                     where
                                         newX = zipWith (+) (xs initState) dX
-                                        dX = (map (timestep *) (xs (equation initState)))
+                                        dX = map (timestep *) (equation initState)
                                         newT = (t initState) + timestep
                                         timestep = dt time
 
@@ -31,11 +31,11 @@ module Solver where
     rk4 time equation initState = ODEState newX newT
                                 where
                                     newX = zipWith (+) (xs initState) dX
-                                    dX = map (timestep/6*) (sumLists [(xs k1),(xs k2),(xs k3),(xs k4)] [1,2,2,1])
+                                    dX = map (timestep/6*) (sumLists [k1,k2,k3,k4] [1,2,2,1])
                                     k1 = equation initState
-                                    k2 = equation $ ODEState (sumLists [oldX, (xs k1)] [1, 0.5*timestep]) halfT
-                                    k3 = equation $ ODEState (sumLists [oldX, (xs k2)] [1, 0.5*timestep]) halfT
-                                    k4 = equation $ ODEState (sumLists [oldX, (xs k3)] [1, timestep]) newT
+                                    k2 = equation $ ODEState (sumLists [oldX, k1] [1, 0.5*timestep]) halfT
+                                    k3 = equation $ ODEState (sumLists [oldX, k2] [1, 0.5*timestep]) halfT
+                                    k4 = equation $ ODEState (sumLists [oldX, k3] [1, timestep]) newT
  
                                     newT = oldT + timestep
                                     halfT = oldT + timestep/2
@@ -44,7 +44,8 @@ module Solver where
                                     oldX = xs initState
                                     oldT = t initState
 
-    ---- calling
+    ---- CALLERS
+    -- general form, stop after a certain time
     solve :: SolveMethod -> TimeSettings -> Equation -> ODEState  -> [ODEState]
     solve solvemethod time equation initState   
         | end = []

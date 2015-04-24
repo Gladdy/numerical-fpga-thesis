@@ -1,7 +1,8 @@
 module SolverTypes where
 
     type NumRepr = Float
-    
+    type DODEState = [NumRepr]
+
     data ODEState = ODEState { xs :: [NumRepr]
                              , t :: NumRepr
     } deriving (Show)
@@ -10,5 +11,5 @@ module SolverTypes where
                                      , tMax :: NumRepr
     } deriving (Show)
 
-    type Equation = (ODEState -> ODEState)
+    type Equation = (ODEState -> DODEState)
     type SolveMethod = TimeSettings -> Equation -> ODEState -> ODEState
