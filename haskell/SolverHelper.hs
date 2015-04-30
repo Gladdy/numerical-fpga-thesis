@@ -1,5 +1,6 @@
 module SolverHelper where
 
+    import Prelude
     import SolverTypes
 
     sumLists :: [[NumRepr]] -> [NumRepr] -> [NumRepr]

@@ -1,5 +1,7 @@
 module SolverTypes where
 
+    import Prelude
+
     type NumRepr = Float
     type DODEState = [NumRepr]
 
