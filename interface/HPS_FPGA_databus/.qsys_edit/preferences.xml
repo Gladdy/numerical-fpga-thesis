@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="95" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Project,Library,Library/Processors and Peripherals/Hard Processor Systems,Library/Processors and Peripherals" />
+ <window width="1468" height="954" x="112" y="69" />
+</preferences>

@@ -1,0 +1,7 @@
+module sockit_test (
+    input CLOCK_50,
+    input [3:0] KEY,
+    output [3:0] LED
+);
+
+endmodule

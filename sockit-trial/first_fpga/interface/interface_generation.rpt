@@ -1,0 +1,45 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga --output-directory=E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface --report-file=bsf:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\interface.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSXFC6D6F31C8ES --system-info=DEVICE_SPEEDGRADE=8_H6 --component-file=E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface.qsys --remove-qsys-generate-warning
+Progress: Loading first_fpga/interface.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 14.1]
+Progress: Parameterizing module clk_0
+Progress: Adding hps_0 [altera_hps 14.1]
+Progress: Parameterizing module hps_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: interface.hps_0: HPS Main PLL counter settings: n = 0  m = 63
+Info: interface.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: interface.hps_0: set_interface_assignment: Interface "hps_io" does not exist
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga --output-directory=E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\interface.html --report-file=sopcinfo:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface.sopcinfo --report-file=cmp:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\interface.cmp --report-file=qip:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\synthesis\interface.qip --report-file=svd:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\synthesis\interface.svd --report-file=regmap:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\synthesis\interface.regmap --report-file=xml:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\interface.xml --report-file=debuginfo:E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface\synthesis\interface.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSXFC6D6F31C8ES --system-info=DEVICE_SPEEDGRADE=8_H6 --component-file=E:\Dropbox\numerical-fpga-thesis\sockit-trial\first_fpga\interface.qsys --remove-qsys-generate-warning --language=VERILOG
+Progress: Loading first_fpga/interface.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 14.1]
+Progress: Parameterizing module clk_0
+Progress: Adding hps_0 [altera_hps 14.1]
+Progress: Parameterizing module hps_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: interface.hps_0: HPS Main PLL counter settings: n = 0  m = 63
+Info: interface.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: interface.hps_0: set_interface_assignment: Interface "hps_io" does not exist
+Info: interface: Generating interface "interface" for QUARTUS_SYNTH
+Info: hps_0: "Running  for module: hps_0"
+Info: hps_0: HPS Main PLL counter settings: n = 0  m = 63
+Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: hps_0: set_interface_assignment: Interface "hps_io" does not exist
+Info: hps_0: "interface" instantiated altera_hps "hps_0"
+Info: fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
+Info: hps_io: "hps_0" instantiated altera_hps_io "hps_io"
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Info: interface: Done "interface" with 5 modules, 45 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
