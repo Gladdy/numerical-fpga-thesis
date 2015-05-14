@@ -6,11 +6,16 @@
    version="1.0"
    description=""
    tags=""
-   categories="" />
+   categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
    element $${FILENAME}
    {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
    }
    element clk_0
    {
@@ -20,7 +25,7 @@
          type = "int";
       }
    }
-   element cyclone_v
+   element hps_0
    {
       datum _sortIndex
       {
@@ -28,9 +33,46 @@
          type = "int";
       }
    }
+   element hps_0.f2h_axi_slave
+   {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element io_mem_component_0
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element io_mem_component_0.avalon_control
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element io_mem_component_0.avalon_input
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
 }
 ]]></parameter>
- <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="clockCrossingAdapter" value="AUTO" />
  <parameter name="device" value="5CSXFC6D6F31C8ES" />
  <parameter name="deviceFamily" value="Cyclone V" />
  <parameter name="deviceSpeedGrade" value="8_H6" />
@@ -41,7 +83,7 @@
  <parameter name="hdlLanguage" value="VERILOG" />
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="" />
+ <parameter name="projectName" value="sockit.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
@@ -49,7 +91,7 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
- <interface name="memory" internal="cyclone_v.memory" type="conduit" dir="end" />
+ <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <module name="clk_0" kind="clock_source" version="14.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
@@ -57,7 +99,7 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
- <module name="cyclone_v" kind="altera_hps" version="14.1" enabled="1">
+ <module name="hps_0" kind="altera_hps" version="14.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
   <parameter name="ACV_PHY_CLK_ADD_FR_PHASE" value="0.0" />
@@ -582,22 +624,64 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
+ <module
+   name="io_mem_component_0"
+   kind="io_mem_component"
+   version="1.0"
+   enabled="1" />
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="io_mem_component_0.avalon_output"
+   end="hps_0.f2h_axi_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="hps_0.h2f_axi_master"
+   end="io_mem_component_0.avalon_input">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="io_mem_component_0.avalon_control">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection
    kind="clock"
    version="14.1"
    start="clk_0.clk"
-   end="cyclone_v.f2h_axi_clock" />
+   end="io_mem_component_0.clock" />
  <connection
    kind="clock"
    version="14.1"
    start="clk_0.clk"
-   end="cyclone_v.h2f_axi_clock" />
+   end="hps_0.f2h_axi_clock" />
  <connection
    kind="clock"
    version="14.1"
    start="clk_0.clk"
-   end="cyclone_v.h2f_lw_axi_clock" />
- <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+   end="hps_0.h2f_axi_clock" />
+ <connection
+   kind="clock"
+   version="14.1"
+   start="clk_0.clk"
+   end="hps_0.h2f_lw_axi_clock" />
+ <connection
+   kind="reset"
+   version="14.1"
+   start="clk_0.clk_reset"
+   end="io_mem_component_0.reset" />
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="AUTO" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>

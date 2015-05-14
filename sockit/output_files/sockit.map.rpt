@@ -1,5 +1,5 @@
 Analysis & Synthesis report for sockit
-Thu May 14 20:54:55 2015
+Thu May 14 23:50:12 2015
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -10,15 +10,8 @@ Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "compute_main:G3"
- 10. Port Connectivity Checks: "io_mem:G2"
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -42,27 +35,22 @@ agreement for further details.
 
 
 
-+------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                 ;
-+---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu May 14 20:54:55 2015      ;
-; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
-; Revision Name                   ; sockit                                     ;
-; Top-level Entity Name           ; sockit                                     ;
-; Family                          ; Cyclone V                                  ;
-; Logic utilization (in ALMs)     ; N/A                                        ;
-; Total registers                 ; 8                                          ;
-; Total pins                      ; 10                                         ;
-; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 0                                          ;
-; Total DSP Blocks                ; 0                                          ;
-; Total HSSI RX PCSs              ; 0                                          ;
-; Total HSSI PMA RX Deserializers ; 0                                          ;
-; Total HSSI TX PCSs              ; 0                                          ;
-; Total HSSI PMA TX Serializers   ; 0                                          ;
-; Total PLLs                      ; 0                                          ;
-; Total DLLs                      ; 0                                          ;
-+---------------------------------+--------------------------------------------+
++--------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                             ;
++-----------------------------+--------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Thu May 14 23:50:12 2015          ;
+; Quartus II 64-Bit Version   ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
+; Revision Name               ; sockit                                     ;
+; Top-level Entity Name       ; sockit                                     ;
+; Family                      ; Cyclone V                                  ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                  ;
+; Total registers             ; N/A until Partition Merge                  ;
+; Total pins                  ; N/A until Partition Merge                  ;
+; Total virtual pins          ; N/A until Partition Merge                  ;
+; Total block memory bits     ; N/A until Partition Merge                  ;
+; Total PLLs                  ; N/A until Partition Merge                  ;
+; Total DLLs                  ; N/A until Partition Merge                  ;
++-----------------------------+--------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -165,161 +153,217 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                        ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                 ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------+---------+
-; hdl/sockit.vhd                   ; yes             ; User VHDL File  ; E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd       ;         ;
-; hdl/io_mem.vhd                   ; yes             ; User VHDL File  ; E:/Dropbox/numerical-fpga-thesis/sockit/hdl/io_mem.vhd       ;         ;
-; hdl/io_led.vhd                   ; yes             ; User VHDL File  ; E:/Dropbox/numerical-fpga-thesis/sockit/hdl/io_led.vhd       ;         ;
-; hdl/compute_main.vhd             ; yes             ; User VHDL File  ; E:/Dropbox/numerical-fpga-thesis/sockit/hdl/compute_main.vhd ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------+---------+
-
-
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 4           ;
-;                                             ;             ;
-; Combinational ALUT usage for logic          ; 4           ;
-;     -- 7 input functions                    ; 0           ;
-;     -- 6 input functions                    ; 0           ;
-;     -- 5 input functions                    ; 0           ;
-;     -- 4 input functions                    ; 0           ;
-;     -- <=3 input functions                  ; 4           ;
-;                                             ;             ;
-; Dedicated logic registers                   ; 8           ;
-;                                             ;             ;
-; I/O pins                                    ; 10          ;
-;                                             ;             ;
-; Total DSP Blocks                            ; 0           ;
-;                                             ;             ;
-; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 8           ;
-; Total fan-out                               ; 34          ;
-; Average fan-out                             ; 1.06        ;
-+---------------------------------------------+-------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                           ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name     ; Library Name ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------+--------------+
-; |sockit                    ; 4 (0)             ; 8 (0)        ; 0                 ; 0          ; 10   ; 0            ; |sockit                 ; work         ;
-;    |compute_main:G3|       ; 0 (0)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |sockit|compute_main:G3 ; work         ;
-;    |io_led:G1|             ; 4 (4)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |sockit|io_led:G1       ; work         ;
-+----------------------------+-------------------+--------------+-------------------+------------+------+--------------+-------------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 8     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "compute_main:G3"                                                                          ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; write_data ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "io_mem:G2"                                                                                ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; write_data ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; arriav_ff             ; 8                           ;
-;     plain             ; 8                           ;
-; arriav_lcell_comb     ; 4                           ;
-;     normal            ; 4                           ;
-;         1 data inputs ; 4                           ;
-; boundary_port         ; 10                          ;
-;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 0.47                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Thu May 14 20:54:41 2015
+    Info: Processing started: Thu May 14 23:49:48 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sockit -c sockit
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file io_mem/synthesis/io_mem.vhd
+    Info (12022): Found design unit 1: io_mem-rtl
+    Info (12023): Found entity 1: io_mem
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_reset_controller.v
+    Info (12023): Found entity 1: altera_reset_controller
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_reset_synchronizer.v
+    Info (12023): Found entity 1: altera_reset_synchronizer
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_2.v
+    Info (12023): Found entity 1: io_mem_mm_interconnect_2
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/altera_merlin_arbitrator.sv
+    Info (12023): Found entity 1: altera_merlin_arbitrator
+    Info (12023): Found entity 2: altera_merlin_arb_adder
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_2_rsp_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_2_rsp_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_2_rsp_demux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_2_rsp_demux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_2_cmd_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_2_cmd_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_2_cmd_demux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_2_cmd_demux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_burst_adapter.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_burst_adapter_uncmpr.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_uncompressed_only
+Info (12021): Found 5 design units, including 5 entities, in source file io_mem/synthesis/submodules/altera_merlin_burst_adapter_13_1.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_burstwrap_increment
+    Info (12023): Found entity 2: altera_merlin_burst_adapter_adder
+    Info (12023): Found entity 3: altera_merlin_burst_adapter_subtractor
+    Info (12023): Found entity 4: altera_merlin_burst_adapter_min
+    Info (12023): Found entity 5: altera_merlin_burst_adapter_13_1
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_burst_adapter_new.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_new
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_incr_burst_converter.sv
+    Info (12023): Found entity 1: altera_incr_burst_converter
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_wrap_burst_converter.sv
+    Info (12023): Found entity 1: altera_wrap_burst_converter
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_default_burst_converter.sv
+    Info (12023): Found entity 1: altera_default_burst_converter
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_address_alignment.sv
+    Info (12023): Found entity 1: altera_merlin_address_alignment
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_avalon_st_pipeline_stage.sv
+    Info (12023): Found entity 1: altera_avalon_st_pipeline_stage
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_avalon_st_pipeline_base.v
+    Info (12023): Found entity 1: altera_avalon_st_pipeline_base
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_2_router_002.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_2_router_002_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_2_router_002
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_2_router.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_2_router_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_2_router
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_avalon_sc_fifo.v
+    Info (12023): Found entity 1: altera_avalon_sc_fifo
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_slave_agent.sv
+    Info (12023): Found entity 1: altera_merlin_slave_agent
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+    Info (12023): Found entity 1: altera_merlin_burst_uncompressor
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_axi_master_ni.sv
+    Info (12023): Found entity 1: altera_merlin_axi_master_ni
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_slave_translator.sv
+    Info (12023): Found entity 1: altera_merlin_slave_translator
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_1.v
+    Info (12023): Found entity 1: io_mem_mm_interconnect_1
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_1_rsp_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_1_rsp_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_1_rsp_demux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_1_rsp_demux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_1_cmd_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_1_cmd_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_1_cmd_demux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_1_cmd_demux
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_1_router_002.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_1_router_002_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_1_router_002
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_1_router.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_1_router_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_1_router
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0.v
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_mm_interconnect_0.v
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_mm_interconnect_0
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_mm_interconnect_0_rsp_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_mm_interconnect_0_rsp_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_mm_interconnect_0_cmd_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_mm_interconnect_0_cmd_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_mm_interconnect_0_cmd_demux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_mm_interconnect_0_cmd_demux
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_mm_interconnect_0_router_001.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_mm_interconnect_0_router_001_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_0_mm_interconnect_0_router_001
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_mm_interconnect_0_router.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_mm_interconnect_0_router_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_0_mm_interconnect_0_router
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_master_agent.sv
+    Info (12023): Found entity 1: altera_merlin_master_agent
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_master_translator.sv
+    Info (12023): Found entity 1: altera_merlin_master_translator
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_rsp_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_rsp_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_rsp_demux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_rsp_demux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_cmd_mux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_cmd_mux
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_cmd_demux.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_cmd_demux
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_router_001.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_router_001_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_0_router_001
+Info (12021): Found 2 design units, including 2 entities, in source file io_mem/synthesis/submodules/io_mem_mm_interconnect_0_router.sv
+    Info (12023): Found entity 1: io_mem_mm_interconnect_0_router_default_decode
+    Info (12023): Found entity 2: io_mem_mm_interconnect_0_router
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_merlin_axi_slave_ni.sv
+    Info (12023): Found entity 1: altera_merlin_axi_slave_ni
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/credit_producer.v
+    Info (12023): Found entity 1: credit_producer
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_hps_0.v
+    Info (12023): Found entity 1: io_mem_hps_0
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_hps_0_hps_io.v
+    Info (12023): Found entity 1: io_mem_hps_0_hps_io
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram.v
+    Info (12023): Found entity 1: hps_sdram
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv
+    Info (12023): Found entity 1: altdq_dqs2_acv_connect_to_hard_phy_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_mem_if_dll_cyclonev.sv
+    Info (12023): Found entity 1: altera_mem_if_dll_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_mem_if_hard_memory_controller_top_cyclonev.sv
+    Info (12023): Found entity 1: altera_mem_if_hard_memory_controller_top_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_mem_if_hhp_qseq_synth_top.v
+    Info (12023): Found entity 1: altera_mem_if_hhp_qseq_synth_top
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/altera_mem_if_oct_cyclonev.sv
+    Info (12023): Found entity 1: altera_mem_if_oct_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0.sv
+    Info (12023): Found entity 1: hps_sdram_p0
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_acv_hard_addr_cmd_pads.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_hard_addr_cmd_pads
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_acv_hard_io_pads.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_hard_io_pads
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_acv_hard_memphy.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_hard_memphy
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_acv_ldc.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_ldc
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_altdqdqs.v
+    Info (12023): Found entity 1: hps_sdram_p0_altdqdqs
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_clock_pair_generator.v
+    Info (12023): Found entity 1: hps_sdram_p0_clock_pair_generator
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_generic_ddio.v
+    Info (12023): Found entity 1: hps_sdram_p0_generic_ddio
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_iss_probe.v
+    Info (12023): Found entity 1: hps_sdram_p0_iss_probe
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_phy_csr.sv
+    Info (12023): Found entity 1: hps_sdram_p0_phy_csr
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_reset.v
+    Info (12023): Found entity 1: hps_sdram_p0_reset
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_p0_reset_sync.v
+    Info (12023): Found entity 1: hps_sdram_p0_reset_sync
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/hps_sdram_pll.sv
+    Info (12023): Found entity 1: hps_sdram_pll
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_hps_0_hps_io_border.sv
+    Info (12023): Found entity 1: io_mem_hps_0_hps_io_border
+Info (12021): Found 1 design units, including 1 entities, in source file io_mem/synthesis/submodules/io_mem_hps_0_fpga_interfaces.sv
+    Info (12023): Found entity 1: io_mem_hps_0_fpga_interfaces
 Info (12021): Found 2 design units, including 1 entities, in source file hdl/sockit.vhd
     Info (12022): Found design unit 1: sockit-behaviour
     Info (12023): Found entity 1: sockit
-Info (12021): Found 2 design units, including 1 entities, in source file hdl/io_mem.vhd
-    Info (12022): Found design unit 1: io_mem-behaviour
-    Info (12023): Found entity 1: io_mem
 Info (12021): Found 2 design units, including 1 entities, in source file hdl/io_led.vhd
     Info (12022): Found design unit 1: io_led-behaviour
     Info (12023): Found entity 1: io_led
 Info (12021): Found 2 design units, including 1 entities, in source file hdl/compute_main.vhd
     Info (12022): Found design unit 1: compute_main-behaviour
     Info (12023): Found entity 1: compute_main
-Info (12127): Elaborating entity "sockit" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at sockit.vhd(55): object "write_data" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at sockit.vhd(56): used implicit default value for signal "write_set" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at sockit.vhd(57): used implicit default value for signal "read_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at sockit.vhd(58): used implicit default value for signal "read_set" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at sockit.vhd(59): used implicit default value for signal "control_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at sockit.vhd(60): used implicit default value for signal "control_set" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (12128): Elaborating entity "io_led" for hierarchy "io_led:G1"
-Info (12128): Elaborating entity "io_mem" for hierarchy "io_mem:G2"
-Info (12128): Elaborating entity "compute_main" for hierarchy "compute_main:G3"
-Warning (10541): VHDL Signal Declaration warning at compute_main.vhd(9): used implicit default value for signal "write_data" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Info (286030): Timing-Driven Synthesis is running
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "reset"
-Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 4 output pins
-    Info (21061): Implemented 8 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 710 megabytes
-    Info: Processing ended: Thu May 14 20:54:55 2015
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:29
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/io_mem.vhd
+    Info (12022): Found design unit 1: io_mem-behaviour
+    Info (12023): Found entity 1: io_mem
+Error (10482): VHDL error at sockit.vhd(93): object "hps_memory_mem_a" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 93
+Error (10558): VHDL error at sockit.vhd(93): cannot associate formal port "memory_mem_a" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 93
+Error (10482): VHDL error at sockit.vhd(94): object "CONNECTED_TO_memory_mem_ba" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 94
+Error (10558): VHDL error at sockit.vhd(94): cannot associate formal port "memory_mem_ba" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 94
+Error (10482): VHDL error at sockit.vhd(95): object "CONNECTED_TO_memory_mem_ck" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 95
+Error (10558): VHDL error at sockit.vhd(95): cannot associate formal port "memory_mem_ck" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 95
+Error (10482): VHDL error at sockit.vhd(96): object "CONNECTED_TO_memory_mem_ck_n" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 96
+Error (10558): VHDL error at sockit.vhd(96): cannot associate formal port "memory_mem_ck_n" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 96
+Error (10482): VHDL error at sockit.vhd(97): object "CONNECTED_TO_memory_mem_cke" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 97
+Error (10558): VHDL error at sockit.vhd(97): cannot associate formal port "memory_mem_cke" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 97
+Error (10482): VHDL error at sockit.vhd(98): object "CONNECTED_TO_memory_mem_cs_n" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 98
+Error (10558): VHDL error at sockit.vhd(98): cannot associate formal port "memory_mem_cs_n" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 98
+Error (10482): VHDL error at sockit.vhd(99): object "CONNECTED_TO_memory_mem_ras_n" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 99
+Error (10558): VHDL error at sockit.vhd(99): cannot associate formal port "memory_mem_ras_n" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 99
+Error (10482): VHDL error at sockit.vhd(100): object "CONNECTED_TO_memory_mem_cas_n" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 100
+Error (10558): VHDL error at sockit.vhd(100): cannot associate formal port "memory_mem_cas_n" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 100
+Error (10482): VHDL error at sockit.vhd(101): object "CONNECTED_TO_memory_mem_we_n" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 101
+Error (10558): VHDL error at sockit.vhd(101): cannot associate formal port "memory_mem_we_n" of mode "out" with an expression File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 101
+Error (10482): VHDL error at sockit.vhd(102): object "CONNECTED_TO_memory_mem_reset_n" is used but not declared File: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/sockit.vhd Line: 102
+Info (144001): Generated suppressed messages file E:/Dropbox/numerical-fpga-thesis/sockit/output_files/sockit.map.smsg
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 19 errors, 1 warning
+    Error: Peak virtual memory: 709 megabytes
+    Error: Processing ended: Thu May 14 23:53:24 2015
+    Error: Elapsed time: 00:03:36
+    Error: Total CPU time (on all processors): 00:03:40
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in E:/Dropbox/numerical-fpga-thesis/sockit/output_files/sockit.map.smsg.
 
 

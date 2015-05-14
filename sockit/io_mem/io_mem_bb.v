@@ -1,7 +1,6 @@
 
 module io_mem (
 	clk_clk,
-	reset_reset_n,
 	memory_mem_a,
 	memory_mem_ba,
 	memory_mem_ck,
@@ -17,10 +16,10 @@ module io_mem (
 	memory_mem_dqs_n,
 	memory_mem_odt,
 	memory_mem_dm,
-	memory_oct_rzqin);	
+	memory_oct_rzqin,
+	reset_reset_n);	
 
 	input		clk_clk;
-	input		reset_reset_n;
 	output	[12:0]	memory_mem_a;
 	output	[2:0]	memory_mem_ba;
 	output		memory_mem_ck;
@@ -37,4 +36,5 @@ module io_mem (
 	output		memory_mem_odt;
 	output		memory_mem_dm;
 	input		memory_oct_rzqin;
+	input		reset_reset_n;
 endmodule

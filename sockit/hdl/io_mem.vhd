@@ -6,28 +6,19 @@ ENTITY io_mem IS
 	PORT(	
 		clock : in std_logic;
 		reset : in std_logic;
-		write_data : out std_logic_vector(127 downto 0);
-		write_set : in std_logic;
-		read_data : in std_logic_vector(127 downto 0);
-		read_set : in std_logic;
+		
+		input_data : in std_logic_vector(127 downto 0);
+		input_set : in std_logic;
+		output_data : out std_logic_vector(127 downto 0);
+		output_set : out std_logic;
+		output_waitrequest : in std_logic;
 		control_data : in std_logic_vector(31 downto 0);
 		control_set : in std_logic
 	);
 END io_mem;
 
-ARCHITECTURE behaviour OF io_mem IS
-	
-	SIGNAL internal_buffer : std_logic_vector(127 downto 0);
-	
+ARCHITECTURE behaviour OF io_mem IS 
+
 BEGIN
-	PROCESS(clock)
-	BEGIN
-		IF rising_edge(clock) THEN
-			if write_set then
-				write_data <= internal_buffer;
-			elsif read_set then
-				internal_buffer <= read_data;
-			end if;
-		END IF;
-	END PROCESS;
+
 END;

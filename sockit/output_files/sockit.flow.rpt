@@ -1,5 +1,5 @@
 Flow report for sockit
-Thu May 14 20:56:29 2015
+Thu May 14 23:50:12 2015
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -38,29 +38,24 @@ agreement for further details.
 
 
 
-+------------------------------------------------------------------------------+
-; Flow Summary                                                                 ;
-+---------------------------------+--------------------------------------------+
-; Flow Status                     ; Successful - Thu May 14 20:56:29 2015      ;
-; Quartus II 64-Bit Version       ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
-; Revision Name                   ; sockit                                     ;
-; Top-level Entity Name           ; sockit                                     ;
-; Family                          ; Cyclone V                                  ;
-; Device                          ; 5CSXFC6D6F31C8ES                           ;
-; Timing Models                   ; Preliminary                                ;
-; Logic utilization (in ALMs)     ; 4 / 41,910 ( < 1 % )                       ;
-; Total registers                 ; 8                                          ;
-; Total pins                      ; 10 / 499 ( 2 % )                           ;
-; Total virtual pins              ; 0                                          ;
-; Total block memory bits         ; 0 / 5,662,720 ( 0 % )                      ;
-; Total DSP Blocks                ; 0 / 112 ( 0 % )                            ;
-; Total HSSI RX PCSs              ; 0 / 9 ( 0 % )                              ;
-; Total HSSI PMA RX Deserializers ; 0 / 9 ( 0 % )                              ;
-; Total HSSI TX PCSs              ; 0 / 9 ( 0 % )                              ;
-; Total HSSI PMA TX Serializers   ; 0 / 9 ( 0 % )                              ;
-; Total PLLs                      ; 0 / 15 ( 0 % )                             ;
-; Total DLLs                      ; 0 / 4 ( 0 % )                              ;
-+---------------------------------+--------------------------------------------+
++--------------------------------------------------------------------------+
+; Flow Summary                                                             ;
++-----------------------------+--------------------------------------------+
+; Flow Status                 ; Flow Failed - Thu May 14 23:50:12 2015     ;
+; Quartus II 64-Bit Version   ; 14.1.0 Build 186 12/03/2014 SJ Web Edition ;
+; Revision Name               ; sockit                                     ;
+; Top-level Entity Name       ; sockit                                     ;
+; Family                      ; Cyclone V                                  ;
+; Device                      ; 5CSXFC6D6F31C8ES                           ;
+; Timing Models               ; Preliminary                                ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                  ;
+; Total registers             ; N/A until Partition Merge                  ;
+; Total pins                  ; N/A until Partition Merge                  ;
+; Total virtual pins          ; N/A until Partition Merge                  ;
+; Total block memory bits     ; N/A until Partition Merge                  ;
+; Total PLLs                  ; N/A until Partition Merge                  ;
+; Total DLLs                  ; N/A until Partition Merge                  ;
++-----------------------------+--------------------------------------------+
 
 
 +-----------------------------------------+
@@ -68,68 +63,92 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/14/2015 20:54:42 ;
+; Start date & time ; 05/14/2015 23:49:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; sockit              ;
 +-------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                           ;
-+-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
-+-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 31264765547885.143162968203596        ; --            ; --          ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                     ; --            ; --          ; --             ;
-; PARTITION_COLOR                     ; 16764057                              ; --            ; --          ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                 ; --            ; --          ; Top            ;
-; PARTITION_NETLIST_TYPE              ; SOURCE                                ; --            ; --          ; Top            ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                   ; --            ; --          ; --             ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --             ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                          ; --            ; --          ; --             ;
-; VHDL_INPUT_VERSION                  ; VHDL_2008                             ; VHDL_1993     ; --          ; --             ;
-; VHDL_SHOW_LMF_MAPPING_MESSAGES      ; Off                                   ; --            ; --          ; --             ;
-+-------------------------------------+---------------------------------------+---------------+-------------+----------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                         ;
++-------------------------------------+----------------------------------------------------------------------+---------------+----------------------------+----------------+
+; Assignment Name                     ; Value                                                                ; Default Value ; Entity Name                ; Section Id     ;
++-------------------------------------+----------------------------------------------------------------------+---------------+----------------------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 31264765547885.143164019201824                                       ; --            ; --                         ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                                                 ; --            ; --                         ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                                               ; <None>        ; --                         ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/alt_types.pre.h                ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/emif.pre.xml                   ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/sdram_io.pre.h                 ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/sequencer.pre.c                ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/sequencer.pre.h                ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/sequencer_auto.pre.h           ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/sequencer_auto_ac_init.pre.c   ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/sequencer_auto_inst_init.pre.c ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/sequencer_defines.pre.h        ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/system.pre.h                   ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/tclrpt.pre.c                   ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/sequencer/tclrpt.pre.h                   ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_ISW_FILE                        ; io_mem/synthesis/submodules/hps.pre.xml                              ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; HPS_PARTITION                       ; On                                                                   ; --            ; io_mem_hps_0_hps_io_border ; --             ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                                   ; --            ; --                         ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                    ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/../io_mem.cmp                                       ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/../../hdl/E                                         ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/io_mem_hps_0_hps.svd                                ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/../../io_mem.qsys                                   ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/alt_types.pre.h                ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/emif.pre.xml                   ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/sdram_io.pre.h                 ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/sequencer.pre.c                ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/sequencer.pre.h                ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/sequencer_auto.pre.h           ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/sequencer_auto_ac_init.pre.c   ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/sequencer_auto_inst_init.pre.c ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/sequencer_defines.pre.h        ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/system.pre.h                   ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/tclrpt.pre.c                   ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/sequencer/tclrpt.pre.h                   ; --            ; --                         ; --             ;
+; MISC_FILE                           ; io_mem/synthesis/submodules/hps.pre.xml                              ; --            ; --                         ; --             ;
+; PARTITION_COLOR                     ; 16764057                                                             ; --            ; --                         ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                                ; --            ; --                         ; Top            ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                                               ; --            ; --                         ; Top            ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                  ; --            ; --                         ; --             ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                ; --            ; --                         ; --             ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                         ; --            ; --                         ; --             ;
+; SLD_FILE                            ; io_mem/synthesis/io_mem.regmap                                       ; --            ; --                         ; --             ;
+; SLD_FILE                            ; io_mem/synthesis/io_mem.debuginfo                                    ; --            ; --                         ; --             ;
+; SLD_INFO                            ; QSYS_NAME io_mem HAS_SOPCINFO 1 GENERATION_ID 1431639516             ; --            ; io_mem                     ; --             ;
+; SOPCINFO_FILE                       ; io_mem/synthesis/../../io_mem.sopcinfo                               ; --            ; --                         ; --             ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                                   ; --            ; --                         ; --             ;
+; VHDL_INPUT_VERSION                  ; VHDL_2008                                                            ; VHDL_1993     ; --                         ; --             ;
+; VHDL_SHOW_LMF_MAPPING_MESSAGES      ; Off                                                                  ; --            ; --                         ; --             ;
++-------------------------------------+----------------------------------------------------------------------+---------------+----------------------------+----------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                             ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:14     ; 1.0                     ; 710 MB              ; 00:00:29                           ;
-; Fitter                    ; 00:01:02     ; 1.0                     ; 2094 MB             ; 00:01:03                           ;
-; Assembler                 ; 00:00:13     ; 1.0                     ; 686 MB              ; 00:00:12                           ;
-; TimeQuest Timing Analyzer ; 00:00:07     ; 1.0                     ; 917 MB              ; 00:00:07                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 595 MB              ; 00:00:02                           ;
-; Total                     ; 00:01:37     ; --                      ; --                  ; 00:01:53                           ;
-+---------------------------+--------------+-------------------------+---------------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:24     ; 1.0                     ; 709 MB              ; 00:00:37                           ;
+; Total                ; 00:00:24     ; --                      ; --                  ; 00:00:37                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; Martijn-PC       ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; Martijn-PC       ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; Martijn-PC       ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; Martijn-PC       ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; Martijn-PC       ; Windows 7 ; 6.2        ; x86_64         ;
-+---------------------------+------------------+-----------+------------+----------------+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; Martijn-PC       ; Windows 7 ; 6.2        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off sockit -c sockit
-quartus_fit --read_settings_files=off --write_settings_files=off sockit -c sockit
-quartus_asm --read_settings_files=off --write_settings_files=off sockit -c sockit
-quartus_sta sockit -c sockit
-quartus_eda --read_settings_files=off --write_settings_files=off sockit -c sockit
 
 
 

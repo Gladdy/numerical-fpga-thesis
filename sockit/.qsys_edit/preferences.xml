@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <preferences>
  <debug showDebugMenu="0" />
- <systemtable filter="All Interfaces">
+ <systemtable filter="All Interfaces" showResetDomains="0" showClockDomains="0">
   <columns>
-   <connections preferredWidth="111" />
+   <connections preferredWidth="127" />
    <irq preferredWidth="34" />
-   <inputclock preferredWidth="164" />
-   <export preferredWidth="287" />
+   <inputclock preferredWidth="174" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/Basic Functions/On Chip Memory,Library/Interface Protocols/Serial,Library/Basic Functions/Bridges and Adaptors/Streaming,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Qsys Interconnect/Interrupt,Library/DSP/Error Detection and Correction,Library/Basic Functions/DMA/mSGDMA Sub-core,Library/Processors and Peripherals/Inter-Process Communication,Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/Interface Protocols/Transceiver PHY,Library/Basic Functions/Simulation; Debug and Verification/Verification,Library/Interface Protocols,Library/Memory Interfaces and Controllers/Memory Interfaces with ALTMEMPHY,Library/Low Power,Library/Memory Interfaces and Controllers/Flash,Library/Interface Protocols/JESD,Library/Interface Protocols/Interlaken,Library,Library/Memory Interfaces and Controllers/Memory Interfaces with UniPHY,Library/Basic Functions/Simulation; Debug and Verification,Library/Basic Functions/Bridges and Adaptors/Reset,Library/Basic Functions/Bridges and Adaptors,Library/Processors and Peripherals/Hard Processor Components,Library/Basic Functions/Clocks; PLLs and Resets/PLL,Library/Qsys Interconnect/Tri-State Components,Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Basic Functions,Library/Interface Protocols/Audio &amp; Video,Library/Processors and Peripherals/Co-Processors,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Basic Functions/Clocks; PLLs and Resets,Library/Memory Interfaces and Controllers,Library/Basic Functions/Configuration and Programming,Library/Processors and Peripherals/Co-Processors/Nios II Custom Instructions,Library/Interface Protocols/Ethernet,Library/Interface Protocols/Ethernet/Reference Design Components,Library/Processors and Peripherals,Library/Processors and Peripherals/Embedded Processors,Project,Library/Memory Interfaces and Controllers/SDRAM,Library/DSP/Video and Image Processing,Library/Qsys Interconnect/Memory-Mapped,Library/Interface Protocols/PCI Express/Example Design Components,Library/Basic Functions/DMA,Library/DSP,Library/Processors and Peripherals/Hard Processor Systems,Project/System,Library/Interface Protocols/PCI Express,Library/Qsys Interconnect,Library/Processors and Peripherals/Peripherals" />
- <window width="1100" height="800" x="609" y="179" />
+ <library expandedCategories="Library,Project" />
+ <window width="1936" height="1056" x="-8" y="-8" />
+ <generation synthesis="VHDL" />
+ <hdlexample language="VHDL" />
 </preferences>
