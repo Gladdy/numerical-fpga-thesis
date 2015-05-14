@@ -1,0 +1,16 @@
+#!/bin/bash
+DPMLOC=/home/martijn/Software/MercuryDPM-Beta
+
+if (( "$#" != 1 )) 
+then
+    echo "./runAssignment Assignment_name"
+exit 1
+fi
+
+cd $DPMLOC/build
+cmake ../MercurySource .
+make -j8
+cd $DPMLOC/build/Drivers/APiE-Assignments/
+./$1
+./$1.xballs -p 1
+cd $DPMLOC

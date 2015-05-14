@@ -1,5 +1,5 @@
 Assembler report for sockit_test
-Wed Apr 29 22:39:19 2015
+Thu May 14 01:04:47 2015
 Quartus II 64-Bit Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed Apr 29 22:39:19 2015 ;
+; Assembler Status      ; Successful - Thu May 14 01:04:47 2015 ;
 ; Revision Name         ; sockit_test                           ;
 ; Top-level Entity Name ; sockit_test                           ;
 ; Family                ; Cyclone V                             ;
@@ -68,8 +68,8 @@ agreement for further details.
 ; Option         ; Setting                                                                                         ;
 +----------------+-------------------------------------------------------------------------------------------------+
 ; Device         ; 5CSXFC6D6F31C8ES                                                                                ;
-; JTAG usercode  ; 0x00B052D3                                                                                      ;
-; Checksum       ; 0x00B052D3                                                                                      ;
+; JTAG usercode  ; 0x00B7B419                                                                                      ;
+; Checksum       ; 0x00B7B419                                                                                      ;
 +----------------+-------------------------------------------------------------------------------------------------+
 
 
@@ -79,13 +79,16 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Wed Apr 29 22:39:06 2015
+    Info: Processing started: Thu May 14 01:04:28 2015
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off sockit_test -c sockit_test
 Info (115030): Assembler is generating device programming files
-Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 688 megabytes
-    Info: Processing ended: Wed Apr 29 22:39:19 2015
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:13
+Warning (11713): The configuration of the Hard Processor Subsystem (HPS) within this design has changed.
+The Preloader software that initializes the HPS requires an update.
+Using hps_isw_handoff/soc_system_hps_0/, run the Preloader Support Package Generator to update your Preloader software
+Info: Quartus II 64-Bit Assembler was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 714 megabytes
+    Info: Processing ended: Thu May 14 01:04:47 2015
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:18
 
 

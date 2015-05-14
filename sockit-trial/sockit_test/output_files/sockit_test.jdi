@@ -1,8 +1,16 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="056101288aefc86a1ff7"/>
+    <hash md5_digest_80b="388f08bfd31620393f6c"/>
   </project>
   <file_info>
     <file device="5CSXFC6D6F31C8ES" path="sockit_test.sof" usercode="0xFFFFFFFF"/>
   </file_info>
+  <sld_infos>
+    <sld_info hpath="soc_system:soc" name="soc">
+      <assignment_values>
+        <assignment_value text="QSYS_NAME soc_system HAS_SOPCINFO 1 GENERATION_ID 1431556409"/>
+      </assignment_values>
+      <parameters/>
+    </sld_info>
+  </sld_infos>
 </sld_project_info>

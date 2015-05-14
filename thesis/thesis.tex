@@ -98,21 +98,19 @@
 % To printout only the titlepage and the abstract with the PhD title and the
 % author name for submission to the Student Registry, use the `abstract' option in
 % the document class.
-
-\ifdefineAbstract
- \pagestyle{empty}
- \includeonly{Declaration/declaration, Abstract/abstract}
-\fi
+%\ifdefineAbstract
+% \pagestyle{empty}
+% \includeonly{Declaration/declaration, Abstract/abstract}
+%\fi
 
 % ***************************** Chapter Mode ***********************************
 % The chapter mode allows user to only print particular chapters with references
 % Title, Contents, Frontmatter are disabled by default
 % Useful option to review a particular chapter or to send it to supervisior.
 % To use choose `chapter' option in the document class
-
-\ifdefineChapter
- \includeonly{Chapter3/chapter3}
-\fi
+%\ifdefineChapter
+% \includeonly{Chapter3/chapter3}
+%\fi
 
 % ******************************** Front Matter ********************************
 \begin{document}
@@ -140,15 +138,15 @@
 % ******************************** Main Matter *********************************
 \mainmatter
 
-\include{Chapter1/chapter1}
-\include{Chapter2/chapter2}
-\include{Chapter3/chapter3}
-%\include{Chapter4/chapter4}
-%\include{Chapter5/chapter5}
+
+\include{P1-Introduction/introduction}
+\include{P2-Results/results}
+\include{P3-Conclusion/conclusion}
+
 %\include{Chapter6/chapter6}
 %\include{Chapter7/chapter7}
 
-
+\include{sample}
 
 % ********************************** Back Matter *******************************
 % Backmatter should be commented out, if you are using appendices after References
