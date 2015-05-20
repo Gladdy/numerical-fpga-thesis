@@ -61,35 +61,44 @@ ARCHITECTURE behaviour OF sockit IS
 	
 	COMPONENT memory_io IS
 	PORT (
-		clk_clk            : in    std_logic                     := 'X';             -- clk
-		memory_mem_a       : out   std_logic_vector(12 downto 0);                    -- mem_a
-		memory_mem_ba      : out   std_logic_vector(2 downto 0);                     -- mem_ba
-		memory_mem_ck      : out   std_logic;                                        -- mem_ck
-		memory_mem_ck_n    : out   std_logic;                                        -- mem_ck_n
-		memory_mem_cke     : out   std_logic;                                        -- mem_cke
-		memory_mem_cs_n    : out   std_logic;                                        -- mem_cs_n
-		memory_mem_ras_n   : out   std_logic;                                        -- mem_ras_n
-		memory_mem_cas_n   : out   std_logic;                                        -- mem_cas_n
-		memory_mem_we_n    : out   std_logic;                                        -- mem_we_n
-		memory_mem_reset_n : out   std_logic;                                        -- mem_reset_n
-		memory_mem_dq      : inout std_logic_vector(7 downto 0)  := (others => 'X'); -- mem_dq
-		memory_mem_dqs     : inout std_logic                     := 'X';             -- mem_dqs
-		memory_mem_dqs_n   : inout std_logic                     := 'X';             -- mem_dqs_n
-		memory_mem_odt     : out   std_logic;                                        -- mem_odt
-		memory_mem_dm      : out   std_logic;                                        -- mem_dm
-		memory_oct_rzqin   : in    std_logic                     := 'X';             -- oct_rzqin
-		reset_reset_n      : in    std_logic                     := 'X'              -- reset_n
+		clk_clk                          : in    std_logic                      := 'X';             -- clk
+		memory_mem_a                     : out   std_logic_vector(12 downto 0);                     -- mem_a
+		memory_mem_ba                    : out   std_logic_vector(2 downto 0);                      -- mem_ba
+		memory_mem_ck                    : out   std_logic;                                         -- mem_ck
+		memory_mem_ck_n                  : out   std_logic;                                         -- mem_ck_n
+		memory_mem_cke                   : out   std_logic;                                         -- mem_cke
+		memory_mem_cs_n                  : out   std_logic;                                         -- mem_cs_n
+		memory_mem_ras_n                 : out   std_logic;                                         -- mem_ras_n
+		memory_mem_cas_n                 : out   std_logic;                                         -- mem_cas_n
+		memory_mem_we_n                  : out   std_logic;                                         -- mem_we_n
+		memory_mem_reset_n               : out   std_logic;                                         -- mem_reset_n
+		memory_mem_dq                    : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dq
+		memory_mem_dqs                   : inout std_logic                      := 'X';             -- mem_dqs
+		memory_mem_dqs_n                 : inout std_logic                      := 'X';             -- mem_dqs_n
+		memory_mem_odt                   : out   std_logic;                                         -- mem_odt
+		memory_mem_dm                    : out   std_logic;                                         -- mem_dm
+		memory_oct_rzqin                 : in    std_logic                      := 'X';             -- oct_rzqin
+		reset_reset_n                    : in    std_logic                      := 'X';             -- reset_n
+		
+		export_mem_io_export_control_data       : out   std_logic_vector(31 downto 0);                     -- export_control_data
+		export_mem_io_export_control_set        : out   std_logic;                                         -- export_control_set
+		export_mem_io_export_input_data         : out   std_logic_vector(127 downto 0);                    -- export_input_data
+		export_mem_io_export_input_set          : out   std_logic;                                         -- export_input_set
+		export_mem_io_export_output_data        : in    std_logic_vector(127 downto 0) := (others => 'X'); -- export_output_data
+		export_mem_io_export_output_set         : in    std_logic                      := 'X';             -- export_output_set
+		export_mem_io_export_output_waitrequest : out   std_logic                                          -- export_output_waitrequest
 	);
 	END COMPONENT memory_io;
 	
-	SIGNAL leds_status 	: std_logic_vector(3 downto 0);
-	SIGNAL input_data 	: std_logic_vector(127 downto 0);
-	SIGNAL input_set 		: std_logic;
-	SIGNAL output_data 	: std_logic_vector(127 downto 0);
-	SIGNAL output_set 	: std_logic;
-	SIGNAL output_waitrequest : std_logic;
-	SIGNAL control_data 	: std_logic_vector(31 downto 0);
-	SIGNAL control_set 	: std_logic;
+	
+	SIGNAL leds_status 			: std_logic_vector(3 downto 0);
+	SIGNAL input_data 			: std_logic_vector(127 downto 0);
+	SIGNAL input_set 				: std_logic;
+	SIGNAL output_data 			: std_logic_vector(127 downto 0);
+	SIGNAL output_set 			: std_logic;
+	SIGNAL output_waitrequest 	: std_logic;
+	SIGNAL control_data 			: std_logic_vector(31 downto 0);
+	SIGNAL control_set 			: std_logic;
 
 BEGIN
 	G1 : io_led 		PORT MAP (CLOCK_50, RESET, leds_status, LED);
@@ -112,6 +121,14 @@ BEGIN
 		memory_mem_odt     => DDR3_ODT,     --       .mem_odt
 		memory_mem_dm      => DDR3_DM,      --       .mem_dm
 		memory_oct_rzqin   => DDR3_RZQ,   	--       .oct_rzqin
-		reset_reset_n      => RESET       	--  reset.reset_n
+		reset_reset_n      => RESET,       	--  reset.reset_n
+		
+		export_mem_io_export_control_data       => control_data,       -- export_mem_io.export_control_data
+		export_mem_io_export_control_set        => control_set,        --              .export_control_set
+		export_mem_io_export_input_data         => input_data,         --              .export_input_data
+		export_mem_io_export_input_set          => input_set,          --              .export_input_set
+		export_mem_io_export_output_data        => output_data,        --              .export_output_data
+		export_mem_io_export_output_set         => output_set,         --              .export_output_set
+		export_mem_io_export_output_waitrequest => output_waitrequest  --              .export_output_waitrequest
 	);
 END behaviour;

@@ -9,9 +9,11 @@ ENTITY compute_main IS
 		
 		input_data : in std_logic_vector(127 downto 0);
 		input_set : in std_logic;
+		
 		output_data : out std_logic_vector(127 downto 0);
 		output_set : out std_logic;
 		output_waitrequest : in std_logic;
+		
 		control_data : in std_logic_vector(31 downto 0);
 		control_set : in std_logic;
 		
@@ -26,7 +28,17 @@ BEGIN
 	PROCESS(CLOCK_50)
 	BEGIN
 		IF rising_edge(CLOCK_50) THEN
-			leds_status <= KEY;
+		
+			
+		
+			IF RESET THEN
+				leds_status <= "0000";
+				output_data <= (others => '0');
+				output_set <= '0';
+			ELSIF control_set THEN
+				leds_status <= control_data(3 downto 0);
+			END IF;
+			--leds_status <= KEY;
 		END IF;
 	END PROCESS;
 END;

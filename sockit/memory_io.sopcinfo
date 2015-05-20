@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="memory_io" kind="memory_io" version="1.0" fabric="QSYS">
  <!-- Format version 14.1 186 (Future versions may contain additional information.) -->
- <!-- 2015.05.15.02:20:46 -->
+ <!-- 2015.05.20.21:56:45 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1431649244</value>
+  <value>1432151803</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -73347,6 +73347,87 @@ parameters are a RESULT of the module parameters. -->
     <role>write</role>
    </port>
   </interface>
+  <interface name="conduit_export" kind="conduit_end" version="14.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clock</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value>reset</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>control_data_export</name>
+    <direction>Output</direction>
+    <width>32</width>
+    <role>export_control_data</role>
+   </port>
+   <port>
+    <name>control_set_export</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>export_control_set</role>
+   </port>
+   <port>
+    <name>input_data_export</name>
+    <direction>Output</direction>
+    <width>128</width>
+    <role>export_input_data</role>
+   </port>
+   <port>
+    <name>input_set_export</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>export_input_set</role>
+   </port>
+   <port>
+    <name>output_data_export</name>
+    <direction>Input</direction>
+    <width>128</width>
+    <role>export_output_data</role>
+   </port>
+   <port>
+    <name>output_set_export</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>export_output_set</role>
+   </port>
+   <port>
+    <name>output_waitrequest_export</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>export_output_waitrequest</role>
+   </port>
+  </interface>
  </module>
  <connection
    name="hps_0_clk_0.clk_reset/hps_0_bridges.reset_sink"
@@ -83655,7 +83736,7 @@ parameters are a RESULT of the module parameters. -->
   <version>14.1</version>
  </plugin>
  <plugin>
-  <instanceCount>2</instanceCount>
+  <instanceCount>3</instanceCount>
   <name>conduit_end</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IMutableConnectionPoint</subtype>

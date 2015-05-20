@@ -5,3 +5,38 @@
 # This file is for reference only and is not used by Quartus II
 #
 
+INSTANCE: G3|hps_0|hps_io|border|hps_sdram_inst
+DQS: DDR3_DQS_p
+DQSn: DDR3_DQS_n
+DQ: {{DDR3_DQ[0]} {DDR3_DQ[1]} {DDR3_DQ[2]} {DDR3_DQ[3]} {DDR3_DQ[4]} {DDR3_DQ[5]} {DDR3_DQ[6]} {DDR3_DQ[7]}}
+DM DDR3_DM
+CK: DDR3_CK_p
+CKn: DDR3_CK_n
+ADD: {DDR3_A[0]} {DDR3_A[10]} {DDR3_A[11]} {DDR3_A[12]} {DDR3_A[1]} {DDR3_A[2]} {DDR3_A[3]} {DDR3_A[4]} {DDR3_A[5]} {DDR3_A[6]} {DDR3_A[7]} {DDR3_A[8]} {DDR3_A[9]}
+CMD: DDR3_CAS_n DDR3_CKE DDR3_CS_n DDR3_ODT DDR3_RAS_n DDR3_WE_n
+RESET: DDR3_RESET_n
+BA: {DDR3_BA[0]} {DDR3_BA[1]} {DDR3_BA[2]}
+PLL CK: memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk
+PLL DQ WRITE: memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk
+PLL WRITE: memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk
+PLL DRIVER CORE: _UNDEFINED_PIN_
+DQS_IN_CLOCK DQS_PIN (0): DDR3_DQS_p
+DQS_IN_CLOCK DQS_SHIFTED_PIN (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|dqs_delay_chain|dqsbusout
+DQS_IN_CLOCK DIV_NAME (0): G3|hps_0|hps_io|border|hps_sdram_inst|div_clock_0
+DQS_IN_CLOCK DIV_PIN (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uread_datapath|read_capture_clk_div2[0]
+DQS_OUT_CLOCK SRC (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|obuf_os_0|o
+DQS_OUT_CLOCK DST (0): DDR3_DQS_p
+DQS_OUT_CLOCK DM (0): DDR3_DM
+DQSN_OUT_CLOCK SRC (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|obuf_os_bar_0|o
+DQSN_OUT_CLOCK DST (0): DDR3_DQS_n
+DQSN_OUT_CLOCK DM (0): DDR3_DM
+READ CAPTURE DDIO: {*:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uio_pads|*:dq_ddio[*].ubidir_dq_dqs|*:altdq_dqs2_inst|*input_path_gen[*].capture_reg~DFFLO} {*:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uio_pads|*:dq_ddio[*].ubidir_dq_dqs|*:altdq_dqs2_inst|*input_path_gen[*].aligned_input[*]}
+AFI RESET REGISTERS: *:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:ureset|*:ureset_afi_clk|reset_reg[3]
+SYNCHRONIZERS: *:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uread_datapath|read_buffering[*].seq_read_fifo_reset_sync
+SYNCHRONIZATION FIFO WRITE ADDRESS REGISTERS: *:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uread_datapath|read_buffering[*].read_subgroup[*].wraddress[*]
+SYNCHRONIZATION FIFO WRITE REGISTERS: *:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uio_pads|*:dq_ddio[*].ubidir_dq_dqs|*:altdq_dqs2_inst|input_path_gen[*].read_fifo|*INPUT_DFF*
+SYNCHRONIZATION FIFO READ REGISTERS: *:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uio_pads|*:dq_ddio[*].ubidir_dq_dqs|*:altdq_dqs2_inst|input_path_gen[*].read_fifo|dout[*]
+
+#
+# END OF INSTANCE: G3|hps_0|hps_io|border|hps_sdram_inst
+
