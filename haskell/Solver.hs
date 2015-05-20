@@ -1,3 +1,6 @@
+-- LOOK UP
+-- {-# LWNGUAGE RECORDWILDCARDS #-}
+
 module Solver where
 
   import Prelude
@@ -16,21 +19,24 @@ module Solver where
   -- x0' = x1
   -- x1' = x0
   sineEQ :: Equation
+  --sineEQ Rec{..}    = [x0,x1]
   sineEQ state    = [x0,x1]
     where
       x = xs state
       x0 = x !! 1
       x1 = - (x !! 0)
 
+      -- x'' = -x
+
   -- SOLVERS
   -- EULER
   euler :: SolveMethod
   euler time equation initState   = ODEState newX newT
     where
-      newX = zipWith (+) (xs initState) dX
-      dX = map (timestep *) (equation initState)
-      newT = (t initState) + timestep
-      timestep = dt time
+      newX      = zipWith (+) (xs initState) dX
+      dX        = map (timestep *) (equation initState)
+      newT      = (t initState) + timestep
+      timestep  = dt time
 
   -- RUNGE KUTTA 4th ORDER
   rk4 :: SolveMethod

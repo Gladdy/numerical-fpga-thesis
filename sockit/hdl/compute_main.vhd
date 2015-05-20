@@ -4,8 +4,8 @@ use ieee.numeric_std.all;
 
 ENTITY compute_main IS
 	PORT(	
-		clock : in std_logic;
-		reset : in std_logic;
+		CLOCK_50 : in std_logic;
+		RESET : in std_logic;
 		
 		input_data : in std_logic_vector(127 downto 0);
 		input_set : in std_logic;
@@ -15,7 +15,7 @@ ENTITY compute_main IS
 		control_data : in std_logic_vector(31 downto 0);
 		control_set : in std_logic;
 		
-		keys_in : in std_logic_vector(3 downto 0);
+		KEY : in std_logic_vector(3 downto 0);
 		leds_status : out std_logic_vector(3 downto 0)
 	);
 END compute_main;
@@ -23,10 +23,10 @@ END compute_main;
 ARCHITECTURE behaviour OF compute_main IS 
 
 BEGIN
-	PROCESS(clock)
+	PROCESS(CLOCK_50)
 	BEGIN
-		IF rising_edge(clock) THEN
-			leds_status <= keys_in;
+		IF rising_edge(CLOCK_50) THEN
+			leds_status <= KEY;
 		END IF;
 	END PROCESS;
 END;
