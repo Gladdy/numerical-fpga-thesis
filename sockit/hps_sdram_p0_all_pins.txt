@@ -6,30 +6,30 @@
 #
 
 INSTANCE: G3|hps_0|hps_io|border|hps_sdram_inst
-DQS: DDR3_DQS_p
-DQSn: DDR3_DQS_n
-DQ: {{DDR3_DQ[0]} {DDR3_DQ[1]} {DDR3_DQ[2]} {DDR3_DQ[3]} {DDR3_DQ[4]} {DDR3_DQ[5]} {DDR3_DQ[6]} {DDR3_DQ[7]}}
-DM DDR3_DM
-CK: DDR3_CK_p
-CKn: DDR3_CK_n
-ADD: {DDR3_A[0]} {DDR3_A[10]} {DDR3_A[11]} {DDR3_A[12]} {DDR3_A[1]} {DDR3_A[2]} {DDR3_A[3]} {DDR3_A[4]} {DDR3_A[5]} {DDR3_A[6]} {DDR3_A[7]} {DDR3_A[8]} {DDR3_A[9]}
-CMD: DDR3_CAS_n DDR3_CKE DDR3_CS_n DDR3_ODT DDR3_RAS_n DDR3_WE_n
-RESET: DDR3_RESET_n
-BA: {DDR3_BA[0]} {DDR3_BA[1]} {DDR3_BA[2]}
+DQS: hps_memory_mem_dqs
+DQSn: hps_memory_mem_dqs_n
+DQ: {{hps_memory_mem_dq[0]} {hps_memory_mem_dq[1]} {hps_memory_mem_dq[2]} {hps_memory_mem_dq[3]} {hps_memory_mem_dq[4]} {hps_memory_mem_dq[5]} {hps_memory_mem_dq[6]} {hps_memory_mem_dq[7]}}
+DM hps_memory_mem_dm
+CK: hps_memory_mem_ck
+CKn: hps_memory_mem_ck_n
+ADD: {hps_memory_mem_a[0]} {hps_memory_mem_a[10]} {hps_memory_mem_a[11]} {hps_memory_mem_a[12]} {hps_memory_mem_a[1]} {hps_memory_mem_a[2]} {hps_memory_mem_a[3]} {hps_memory_mem_a[4]} {hps_memory_mem_a[5]} {hps_memory_mem_a[6]} {hps_memory_mem_a[7]} {hps_memory_mem_a[8]} {hps_memory_mem_a[9]}
+CMD: hps_memory_mem_cas_n hps_memory_mem_cke hps_memory_mem_cs_n hps_memory_mem_odt hps_memory_mem_ras_n hps_memory_mem_we_n
+RESET: hps_memory_mem_reset_n
+BA: {hps_memory_mem_ba[0]} {hps_memory_mem_ba[1]} {hps_memory_mem_ba[2]}
 PLL CK: memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk
 PLL DQ WRITE: memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk
 PLL WRITE: memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk
 PLL DRIVER CORE: _UNDEFINED_PIN_
-DQS_IN_CLOCK DQS_PIN (0): DDR3_DQS_p
+DQS_IN_CLOCK DQS_PIN (0): hps_memory_mem_dqs
 DQS_IN_CLOCK DQS_SHIFTED_PIN (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|dqs_delay_chain|dqsbusout
 DQS_IN_CLOCK DIV_NAME (0): G3|hps_0|hps_io|border|hps_sdram_inst|div_clock_0
 DQS_IN_CLOCK DIV_PIN (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uread_datapath|read_capture_clk_div2[0]
 DQS_OUT_CLOCK SRC (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|obuf_os_0|o
-DQS_OUT_CLOCK DST (0): DDR3_DQS_p
-DQS_OUT_CLOCK DM (0): DDR3_DM
+DQS_OUT_CLOCK DST (0): hps_memory_mem_dqs
+DQS_OUT_CLOCK DM (0): hps_memory_mem_dm
 DQSN_OUT_CLOCK SRC (0): G3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|obuf_os_bar_0|o
-DQSN_OUT_CLOCK DST (0): DDR3_DQS_n
-DQSN_OUT_CLOCK DM (0): DDR3_DM
+DQSN_OUT_CLOCK DST (0): hps_memory_mem_dqs_n
+DQSN_OUT_CLOCK DM (0): hps_memory_mem_dm
 READ CAPTURE DDIO: {*:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uio_pads|*:dq_ddio[*].ubidir_dq_dqs|*:altdq_dqs2_inst|*input_path_gen[*].capture_reg~DFFLO} {*:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uio_pads|*:dq_ddio[*].ubidir_dq_dqs|*:altdq_dqs2_inst|*input_path_gen[*].aligned_input[*]}
 AFI RESET REGISTERS: *:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:ureset|*:ureset_afi_clk|reset_reg[3]
 SYNCHRONIZERS: *:G3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*:p0|*:umemphy|*:uread_datapath|read_buffering[*].seq_read_fifo_reset_sync

@@ -4,41 +4,53 @@ use ieee.numeric_std.all;
 
 ENTITY compute_main IS
 	PORT(	
-		CLOCK_50 : in std_logic;
-		RESET : in std_logic;
-		
-		input_data : in std_logic_vector(127 downto 0);
-		input_set : in std_logic;
-		
-		output_data : out std_logic_vector(127 downto 0);
-		output_set : out std_logic;
-		output_waitrequest : in std_logic;
-		
-		control_data : in std_logic_vector(31 downto 0);
-		control_set : in std_logic;
-		
-		KEY : in std_logic_vector(3 downto 0);
-		leds_status : out std_logic_vector(3 downto 0)
+		clock 					: in std_logic;
+		reset 					: in std_logic;	
+		input_data 				: in std_logic_vector(127 downto 0);
+		input_set 				: in std_logic;
+		output_data 			: out std_logic_vector(127 downto 0);
+		output_set 				: out std_logic;
+		output_waitrequest 	: in std_logic;
+		control_data 			: in std_logic_vector(31 downto 0);
+		control_set 			: in std_logic;
+		keys_input 				: in std_logic_vector(3 downto 0);
+		switches_input			: in std_logic_vector(3 downto 0);
+		leds_status 			: out std_logic_vector(3 downto 0)
 	);
 END compute_main;
 
 ARCHITECTURE behaviour OF compute_main IS 
 
 BEGIN
-	PROCESS(CLOCK_50)
+	PROCESS(clock)
+		VARIABLE keys : std_logic_vector(3 downto 0);
+		VARIABLE switches : std_logic_vector(3 downto 0);
+
+		VARIABLE control : std_logic_vector(3 downto 0) := "0000";
+		VARIABLE input : std_logic_vector(3 downto 0) := "0000";
 	BEGIN
-		IF rising_edge(CLOCK_50) THEN
-		
+	
+		keys := not(keys_input);
+		switches := not(switches_input);
+	
+		IF rising_edge(clock) THEN
 			
-		
-			IF RESET THEN
-				leds_status <= "0000";
-				output_data <= (others => '0');
-				output_set <= '0';
-			ELSIF control_set THEN
-				leds_status <= control_data(3 downto 0);
+			--Control the output
+			IF switches(0) THEN
+				leds_status <= control;
+			ELSE
+				leds_status <= input;
 			END IF;
-			--leds_status <= KEY;
+			
+			--Detect changes in the input
+			IF control_set THEN
+				control := control_data(3 downto 0);
+			END IF;
+			
+			IF control_set THEN
+				input := input_data(3 downto 0);
+			END IF;
+			
 		END IF;
 	END PROCESS;
 END;

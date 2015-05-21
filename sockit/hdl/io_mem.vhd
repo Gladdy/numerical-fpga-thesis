@@ -9,24 +9,24 @@ ENTITY io_mem IS
 		reset : in std_logic;
 		
 		-- INTERNAL SIGNALS
-		input_data : in std_logic_vector(127 downto 0);
-		input_set : in std_logic;
+		--input_data : in std_logic_vector(127 downto 0);
+		--input_set : in std_logic;
 		
-		output_data : out std_logic_vector(127 downto 0);
-		output_set : out std_logic;
-		output_waitrequest : in std_logic;
+		--output_data : out std_logic_vector(127 downto 0);
+		--output_set : out std_logic;
+		--output_waitrequest : in std_logic;
 		
 		control_data : in std_logic_vector(31 downto 0);
 		control_set : in std_logic;
 		
 		
 		-- EXPOSED / EXPORTED SIGNALS
-		input_data_export : out std_logic_vector(127 downto 0);
-		input_set_export : out std_logic;
+		--input_data_export : out std_logic_vector(127 downto 0);
+		--input_set_export : out std_logic;
 		
-		output_data_export : in std_logic_vector(127 downto 0);
-		output_set_export : in std_logic;
-		output_waitrequest_export : out std_logic;
+		--output_data_export : in std_logic_vector(127 downto 0);
+		--output_set_export : in std_logic;
+		--output_waitrequest_export : out std_logic;
 		
 		control_data_export : out std_logic_vector(31 downto 0);
 		control_set_export : out std_logic
@@ -40,13 +40,13 @@ BEGIN
 	BEGIN
 		IF rising_edge(clock) THEN
 			--Data input
-			input_data_export <= input_data;
-			input_set_export <= input_set;
+			--input_data_export <= input_data;
+			--input_set_export <= input_set;
 			
 			--Data output
-			output_data <= output_data_export;
-			output_set <= output_set_export;
-			output_waitrequest_export <= output_waitrequest;
+			--output_data <= output_data_export;
+			--output_set <= output_set_export;
+			--output_waitrequest_export <= output_waitrequest;
 			
 			--Control input
 			control_data_export <= control_data;

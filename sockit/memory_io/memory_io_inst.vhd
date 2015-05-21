@@ -1,59 +1,49 @@
 	component memory_io is
 		port (
-			clk_clk                                 : in    std_logic                      := 'X';             -- clk
-			export_mem_io_export_control_data       : out   std_logic_vector(31 downto 0);                     -- export_control_data
-			export_mem_io_export_control_set        : out   std_logic;                                         -- export_control_set
-			export_mem_io_export_input_data         : out   std_logic_vector(127 downto 0);                    -- export_input_data
-			export_mem_io_export_input_set          : out   std_logic;                                         -- export_input_set
-			export_mem_io_export_output_data        : in    std_logic_vector(127 downto 0) := (others => 'X'); -- export_output_data
-			export_mem_io_export_output_set         : in    std_logic                      := 'X';             -- export_output_set
-			export_mem_io_export_output_waitrequest : out   std_logic;                                         -- export_output_waitrequest
-			memory_mem_a                            : out   std_logic_vector(12 downto 0);                     -- mem_a
-			memory_mem_ba                           : out   std_logic_vector(2 downto 0);                      -- mem_ba
-			memory_mem_ck                           : out   std_logic;                                         -- mem_ck
-			memory_mem_ck_n                         : out   std_logic;                                         -- mem_ck_n
-			memory_mem_cke                          : out   std_logic;                                         -- mem_cke
-			memory_mem_cs_n                         : out   std_logic;                                         -- mem_cs_n
-			memory_mem_ras_n                        : out   std_logic;                                         -- mem_ras_n
-			memory_mem_cas_n                        : out   std_logic;                                         -- mem_cas_n
-			memory_mem_we_n                         : out   std_logic;                                         -- mem_we_n
-			memory_mem_reset_n                      : out   std_logic;                                         -- mem_reset_n
-			memory_mem_dq                           : inout std_logic_vector(7 downto 0)   := (others => 'X'); -- mem_dq
-			memory_mem_dqs                          : inout std_logic                      := 'X';             -- mem_dqs
-			memory_mem_dqs_n                        : inout std_logic                      := 'X';             -- mem_dqs_n
-			memory_mem_odt                          : out   std_logic;                                         -- mem_odt
-			memory_mem_dm                           : out   std_logic;                                         -- mem_dm
-			memory_oct_rzqin                        : in    std_logic                      := 'X';             -- oct_rzqin
-			reset_reset_n                           : in    std_logic                      := 'X'              -- reset_n
+			clk_clk                     : in    std_logic                     := 'X';             -- clk
+			memory_mem_a                : out   std_logic_vector(12 downto 0);                    -- mem_a
+			memory_mem_ba               : out   std_logic_vector(2 downto 0);                     -- mem_ba
+			memory_mem_ck               : out   std_logic;                                        -- mem_ck
+			memory_mem_ck_n             : out   std_logic;                                        -- mem_ck_n
+			memory_mem_cke              : out   std_logic;                                        -- mem_cke
+			memory_mem_cs_n             : out   std_logic;                                        -- mem_cs_n
+			memory_mem_ras_n            : out   std_logic;                                        -- mem_ras_n
+			memory_mem_cas_n            : out   std_logic;                                        -- mem_cas_n
+			memory_mem_we_n             : out   std_logic;                                        -- mem_we_n
+			memory_mem_reset_n          : out   std_logic;                                        -- mem_reset_n
+			memory_mem_dq               : inout std_logic_vector(7 downto 0)  := (others => 'X'); -- mem_dq
+			memory_mem_dqs              : inout std_logic                     := 'X';             -- mem_dqs
+			memory_mem_dqs_n            : inout std_logic                     := 'X';             -- mem_dqs_n
+			memory_mem_odt              : out   std_logic;                                        -- mem_odt
+			memory_mem_dm               : out   std_logic;                                        -- mem_dm
+			memory_oct_rzqin            : in    std_logic                     := 'X';             -- oct_rzqin
+			reset_reset_n               : in    std_logic                     := 'X';             -- reset_n
+			conduit_export_control_data : out   std_logic_vector(31 downto 0);                    -- export_control_data
+			conduit_export_control_set  : out   std_logic                                         -- export_control_set
 		);
 	end component memory_io;
 
 	u0 : component memory_io
 		port map (
-			clk_clk                                 => CONNECTED_TO_clk_clk,                                 --           clk.clk
-			export_mem_io_export_control_data       => CONNECTED_TO_export_mem_io_export_control_data,       -- export_mem_io.export_control_data
-			export_mem_io_export_control_set        => CONNECTED_TO_export_mem_io_export_control_set,        --              .export_control_set
-			export_mem_io_export_input_data         => CONNECTED_TO_export_mem_io_export_input_data,         --              .export_input_data
-			export_mem_io_export_input_set          => CONNECTED_TO_export_mem_io_export_input_set,          --              .export_input_set
-			export_mem_io_export_output_data        => CONNECTED_TO_export_mem_io_export_output_data,        --              .export_output_data
-			export_mem_io_export_output_set         => CONNECTED_TO_export_mem_io_export_output_set,         --              .export_output_set
-			export_mem_io_export_output_waitrequest => CONNECTED_TO_export_mem_io_export_output_waitrequest, --              .export_output_waitrequest
-			memory_mem_a                            => CONNECTED_TO_memory_mem_a,                            --        memory.mem_a
-			memory_mem_ba                           => CONNECTED_TO_memory_mem_ba,                           --              .mem_ba
-			memory_mem_ck                           => CONNECTED_TO_memory_mem_ck,                           --              .mem_ck
-			memory_mem_ck_n                         => CONNECTED_TO_memory_mem_ck_n,                         --              .mem_ck_n
-			memory_mem_cke                          => CONNECTED_TO_memory_mem_cke,                          --              .mem_cke
-			memory_mem_cs_n                         => CONNECTED_TO_memory_mem_cs_n,                         --              .mem_cs_n
-			memory_mem_ras_n                        => CONNECTED_TO_memory_mem_ras_n,                        --              .mem_ras_n
-			memory_mem_cas_n                        => CONNECTED_TO_memory_mem_cas_n,                        --              .mem_cas_n
-			memory_mem_we_n                         => CONNECTED_TO_memory_mem_we_n,                         --              .mem_we_n
-			memory_mem_reset_n                      => CONNECTED_TO_memory_mem_reset_n,                      --              .mem_reset_n
-			memory_mem_dq                           => CONNECTED_TO_memory_mem_dq,                           --              .mem_dq
-			memory_mem_dqs                          => CONNECTED_TO_memory_mem_dqs,                          --              .mem_dqs
-			memory_mem_dqs_n                        => CONNECTED_TO_memory_mem_dqs_n,                        --              .mem_dqs_n
-			memory_mem_odt                          => CONNECTED_TO_memory_mem_odt,                          --              .mem_odt
-			memory_mem_dm                           => CONNECTED_TO_memory_mem_dm,                           --              .mem_dm
-			memory_oct_rzqin                        => CONNECTED_TO_memory_oct_rzqin,                        --              .oct_rzqin
-			reset_reset_n                           => CONNECTED_TO_reset_reset_n                            --         reset.reset_n
+			clk_clk                     => CONNECTED_TO_clk_clk,                     --     clk.clk
+			memory_mem_a                => CONNECTED_TO_memory_mem_a,                --  memory.mem_a
+			memory_mem_ba               => CONNECTED_TO_memory_mem_ba,               --        .mem_ba
+			memory_mem_ck               => CONNECTED_TO_memory_mem_ck,               --        .mem_ck
+			memory_mem_ck_n             => CONNECTED_TO_memory_mem_ck_n,             --        .mem_ck_n
+			memory_mem_cke              => CONNECTED_TO_memory_mem_cke,              --        .mem_cke
+			memory_mem_cs_n             => CONNECTED_TO_memory_mem_cs_n,             --        .mem_cs_n
+			memory_mem_ras_n            => CONNECTED_TO_memory_mem_ras_n,            --        .mem_ras_n
+			memory_mem_cas_n            => CONNECTED_TO_memory_mem_cas_n,            --        .mem_cas_n
+			memory_mem_we_n             => CONNECTED_TO_memory_mem_we_n,             --        .mem_we_n
+			memory_mem_reset_n          => CONNECTED_TO_memory_mem_reset_n,          --        .mem_reset_n
+			memory_mem_dq               => CONNECTED_TO_memory_mem_dq,               --        .mem_dq
+			memory_mem_dqs              => CONNECTED_TO_memory_mem_dqs,              --        .mem_dqs
+			memory_mem_dqs_n            => CONNECTED_TO_memory_mem_dqs_n,            --        .mem_dqs_n
+			memory_mem_odt              => CONNECTED_TO_memory_mem_odt,              --        .mem_odt
+			memory_mem_dm               => CONNECTED_TO_memory_mem_dm,               --        .mem_dm
+			memory_oct_rzqin            => CONNECTED_TO_memory_oct_rzqin,            --        .oct_rzqin
+			reset_reset_n               => CONNECTED_TO_reset_reset_n,               --   reset.reset_n
+			conduit_export_control_data => CONNECTED_TO_conduit_export_control_data, -- conduit.export_control_data
+			conduit_export_control_set  => CONNECTED_TO_conduit_export_control_set   --        .export_control_set
 		);
 

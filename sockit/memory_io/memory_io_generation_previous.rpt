@@ -1,5 +1,5 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: ip-generate --project-directory=E:\Dropbox\numerical-fpga-thesis\sockit --output-directory=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io --report-file=bsf:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSXFC6D6F31C8ES --system-info=DEVICE_SPEEDGRADE=8_H6 --component-file=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io.qsys --remove-qsys-generate-warning
+Info: ip-generate --project-directory=E:\Dropbox\numerical-fpga-thesis\sockit --output-directory=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io --report-file=bsf:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSXFC6D6F31C8 --system-info=DEVICE_SPEEDGRADE=8_H6 --component-file=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io.qsys --remove-qsys-generate-warning
 Progress: Loading sockit/memory_io.qsys
 Progress: Reading input file
 Progress: Adding clk_0 [clock_source 14.1]
@@ -12,14 +12,14 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Info: memory_io.hps_0: HPS Main PLL counter settings: n = 0  m = 63
+Info: memory_io.hps_0: HPS Main PLL counter settings: n = 0  m = 47
 Info: memory_io.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
 Warning: memory_io.hps_0: set_interface_assignment: Interface "hps_io" does not exist
 Info: ip-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: ip-generate --project-directory=E:\Dropbox\numerical-fpga-thesis\sockit --output-directory=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.html --report-file=sopcinfo:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io.sopcinfo --report-file=cmp:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.cmp --report-file=qip:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.qip --report-file=svd:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.svd --report-file=regmap:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.regmap --report-file=xml:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.xml --report-file=debuginfo:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSXFC6D6F31C8ES --system-info=DEVICE_SPEEDGRADE=8_H6 --component-file=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io.qsys --remove-qsys-generate-warning --language=VHDL
+Info: ip-generate --project-directory=E:\Dropbox\numerical-fpga-thesis\sockit --output-directory=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis --file-set=QUARTUS_SYNTH --report-file=html:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.html --report-file=sopcinfo:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io.sopcinfo --report-file=cmp:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.cmp --report-file=qip:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.qip --report-file=svd:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.svd --report-file=regmap:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.regmap --report-file=xml:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\memory_io.xml --report-file=debuginfo:E:\Dropbox\numerical-fpga-thesis\sockit\memory_io\synthesis\memory_io.debuginfo --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSXFC6D6F31C8 --system-info=DEVICE_SPEEDGRADE=8_H6 --component-file=E:\Dropbox\numerical-fpga-thesis\sockit\memory_io.qsys --remove-qsys-generate-warning --language=VHDL
 Progress: Loading sockit/memory_io.qsys
 Progress: Reading input file
 Progress: Adding clk_0 [clock_source 14.1]
@@ -32,7 +32,7 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
-Info: memory_io.hps_0: HPS Main PLL counter settings: n = 0  m = 63
+Info: memory_io.hps_0: HPS Main PLL counter settings: n = 0  m = 47
 Info: memory_io.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
 Warning: memory_io.hps_0: set_interface_assignment: Interface "hps_io" does not exist
 Info: memory_io: Generating memory_io "memory_io" for QUARTUS_SYNTH
@@ -40,7 +40,7 @@ Info: Interconnect is inserted between master io_mem_component_0.avalon_output a
 Info: Interconnect is inserted between master hps_0.h2f_axi_master and slave io_mem_component_0.avalon_input because the master is of type axi and the slave is of type avalon.
 Info: Interconnect is inserted between master hps_0.h2f_lw_axi_master and slave io_mem_component_0.avalon_control because the master is of type axi and the slave is of type avalon.
 Info: hps_0: "Running  for module: hps_0"
-Info: hps_0: HPS Main PLL counter settings: n = 0  m = 63
+Info: hps_0: HPS Main PLL counter settings: n = 0  m = 47
 Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
 Warning: hps_0: set_interface_assignment: Interface "hps_io" does not exist
 Info: hps_0: "memory_io" instantiated altera_hps "hps_0"

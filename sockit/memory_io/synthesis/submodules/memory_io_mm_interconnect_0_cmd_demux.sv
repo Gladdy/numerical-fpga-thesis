@@ -28,9 +28,9 @@
 // ------------------------------------------
 // Generation parameters:
 //   output_name:         memory_io_mm_interconnect_0_cmd_demux
-//   ST_DATA_W:           228
+//   ST_DATA_W:           112
 //   ST_CHANNEL_W:        2
-//   NUM_OUTPUTS:         2
+//   NUM_OUTPUTS:         1
 //   VALID_WIDTH:         1
 // ------------------------------------------
 
@@ -46,7 +46,7 @@ module memory_io_mm_interconnect_0_cmd_demux
     // Sink
     // -------------------
     input  [1-1      : 0]   sink_valid,
-    input  [228-1    : 0]   sink_data, // ST_DATA_W=228
+    input  [112-1    : 0]   sink_data, // ST_DATA_W=112
     input  [2-1 : 0]   sink_channel, // ST_CHANNEL_W=2
     input                         sink_startofpacket,
     input                         sink_endofpacket,
@@ -56,18 +56,11 @@ module memory_io_mm_interconnect_0_cmd_demux
     // Sources 
     // -------------------
     output reg                      src0_valid,
-    output reg [228-1    : 0] src0_data, // ST_DATA_W=228
+    output reg [112-1    : 0] src0_data, // ST_DATA_W=112
     output reg [2-1 : 0] src0_channel, // ST_CHANNEL_W=2
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
-
-    output reg                      src1_valid,
-    output reg [228-1    : 0] src1_data, // ST_DATA_W=228
-    output reg [2-1 : 0] src1_channel, // ST_CHANNEL_W=2
-    output reg                      src1_startofpacket,
-    output reg                      src1_endofpacket,
-    input                           src1_ready,
 
 
     // -------------------
@@ -80,7 +73,7 @@ module memory_io_mm_interconnect_0_cmd_demux
 
 );
 
-    localparam NUM_OUTPUTS = 2;
+    localparam NUM_OUTPUTS = 1;
     wire [NUM_OUTPUTS - 1 : 0] ready_vector;
 
     // -------------------
@@ -94,22 +87,14 @@ module memory_io_mm_interconnect_0_cmd_demux
 
         src0_valid         = sink_channel[0] && sink_valid;
 
-        src1_data          = sink_data;
-        src1_startofpacket = sink_startofpacket;
-        src1_endofpacket   = sink_endofpacket;
-        src1_channel       = sink_channel >> NUM_OUTPUTS;
-
-        src1_valid         = sink_channel[1] && sink_valid;
-
     end
 
     // -------------------
     // Backpressure
     // -------------------
     assign ready_vector[0] = src0_ready;
-    assign ready_vector[1] = src1_ready;
 
-    assign sink_ready = |(sink_channel & ready_vector);
+    assign sink_ready = |(sink_channel & {{1{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 
