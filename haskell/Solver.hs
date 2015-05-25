@@ -1,3 +1,4 @@
+
 module Solver where
 
   import Prelude
@@ -23,7 +24,6 @@ module Solver where
 
   initTimeSettings = TimeSettings 0.01 10
   initTimeSettings2 = TimeSettings 0.01 3
-
 
   solution_exponential = solve euler initTimeSettings eq_exponential initODEState
   solution_sine = solve rk4 initTimeSettings eq_sine initODEState

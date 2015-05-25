@@ -14,6 +14,7 @@ module SolverSolvers where
       newT      = (t initState) + timestep
       timestep  = dt time
 
+
   -- RUNGE KUTTA 4th ORDER
   rk4 :: SolveMethod
   rk4 time equation initState = ODEState newX newT

@@ -11,7 +11,7 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,12pt,times,numbered,print,index]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,times,numbered,print,chapter]{Classes/PhDThesisPSnPDF}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -98,19 +98,19 @@
 % To printout only the titlepage and the abstract with the PhD title and the
 % author name for submission to the Student Registry, use the `abstract' option in
 % the document class.
-%\ifdefineAbstract
-% \pagestyle{empty}
-% \includeonly{Declaration/declaration, Abstract/abstract}
-%\fi
+\ifdefineAbstract
+ \pagestyle{empty}
+ \includeonly{Declaration/declaration, Abstract/abstract}
+\fi
 
 % ***************************** Chapter Mode ***********************************
 % The chapter mode allows user to only print particular chapters with references
 % Title, Contents, Frontmatter are disabled by default
 % Useful option to review a particular chapter or to send it to supervisior.
 % To use choose `chapter' option in the document class
-%\ifdefineChapter
-% \includeonly{Chapter3/chapter3}
-%\fi
+\ifdefineChapter
+ \includeonly{P1-Introduction/introduction}
+\fi
 
 % ******************************** Front Matter ********************************
 \begin{document}

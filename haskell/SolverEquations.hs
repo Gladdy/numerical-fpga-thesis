@@ -36,5 +36,5 @@ module SolverEquations where
   eq_cosh state = [x0]
     where
       x = xs state
-      x0 = sqrt((x !! 0)^2 - a^2)
+      x0 = sqrt((x !! 0)^2 - a^2)/a
       a = 0.99

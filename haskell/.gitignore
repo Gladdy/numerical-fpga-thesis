@@ -1,0 +1,5 @@
+.gitattributes
+
+.cabal-sandbox/*
+cabal.sandbox.config
+*.pdf
