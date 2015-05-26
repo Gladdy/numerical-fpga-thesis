@@ -41,7 +41,7 @@ BEGIN
 			
 		IF rising_edge(clock) THEN
 			
-			--Control the output
+			--Control the physical output
 			IF switches(0) THEN
 				leds_status <= control;
 			ELSIF switches(1) THEN
@@ -57,6 +57,12 @@ BEGIN
 			
 			IF input_set THEN
 				input := input_data(3 downto 0);
+			
+				--Send the input straight to the output after adding 1
+				output_set <= '1';
+				output_data <= std_logic_vector(unsigned(input_data) + 1);
+			ELSE
+				output_set <= '0';
 			END IF;
 			
 		END IF;
