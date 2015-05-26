@@ -28,18 +28,26 @@ BEGIN
 
 		VARIABLE control : std_logic_vector(3 downto 0) := "0000";
 		VARIABLE input : std_logic_vector(3 downto 0) := "0000";
+		VARIABLE trigger : std_logic_vector(3 downto 0) := "0000";
 	BEGIN
 	
 		keys := not(keys_input);
 		switches := not(switches_input);
 	
+		trigger(0) := control_set;
+		trigger(1) := input_set;
+		trigger(2) := output_set;
+		trigger(3) := output_waitrequest;
+			
 		IF rising_edge(clock) THEN
 			
 			--Control the output
 			IF switches(0) THEN
 				leds_status <= control;
-			ELSE
+			ELSIF switches(1) THEN
 				leds_status <= input;
+			ELSE
+				leds_status <= trigger;
 			END IF;
 			
 			--Detect changes in the input
@@ -47,7 +55,7 @@ BEGIN
 				control := control_data(3 downto 0);
 			END IF;
 			
-			IF control_set THEN
+			IF input_set THEN
 				input := input_data(3 downto 0);
 			END IF;
 			

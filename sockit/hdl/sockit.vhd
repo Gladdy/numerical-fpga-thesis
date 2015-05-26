@@ -79,13 +79,14 @@ ARCHITECTURE behaviour OF sockit IS
 		memory_oct_rzqin                 : in    std_logic                      := 'X';             -- oct_rzqin
 		reset_reset_n                    : in    std_logic                      := 'X';             -- reset_n
 		
-		conduit_export_control_data 		: out   std_logic_vector(31 downto 0);                    -- export_control_data
-      conduit_export_control_set  		: out   std_logic                                         -- export_control_set
-		--export_mem_io_export_input_data         : out   std_logic_vector(127 downto 0);                    -- export_input_data
-		--export_mem_io_export_input_set          : out   std_logic;                                         -- export_input_set
-		--export_mem_io_export_output_data        : in    std_logic_vector(127 downto 0) := (others => 'X'); -- export_output_data
-		--export_mem_io_export_output_set         : in    std_logic                      := 'X';             -- export_output_set
-		--export_mem_io_export_output_waitrequest : out   std_logic                                          -- export_output_waitrequest
+		
+		conduit_export_control_data 		: out   std_logic_vector(31 downto 0);                     -- export_control_data
+      conduit_export_control_set  		: out   std_logic; 	                                      -- export_control_set
+		conduit_export_input_data        : out   std_logic_vector(127 downto 0);                    -- export_input_data
+		conduit_export_input_set         : out   std_logic;                                         -- export_input_set
+		conduit_export_output_data       : in    std_logic_vector(127 downto 0) := (others => 'X'); -- export_output_data
+		conduit_export_output_set       	: in    std_logic                      := 'X';             -- export_output_set
+		conduit_export_output_waitrequest: out   std_logic                                          -- export_output_waitrequest
 	);
 	END COMPONENT memory_io;
 	
@@ -140,12 +141,12 @@ BEGIN
 		memory_oct_rzqin   	=> hps_memory_oct_rzqin,   --       .oct_rzqin
 		reset_reset_n      	=> RESET,       				--  reset.reset_n
 		
-		conduit_export_control_data => control_data, 	-- conduit.export_control_data
-      conduit_export_control_set  => control_set   	--        .export_control_set
-		--export_mem_io_export_input_data         => input_data,         --              .export_input_data
-		--export_mem_io_export_input_set          => input_set,          --              .export_input_set
-		--export_mem_io_export_output_data        => output_data,        --              .export_output_data
-		--export_mem_io_export_output_set         => output_set,         --              .export_output_set
-		--export_mem_io_export_output_waitrequest => output_waitrequest  --              .export_output_waitrequest
+		conduit_export_control_data 		=> control_data, 		-- conduit.export_control_data
+      conduit_export_control_set  		=> control_set,   		--        .export_control_set
+		conduit_export_input_data   		=> input_data,   		--              .export_input_data
+		conduit_export_input_set    		=> input_set,    		--              .export_input_set
+		conduit_export_output_data       => output_data,        --              .export_output_data
+		conduit_export_output_set        => output_set,         --              .export_output_set
+		conduit_export_output_waitrequest=> output_waitrequest --              .export_output_waitrequest
 		);
 END behaviour;
