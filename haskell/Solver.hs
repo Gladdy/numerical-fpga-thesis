@@ -25,8 +25,16 @@ module Solver where
   initTimeSettings = TimeSettings 0.01 10
   initTimeSettings2 = TimeSettings 0.01 3
 
-  solution_exponential = solve euler initTimeSettings eq_exponential initODEState
-  solution_sine = solve rk4 initTimeSettings eq_sine initODEState
-  solution_cosh = solve rk4 initTimeSettings2 eq_cosh initODEState2
+  sol_start = solve rk4 initTimeSettings
 
-  testPlot = plotSolutions [(solution_exponential, "Exponential"),(solution_sine, "Sine"),(solution_cosh, "Cosh")] "Some graphs!"
+  solution_expo = sol_start eq_exponential initODEState
+  solution_sine = sol_start eq_sine initODEState
+  solution_cosh = solve rk4 initTimeSettings2 eq_cosh initODEState2
+  solution_homo = sol_start (eq_generate [[0,1],[-1,0]]) initODEState2
+
+  testPlot = plotSolutions [s1,s2,s3,s4] "Some graphs!"
+    where
+      s1 = (solution_expo, "Exponential")
+      s2 = (solution_sine, "Sine")
+      s3 = (solution_cosh, "Cosh")
+      s4 = (solution_homo, "Matrix form")
