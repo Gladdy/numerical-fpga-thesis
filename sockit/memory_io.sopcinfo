@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="memory_io" kind="memory_io" version="1.0" fabric="QSYS">
  <!-- Format version 14.1 186 (Future versions may contain additional information.) -->
- <!-- 2015.05.26.00:29:26 -->
+ <!-- 2015.05.26.19:47:42 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1432592964</value>
+  <value>1432662460</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -72881,7 +72881,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="burstOnBurstBoundariesOnly">
     <type>boolean</type>
-    <value>false</value>
+    <value>true</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
