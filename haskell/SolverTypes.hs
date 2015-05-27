@@ -14,4 +14,5 @@ module SolverTypes where
   } deriving (Show)
 
   type Equation = (ODEState -> DODEState)
+  type SubFunction = (NumRepr -> NumRepr)
   type SolveMethod = TimeSettings -> Equation -> ODEState -> ODEState
