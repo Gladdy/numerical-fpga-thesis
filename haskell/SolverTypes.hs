@@ -3,7 +3,7 @@ module SolverTypes where
   import Prelude
 
   type NumRepr = Float
-  type DODEState = [NumRepr]
+  type D_ODEState = [NumRepr]
 
   data ODEState = ODEState { xs :: [NumRepr]
   , t :: NumRepr
@@ -13,6 +13,8 @@ module SolverTypes where
   , tMax :: NumRepr
   } deriving (Show)
 
-  type Equation = (ODEState -> DODEState)
   type SubFunction = (NumRepr -> NumRepr)
-  type SolveMethod = TimeSettings -> Equation -> ODEState -> ODEState
+
+  type Equation     = ODEState -> D_ODEState
+  type SolveMethod  = TimeSettings -> Equation -> ODEState -> ODEState
+  type Solver       = SolveMethod -> TimeSettings -> Equation -> ODEState  -> [ODEState]

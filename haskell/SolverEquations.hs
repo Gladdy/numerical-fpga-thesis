@@ -42,7 +42,7 @@ module SolverEquations where
 
   -- Arbitrary homogenous system
   -- y' = Ay
-  eq_linear_homo_const :: [[NumRepr]] -> ODEState -> DODEState
+  eq_linear_homo_const :: [[NumRepr]] -> ODEState -> D_ODEState
   eq_linear_homo_const matrix state = map (rowmult y) matrix
     where
       y = xs state
@@ -52,7 +52,7 @@ module SolverEquations where
 
   -- Arbitrary heterogenous system
   -- y' = Ay + F
-  eq_linear_hetr_const :: [[NumRepr]] -> [SubFunction] -> ODEState -> DODEState
+  eq_linear_hetr_const :: [[NumRepr]] -> [SubFunction] -> ODEState -> D_ODEState
   eq_linear_hetr_const matrix vector state = zipWith (+) (map (rowmult y) matrix) (map ($time) vector)
     where
       y = xs state

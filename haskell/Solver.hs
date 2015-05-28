@@ -11,7 +11,7 @@ module Solver where
 
   ---- CALLERS
   -- general form, stop after a certain time
-  solve :: SolveMethod -> TimeSettings -> Equation -> ODEState  -> [ODEState]
+  solve :: Solver
   solve solvemethod time equation initState
     | end = []
     | otherwise = initState : solve solvemethod time equation newState

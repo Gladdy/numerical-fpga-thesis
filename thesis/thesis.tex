@@ -1,4 +1,4 @@
- % arara: clean: { files: [thesis.aux, thesis.bbl, thesis.blg, thesis.dvi, thesis.fdb_latexmk, thesis.fls, thesis.idx, thesis.ilg, thesis.ind, thesis.lof, thesis.log, thesis.lot, thesis.nlo, thesis.nls, thesis.out, thesis.pdf, thesis.ps, thesis.toc]}
+% arara: clean: { files: [thesis.aux, thesis.bbl, thesis.blg, thesis.dvi, thesis.fdb_latexmk, thesis.fls, thesis.idx, thesis.ilg, thesis.ind, thesis.lof, thesis.log, thesis.lot, thesis.nlo, thesis.nls, thesis.out, thesis.pdf, thesis.ps, thesis.toc]}
 % arara: latex:  { shell: yes }
 % arara: bibtex
 % arara: nomencl
@@ -130,9 +130,6 @@
 \listoffigures
 \listoftables
 
-% \printnomencl[space] space can be set as 2em between symbol and description
-%\printnomencl[3em]
-
 \printnomencl
 
 % ******************************** Main Matter *********************************
@@ -142,11 +139,6 @@
 \include{P1-Introduction/introduction}
 \include{P2-Results/results}
 \include{P3-Conclusion/conclusion}
-
-%\include{Chapter6/chapter6}
-%\include{Chapter7/chapter7}
-
-\include{sample}
 
 % ********************************** Back Matter *******************************
 % Backmatter should be commented out, if you are using appendices after References
@@ -159,9 +151,8 @@
 % Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
 % Reference styles: http://sites.stat.psu.edu/~surajit/present/bib.htm
 
-\bibliographystyle{apalike}
-%\bibliographystyle{plainnat} % use this to have URLs listed in References
-\cleardoublepage
+\bibliographystyle{plainnat} % use this to have URLs listed in References
+%\clearpage
 \bibliography{References/references} % Path to your References.bib file
 
 
