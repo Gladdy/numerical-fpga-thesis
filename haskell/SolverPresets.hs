@@ -13,7 +13,7 @@ module SolverPresets where
   vec = [4,3,2]
 
   funcvec :: [SubFunction]
-  funcvec = [(\t -> sin t),(\t -> cos t), (\t -> sqrt t)]
+  funcvec = [(\t -> sin t),(\t -> exp (-t)), (\t -> sqrt t)]
 
   initODEState = ODEState [10, 0.0] 0.0
   initODEState2 = ODEState [1, -1] 0.0
