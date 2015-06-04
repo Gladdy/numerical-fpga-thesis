@@ -42,6 +42,7 @@ obj
 /hps_sdram_p0_all_pins.txt
 /hps_sdram_p0_summary.csv
 /soc_system/synthesis
+/soc_system_backup/synthesis
 
 *.cmd
 *.mod.c
