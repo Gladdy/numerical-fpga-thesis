@@ -25,23 +25,7 @@
          type = "int";
       }
    }
-   element hps_0
-   {
-      datum _sortIndex
-      {
-         value = "1";
-         type = "int";
-      }
-   }
-   element hps_0.f2h_axi_slave
-   {
-      datum baseAddress
-      {
-         value = "0";
-         type = "String";
-      }
-   }
-   element io_mem_component_0
+   element data_control_0
    {
       datum _sortIndex
       {
@@ -49,11 +33,11 @@
          type = "int";
       }
    }
-   element io_mem_component_0.avalon_control
+   element data_control_0.avalon_slave_0
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -62,11 +46,61 @@
          type = "String";
       }
    }
-   element io_mem_component_0.avalon_input
+   element data_in_0
    {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element data_in_0.avalon_slave_0
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
-         value = "0";
+         value = "1024";
+         type = "String";
+      }
+   }
+   element data_out_0
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+   element data_out_0.avalon_slave_0
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "2048";
+         type = "String";
+      }
+   }
+   element hps_0
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element memory_io
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
          type = "String";
       }
    }
@@ -92,11 +126,21 @@
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
-   name="conduit"
-   internal="io_mem_component_0.conduit_export"
+   name="data_control"
+   internal="data_control_0.conduit_end"
    type="conduit"
    dir="end" />
- <interface name="conduit_gp" internal="hps_0.h2f_gp" type="conduit" dir="end" />
+ <interface
+   name="data_in"
+   internal="data_in_0.conduit_end"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="data_out"
+   internal="data_out_0.conduit_end"
+   type="conduit"
+   dir="end" />
+ <interface name="gp" internal="hps_0.h2f_gp" type="conduit" dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <module name="clk_0" kind="clock_source" version="14.1" enabled="1">
@@ -105,6 +149,9 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
+ <module name="data_control_0" kind="data_control" version="1.0" enabled="1" />
+ <module name="data_in_0" kind="data_in" version="1.0" enabled="1" />
+ <module name="data_out_0" kind="data_out" version="1.0" enabled="1" />
  <module name="hps_0" kind="altera_hps" version="14.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
@@ -199,7 +246,7 @@
   <parameter name="ENABLE_USER_ECC" value="false" />
   <parameter name="EXPORT_AFI_HALF_CLK" value="false" />
   <parameter name="EXTRA_SETTINGS" value="" />
-  <parameter name="F2H_AXI_CLOCK_FREQ" value="50000000" />
+  <parameter name="F2H_AXI_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM0_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM1_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM2_CLOCK_FREQ" value="100" />
@@ -216,7 +263,7 @@
   <parameter name="F2SDRAM_Type" value="" />
   <parameter name="F2SDRAM_Width" value="" />
   <parameter name="F2SINTERRUPT_Enable" value="false" />
-  <parameter name="F2S_Width" value="3" />
+  <parameter name="F2S_Width" value="0" />
   <parameter name="FORCED_NON_LDC_ADDR_CMD_MEM_CK_INVERT" value="false" />
   <parameter name="FORCED_NUM_WRITE_FR_CYCLE_SHIFTS" value="0" />
   <parameter name="FORCE_DQS_TRACKING" value="AUTO" />
@@ -254,7 +301,7 @@
   <parameter name="FPGA_PERIPHERAL_OUTPUT_CLOCK_FREQ_SPIM1_SCLK_OUT" value="100" />
   <parameter name="GPIO_Enable">No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No</parameter>
   <parameter name="GP_Enable" value="true" />
-  <parameter name="H2F_AXI_CLOCK_FREQ" value="50000000" />
+  <parameter name="H2F_AXI_CLOCK_FREQ" value="100" />
   <parameter name="H2F_CTI_CLOCK_FREQ" value="100" />
   <parameter name="H2F_DEBUG_APB_CLOCK_FREQ" value="100" />
   <parameter name="H2F_LW_AXI_CLOCK_FREQ" value="50000000" />
@@ -474,7 +521,7 @@
   <parameter name="S2FINTERRUPT_UART_Enable" value="false" />
   <parameter name="S2FINTERRUPT_USB_Enable" value="false" />
   <parameter name="S2FINTERRUPT_WATCHDOG_Enable" value="false" />
-  <parameter name="S2F_Width" value="3" />
+  <parameter name="S2F_Width" value="0" />
   <parameter name="SDIO_Mode" value="N/A" />
   <parameter name="SDIO_PinMuxing" value="Unused" />
   <parameter name="SEQUENCER_TYPE" value="NIOS" />
@@ -630,53 +677,40 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
- <module
-   name="io_mem_component_0"
-   kind="io_mem_component"
-   version="1.0"
-   enabled="1" />
  <connection
    kind="avalon"
    version="14.1"
-   start="io_mem_component_0.avalon_output"
-   end="hps_0.f2h_axi_slave">
+   start="hps_0.h2f_lw_axi_master"
+   end="data_out_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="14.1"
-   start="hps_0.h2f_axi_master"
-   end="io_mem_component_0.avalon_input">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x0800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="14.1"
    start="hps_0.h2f_lw_axi_master"
-   end="io_mem_component_0.avalon_control">
+   end="data_in_0.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0400" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="data_control_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection kind="clock" version="14.1" start="clk_0.clk" end="data_out_0.clock" />
+ <connection kind="clock" version="14.1" start="clk_0.clk" end="data_in_0.clock" />
  <connection
    kind="clock"
    version="14.1"
    start="clk_0.clk"
-   end="io_mem_component_0.clock" />
- <connection
-   kind="clock"
-   version="14.1"
-   start="clk_0.clk"
-   end="hps_0.f2h_axi_clock" />
- <connection
-   kind="clock"
-   version="14.1"
-   start="clk_0.clk"
-   end="hps_0.h2f_axi_clock" />
+   end="data_control_0.clock" />
  <connection
    kind="clock"
    version="14.1"
@@ -686,7 +720,17 @@
    kind="reset"
    version="14.1"
    start="clk_0.clk_reset"
-   end="io_mem_component_0.reset" />
+   end="data_out_0.reset" />
+ <connection
+   kind="reset"
+   version="14.1"
+   start="clk_0.clk_reset"
+   end="data_in_0.reset" />
+ <connection
+   kind="reset"
+   version="14.1"
+   start="clk_0.clk_reset"
+   end="data_control_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="AUTO" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />

@@ -25,12 +25,13 @@
 *.mod.c
 *.o
 *.ko
+*.bak
 
 .sopc_builder/*
 .qsys_edit/*
 
 db/*
-memory_io/*
+
 simulation/*
 incremental_db/*
 hc_output/*

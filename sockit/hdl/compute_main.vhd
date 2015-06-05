@@ -3,21 +3,29 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 ENTITY compute_main IS
-	PORT(	
-		clock 					: in std_logic;
-		reset 					: in std_logic;	
-		input_data 				: in std_logic_vector(127 downto 0);
-		input_set 				: in std_logic;
-		output_data 			: out std_logic_vector(127 downto 0);
-		output_set 				: out std_logic;
-		output_waitrequest 	: in std_logic;
-		control_data 			: in std_logic_vector(31 downto 0);
-		control_set 			: in std_logic;
-		keys_input 				: in std_logic_vector(3 downto 0);
-		switches_input			: in std_logic_vector(3 downto 0);
-		leds_status 			: out std_logic_vector(3 downto 0);
-		input_gp     			: in    std_logic_vector(31 downto 0); -- gp_in
-		output_gp    			: out   std_logic_vector(31 downto 0)                      -- gp_out
+PORT(
+	clock 					: in std_logic;
+	reset 					: in std_logic;
+	
+	control_writedata 	: in   	std_logic_vector(31 downto 0);                    -- writedata
+	control_readdata  	: out		std_logic_vector(31 downto 0);
+	control_address   	: in   	std_logic_vector(7 downto 0);                     -- address
+	control_read      	: in   	std_logic;                                        -- read
+	control_write     	: in   	std_logic;                                        -- write
+	
+	in_write          	: in   	std_logic;                                        -- write
+	in_writedata      	: in   	std_logic_vector(31 downto 0);                    -- writedata
+	in_address        	: in   	std_logic_vector(7 downto 0);                     -- address
+	
+	out_readdata      	: out    std_logic_vector(31 downto 0);
+	out_address       	: in   	std_logic_vector(7 downto 0);                     -- address
+	
+	keys_input 				: in 	std_logic_vector(3 downto 0);
+	switches_input			: in 	std_logic_vector(3 downto 0);
+	leds_status 			: out std_logic_vector(3 downto 0);
+	
+	gp_input     			: out std_logic_vector(31 downto 0); 							-- gp_in (as seen from the HPS)
+	gp_output    			: in  std_logic_vector(31 downto 0)                      -- gp_out (as seen from the HPS)
 	);
 END compute_main;
 
@@ -25,50 +33,47 @@ ARCHITECTURE behaviour OF compute_main IS
 
 BEGIN
 	PROCESS(clock)
-		VARIABLE keys 		: std_logic_vector(3 downto 0);
-		VARIABLE control 	: std_logic_vector(3 downto 0) := "0000";
-		VARIABLE input 	: std_logic_vector(3 downto 0) := "0000";
-		VARIABLE trigger 	: std_logic_vector(3 downto 0) := "0000";
-		VARIABLE gpinput 	: std_logic_vector(3 downto 0) := "0000";
-		
-	BEGIN
 	
+		VARIABLE trigger 	: std_logic_vector(3 downto 0)  := (others => '0');
+		VARIABLE control 	: std_logic_vector(31 downto 0) := (others => '0');
+		VARIABLE data 		: std_logic_vector(31 downto 0) := (others => '0');
+
+		BEGIN
 	
 		IF rising_edge(clock) THEN
-
-			keys := not(keys_input);		
-			trigger(0) := control_set;
-			trigger(1) := input_set;
-			trigger(2) := output_set;
-			trigger(3) := output_waitrequest;
+	
+			trigger(0) := control_read;
+			trigger(1) := control_write;
+			trigger(2) := in_write;
+			trigger(3) := reset;
 			
 			--Control the physical output
 			CASE switches_input IS
-				WHEN "1000" => leds_status <= control;
-				WHEN "0100" => leds_status <= input;
+				WHEN "1000" => leds_status <= control(3 downto 0);
+				WHEN "0100" => leds_status <= in_writedata(3 downto 0);
 				WHEN "0010" => leds_status <= trigger;
-				WHEN "0001" => leds_status <= gpinput;
+				WHEN "0001" => leds_status <= gp_output(3 downto 0);
 				WHEN others => leds_status <= "1010";
 			END CASE;
 						
-			--Always set the output_gp
-			output_gp <= "10101010101010101010101010101010";
+			--Always set the input_gp
+			gp_input <= "10101010101010101010101010101010";
 			
-			--Detect changes in the LWH2F
-			IF control_set THEN
-				control := control_data(3 downto 0);
+			--Latch for control signal
+			IF control_write THEN
+				control := control_writedata;
 			END IF;
 			
-			--Detect changes in the H2F and forward it to the the F2H
-			IF input_set THEN
-				input := input_data(3 downto 0);
+			--if control_read THEN
+			control_readdata <= control;
+			--END IF;
 			
-				--Send the input straight to the output
-				output_set <= '1';
-				output_data <= input_data;
-			ELSE
-				output_set <= '0';
+			--Latch for data signal
+			IF in_write THEN
+				data := in_writedata;
 			END IF;
+			
+			out_readdata <= data;
 			
 		END IF;
 	END PROCESS;
