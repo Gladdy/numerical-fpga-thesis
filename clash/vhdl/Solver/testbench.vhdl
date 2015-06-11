@@ -14,8 +14,8 @@ architecture structural of testbench is
   signal finished        : boolean;
   signal system1000      : std_logic;
   signal system1000_rstn : std_logic;
-  signal key1_i1         : std_logic_vector(0 downto 0);
-  signal topLet_o        : std_logic_vector(7 downto 0);
+  signal w3_i1           : product0;
+  signal topLet_o        : std_logic_vector(3 downto 0);
 begin
   done <= finished;
   
@@ -43,10 +43,10 @@ begin
     port map
       (system1000      => system1000
       ,system1000_rstn => system1000_rstn
-      ,key1_i1         => key1_i1
+      ,w3_i1           => w3_i1
       ,topLet_o        => topLet_o);
   
-  key1_i1 <= (others => 'X');
+  w3_i1 <= ((others => 'X'),(others => 'X'));
   
   finished <=
   -- pragma translate_off
