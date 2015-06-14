@@ -1,7 +1,15 @@
 	memory_io u0 (
 		.clk_clk                (<connected-to-clk_clk>),                //          clk.clk
-		.gp_gp_in               (<connected-to-gp_gp_in>),               //           gp.gp_in
-		.gp_gp_out              (<connected-to-gp_gp_out>),              //             .gp_out
+		.data_control_writedata (<connected-to-data_control_writedata>), // data_control.writedata
+		.data_control_readdata  (<connected-to-data_control_readdata>),  //             .readdata
+		.data_control_address   (<connected-to-data_control_address>),   //             .address
+		.data_control_read      (<connected-to-data_control_read>),      //             .read
+		.data_control_write     (<connected-to-data_control_write>),     //             .write
+		.data_in_write          (<connected-to-data_in_write>),          //      data_in.write
+		.data_in_writedata      (<connected-to-data_in_writedata>),      //             .writedata
+		.data_in_address        (<connected-to-data_in_address>),        //             .address
+		.data_out_readdata      (<connected-to-data_out_readdata>),      //     data_out.readdata
+		.data_out_address       (<connected-to-data_out_address>),       //             .address
 		.memory_mem_a           (<connected-to-memory_mem_a>),           //       memory.mem_a
 		.memory_mem_ba          (<connected-to-memory_mem_ba>),          //             .mem_ba
 		.memory_mem_ck          (<connected-to-memory_mem_ck>),          //             .mem_ck
@@ -18,16 +26,6 @@
 		.memory_mem_odt         (<connected-to-memory_mem_odt>),         //             .mem_odt
 		.memory_mem_dm          (<connected-to-memory_mem_dm>),          //             .mem_dm
 		.memory_oct_rzqin       (<connected-to-memory_oct_rzqin>),       //             .oct_rzqin
-		.reset_reset_n          (<connected-to-reset_reset_n>),          //        reset.reset_n
-		.data_in_write          (<connected-to-data_in_write>),          //      data_in.write
-		.data_in_writedata      (<connected-to-data_in_writedata>),      //             .writedata
-		.data_in_address        (<connected-to-data_in_address>),        //             .address
-		.data_control_writedata (<connected-to-data_control_writedata>), // data_control.writedata
-		.data_control_readdata  (<connected-to-data_control_readdata>),  //             .readdata
-		.data_control_address   (<connected-to-data_control_address>),   //             .address
-		.data_control_read      (<connected-to-data_control_read>),      //             .read
-		.data_control_write     (<connected-to-data_control_write>),     //             .write
-		.data_out_readdata      (<connected-to-data_out_readdata>),      //     data_out.readdata
-		.data_out_address       (<connected-to-data_out_address>)        //             .address
+		.reset_reset_n          (<connected-to-reset_reset_n>)           //        reset.reset_n
 	);
 

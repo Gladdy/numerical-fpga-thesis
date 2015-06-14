@@ -213,12 +213,6 @@ set_global_assignment -name FLOW_ENABLE_IO_ASSIGNMENT_ANALYSIS ON
 set_global_assignment -name ALLOW_REGISTER_MERGING OFF
 set_global_assignment -name ALLOW_REGISTER_DUPLICATION OFF
 set_global_assignment -name ALLOW_REGISTER_RETIMING OFF
-set_global_assignment -name SDC_FILE sockit.sdc
-set_global_assignment -name VHDL_FILE hdl/io_mem.vhd
-set_global_assignment -name QIP_FILE memory_io/synthesis/memory_io.qip
-set_global_assignment -name VHDL_FILE hdl/sockit.vhd
-set_global_assignment -name VHDL_FILE hdl/io_led.vhd
-set_global_assignment -name VHDL_FILE hdl/compute_main.vhd
 set_location_assignment PIN_AD27 -to RESET
 set_location_assignment PIN_W25 -to SWITCH[0]
 set_location_assignment PIN_V25 -to SWITCH[1]
@@ -242,4 +236,14 @@ set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to G3|hps_0|hps_io|b
 set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
 set_global_assignment -name ECO_REGENERATE_REPORT ON
+set_global_assignment -name VHDL_FILE hdl/Solver_types.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_topEntity_0.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_testbench.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_mealyzm_1.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_forwardLEDS_2.vhdl
+set_global_assignment -name VHDL_FILE hdl/compute_main.vhdl
+set_global_assignment -name SDC_FILE sockit.sdc
+set_global_assignment -name QIP_FILE memory_io/synthesis/memory_io.qip
+set_global_assignment -name VHDL_FILE hdl/sockit.vhd
+set_global_assignment -name VHDL_FILE hdl/io_led.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

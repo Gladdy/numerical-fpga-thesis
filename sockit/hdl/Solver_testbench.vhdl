@@ -1,21 +1,21 @@
--- Automatically generated VHDL
+-- Automatically generated VHDL-2002
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use IEEE.MATH_REAL.ALL;
 use work.all;
-use work.types.all;
+use work.Solver_types.all;
 
-entity testbench is
+entity Solver_testbench is
   port(done : out boolean);
 end;
 
-architecture structural of testbench is
+architecture structural of Solver_testbench is
   signal finished        : boolean;
   signal system1000      : std_logic;
   signal system1000_rstn : std_logic;
   signal w3_i1           : product0;
-  signal topLet_o        : std_logic_vector(3 downto 0);
+  signal topLet_o        : product1;
 begin
   done <= finished;
   
@@ -39,14 +39,14 @@ begin
              '1' after 1 ns;
   -- pragma translate_on
   
-  totest : entity topEntity_0
+  totest : entity Solver_topEntity_0
     port map
       (system1000      => system1000
       ,system1000_rstn => system1000_rstn
       ,w3_i1           => w3_i1
       ,topLet_o        => topLet_o);
   
-  w3_i1 <= ((others => 'X'),(others => 'X'));
+  w3_i1 <= ((others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'));
   
   finished <=
   -- pragma translate_off

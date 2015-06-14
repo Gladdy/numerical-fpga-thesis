@@ -1,0 +1,74 @@
+  --  ENTITY compute_main IS
+  --  PORT(
+  --    clock           : in std_logic;
+  --    reset           : in std_logic;
+
+  --  control_writedata   : in    std_logic_vector(31 downto 0);                    -- writedata
+  --  control_readdata    : out   std_logic_vector(31 downto 0);
+  --  control_address     : in    std_logic_vector(7 downto 0);                     -- address
+  --  control_read        : in    std_logic;                                        -- read
+  --  control_write       : in    std_logic;                                        -- write
+
+  --  in_write            : in    std_logic;                                        -- write
+  --  in_writedata        : in    std_logic_vector(31 downto 0);                    -- writedata
+  --  in_address          : in    std_logic_vector(7 downto 0);                     -- address
+
+  --  out_readdata        : out    std_logic_vector(31 downto 0);
+  --  out_address         : in    std_logic_vector(7 downto 0);                     -- address
+
+  --  keys_input        : in  std_logic_vector(3 downto 0);
+  --  switches_input    : in  std_logic_vector(3 downto 0);
+  --  leds_status       : out std_logic_vector(3 downto 0);
+  --  );
+  --END compute_main;
+
+  --(defClkAltera "altpll50"
+  --                          "CLOCK_50(0)"
+  --                          "not KEY0(0)")
+                      
+  --type InputSignals = (   BitVector 4   -- keys_input
+  --                      , BitVector 4   -- switches_input
+                        
+  --                      , Bit           -- control_write
+  --                      , BitVector 32  -- control_writedata
+  --                      , BitVector 8   -- control_address
+  --                      , Bit           -- control_read
+                        
+  --                      , Bit           -- in_write
+  --                      , BitVector 32  -- in_writedata
+  --                      , BitVector 8   -- in_address
+
+  --                      , BitVector 8   -- out_address
+  --                      )
+
+  data InputSignals = { keys_input        :: BitVector 4   -- keys_input
+                      , switches_input    :: BitVector 4   -- switches_input 
+                      , control_write     :: Bit           -- control_write
+                      , control_writedata :: BitVector 32  -- control_writedata
+                      , control_address   :: BitVector 8   -- control_address
+                      , control_read      :: Bit           -- control_read
+                      , in_write          :: Bit           -- in_write
+                      , in_writedata      :: BitVector 32  -- in_writedata
+                      , in_address        :: BitVector 8   -- in_address
+                      , out_address       :: BitVector 8   -- out_address
+                      } deriving(Show)
+
+
+                      ClockSource
+  { c_name  = pllName
+  , c_inp   = Just ("inclk0",clkExpr)
+  , c_outp  = [("c0",show systemClock)]
+  , c_reset = Just ("areset",resExpr)
+  , c_lock  = "locked"
+  , c_sync  = False
+  }
+
+  
+  , t_clocks =    [ (ClockSource  "altpll50" 
+                                      (Just ("refclk","clock(0)")) 
+                                      [("outclk_0",show systemClock)] 
+                                      (Just ("rst","not(reset(0))")) 
+                                      "locked" 
+                                      False )
+                      ]
+      }

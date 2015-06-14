@@ -41,31 +41,28 @@ PORT(
 END COMPONENT;
 
 COMPONENT compute_main
-PORT(
-    clock                   : in std_logic;
-    reset                   : in std_logic;
-    
-    control_writedata : in      std_logic_vector(31 downto 0);                    -- writedata
-    control_readdata  : out     std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-    control_address   : in      std_logic_vector(7 downto 0);                     -- address
-    control_read      : in      std_logic;                                        -- read
-    control_write     : in      std_logic;                                        -- write
-    in_write          : in      std_logic;                                        -- write
-    in_writedata      : in      std_logic_vector(31 downto 0);                    -- writedata
-    in_address        : in      std_logic_vector(7 downto 0);                     -- address
-    out_readdata      : out    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-    out_address       : in      std_logic_vector(7 downto 0);                     -- address
-    
-    keys_input              : in    std_logic_vector(3 downto 0);
-    switches_input          : in    std_logic_vector(3 downto 0);
-    leds_status             : out std_logic_vector(3 downto 0);
-    
-    gp_input                : out std_logic_vector(31 downto 0);                            -- gp_in
-    gp_output               : in  std_logic_vector(31 downto 0)                      -- gp_out
-    );
+PORT (
+	keys_input        : in std_logic_vector(3 downto 0);
+	switches_input    : in std_logic_vector(3 downto 0);
+	control_write     : in std_logic_vector(0 downto 0);
+	control_writedata : in std_logic_vector(31 downto 0);
+	control_address   : in std_logic_vector(7 downto 0);
+	control_read      : in std_logic_vector(0 downto 0);
+	in_write          : in std_logic_vector(0 downto 0);
+	in_writedata      : in std_logic_vector(31 downto 0);
+	in_address        : in std_logic_vector(7 downto 0);
+	out_address       : in std_logic_vector(7 downto 0);
+	-- clock
+	system1000        : in std_logic;
+	-- asynchronous reset: active low
+	system1000_rstn   : in std_logic;
+	leds_status       : out std_logic_vector(3 downto 0);
+	control_readdata  : out std_logic_vector(31 downto 0);
+	out_readdata      : out std_logic_vector(31 downto 0)
+	);
 END COMPONENT;
 
-COMPONENT memory_io is
+COMPONENT memory_io
 PORT (
     clk_clk                : in    std_logic                     := 'X';             -- clk
     data_control_writedata : out   std_logic_vector(31 downto 0);                    -- writedata
@@ -78,9 +75,6 @@ PORT (
     data_in_address        : out   std_logic_vector(7 downto 0);                     -- address
     data_out_readdata      : in    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
     data_out_address       : out   std_logic_vector(7 downto 0);                     -- address
-    
-    gp_gp_in               : in    std_logic_vector(31 downto 0) := (others => 'X'); -- gp_in
-    gp_gp_out              : out   std_logic_vector(31 downto 0);                    -- gp_out
     
     memory_mem_a           : out   std_logic_vector(12 downto 0);                    -- mem_a
     memory_mem_ba          : out   std_logic_vector(2 downto 0);                     -- mem_ba
@@ -100,14 +94,10 @@ PORT (
     memory_oct_rzqin       : in    std_logic                     := 'X';             -- oct_rzqin
     reset_reset_n          : in    std_logic                     := 'X'              -- reset_n
     );
-END COMPONENT memory_io;
+END COMPONENT;
 
 -- Physical
 SIGNAL leds_status          : std_logic_vector(3 downto 0);
-
--- General purpose
-SIGNAL gp_input             : std_logic_vector(31 downto 0);
-SIGNAL gp_output            : std_logic_vector(31 downto 0);
 
 -- Avalon interface
 SIGNAL in_write             : std_logic;
@@ -131,28 +121,24 @@ G1 : io_led         PORT MAP (
     leds_output             => LED
     );
 G2 : compute_main PORT MAP (
-    clock               => CLOCK_50,
-    reset               => RESET,   
+    system1000          => CLOCK_50,
+    system1000_rstn    	=> RESET,   
     control_writedata   => control_writedata,
     control_readdata    => control_readdata,
     control_address     => control_address,
-    control_read        => control_read,
-    control_write       => control_write,
-    in_write            =>  in_write,
+    control_read(0)     => control_read,
+    control_write(0)    => control_write,
+    in_write(0)         => in_write,
     in_writedata        => in_writedata,
     in_address          => in_address,
     out_readdata        => out_readdata,
     out_address         => out_address,
     keys_input          => KEY,
     switches_input      => SWITCH,
-    leds_status         => leds_status,
-    gp_input            => gp_input,
-    gp_output           => gp_output
+    leds_status         => leds_status
     );
 G3 : memory_io PORT MAP (
     clk_clk                => CLOCK_50,                --          clk.clk
-    gp_gp_in               => gp_input,                 --           gp.gp_in
-    gp_gp_out              => gp_output,                --             .gp_out
     memory_mem_a           => hps_memory_mem_a,        --     memory.mem_a
     memory_mem_ba          => hps_memory_mem_ba,       --           .mem_ba
     memory_mem_ck          => hps_memory_mem_ck,       --           .mem_ck
