@@ -28,7 +28,7 @@ end;
 
 architecture structural of compute_main is
   --signal system1000      : std_logic;
-  --signal system1000_rstn : std_logic;
+  ----signal system1000_rstn : std_logic;
   signal input_0         : product0;
   signal output_0        : product1;
 begin

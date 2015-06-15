@@ -47,13 +47,48 @@ module Solver where
                        , out_readdata :: BitVector 32  -- out_readdata
                        } deriving(Show)
 
-  topEntity :: Signal InputSignals -> Signal OutputSignals
-  topEntity = mealy forwardLEDS 0
+  data SystemState = SystemState { values :: Vec 5 (BitVector 32)
+                      , timevalue :: BitVector 32
+                      , countvalue :: BitVector 32
+                      , insertedvalue :: Bit
+                      } deriving(Show)
 
-  forwardLEDS state input = (state',output)
+  --data SystemConstants = SystemConstants { 
+  --                    } deriving (Show)
+
+
+
+  initialSystemState = SystemState {values = repeat 5 :: Vec 5 (BitVector 32), timevalue = 0, countvalue = 0, insertedvalue = 1} 
+  initialState = (initialSystemState, 0)
+
+  topEntity :: Signal InputSignals -> Signal OutputSignals
+  topEntity = mealy forwardLEDS initialState
+
+
+  forwardLEDS (systemState,outputLatch) input = ((systemState',outputLatch'),output)
     where
-      state' = state
-      output = OutputSignals {leds_status = switches_input input, control_readdata = 0, out_readdata = 0}
+      --Unpack the input
+      control_in = control_writedata input
+      control_set = control_write input
+      input_in = in_writedata input
+      keys_in = keys_input input
+
+      --Unpack the needed state
+      valueVector = values systemState 
+      count = countvalue systemState
+      --inserted = insertedvalue systemState --act as a latch to only enter once instead of for as long as the control write bit is high
+      
+      -- on control_in == 1 and control_write isRising push an element into the vector
+      (valueVector', count')    | control_set == 1 && control_in == 1   = ((control_in :> Nil) ++ init valueVector, count + 1)
+                                | otherwise                             = (valueVector, count)
+      
+      systemState' = SystemState {values = valueVector', timevalue = 0, countvalue = count', insertedvalue = 1}
+      
+      outputLatch' = outputLatch
+
+      --Set the output
+      output = OutputSignals {leds_status = complement keys_in, control_readdata = 0, out_readdata = count'}
+
 
 
   --topEntity :: Signal (Signed 9, Signed 9) -> Signal (Signed 9)

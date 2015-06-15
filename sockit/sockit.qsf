@@ -209,7 +209,7 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to hps_memory_mem_d
 set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
 set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
 set_global_assignment -name SMART_RECOMPILE ON
-set_global_assignment -name FLOW_ENABLE_IO_ASSIGNMENT_ANALYSIS ON
+set_global_assignment -name FLOW_ENABLE_IO_ASSIGNMENT_ANALYSIS OFF
 set_global_assignment -name ALLOW_REGISTER_MERGING OFF
 set_global_assignment -name ALLOW_REGISTER_DUPLICATION OFF
 set_global_assignment -name ALLOW_REGISTER_RETIMING OFF
