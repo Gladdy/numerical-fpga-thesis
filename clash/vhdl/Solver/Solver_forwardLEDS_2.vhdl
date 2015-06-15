@@ -7,129 +7,183 @@ use work.all;
 use work.Solver_types.all;
 
 entity Solver_forwardLEDS_2 is
-  port(eta_i1   : in product2;
-       eta_i2   : in product0;
+  port(ds_i1    : in product2;
+       input_i2 : in product0;
        topLet_o : out product3);
 end;
 
 architecture structural of Solver_forwardLEDS_2 is
-  signal bodyVar_0      : product3;
-  signal repANF_1       : product2;
-  signal repANF_2       : product1;
-  signal repANF_3       : product4;
-  signal repANF_4       : std_logic_vector(3 downto 0);
-  signal countzm_5      : std_logic_vector(31 downto 0);
-  signal outputLatch_6  : integer;
-  signal repANF_7       : array_of_std_logic_vector_32(0 to 4);
-  signal altLet_8       : std_logic_vector(3 downto 0);
-  signal ds1_9          : product5;
-  signal ds2_10         : std_logic_vector(3 downto 0);
-  signal countzm1_11    : std_logic_vector(31 downto 0);
-  signal altLet_12      : product5;
-  signal countzm1_13    : array_of_std_logic_vector_32(0 to 4);
-  signal subjLet_14     : boolean;
-  signal altLet_15      : product5;
-  signal subjLet_16     : boolean;
-  signal altLet_17      : product5;
-  signal altLet_18      : product5;
-  signal ds4_19         : std_logic_vector(0 downto 0);
-  signal repANF_20      : array_of_std_logic_vector_32(0 to 4);
-  signal repANF_21      : std_logic_vector(31 downto 0);
-  signal repANF_22      : array_of_std_logic_vector_32(0 to 4);
-  signal repANF_23      : std_logic_vector(31 downto 0);
-  signal ds5_24         : std_logic_vector(31 downto 0);
-  signal systemState_25 : product4;
-  signal ds12_26        : array_of_std_logic_vector_32(0 to 4);
-  signal ds14_27        : std_logic_vector(31 downto 0);
-  signal repANF_28      : array_of_std_logic_vector_32(0 to 0);
-  signal repANF_29      : array_of_std_logic_vector_32(0 to 3);
-  signal altLet_30      : std_logic_vector(31 downto 0);
-  signal altLet_31      : array_of_std_logic_vector_32(0 to 3);
-  signal tmp_43         : array_of_std_logic_vector_32(0 to 3);
+  signal bodyVar_0          : product3;
+  signal repANF_1           : product2;
+  signal repANF_2           : product1;
+  signal repANF_3           : product4;
+  signal repANF_4           : product5;
+  signal repANF_5           : std_logic_vector(3 downto 0);
+  signal countzm_6          : std_logic_vector(31 downto 0);
+  signal repANF_7           : array_of_std_logic_vector_32(0 to 4);
+  signal subjLet_8          : boolean;
+  signal altLet_9           : product5;
+  signal altLet_10          : std_logic_vector(3 downto 0);
+  signal ds1_11             : product6;
+  signal subjLet_12         : boolean;
+  signal altLet_13          : product5;
+  signal altLet_14          : product5;
+  signal ds2_15             : std_logic_vector(3 downto 0);
+  signal countzm1_16        : std_logic_vector(31 downto 0);
+  signal altLet_17          : product6;
+  signal control_set_18     : std_logic_vector(0 downto 0);
+  signal systemConstants_19 : product5;
+  signal countzm1_20        : array_of_std_logic_vector_32(0 to 4);
+  signal subjLet_21         : boolean;
+  signal altLet_22          : product5;
+  signal altLet_23          : product5;
+  signal subjLet_24         : boolean;
+  signal altLet_25          : product6;
+  signal altLet_26          : product6;
+  signal control_in_27      : std_logic_vector(31 downto 0);
+  signal altLet_28          : product5;
+  signal ds3_29             : std_logic_vector(31 downto 0);
+  signal repANF_30          : array_of_std_logic_vector_32(0 to 4);
+  signal repANF_31          : std_logic_vector(31 downto 0);
+  signal repANF_32          : array_of_std_logic_vector_32(0 to 4);
+  signal repANF_33          : std_logic_vector(31 downto 0);
+  signal ds3_34             : std_logic_vector(0 downto 0);
+  signal systemState_35     : product4;
+  signal ds2_36             : std_logic_vector(31 downto 0);
+  signal altLet_37          : product5;
+  signal ds2_38             : array_of_std_logic_vector_32(0 to 4);
+  signal ds4_39             : std_logic_vector(31 downto 0);
+  signal repANF_40          : array_of_std_logic_vector_32(0 to 0);
+  signal repANF_41          : array_of_std_logic_vector_32(0 to 3);
+  signal altLet_42          : std_logic_vector(31 downto 0);
+  signal ds4_43             : std_logic_vector(31 downto 0);
+  signal repANF_44          : std_logic_vector(31 downto 0);
+  signal ds11_45            : std_logic_vector(31 downto 0);
+  signal altLet_46          : array_of_std_logic_vector_32(0 to 3);
+  signal tmp_61             : array_of_std_logic_vector_32(0 to 3);
 begin
   bodyVar_0 <= (product3_sel0 => repANF_1
                ,product3_sel1 => repANF_2);
   
   repANF_1 <= (product2_sel0 => repANF_3
-              ,product2_sel1 => outputLatch_6);
+              ,product2_sel1 => repANF_4);
   
-  repANF_2 <= (product1_sel0 => repANF_4
+  repANF_2 <= (product1_sel0 => repANF_5
               ,product1_sel1 => std_logic_vector'("00000000000000000000000000000000")
-              ,product1_sel2 => countzm_5);
+              ,product1_sel2 => countzm_6);
   
   repANF_3 <= (product4_sel0 => repANF_7
               ,product4_sel1 => std_logic_vector'("00000000000000000000000000000000")
-              ,product4_sel2 => countzm_5
-              ,product4_sel3 => std_logic_vector'("1"));
+              ,product4_sel2 => countzm_6);
   
-  repANF_4 <= altLet_8;
+  with (subjLet_8) select
+    repANF_4 <= altLet_9 when (true),
+                altLet_13 when others;
   
-  countzm_5 <= countzm1_11;
+  repANF_5 <= altLet_10;
   
-  outputLatch_6 <= eta_i1.product2_sel1;
+  countzm_6 <= countzm1_16;
   
-  repANF_7 <= countzm1_13;
+  repANF_7 <= countzm1_20;
   
-  altLet_8 <= not ds2_10;
+  subjLet_8 <= control_set_18 = std_logic_vector'("1");
   
-  ds1_9 <= altLet_12;
+  with (subjLet_12) select
+    altLet_9 <= altLet_14 when (true),
+                altLet_13 when others;
   
-  ds2_10 <= eta_i2.product0_sel0;
+  altLet_10 <= not ds2_15;
   
-  countzm1_11 <= ds1_9.product5_sel1;
+  with (subjLet_8) select
+    ds1_11 <= altLet_17 when (true),
+              altLet_25 when others;
   
-  with (subjLet_14) select
-    altLet_12 <= altLet_15 when (true),
-                 altLet_17 when others;
+  subjLet_12 <= control_in_27 = std_logic_vector'("00000000000000000000000000000010");
   
-  countzm1_13 <= ds1_9.product5_sel0;
+  with (subjLet_8) select
+    altLet_13 <= altLet_22 when (true),
+                 systemConstants_19 when others;
   
-  subjLet_14 <= ds4_19 = std_logic_vector'("1");
+  altLet_14 <= altLet_23;
   
-  with (subjLet_16) select
-    altLet_15 <= altLet_18 when (true),
-                 altLet_17 when others;
+  ds2_15 <= input_i2.product0_sel0;
   
-  subjLet_16 <= ds5_24 = std_logic_vector'("00000000000000000000000000000001");
+  countzm1_16 <= ds1_11.product6_sel1;
   
-  altLet_17 <= (product5_sel0 => repANF_20
-               ,product5_sel1 => repANF_21);
+  with (subjLet_24) select
+    altLet_17 <= altLet_26 when (true),
+                 altLet_25 when others;
   
-  altLet_18 <= (product5_sel0 => repANF_22
-               ,product5_sel1 => repANF_23);
+  control_set_18 <= ds3_34;
   
-  ds4_19 <= eta_i2.product0_sel2;
+  systemConstants_19 <= ds_i1.product2_sel1;
   
-  repANF_20 <= ds12_26;
+  countzm1_20 <= ds1_11.product6_sel0;
   
-  repANF_21 <= ds14_27;
+  subjLet_21 <= control_in_27 = std_logic_vector'("00000000000000000000000000000011");
   
-  repANF_22 <= array_of_std_logic_vector_32'(repANF_28) & array_of_std_logic_vector_32'(repANF_29);
+  with (subjLet_21) select
+    altLet_22 <= altLet_28 when (true),
+                 systemConstants_19 when others;
   
-  repANF_23 <= altLet_30;
+  altLet_23 <= (product5_sel0 => repANF_44
+               ,product5_sel1 => ds3_29);
   
-  ds5_24 <= eta_i2.product0_sel3;
+  subjLet_24 <= control_in_27 = std_logic_vector'("00000000000000000000000000000001");
   
-  systemState_25 <= eta_i1.product2_sel0;
+  altLet_25 <= (product6_sel0 => repANF_30
+               ,product6_sel1 => repANF_31);
   
-  ds12_26 <= systemState_25.product4_sel0;
+  altLet_26 <= (product6_sel0 => repANF_32
+               ,product6_sel1 => repANF_33);
   
-  ds14_27 <= systemState_25.product4_sel2;
+  control_in_27 <= ds4_43;
   
-  repANF_28 <= array_of_std_logic_vector_32'(0 => ds5_24);
+  altLet_28 <= altLet_37;
   
-  repANF_29 <= altLet_31;
+  ds3_29 <= systemConstants_19.product5_sel1;
   
-  altLet_30 <= std_logic_vector(unsigned(ds14_27) + unsigned(std_logic_vector'("00000000000000000000000000000001")));
+  repANF_30 <= ds2_38;
   
-  init_n_44 : block
-    signal n_45 : array_of_std_logic_vector_32(0 to 4);
+  repANF_31 <= ds4_39;
+  
+  repANF_32 <= array_of_std_logic_vector_32'(repANF_40) & array_of_std_logic_vector_32'(repANF_41);
+  
+  repANF_33 <= altLet_42;
+  
+  ds3_34 <= input_i2.product0_sel2;
+  
+  systemState_35 <= ds_i1.product2_sel0;
+  
+  ds2_36 <= systemConstants_19.product5_sel0;
+  
+  altLet_37 <= (product5_sel0 => ds2_36
+               ,product5_sel1 => repANF_44);
+  
+  ds2_38 <= systemState_35.product4_sel0;
+  
+  ds4_39 <= systemState_35.product4_sel2;
+  
+  repANF_40 <= array_of_std_logic_vector_32'(0 => control_in_27);
+  
+  repANF_41 <= altLet_46;
+  
+  altLet_42 <= std_logic_vector(unsigned(ds4_39) + unsigned(std_logic_vector'("00000000000000000000000000000001")));
+  
+  ds4_43 <= input_i2.product0_sel3;
+  
+  repANF_44 <= ds11_45;
+  
+  ds11_45 <= input_i2.product0_sel7;
+  
+  init_n_62 : block
+    signal n_63 : array_of_std_logic_vector_32(0 to 4);
   begin
-    n_45 <= ds12_26;
-    tmp_43 <= n_45(0 to n_45'high - 1);
+    n_63 <= ds2_38;
+    tmp_61 <= n_63(0 to n_63'high - 1);
   end block;
   
-  altLet_31 <= tmp_43;
+  altLet_46 <= tmp_61;
   
   topLet_o <= bodyVar_0;
 end;

@@ -30,6 +30,10 @@ module Solver where
     ) 
     #-}
   
+  type NumRepr = BitVector 32
+  type IntNumRepr = BitVector 32
+  type ValueVector = Vec 5 NumRepr
+
   data InputSignals = InputSignals { keys_input :: BitVector 4   -- keys_input
                       , switches_input    :: BitVector 4   -- switches_input 
                       , control_write     :: Bit           -- control_write
@@ -43,58 +47,95 @@ module Solver where
                       } deriving(Show)
 
   data OutputSignals = OutputSignals  { leds_status :: BitVector 4   -- leds_status
-                       , control_readdata :: BitVector 32  -- control_readdata
-                       , out_readdata :: BitVector 32  -- out_readdata
+                       , control_readdata :: BitVector 32   -- control_readdata
+                       , out_readdata     :: BitVector 32   -- out_readdata
                        } deriving(Show)
 
-  data SystemState = SystemState { values :: Vec 5 (BitVector 32)
-                      , timevalue :: BitVector 32
-                      , countvalue :: BitVector 32
-                      , insertedvalue :: Bit
+  --
+  --  VARIABLES
+  --
+  data ODEState = ODEState { xs :: ValueVector 
+                            , t :: NumRepr
+                            } deriving(Show)
+
+  data SystemState = SystemState { odestate :: ODEState
+                      , count :: BitVector 32
+                      , substep :: BitVector 32
                       } deriving(Show)
+  
+  initialODEState = ODEState { xs = repeat 0 :: ValueVector, t = 0}
+  initialSystemState = SystemState {odestate = initialODEState, count = 0, substep = 1000000000} --should be UINT_MAX, now 1e9
 
-  --data SystemConstants = SystemConstants { 
-  --                    } deriving (Show)
+  --
+  --  CONSTANTS
+  --
+  data SystemConstants = SystemConstants { maxtime :: NumRepr
+                        , timestep :: NumRepr
+                        , outputstep :: IntNumRepr
+                      } deriving (Show)
+  initialSystemConstants = SystemConstants { maxtime = 1000, timestep = 1, outputstep = 1} 
+  
+  initialState = (initialSystemState, initialSystemConstants,0)
 
 
+  -- 
+  --  EQUATIONS
+  --
+  type Equation = ODEState -> ValueVector
+  type Scheme = SystemConstants -> Equation -> ODEState -> ODEState 
 
-  initialSystemState = SystemState {values = repeat 5 :: Vec 5 (BitVector 32), timevalue = 0, countvalue = 0, insertedvalue = 1} 
-  initialState = (initialSystemState, 0)
+  decoupledDecrease :: Equation
+  decoupledDecrease state = map (*0.01) (xs state)
 
   topEntity :: Signal InputSignals -> Signal OutputSignals
   topEntity = mealy forwardLEDS initialState
 
-
-  forwardLEDS (systemState,outputLatch) input = ((systemState',outputLatch'),output)
+  forwardLEDS (systemState,systemConstants,oul) input = ((systemState',systemConstants',oul'),output)
     where
       --Unpack the input
-      control_in = control_writedata input
-      control_set = control_write input
-      input_in = in_writedata input
-      keys_in = keys_input input
+      i_c = control_writedata input
+      i_cs = control_write input
+      i_input = in_writedata input
+      i_keys = keys_input input
 
-      --Unpack the needed state
-      valueVector = values systemState 
-      count = countvalue systemState
-      --inserted = insertedvalue systemState --act as a latch to only enter once instead of for as long as the control write bit is high
+      --Unpack the state
+      s_odestate = odestate systemState
+      s_substep = substep systemState
+      s_count = count systemState
+
+      s_valueVector = xs s_odestate 
+      s_timevalue = t s_odestate
+
+      --Unpack the constants
+      c_maxtime = maxtime systemConstants
+      c_timestep = timestep systemConstants
+      c_substep = outputstep systemConstants
+
+      -- Control signal
+      -- 0  : default value, do nothing
+      -- 1  : push element into value vector
+      -- 2  : set max time
+      -- 3  : set timestep
+      -- 4  : set output time step
+      -- 5  :
+      -- 64 : start block computation
       
-      -- on control_in == 1 and control_write isRising push an element into the vector
-      (valueVector', count')    | control_set == 1 && control_in == 1   = ((control_in :> Nil) ++ init valueVector, count + 1)
-                                | otherwise                             = (valueVector, count)
-      
-      systemState' = SystemState {values = valueVector', timevalue = 0, countvalue = count', insertedvalue = 1}
-      
-      outputLatch' = outputLatch
+      (systemState',oul')   | i_cs == 1 && i_c == 1   = ( systemState{ odestate = s_odestate {xs = (i_c :> Nil) ++ init s_valueVector}, count = s_count' }, s_count' ) -- insert an element
+                            | i_cs == 1 && i_c == 64  = ( systemState{ substep = 0} , 0) -- trigger the computation
+                            | s_substep < c_substep   = ( systemState{ })
+                            | otherwise               = (systemState, oul)
+                            where
+                              s_count' = s_count + 1
+
+
+
+      systemConstants'  | i_cs == 1 && i_c == 2   = systemConstants{ maxtime = i_input }
+                        | i_cs == 1 && i_c == 3   = systemConstants{ timestep = i_input }
+                        | i_cs == 1 && i_c == 4   = systemConstants{ outputstep = i_input }
+                        | otherwise               = systemConstants
 
       --Set the output
-      output = OutputSignals {leds_status = complement keys_in, control_readdata = 0, out_readdata = count'}
+      output = OutputSignals {leds_status = complement i_keys, control_readdata = 0, out_readdata = oul'}
 
 
 
-  --topEntity :: Signal (Signed 9, Signed 9) -> Signal (Signed 9)
-  --topEntity = mealy macT 0
-
-  --macT acc (x,y) = (acc',o)
-  --  where
-  --    acc' = acc + x * y
-  --    o    = acc

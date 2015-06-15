@@ -30,25 +30,25 @@ begin
   Solver_forwardLEDS_2_bodyVar_1 : entity Solver_forwardLEDS_2
     port map
       (topLet_o => bodyVar_1
-      ,eta_i1   => x_2
-      ,eta_i2   => eta_i1);
+      ,ds_i1    => x_2
+      ,input_i2 => eta_i1);
   
-  register_Solver_mealyzm_1_n_12 : block
-    signal n_13 : product2;
+  register_Solver_mealyzm_1_n_13 : block
     signal n_14 : product2;
+    signal n_15 : product2;
   begin
-    n_13 <= (product2_sel0 => (product4_sel0 => array_of_std_logic_vector_32'(0 to (5)-1 => std_logic_vector'("00000000000000000000000000000101")),product4_sel1 => std_logic_vector'("00000000000000000000000000000000"),product4_sel2 => std_logic_vector'("00000000000000000000000000000000"),product4_sel3 => std_logic_vector'("1")),product2_sel1 => 0);
+    n_14 <= (product2_sel0 => (product4_sel0 => array_of_std_logic_vector_32'(0 to (5)-1 => std_logic_vector'("00000000000000000000000000000101")),product4_sel1 => std_logic_vector'("00000000000000000000000000000000"),product4_sel2 => std_logic_vector'("00000000000000000000000000000000")),product2_sel1 => (product5_sel0 => std_logic_vector'("00000000000000000000001111101000"),product5_sel1 => std_logic_vector'("00000000000000000000000000000001")));
   
-    process(system1000,system1000_rstn,n_13)
+    process(system1000,system1000_rstn,n_14)
     begin
       if system1000_rstn = '0' then
-        n_14 <= n_13;
+        n_15 <= n_14;
       elsif rising_edge(system1000) then
-        n_14 <= repANF_3;
+        n_15 <= repANF_3;
       end if;
     end process;
   
-    tmp_5 <= n_14;
+    tmp_5 <= n_15;
   end block;
   
   x_2 <= tmp_5;
