@@ -1,7 +1,13 @@
 #include "fpgacontroller.h"
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <sys/mman.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
+#include <cstdio>
+#include <cstdlib>
+#include <fcntl.h>
+
 
 FPGAController::FPGAController() {
   fd = open("/dev/mem", O_RDWR);
@@ -17,17 +23,9 @@ FPGAController::FPGAController() {
     exit(-1);
   }
 
-  printf("Memory layout\n");
-  printf("Controller \t %04x\n", control);
-
-  input = (uint32_t*)((char*)mem + INPUT_OFFSET);
-  output = (uint32_t*)((char*)mem + OUTPUT_OFFSET);
-  control = (uint32_t*)((char*)mem + CONTROL_OFFSET);
-
-
-  printf("Controller \t %08x\n", (void*)control);
-  printf("Input      \t %08x\n", (void*)input);
-  printf("Output     \t %08x\n", (void*)output);
+  control = Channel((uint32_t*)((char*)mem + CONTROL_OFFSET), CONTROL_ADLEN);
+  input = Channel((uint32_t*)((char*)mem + INPUT_OFFSET), INPUT_ADLEN);
+  output = Channel((uint32_t*)((char*)mem + OUTPUT_OFFSET), OUTPUT_ADLEN);
 }
 
 FPGAController::~FPGAController() {
@@ -35,36 +33,16 @@ FPGAController::~FPGAController() {
   close(fd);
 }
 
-void FPGAController::printControl(unsigned addr) {
-  printf("%u \t %08x\n", addr, getControl(addr));
+void FPGAController::printMemorycontent() {
+  printf("memory content [control][input][output]:\t %u \t %u \t %u\n",control.get(),input.get(),output.get());
 }
 
-unsigned FPGAController::getControl(unsigned addr) {
-  if(addr > CONTROL_ADLEN) {
-    printf("Invalid address!\n");
-    return 0;
+void FPGAController::loadValues(std::vector<uint32_t> values) {
+  for(uint32_t value : values) {
+    input.write(value);
+    control.write(1);
   }
-
-  return control[addr];
+  printMemorycontent();
 }
 
-unsigned FPGAController::getControlWithUpdate(unsigned addr) {
 
-  if(addr > CONTROL_ADLEN) {
-    printf("Invalid address!\n");
-    return 0;
-  }
-
-  unsigned u = control[addr];
-
-  return control[addr];
-}
-
-void FPGAController::writeControl(unsigned addr, unsigned value) {
-  if(addr > CONTROL_ADLEN) {
-    printf("Invalid address\n");
-    return;
-  }
-
-  control[addr] = value;
-}

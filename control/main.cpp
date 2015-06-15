@@ -1,14 +1,24 @@
 #include "fpgacontroller.h"
 
-#include <stdio.h>
-#include <unistd.h>
-#include <time.h>
-
+#include <cstdio>
+#include <vector>
 
 int main () {
   FPGAController fpga;
 
-  long int start_time;
+  unsigned i = 0;
+
+  std::vector<uint32_t> values;
+  for(unsigned i = 0; i<100; i++) {
+    values.push_back(i);
+  }
+
+  fpga.loadValues(values);
+  fpga.printMemorycontent();
+}
+
+/*
+long int start_time;
   long int time_difference;
   struct timespec gettime_now;
 
@@ -48,5 +58,4 @@ int main () {
       counter = 0;
     }
   }
-
-}
+ */
