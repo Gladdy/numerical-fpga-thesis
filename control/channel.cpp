@@ -8,7 +8,8 @@ Channel::Channel(unsigned * _base, unsigned _length) {
 }
 
 void Channel::print(unsigned addr) {
-  printf("%u \t %08x\n", addr, get(addr));
+  //printf("%u \t %08x\n", addr, get(addr));
+  printf("%u \t %u\n",addr,getWithUpdate(addr));
 }
 
 unsigned Channel::get(unsigned addr) {
@@ -31,6 +32,7 @@ unsigned Channel::getWithUpdate(unsigned addr) {
 
   return base[addr];
 }
+
 
 void Channel::write(unsigned addr, uint32_t value) {
   if(addr > length) {

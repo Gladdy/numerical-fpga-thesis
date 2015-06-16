@@ -38,11 +38,31 @@ void FPGAController::printMemorycontent() {
 }
 
 void FPGAController::loadValues(std::vector<uint32_t> values) {
-  for(uint32_t value : values) {
-    input.write(value);
+  for(unsigned i = 0; i < values.size(); i++) {
+
     control.write(1);
+    input.write(i, values[i]);
+    control.write(1);
+
+    //printMemorycontent();
   }
-  printMemorycontent();
+}
+
+void FPGAController::loadConstants(std::vector<uint32_t> values) {
+
+  input.write(1000);
+  control.write(2);
+
+  input.write(2);
+  control.write(2);
+
+  input.write(3);
+  control.write(2);
+
+  for(unsigned i = 0; i < values.size(); i++) {
+    input.write(i, values[i]);
+    control.write(5);
+  }
 }
 
 

@@ -16,6 +16,7 @@ public:
 
   void printMemorycontent();
   void loadValues(std::vector<uint32_t>);
+  void loadConstants(std::vector<uint32_t>);
 
 private:
 

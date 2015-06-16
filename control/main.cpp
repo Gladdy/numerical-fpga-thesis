@@ -6,56 +6,50 @@
 int main () {
   FPGAController fpga;
 
-  unsigned i = 0;
+  const unsigned vals = 10;
 
-  std::vector<uint32_t> values;
-  for(unsigned i = 0; i<100; i++) {
-    values.push_back(i);
+  fpga.control.write(3,3);
+
+  //fpga.loadValues(v2);
+  printf("Entering input data\n");
+  for(unsigned i = 0; i<vals - 1; i++) {
+    fpga.input.write(i,i);
+  }
+  printf("\n");
+
+  //Print unused values
+  printf("Input values\n");
+  for(unsigned i = 0; i<vals; i++) {
+    fpga.output.print(i);
+  }
+  printf("\n");
+
+  //perform computation
+  fpga.control.write(1);
+
+
+  //Fetch computed values
+  printf("Processed values\n");
+  for(unsigned i = 0; i<vals; i++) {
+    fpga.output.print(i);
+    usleep(1000);
+  }
+  printf("\n");
+
+  //perform computation
+  fpga.control.write(1);
+
+  printf("Processed values\n");
+  for(unsigned i = 0; i<vals; i++) {
+    fpga.output.print(i);
   }
 
-  fpga.loadValues(values);
-  fpga.printMemorycontent();
+
+  //perform computation
+  fpga.control.write(1);
+
+  printf("Processed values\n");
+  for(unsigned i = 0; i<vals; i++) {
+    fpga.output.print(i);
+  }
 }
-
-/*
-long int start_time;
-  long int time_difference;
-  struct timespec gettime_now;
-
-  clock_gettime(CLOCK_REALTIME, &gettime_now);
-  start_time = gettime_now.tv_nsec;
-
-  unsigned checkVal = 0;
-  unsigned counter = 0;
-
-  //const unsigned wait_reset = 10;
-  const unsigned numLoops = 10000;
-
-
-
-  while(true) {
-
-    fpga.writeControl(1, counter);
-    checkVal = fpga.getControl(0);
-
-    if(counter != checkVal + 1) {
-      printf("counter: %u \t checkval %u\n", counter, checkVal);
-    }
-
-    counter++;
-
-    if(counter > numLoops) {
-
-      clock_gettime(CLOCK_REALTIME, &gettime_now);
-      time_difference = gettime_now.tv_nsec - start_time;
-      start_time = gettime_now.tv_nsec;
-
-      //time_difference is in nanoseconds
-      double time_difference_sec = (double)time_difference / 1000000000;
-      double Bps = (double) 4*numLoops / time_difference_sec;
-
-      printf("Bidirectional speed: %f MBps\n", Bps/1000000);
-      counter = 0;
-    }
-  }
- */
