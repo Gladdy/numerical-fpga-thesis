@@ -9,8 +9,6 @@
 			data_in_write          : out   std_logic;                                        -- write
 			data_in_writedata      : out   std_logic_vector(31 downto 0);                    -- writedata
 			data_in_address        : out   std_logic_vector(7 downto 0);                     -- address
-			data_out_readdata      : in    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
-			data_out_address       : out   std_logic_vector(7 downto 0);                     -- address
 			memory_mem_a           : out   std_logic_vector(12 downto 0);                    -- mem_a
 			memory_mem_ba          : out   std_logic_vector(2 downto 0);                     -- mem_ba
 			memory_mem_ck          : out   std_logic;                                        -- mem_ck
@@ -27,7 +25,10 @@
 			memory_mem_odt         : out   std_logic;                                        -- mem_odt
 			memory_mem_dm          : out   std_logic;                                        -- mem_dm
 			memory_oct_rzqin       : in    std_logic                     := 'X';             -- oct_rzqin
-			reset_reset_n          : in    std_logic                     := 'X'              -- reset_n
+			reset_reset_n          : in    std_logic                     := 'X';             -- reset_n
+			data_out_readdata      : in    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			data_out_address       : out   std_logic_vector(7 downto 0);                     -- address
+			data_out_read          : out   std_logic                                         -- read
 		);
 	end component memory_io;
 
@@ -42,8 +43,6 @@
 			data_in_write          => CONNECTED_TO_data_in_write,          --      data_in.write
 			data_in_writedata      => CONNECTED_TO_data_in_writedata,      --             .writedata
 			data_in_address        => CONNECTED_TO_data_in_address,        --             .address
-			data_out_readdata      => CONNECTED_TO_data_out_readdata,      --     data_out.readdata
-			data_out_address       => CONNECTED_TO_data_out_address,       --             .address
 			memory_mem_a           => CONNECTED_TO_memory_mem_a,           --       memory.mem_a
 			memory_mem_ba          => CONNECTED_TO_memory_mem_ba,          --             .mem_ba
 			memory_mem_ck          => CONNECTED_TO_memory_mem_ck,          --             .mem_ck
@@ -60,6 +59,9 @@
 			memory_mem_odt         => CONNECTED_TO_memory_mem_odt,         --             .mem_odt
 			memory_mem_dm          => CONNECTED_TO_memory_mem_dm,          --             .mem_dm
 			memory_oct_rzqin       => CONNECTED_TO_memory_oct_rzqin,       --             .oct_rzqin
-			reset_reset_n          => CONNECTED_TO_reset_reset_n           --        reset.reset_n
+			reset_reset_n          => CONNECTED_TO_reset_reset_n,          --        reset.reset_n
+			data_out_readdata      => CONNECTED_TO_data_out_readdata,      --     data_out.readdata
+			data_out_address       => CONNECTED_TO_data_out_address,       --             .address
+			data_out_read          => CONNECTED_TO_data_out_read           --             .read
 		);
 

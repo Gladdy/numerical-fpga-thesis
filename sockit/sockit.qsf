@@ -241,6 +241,7 @@ set_global_assignment -name VHDL_FILE hdl/Solver_topEntity_0.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_testbench.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_mealyzm_1.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_forwardLEDS_2.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_forwardLEDS14_3.vhdl
 set_global_assignment -name VHDL_FILE hdl/compute_main.vhdl
 set_global_assignment -name SDC_FILE sockit.sdc
 set_global_assignment -name QIP_FILE memory_io/synthesis/memory_io.qip

@@ -14,6 +14,7 @@ ENTITY data_output IS
         as_address : in std_logic_vector(7 downto 0);
 
         -- Exported signals
+        data_out_read : out std_logic;
         data_out_readdata : in std_logic_vector(31 downto 0);
         data_out_address : out std_logic_vector(7 downto 0)
     );
@@ -27,7 +28,8 @@ BEGIN
         IF rising_edge(clock) THEN
             --Data output
             as_readdata <= data_out_readdata;
-            data_out_address <= as_address;        
+            data_out_address <= as_address;
+            data_out_read <= as_read;        
         END IF;
     END PROCESS;
 END;

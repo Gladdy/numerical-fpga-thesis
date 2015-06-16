@@ -681,15 +681,6 @@
    kind="avalon"
    version="14.1"
    start="hps_0.h2f_lw_axi_master"
-   end="data_out_0.avalon_slave_0">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0800" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="14.1"
-   start="hps_0.h2f_lw_axi_master"
    end="data_in_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0400" />
@@ -704,23 +695,27 @@
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="clock" version="14.1" start="clk_0.clk" end="data_out_0.clock" />
+ <connection
+   kind="avalon"
+   version="14.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="data_out_0.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0800" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
  <connection kind="clock" version="14.1" start="clk_0.clk" end="data_in_0.clock" />
  <connection
    kind="clock"
    version="14.1"
    start="clk_0.clk"
    end="data_control_0.clock" />
+ <connection kind="clock" version="14.1" start="clk_0.clk" end="data_out_0.clock" />
  <connection
    kind="clock"
    version="14.1"
    start="clk_0.clk"
    end="hps_0.h2f_lw_axi_clock" />
- <connection
-   kind="reset"
-   version="14.1"
-   start="clk_0.clk_reset"
-   end="data_out_0.reset" />
  <connection
    kind="reset"
    version="14.1"
@@ -731,6 +726,11 @@
    version="14.1"
    start="clk_0.clk_reset"
    end="data_control_0.reset" />
+ <connection
+   kind="reset"
+   version="14.1"
+   start="clk_0.clk_reset"
+   end="data_out_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="AUTO" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
