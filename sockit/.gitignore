@@ -38,6 +38,7 @@ hc_output/*
 output_files/*
 hps_isw_handoff/*
 
+sed*
 hps_sdram_p0_all_pins.txt
 hps_sdram_p0_summary.csv
 sopc_builder_log.txt

@@ -236,15 +236,33 @@ set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to G3|hps_0|hps_io|b
 set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
 set_global_assignment -name ECO_REGENERATE_REPORT ON
-set_global_assignment -name VHDL_FILE hdl/Solver_types.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_topEntity_0.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_testbench.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_mealyzm_1.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_forwardLEDS_2.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_forwardLEDS14_3.vhdl
-set_global_assignment -name VHDL_FILE hdl/compute_main.vhdl
 set_global_assignment -name SDC_FILE sockit.sdc
 set_global_assignment -name QIP_FILE memory_io/synthesis/memory_io.qip
-set_global_assignment -name VHDL_FILE hdl/sockit.vhd
-set_global_assignment -name VHDL_FILE hdl/io_led.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+
+
+
+
+
+set_global_assignment -name VHDL_FILE hdl/compute_main.vhdl
+set_global_assignment -name VHDL_FILE hdl/io_led.vhd
+set_global_assignment -name VHDL_FILE hdl/sockit.vhd
+set_global_assignment -name VHDL_FILE hdl/Solver_Component_10.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_Component_16.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_eulerScheme_3.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_forwardLEDS_2.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_matrix2d_11.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_mealyzm_1.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_13.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_7.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_satMult_12.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_satMult_6.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_satPlus_4.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_specF_5.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_testbench.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_topEntity_0.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_types.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfBitsSigned_zdcshiftR_14.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfBitsSigned_zdcshiftR_8.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfOrdSigned3_15.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfOrdSigned3_9.vhdl
