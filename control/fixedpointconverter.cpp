@@ -26,23 +26,33 @@ uint32_t FixedPointConverter::to_FP(double value) {
     return 1;
   }
 
+  uint32_t fractionalMask = 0;
+  uint32_t integerMask = 0;
+  for(unsigned u = 0; u < fracBits; u++) {
+    fractionalMask += (1 << u);
+  }
+  for(unsigned u = fracBits; u < 32; u++) {
+    integerMask += (1 << u);
+  }
+
   //compute the fractional part
-  double scaledDouble = value * (double)(1 << (fracBits)); //Shift the double to expose the fractional part
-  uint32_t scaledFracVal = ((uint32_t)scaledDouble) << intBits; //Ignore any further fractional part and strip of the integer part
-  uint32_t normalizedFracVal = scaledFracVal >> intBits;
+  double scaledDouble = value * (1 << fracBits); //Shift the double to expose the fractional part
+
+
+  int32_t scaledFracVal = ((int32_t)scaledDouble) << intBits; //Ignore any further fractional part and strip of the integer part
+  uint32_t normalizedFracVal = (scaledFracVal >> intBits)& fractionalMask;
 
   //compute the integer part
   long uintVal = (long)value;
-
-  if(value < 0 && scaledFracVal != 0) uintVal--; //fix the off by one error due to signedness of integers in an unsigned format
-  uint32_t scaledUintVal = uintVal << fracBits;
+  if(value < 0 && normalizedFracVal != 0) { uintVal--;} //correct the negative cases
+  uint32_t scaledUintVal = (uintVal << fracBits) & integerMask;
 
   uint32_t result = scaledUintVal | normalizedFracVal;
 
   // printf("%lf\n", value);
-  // printf("uintval: %u \t\t\t scaledUintVal: %08x\n", uintVal, scaledUintVal);
-  // printf("scaleddouble: %lf \t fracval: %08x \t normalizedFracVal %08x\n", scaledDouble, scaledFracVal, normalizedFracVal);
-  // printf("%lf \t %08x\n", value, result);
+  // printf("fractional \t scaleddouble: %lf \n fracval: %08x \n normalizedFracVal %08x\n", scaledDouble, scaledFracVal, normalizedFracVal);
+  // printf("integer \t uintval: %u \n scaledUintVal: %08x\n", uintVal, scaledUintVal);
+  // printf("%lf \t %08x\n\n\n", value, result);
 
   return result;
 }

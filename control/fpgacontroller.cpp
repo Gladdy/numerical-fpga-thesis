@@ -41,7 +41,7 @@ void FPGAController::printOutput(uint amount) {
   printf("\n");
 }
 
-void FPGAController::iterate(uint amount, uint memsize) {
+void FPGAController::iterate(uint amount, uint memsize, bool resetState) {
 
   for(uint u = 0; u<amount; u++) {
     //Trigger the computation
@@ -52,12 +52,11 @@ void FPGAController::iterate(uint amount, uint memsize) {
 
     double t = output.getFP(15);
 
-    /*
-    if(t > 125) {
+    if(resetState && t > 125) {
       control.write(0,2);
       input.writeFP(0,50);
       input.writeFP(1,0);
-    }*/
+    }
 
     printf("%u:\t t=%lf\t",u,t);
     printOutput(memsize);

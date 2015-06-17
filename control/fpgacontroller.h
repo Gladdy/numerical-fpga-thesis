@@ -3,6 +3,10 @@
 
 #include "channel.h"
 
+
+#define END_RESET_STATE true
+#define END_KEEP_STATE false
+
 class FPGAController {
 public:
   FPGAController();
@@ -19,7 +23,7 @@ public:
   */
 
   void printOutput(uint);
-  void iterate(uint,uint);
+  void iterate(uint,uint,bool);
 
 private:
 
