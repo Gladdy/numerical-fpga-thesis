@@ -1,11 +1,11 @@
-module SolverTypes where
+module SolverTypesPDE where
 
   import CLaSH.Prelude
 
   type Data = SFixed 8 24
   type UInt = Unsigned 32
-  type ValueVector = Vec 16 Data
-  type ConstantVector = ValueVector
+  type MemoryVector = Vec 1048576 Data 
+  type ConstantVector = Vec 16 Data
 
   data InputSignals = InputSignals { keys_input :: BitVector 4   -- keys_input
                       , switches_input    :: BitVector 4   -- switches_input 
@@ -29,14 +29,24 @@ module SolverTypes where
   --
   --  VARIABLES
   --
-  data ODEState = ODEState { xs :: ValueVector 
-                            , t :: Data
-                            } deriving(Show)
-  
-  data SystemState = SystemState { odestate :: ODEState
-                      , count :: UInt
+
+  data SystemStatePDE = SystemStatePDE { count :: UInt
                       , substep :: UInt
                       } deriving(Show)
+
+  data RamOutput = RamOutput  { write_address :: Signal UInt
+                              , read_address :: Signal UInt
+                              , write_enable :: Signal Bool
+                              , write_value :: Signal Data
+                            }
+  noRamOutput = RamOutput { write_address = signal 0
+                          , read_address = signal 0
+                          , write_enable = signal False
+                          , write_value = signal 0
+                        }
+
+  data RamInput = RamInput  { memOut :: Signal Data 
+                            }
 
   --
   --  CONSTANTS
@@ -48,6 +58,3 @@ module SolverTypes where
                       } deriving (Show)
 
   uIntMax = 4294967295 :: UInt
-
-  type Equation = (ODEState, ConstantVector) -> ValueVector
-  type Scheme = SystemConstants -> Equation -> ODEState -> ODEState 

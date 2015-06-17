@@ -50,9 +50,9 @@ module Solver where
 
 
   topEntity :: Signal InputSignals -> Signal OutputSignals
-  topEntity = mealy forwardLEDS initialState
+  topEntity = mealy solveODE initialState
 
-  forwardLEDS (systemState,systemConstants,oul,block) input = ((systemState',systemConstants',oul',block'),output)
+  solveODE (systemState,systemConstants,oul,block) input = ((systemState',systemConstants',oul',block'),output)
     where
       --Unpack the input
       i_c = control_writedata input
