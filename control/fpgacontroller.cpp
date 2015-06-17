@@ -33,36 +33,33 @@ FPGAController::~FPGAController() {
   close(fd);
 }
 
-void FPGAController::printMemorycontent() {
-  printf("memory content [control][input][output]:\t %u \t %u \t %u\n",control.get(),input.get(),output.get());
+void FPGAController::printOutput(uint amount) {
+  for(uint u = 0; u<amount; u++) {
+    double u2 = output.getFP(u);
+    printf("%lf\t",output.getFP(u));
+  }
+  printf("\n");
 }
 
-void FPGAController::loadValues(std::vector<uint32_t> values) {
-  for(unsigned i = 0; i < values.size(); i++) {
+void FPGAController::iterate(uint amount, uint memsize) {
 
-    control.write(1);
-    input.write(i, values[i]);
-    control.write(1);
+  for(uint u = 0; u<amount; u++) {
+    //Trigger the computation
+    control.write(0,1);
 
-    //printMemorycontent();
+    //possibly sleep
+    usleep(100);
+
+    double t = output.getFP(15);
+
+    /*
+    if(t > 125) {
+      control.write(0,2);
+      input.writeFP(0,50);
+      input.writeFP(1,0);
+    }*/
+
+    printf("%u:\t t=%lf\t",u,t);
+    printOutput(memsize);
   }
 }
-
-void FPGAController::loadConstants(std::vector<uint32_t> values) {
-
-  input.write(1000);
-  control.write(2);
-
-  input.write(2);
-  control.write(2);
-
-  input.write(3);
-  control.write(2);
-
-  for(unsigned i = 0; i < values.size(); i++) {
-    input.write(i, values[i]);
-    control.write(5);
-  }
-}
-
-

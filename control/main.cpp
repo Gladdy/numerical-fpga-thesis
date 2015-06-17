@@ -2,54 +2,37 @@
 
 #include <cstdio>
 #include <vector>
+#include <cmath>
 
 int main () {
   FPGAController fpga;
 
-  const unsigned vals = 10;
+  const uint vals = 2;
 
-  fpga.control.write(3,3);
+  fpga.control.write(0,2);
+  fpga.control.writeFP(1,125);  //maxtime
+  fpga.control.writeFP(2,0.01); //timestep
+  fpga.control.write(3,20);      //outputstep
 
-  //fpga.loadValues(v2);
-  printf("Entering input data\n");
-  for(unsigned i = 0; i<vals - 1; i++) {
-    fpga.input.write(i,i);
-  }
+
+  //Set the constants
+  //equation: x' = Ax + b
+  //[4  5]  <= matrix a
+  //[6  7]  with the constant addresses
+  fpga.control.writeFP(4,0);
+  fpga.control.writeFP(5,1);
+  fpga.control.writeFP(6,-1.1); //BUG: fractional numbers between -1 and 0 go wrong
+  fpga.control.writeFP(7,0);
+
+  //Set the initial values
+  fpga.input.writeFP(0,50);
+  fpga.input.writeFP(1,0);
+
+  //Fetch the initial values
+  printf("Initial values:\n");
+  fpga.printOutput(vals);
   printf("\n");
 
-  //Print unused values
-  printf("Input values\n");
-  for(unsigned i = 0; i<vals; i++) {
-    fpga.output.print(i);
-  }
-  printf("\n");
+  fpga.iterate(500,vals);
 
-  //perform computation
-  fpga.control.write(1);
-
-
-  //Fetch computed values
-  printf("Processed values\n");
-  for(unsigned i = 0; i<vals; i++) {
-    fpga.output.print(i);
-    usleep(1000);
-  }
-  printf("\n");
-
-  //perform computation
-  fpga.control.write(1);
-
-  printf("Processed values\n");
-  for(unsigned i = 0; i<vals; i++) {
-    fpga.output.print(i);
-  }
-
-
-  //perform computation
-  fpga.control.write(1);
-
-  printf("Processed values\n");
-  for(unsigned i = 0; i<vals; i++) {
-    fpga.output.print(i);
-  }
 }
