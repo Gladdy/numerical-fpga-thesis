@@ -9,8 +9,6 @@ module memory_io (
 	data_in_write,
 	data_in_writedata,
 	data_in_address,
-	data_out_readdata,
-	data_out_address,
 	memory_mem_a,
 	memory_mem_ba,
 	memory_mem_ck,
@@ -27,7 +25,10 @@ module memory_io (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	reset_reset_n);	
+	reset_reset_n,
+	data_out_readdata,
+	data_out_address,
+	data_out_read);	
 
 	input		clk_clk;
 	output	[31:0]	data_control_writedata;
@@ -38,8 +39,6 @@ module memory_io (
 	output		data_in_write;
 	output	[31:0]	data_in_writedata;
 	output	[7:0]	data_in_address;
-	input	[31:0]	data_out_readdata;
-	output	[7:0]	data_out_address;
 	output	[12:0]	memory_mem_a;
 	output	[2:0]	memory_mem_ba;
 	output		memory_mem_ck;
@@ -57,4 +56,7 @@ module memory_io (
 	output		memory_mem_dm;
 	input		memory_oct_rzqin;
 	input		reset_reset_n;
+	input	[31:0]	data_out_readdata;
+	output	[7:0]	data_out_address;
+	output		data_out_read;
 endmodule

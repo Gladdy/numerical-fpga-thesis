@@ -58,7 +58,8 @@ PORT (
 	system1000_rstn   : in std_logic;
 	leds_status       : out std_logic_vector(3 downto 0);
 	control_readdata  : out std_logic_vector(31 downto 0);
-	out_readdata      : out std_logic_vector(31 downto 0)
+	out_readdata      : out std_logic_vector(31 downto 0);
+	out_read		  : in std_logic_vector(0 downto 0)
 	);
 END COMPONENT;
 
@@ -75,7 +76,7 @@ PORT (
     data_in_address        : out   std_logic_vector(7 downto 0);                     -- address
     data_out_readdata      : in    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
     data_out_address       : out   std_logic_vector(7 downto 0);                     -- address
-    
+    data_out_read 			: out   std_logic;
     memory_mem_a           : out   std_logic_vector(12 downto 0);                    -- mem_a
     memory_mem_ba          : out   std_logic_vector(2 downto 0);                     -- mem_ba
     memory_mem_ck          : out   std_logic;                                        -- mem_ck
@@ -97,21 +98,22 @@ PORT (
 END COMPONENT;
 
 -- Physical
-SIGNAL leds_status          : std_logic_vector(3 downto 0);
+SIGNAL leds_status 			: std_logic_vector(3 downto 0);
 
 -- Avalon interface
-SIGNAL in_write             : std_logic;
-SIGNAL in_writedata         : std_logic_vector(31 downto 0);
-SIGNAL in_address           : std_logic_vector(7 downto 0);
+SIGNAL in_write      		: std_logic;
+SIGNAL in_writedata 			: std_logic_vector(31 downto 0);
+SIGNAL in_address				: std_logic_vector(7 downto 0);
 
-SIGNAL control_writedata    : std_logic_vector(31 downto 0);
-SIGNAL control_readdata     : std_logic_vector(31 downto 0);
-SIGNAL control_address      : std_logic_vector(7 downto 0);
-SIGNAL control_read         : std_logic;
-SIGNAL control_write        : std_logic;
+SIGNAL control_writedata	: std_logic_vector(31 downto 0);
+SIGNAL control_readdata   	: std_logic_vector(31 downto 0);
+SIGNAL control_address     : std_logic_vector(7 downto 0);
+SIGNAL control_read        : std_logic;
+SIGNAL control_write       : std_logic;
 
-SIGNAL out_readdata         : std_logic_vector(31 downto 0);
-SIGNAL out_address          : std_logic_vector(7 downto 0);
+SIGNAL out_readdata        : std_logic_vector(31 downto 0);
+SIGNAL out_address         : std_logic_vector(7 downto 0);
+SIGNAL out_read				: std_logic;
 
 BEGIN
 G1 : io_led         PORT MAP (
@@ -131,6 +133,7 @@ G2 : compute_main PORT MAP (
     in_write(0)         => in_write,
     in_writedata        => in_writedata,
     in_address          => in_address,
+	 out_read(0)			=> out_read,
     out_readdata        => out_readdata,
     out_address         => out_address,
     keys_input          => KEY,
@@ -165,7 +168,8 @@ G3 : memory_io PORT MAP (
     data_control_read      => control_read,             --             .read
     data_control_write     => control_write,            --             .write
     data_out_readdata      => out_readdata,             --     data_out.readdata
-    data_out_address       => out_address               --             .address
+    data_out_address       => out_address,              --             .address
+	 data_out_read 			=> out_read
     );
 END behaviour;
 

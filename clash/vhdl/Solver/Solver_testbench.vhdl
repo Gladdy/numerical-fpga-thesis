@@ -46,7 +46,7 @@ begin
       ,w3_i1           => w3_i1
       ,topLet_o        => topLet_o);
   
-  w3_i1 <= ((others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'));
+  w3_i1 <= ((others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'),(others => 'X'));
   
   finished <=
   -- pragma translate_off

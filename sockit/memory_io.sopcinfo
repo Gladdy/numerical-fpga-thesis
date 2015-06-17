@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="memory_io" kind="memory_io" version="1.0" fabric="QSYS">
  <!-- Format version 14.1 186 (Future versions may contain additional information.) -->
- <!-- 2015.06.12.19:15:47 -->
+ <!-- 2015.06.16.01:17:57 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1434129346</value>
+  <value>1434410275</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -332,12 +332,6 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>data_out_0</moduleName>
-    <slaveName>clock</slaveName>
-    <name>data_out_0.clock</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
     <moduleName>data_in_0</moduleName>
     <slaveName>clock</slaveName>
     <name>data_in_0.clock</name>
@@ -347,6 +341,12 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>data_control_0</moduleName>
     <slaveName>clock</slaveName>
     <name>data_control_0.clock</name>
+   </clockDomainMember>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>data_out_0</moduleName>
+    <slaveName>clock</slaveName>
+    <name>data_out_0.clock</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -1951,6 +1951,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>8</width>
     <role>address</role>
+   </port>
+   <port>
+    <name>data_out_read</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>read</role>
    </port>
   </interface>
   <interface name="clock" kind="clock_sink" version="14.1">
@@ -17214,14 +17220,6 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>data_out_0</moduleName>
-    <slaveName>avalon_slave_0</slaveName>
-    <name>data_out_0.avalon_slave_0</name>
-    <baseAddress>2048</baseAddress>
-    <span>1024</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
     <moduleName>data_in_0</moduleName>
     <slaveName>avalon_slave_0</slaveName>
     <name>data_in_0.avalon_slave_0</name>
@@ -17234,6 +17232,14 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>avalon_slave_0</slaveName>
     <name>data_control_0.avalon_slave_0</name>
     <baseAddress>0</baseAddress>
+    <span>1024</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>data_out_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>data_out_0.avalon_slave_0</name>
+    <baseAddress>2048</baseAddress>
     <span>1024</span>
    </memoryBlock>
   </interface>
@@ -42721,14 +42727,6 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>data_out_0</moduleName>
-    <slaveName>avalon_slave_0</slaveName>
-    <name>data_out_0.avalon_slave_0</name>
-    <baseAddress>2048</baseAddress>
-    <span>1024</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
     <moduleName>data_in_0</moduleName>
     <slaveName>avalon_slave_0</slaveName>
     <name>data_in_0.avalon_slave_0</name>
@@ -42741,6 +42739,14 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>avalon_slave_0</slaveName>
     <name>data_control_0.avalon_slave_0</name>
     <baseAddress>0</baseAddress>
+    <span>1024</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>data_out_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>data_out_0.avalon_slave_0</name>
+    <baseAddress>2048</baseAddress>
     <span>1024</span>
    </memoryBlock>
   </interface>
@@ -43864,14 +43870,6 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>data_out_0</moduleName>
-    <slaveName>avalon_slave_0</slaveName>
-    <name>data_out_0.avalon_slave_0</name>
-    <baseAddress>4280289280</baseAddress>
-    <span>1024</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
     <moduleName>data_in_0</moduleName>
     <slaveName>avalon_slave_0</slaveName>
     <name>data_in_0.avalon_slave_0</name>
@@ -43884,6 +43882,14 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>avalon_slave_0</slaveName>
     <name>data_control_0.avalon_slave_0</name>
     <baseAddress>4280287232</baseAddress>
+    <span>1024</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>data_out_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>data_out_0.avalon_slave_0</name>
+    <baseAddress>4280289280</baseAddress>
     <span>1024</span>
    </memoryBlock>
    <memoryBlock>
@@ -44695,14 +44701,6 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>data_out_0</moduleName>
-    <slaveName>avalon_slave_0</slaveName>
-    <name>data_out_0.avalon_slave_0</name>
-    <baseAddress>4280289280</baseAddress>
-    <span>1024</span>
-   </memoryBlock>
-   <memoryBlock>
-    <isBridge>false</isBridge>
     <moduleName>data_in_0</moduleName>
     <slaveName>avalon_slave_0</slaveName>
     <name>data_in_0.avalon_slave_0</name>
@@ -44715,6 +44713,14 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>avalon_slave_0</slaveName>
     <name>data_control_0.avalon_slave_0</name>
     <baseAddress>4280287232</baseAddress>
+    <span>1024</span>
+   </memoryBlock>
+   <memoryBlock>
+    <isBridge>false</isBridge>
+    <moduleName>data_out_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>data_out_0.avalon_slave_0</name>
+    <baseAddress>4280289280</baseAddress>
     <span>1024</span>
    </memoryBlock>
    <memoryBlock>
@@ -79510,57 +79516,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>interrupt_sender</endConnectionPoint>
  </connection>
  <connection
-   name="hps_0_bridges.h2f_lw/data_out_0.avalon_slave_0"
-   kind="avalon"
-   version="14.1"
-   start="hps_0_bridges.h2f_lw"
-   end="data_out_0.avalon_slave_0">
-  <parameter name="arbitrationPriority">
-   <type>int</type>
-   <value>1</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="baseAddress">
-   <type>java.math.BigInteger</type>
-   <value>0x0800</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="defaultConnection">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>hps_0_bridges</startModule>
-  <startConnectionPoint>h2f_lw</startConnectionPoint>
-  <endModule>data_out_0</endModule>
-  <endConnectionPoint>avalon_slave_0</endConnectionPoint>
- </connection>
- <connection
    name="hps_0_bridges.h2f_lw/data_in_0.avalon_slave_0"
    kind="avalon"
    version="14.1"
@@ -79663,11 +79618,35 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>avalon_slave_0</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/data_out_0.clock"
-   kind="clock"
+   name="hps_0_bridges.h2f_lw/data_out_0.avalon_slave_0"
+   kind="avalon"
    version="14.1"
-   start="clk_0.clk"
-   end="data_out_0.clock">
+   start="hps_0_bridges.h2f_lw"
+   end="data_out_0.avalon_slave_0">
+  <parameter name="arbitrationPriority">
+   <type>int</type>
+   <value>1</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="baseAddress">
+   <type>java.math.BigInteger</type>
+   <value>0x0800</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="defaultConnection">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -79684,10 +79663,10 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk</startConnectionPoint>
+  <startModule>hps_0_bridges</startModule>
+  <startConnectionPoint>h2f_lw</startConnectionPoint>
   <endModule>data_out_0</endModule>
-  <endConnectionPoint>clock</endConnectionPoint>
+  <endConnectionPoint>avalon_slave_0</endConnectionPoint>
  </connection>
  <connection
    name="clk_0.clk/data_in_0.clock"
@@ -79744,6 +79723,33 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clock</endConnectionPoint>
  </connection>
  <connection
+   name="clk_0.clk/data_out_0.clock"
+   kind="clock"
+   version="14.1"
+   start="clk_0.clk"
+   end="data_out_0.clock">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk</startConnectionPoint>
+  <endModule>data_out_0</endModule>
+  <endConnectionPoint>clock</endConnectionPoint>
+ </connection>
+ <connection
    name="clk_0.clk/hps_0_bridges.h2f_lw_axi_clock"
    kind="clock"
    version="14.1"
@@ -79769,33 +79775,6 @@ parameters are a RESULT of the module parameters. -->
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>hps_0_bridges</endModule>
   <endConnectionPoint>h2f_lw_axi_clock</endConnectionPoint>
- </connection>
- <connection
-   name="clk_0.clk_reset/data_out_0.reset"
-   kind="reset"
-   version="14.1"
-   start="clk_0.clk_reset"
-   end="data_out_0.reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>clk_0</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>data_out_0</endModule>
-  <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
    name="clk_0.clk_reset/data_in_0.reset"
@@ -79849,6 +79828,33 @@ parameters are a RESULT of the module parameters. -->
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk_reset</startConnectionPoint>
   <endModule>data_control_0</endModule>
+  <endConnectionPoint>reset</endConnectionPoint>
+ </connection>
+ <connection
+   name="clk_0.clk_reset/data_out_0.reset"
+   kind="reset"
+   version="14.1"
+   start="clk_0.clk_reset"
+   end="data_out_0.reset">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>clk_0</startModule>
+  <startConnectionPoint>clk_reset</startConnectionPoint>
+  <endModule>data_out_0</endModule>
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <plugin>
