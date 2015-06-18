@@ -1,0 +1,4 @@
+What went wrong:
+- reading from 2 interfaces at once, okay in simulation but not in hardware
+- batch script horrible syntax -> rewrite in bash
+- 

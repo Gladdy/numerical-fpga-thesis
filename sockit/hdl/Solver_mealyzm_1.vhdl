@@ -7,7 +7,7 @@ use work.all;
 use work.Solver_types.all;
 
 entity Solver_mealyzm_1 is
-  port(eta_i1          : in product6;
+  port(eta_i1          : in product5;
        eta_i2          : in product0;
        -- clock
        system1000      : in std_logic;
@@ -18,25 +18,25 @@ end;
 
 architecture structural of Solver_mealyzm_1 is
   signal y_0       : product1;
-  signal bodyVar_1 : product8;
-  signal x_2       : product6;
-  signal repANF_3  : product6;
-  signal x_4       : product6;
-  signal tmp_5     : product6;
+  signal bodyVar_1 : product6;
+  signal x_2       : product5;
+  signal repANF_3  : product5;
+  signal x_4       : product5;
+  signal tmp_5     : product5;
 begin
   bodyVar_o <= y_0;
   
-  y_0 <= bodyVar_1.product8_sel1;
+  y_0 <= bodyVar_1.product6_sel1;
   
-  Solver_forwardLEDS_2_bodyVar_1 : entity Solver_forwardLEDS_2
+  Solver_solveODE_2_bodyVar_1 : entity Solver_solveODE_2
     port map
-      (bodyVar_o => bodyVar_1
-      ,ds2_i1    => x_2
-      ,input_i2  => eta_i2);
+      (topLet_o => bodyVar_1
+      ,ds2_i1   => x_2
+      ,input_i2 => eta_i2);
   
   register_Solver_mealyzm_1_n_6 : block
-    signal n_7 : product6;
-    signal n_8 : product6;
+    signal n_7 : product5;
+    signal n_8 : product5;
   begin
     n_7 <= eta_i1;
   
@@ -56,5 +56,5 @@ begin
   
   repANF_3 <= x_4;
   
-  x_4 <= bodyVar_1.product8_sel0;
+  x_4 <= bodyVar_1.product6_sel0;
 end;

@@ -29,13 +29,12 @@ module SolverTypes where
   --
   --  VARIABLES
   --
-  data ODEState = ODEState { xs :: ValueVector 
-                            , t :: Data
+  data ODEState = ODEState { valueVector :: ValueVector 
+                            , time :: Data
                             } deriving(Show)
   
   data SystemState = SystemState { odestate :: ODEState
-                      , count :: UInt
-                      , substep :: UInt
+                      , step :: UInt
                       } deriving(Show)
 
   --
@@ -43,7 +42,7 @@ module SolverTypes where
   --
   data SystemConstants = SystemConstants { maxtime :: Data
                         , timestep :: Data
-                        , outputstep :: UInt
+                        , maxstep :: UInt
                         , userconstants :: ConstantVector
                       } deriving (Show)
 
