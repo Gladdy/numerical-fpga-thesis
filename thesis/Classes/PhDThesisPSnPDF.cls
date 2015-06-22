@@ -1024,12 +1024,17 @@ wish to left align your text}
 % "Acknowledgements" label at the top of the page.
 
 \newenvironment{acknowledgements}{
-\cleardoublepage
+
 \setsinglecolumn
-\chapter*{\centering \Large Acknowledgements}
+\section*{\Large Acknowledgements}
 \thispagestyle{empty}
 }
 
+\newenvironment{acronyms}{
+\setsinglecolumn
+\section*{\Large Acronyms}
+\thispagestyle{empty}
+}
 
 
 % ******************************* Nomenclature *********************************
