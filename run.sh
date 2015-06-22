@@ -1,13 +1,10 @@
 #!/bin/bash -e
-
 clear
 
-#HOSTNAME=192.168.2.112
 HOSTNAME=84.85.97.221
 PORT=10022
 
-ROOTPW=Password123
-
+start_time=`date +%s`
 
 #
 #  CLaSH
@@ -96,3 +93,6 @@ if [[ $1 == run || $1 == all ]]; then
   du -h verification/output.txt
   tail verification/output.txt
 fi
+
+echo ""
+echo "Total execution time: $(expr `date +%s` - $start_time)s"

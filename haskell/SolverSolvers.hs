@@ -6,7 +6,7 @@ module SolverSolvers where
 
   -- SOLVERS
   -- EULER
-  euler :: SolveMethod
+  euler :: Scheme
   euler time equation initState   = ODEState newX newT
     where
       newX      = zipWith (+) (xs initState) dX
@@ -16,7 +16,7 @@ module SolverSolvers where
 
 
   -- RUNGE KUTTA 4th ORDER
-  rk4 :: SolveMethod
+  rk4 :: Scheme
   rk4 time equation initState = ODEState newX newT
     where
       newX = zipWith (+) (xs initState) dX

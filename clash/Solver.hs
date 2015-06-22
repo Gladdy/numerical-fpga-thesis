@@ -98,8 +98,8 @@ module Solver where
                                   | otherwise                           = ( systemState, oul, block)
                                   where
                                     s_odestate_in'  = s_odestate {valueVector = replace i_ia (unpack i_i :: Data) xs}
-                                    s_odestate_up   = euler systemConstants matrix3d s_odestate
-                                    s_odestate_up'  = s_odestate_up{valueVector = replace 15 (time s_odestate_up) (valueVector s_odestate_up)}
+                                    s_odestate_up   = rk4 systemConstants matrix2d s_odestate
+                                    s_odestate_up'  = s_odestate_up{valueVector = replace 8 (time s_odestate_up) (valueVector s_odestate_up)}
                                     s_step'         = s_step + 1
 
       systemConstants'  --Enter the constants into the ConstantVector

@@ -9,43 +9,44 @@ module SolverSchemes where
       --Unpack the needed values
       c_user = userconstants constants
       c_maxtime = maxtime constants
-      c_timestep = timestep constants
-      
+
+      h = timestep constants
       t = time state
       xs = valueVector state
 
       --Apply Euler's integration scheme
-      dxs = equation (state, c_user)
-      xs' = if t < c_maxtime  then zipWith (+) xs $ map (*c_timestep) dxs
-                              else xs -- already at maximum time
-      t' = t + c_timestep
+      eulerxs = zipWith (+) xs $ map (*h) (equation (state, c_user))
+      
+      --Check the time constraints
+      (xs',t') = if t < c_maxtime then (eulerxs, t + h)
+                                  else (xs,t) -- already at maximum time
 
-      state' = state {valueVector = xs', time = t'}
+      state' = ODEState {valueVector = xs', time = t'}
 
-  {- 
   rk4 :: Scheme
   rk4 constants equation state = state'
     where
       --Unpack the needed values
       c_user = userconstants constants
       c_maxtime = maxtime constants
-      c_timestep = timestep constants
-      s_time = t initState
-      xs = xs initState
 
+      h = timestep constants
+      t = time state
+      xs = valueVector state
 
+      h2 = 0.5*h
+      h6 = 0.166666666666666666666666666666666*h
 
-      xs' = zipWith (+) xs $ map (c_timestep/6*) 
-      k1 = 
-      k2 = 
-      k3 = 
-      k4 =
-      --apply the ODE to get dx
-      d_xs = equation (initState, c_user)
+      --Apply the RK4 method
+      rkxs = zipWith (+) xs $ map (h6*) (zipWith (+) k1 $ zipWith (+) k4 $ map (*2) $ zipWith (+) k3 k4)
+      k1 = equation (state, c_user)
+      k2 = equation (ODEState { time = t + h2,  valueVector = zipWith (+) xs $ map (h2*) k1} ,c_user)
+      k3 = equation (ODEState { time = t + h2,  valueVector = zipWith (+) xs $ map (h2*) k2} ,c_user)
+      k4 = equation (ODEState { time = t + h,   valueVector = zipWith (+) xs $ map (h*) k3} ,c_user)
       
-      --Apply Euler's integration scheme whenever the max time has not yet been reached
-      xs' = if s_time < c_maxtime  then zipWith (+) xs $ map (*c_timestep) d_xs 
-                                            else xs -- already at c_maxtime 
+
+      --Check the time constraints
+      (xs',t') = if t < c_maxtime then (rkxs, t + h)
+                                  else (xs, t)
       
-      --Compute the new time and insert the time value into the xs
-      finalState = initState {xs = xs', t = s_time + c_timestep}-}
+      state' = ODEState {valueVector = xs', time = t'}

@@ -248,25 +248,30 @@ set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_
 
 
 
+
+
+
+
 set_global_assignment -name VHDL_FILE hdl/compute_main.vhdl
 set_global_assignment -name VHDL_FILE hdl/io_led.vhd
 set_global_assignment -name VHDL_FILE hdl/sockit.vhd
-set_global_assignment -name VHDL_FILE hdl/Solver_Component_10.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_Component_16.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_euler_3.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_matrix3d_11.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_a_17.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_Component_15.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_matrix2d_10.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_mealyzm_1.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_13.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_7.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_satMult_12.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_satMult_6.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_satPlus_4.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_12.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_5.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_rk4_3.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_satMult_11.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_satMult_16.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_satMult_4.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_satPlus_9.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_solveODE_2.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_specF_5.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_testbench.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_topEntity_0.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_types.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_zdfBitsSigned_zdcshiftR_14.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_zdfBitsSigned_zdcshiftR_8.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_zdfOrdSigned3_15.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_zdfOrdSigned3_9.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_z31U_8.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfBitsSigned_zdcshiftR_13.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfBitsSigned_zdcshiftR1_6.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfFractionalFixed_zdcfromRational21_7.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_zdfOrdSigned3_14.vhdl

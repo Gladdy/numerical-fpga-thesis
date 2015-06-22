@@ -4,7 +4,7 @@ module SolverTypes where
 
   type Data = SFixed 8 24
   type UInt = Unsigned 32
-  type ValueVector = Vec 16 Data
+  type ValueVector = Vec 9 Data
   type ConstantVector = ValueVector
 
   data InputSignals = InputSignals { keys_input :: BitVector 4   -- keys_input

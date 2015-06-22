@@ -15,6 +15,6 @@ module SolverTypes where
 
   type SubFunction = (NumRepr -> NumRepr)
 
-  type Equation     = ODEState -> D_ODEState
-  type SolveMethod  = TimeSettings -> Equation -> ODEState -> ODEState
-  type Solver       = SolveMethod -> TimeSettings -> Equation -> ODEState  -> [ODEState]
+  type Equation = ODEState -> D_ODEState
+  type Scheme   = TimeSettings -> Equation -> ODEState -> ODEState
+  type Solver   = Scheme -> TimeSettings -> Equation -> ODEState  -> [ODEState]

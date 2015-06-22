@@ -1,28 +1,54 @@
 \chapter{Introduction} 
 
-\section{Solver theory -- TODO}
+\section{Project goals}
+From the start, this project has had two main goals: firstly, obtaining information on the feasibility and the advantages and disadvantages of performing numerical mathematics directly on (programmable) hardware, the FPGA. Secondly: figuring out whether higher-order functions are of much use for numerical mathematics. As per usual, having main goals spawns off several minor goals which support the main parts. Both supporting goals are about simplifying the process of configuring FPGAs: an easy way of setting up projects with complicated IO requirements and furthermore, developing a tool-chain integration which turns the long process of compiling and deploying your FPGA project into the execution of a single command.
 
+Alongside these concrete goals the underlying theme is to do as much work as possible in \clash{}, a language developed by Christiaan Baaij at the CAES group at the University of Twente. Further elaboration on \clash{} can be found in section \ref{s:clash}.
+
+
+\section{FPGAs}
+\subsection{What is an FPGA?}
+
+\nomenclature{FPGA}{Field-Programmable Gate Array}
+An FPGA (Field Programmable Gate Array) is a chip in which you can specify the hardware yourself. In contrast to regular programming in which you generate a long list of instructions which are executed sequentially on a fixed chip configuration, the FPGA allows you to specify exactly which wire (signal) leads where and what operation should be applied to that signal. This approach to programming can have several advantages. The first one arises from the large opportunities for parallelism. Every part of the FPGA can be executing a meaningful computation simultaneously, whereas processors are bound by the amount of physical cores they have in the amount of truly concurrent instruction executions possible. Secondly, a conventional processor only has a fixed instruction set. Using an FPGA you can define your own instructions (subcircuits), again providing a possible improvement in computational speed. When comparing FPGA
+
+\subsection{How does it work and what are common usages?}
+An FPGA is built up from several distinct element types:\begin{enumeratens}
+	\item Logic blocks
+	\item Programmable interconnects
+	\item IO blocks
+\end{enumeratens}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{fpga_fabric}
+	\caption{FPGA fabric.}
+\end{figure}
+
+
+\subsection{System-on-a-chip}
+
+\section{Solver theory}
 \subsubsection{Euler}
 Take derivative, multiply with timestep, add to initial value, repeat until end.
-
-\subsubsection{Runge-Kutta methods}
-Take derivatives at some time points, multiply with proper coefficients, add all to intial value, repeat until end.
-
-\subsubsection{Stability}
-
-\section{What is FP -- TODO}
-Should I add a section on this to make everything understandable to all readers?
+\subsubsection{Runge-Kutta methods (second order)}
+Take derivatives at some time points, multiply with proper coefficients, add all to initial value, repeat until end.
+\subsubsection{Stability of integration schemes}
 
 
-\section{Using Haskell for numerical mathematics}
+\section{Functional programming}
+\subsection{What is functional programming?}
+
+\subsection{Using FP for numerical mathematics}
 Functional languages have several properties which make them suitable for the purpose of solving problems in numerical mathematics. First and foremost, Haskell, being based on $\lambda$-calculus is very close to mathematics. The useful mathematical properties here are \textit{referential transparency}, easy \textit{partial function application} and being a \textit{declarative language}. 
 Referential transparency implies that a variable only has a constant value which is the same everywhere in the program. This prevents that changing a variable might have influence on another computation as a side effect and it corresponds to mathematical notation. For instance, in an imperative programming like C you could write \code{i = i + 1}, which is a mathematical impossibility and therefore not allowed in Haskell. 
 Partial function application is another very useful concept. Often in numerical mathematics, you want to create or process a function. You need a function that has another function as return value. For instance, take a function which requires two arguments. After only applying a single argument, the object returned still needs the second argument in order to compute the final value. This is exactly according to the definition of a function: An object that still needs arguments before being able to return its final value.
-Being a \textit{declarative language} means that you write code that specifies what you want to accomplish, not how to get there. This concept is again borrowed from mathematics. You put in a set of function definitions and Haskell will figure out how to actually compute the value you request according to those definitions. This property of declarativity also has the result that Haskell is a very terse language whilst remaining easy to understand.
+Being a \textit{declarative language} means that you write code that specifies what you want to accomplish, not how to get there. This concept is again borrowed from mathematics. You put in a set of function definitions and Haskell will figure out how to actually compute the value you request according to those definitions. This property of declarativity also has the result that Haskell is a terse language whilst remaining easy to understand.
 Secondly, Haskell has a very strong type system. The type system has three main advantages. It becomes very easy to swap out and replace functions as long as you make sure that the types are the same. The Haskell compiler will start to assert errors immediately whenever you feed it something which does not make sense or could be ambiguous which is very useful when writing programs. By having a look at the types of a Haskell program it becomes very straightforward to see what the program does and how it works, which is very useful when attempting to understand your own or someone else's code.
 Lastly, a property which is often very important for numerical mathematics: Haskell is fast. According to the \textit{Computer Language Benchmarks Game} \cite{Bench}, Haskell is almost on par with Java and Fortran but significantly faster than Python and Matlab (not shown), two languages which are often used for numerical mathematics nowadays. There is still a performance gap of around a factor 3 between Haskell and C (the reference), hence if speed is of the absolute highest concern C is still a valid option.
 
-\section{Numerical solutions of ODEs in Haskell}
+\subsection{Example: Numerical solutions of ODEs in Haskell}
+
 \lstset{style=haskellStyle}
 
 As mentioned before, the types in Haskell reveal lots of information about the structure and functionality of the program. The three main types constituting the numerical solver for ordinary differential equations are listed above.
@@ -71,31 +97,14 @@ The solutions of a wide range of equations, both linear and non-linear, both hom
 
 
 
-\section{Conversion to Mealy Machines / C$\lambda$aSH -- TODO}
-
-Changes to:
-\begin{itemize}
-	\item Equation : numerical types (fixed point) - what operations would be supported in VHDL (hard to do nonlinear operators, sqrt(), sin(), cos(), tan()) - 
-	\item SolutionMethod - becomes transition function of the mealy machine
-	\item Solver - keeping track of the state of the solution - responsible for loading the data from the AXI-bridge to the HPS - responsible for outputting the data to the HPS for storage/processing/streaming
-\end{itemize}
-
-\iffalse
-\begin{equation}
-\frac{\mathrm d \vecb{x}(t)}{\mathrm d t} = f(\vecb{x}) + g(t)
-\end{equation}
-
-\begin{equation}
-\frac{\mathrm d \vecb{x}(t)}{\mathrm d t} = \matr{A} \vec{x} + g(t)
-\end{equation}
-\fi
-
-\section{FPGAs -- TODO}
-\begin{itemize}
-	\item What are FPGAs used for?
-	\item Why should I care about FPGAs
-	\item What is the current workflow for programming FPGAs
-\end{itemize}
 
 
-\section{Data transfer -- TODO}
+
+
+
+\section{Data transfer from and to the FPGA}
+
+\section{\clash{}}
+\label{s:clash}
+\subsection{Designing hardware in a functional way}
+\subsection{Mealy machines}

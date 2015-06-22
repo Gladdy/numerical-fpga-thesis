@@ -11,7 +11,7 @@
 % ******************************* PhD Thesis Template **************************
 % Please have a look at the README.md file for info on how to use the template
 
-\documentclass[a4paper,12pt,times,numbered,print,index,chapter]{Classes/PhDThesisPSnPDF}
+\documentclass[a4paper,12pt,times,numbered,print,index]{Classes/PhDThesisPSnPDF}
 
 % ******************************************************************************
 % ******************************* Class Options ********************************
@@ -88,7 +88,7 @@
 
 % ********************************** Preamble **********************************
 % Preamble: Contains packages and user-defined commands and settings
-\input{Preamble/preamble}
+\input{Intro/preamble}
 
 % ************************ Thesis Information & Meta-data **********************
 % Thesis title and author information, refernce file for biblatex
@@ -100,7 +100,7 @@
 % the document class.
 \ifdefineAbstract
  \pagestyle{empty}
- \includeonly{Declaration/declaration, Abstract/abstract}
+ \includeonly{Intro/abstract}
 \fi
 
 % ***************************** Chapter Mode ***********************************
@@ -109,10 +109,12 @@
 % Useful option to review a particular chapter or to send it to supervisior.
 % To use choose `chapter' option in the document class
 \ifdefineChapter
- \includeonly{P1-Introduction/introduction}
+	\includeonly{P1-Introduction/introduction,P2-Results/results,P3-Conclusion/conclusion,P4-Discussion/discussion}
 \fi
 
 % ******************************** Front Matter ********************************
+
+
 \begin{document}
 
 \frontmatter
@@ -121,24 +123,29 @@
   \maketitle
 \end{titlepage}
 
-\include{Acknowledgement/acknowledgement}
-\include{Abstract/abstract}
+
+
+
 
 % *********************** Adding TOC and List of Figures ***********************
 
+\include{Intro/abstract}
+\include{Intro/acknowledgement}
 \tableofcontents
-\listoffigures
-\listoftables
+\include{Intro/acronyms}
+%\listoffigures
+%\listoftables
 
 \printnomencl
 
 % ******************************** Main Matter *********************************
 \mainmatter
 
-
 \include{P1-Introduction/introduction}
 \include{P2-Results/results}
 \include{P3-Conclusion/conclusion}
+\include{P4-Discussion/discussion}
+
 
 % ********************************** Back Matter *******************************
 % Backmatter should be commented out, if you are using appendices after References
@@ -170,8 +177,10 @@
 
 \begin{appendices} % Using appendices environment for more functunality
 
-\include{Appendix1/appendix1}
-\include{Appendix2/appendix2}
+\include{Appendix/haskell_ode_source}
+\include{Appendix/toolchain_integration}
+\include{Appendix/toolchain_deployment}
+
 
 \end{appendices}
 
