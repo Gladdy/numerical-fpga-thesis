@@ -23,7 +23,7 @@ An FPGA is built up from several distinct element types, depicted in figure \ref
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.45\textwidth]{fpga_fabric}
+	\includegraphics[width=0.5\textwidth]{fpga_fabric}
 	\caption{FPGA fabric.}
 	\label{f:fpga_fabric}
 \end{figure}
@@ -78,8 +78,24 @@ Note that the maximum error of RK2 is proportional to the square of the time ste
 
 
 \section{Functional programming}
+\lstset{style=haskellStyle}
 \subsection{What is functional programming?}
-The three most important concepts are:
+As the name suggests, the functional programming paradigm uses functions. These functions are used to build up the program and create structure. In contrast to the imperative programming paradigm, there is no assignment - there are only expressions. It is by evaluation of these expressions that you execute your program. These expressions consist of variables, constants and operations. However, the name variable may be ill-chosen, as assignment does not exist and therefore it is impossible for a variable to vary. Once you have bound a value to a certain variable, this value may not change and the value should be the same at every point where this variable is referenced (a concept called referential transparency). 
+
+The exclusion of assignment from functional languages has several consequences. Firstly, it becomes impossible to indicate structure of a program using loops. The alternative is the use of recursive functions and higher order functions. 
+\begin{lstlisting}
+fac :: Num a => a -> a
+fac 0 = 1
+fac n = n * fac(n-1)
+\end{lstlisting}
+
+\begin{lstlisting}
+fac :: Num a => a -> a
+fac 0 = 1
+fac n = n * fac(n-1)
+\end{lstlisting}
+
+
 \subsubsection{Expressions}
 \subsubsection{Functions}
 \subsubsection{Referential transparency}
@@ -95,8 +111,6 @@ Secondly, Haskell has a very strong type system. The type system has three main 
 Lastly, a property which is often very important for numerical mathematics: Haskell is fast. According to the \textit{Computer Language Benchmarks Game} \cite{Bench}, Haskell is almost on par with Java and Fortran but significantly faster than Python and Matlab (not shown), two languages which are often used for numerical mathematics nowadays. There is still a performance gap of around a factor 3 between Haskell and C (the reference), hence if speed is of the absolute highest concern C is still a valid option.
 
 \subsection{Example: Numerical solutions of ODEs in Haskell}
-
-\lstset{style=haskellStyle}
 
 As mentioned before, the types in Haskell reveal lots of information about the structure and functionality of the program. The three main types constituting the numerical solver for ordinary differential equations are listed above.
 
