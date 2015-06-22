@@ -82,26 +82,33 @@ Note that the maximum error of RK2 is proportional to the square of the time ste
 \subsection{What is functional programming?}
 As the name suggests, the functional programming paradigm uses functions. These functions are used to build up the program and create structure. In contrast to the imperative programming paradigm, there is no assignment - there are only expressions. It is by evaluation of these expressions that you execute your program. These expressions consist of variables, constants and operations. However, the name variable may be ill-chosen, as assignment does not exist and therefore it is impossible for a variable to vary. Once you have bound a value to a certain variable, this value may not change and the value should be the same at every point where this variable is referenced (a concept called referential transparency). 
 
-The exclusion of assignment from functional languages has several consequences. Firstly, it becomes impossible to indicate structure of a program using loops. The alternative is the use of recursive functions and higher order functions. 
-\begin{lstlisting}
+The exclusion of assignment from functional languages has several consequences. It becomes impossible to program using loops. The alternative is the use of recursive (listing \ref{lst:ro_function}) and higher-order functions (functions that have other functions as parameters or output). Especially higher-order functions have the side effect that they add clarity about the way the program functions (listing \ref{lst:ho_functions}). For instance, a \code{map} applies the same function to every element in a list, resulting in a new list. A \code{fold} would start at an initial value and element-by-element combine the list into a single value using a specified function, eg. addition. Both these operations would be implemented using a for-loop in an imperative language, but their goal is completely different. The availability of higher-order functions allows for more clarity in code by being able to specify exactly what kind of operation you want to perform. Another effect of the lack of assignment is the lack of side effects in functional programming. As there is no way to modify a variable, there is also no way of accidentally modifying a variable such that you enter an invalid state and other parts of the program stop functioning correctly.
+
+\begin{lstlisting}[caption=Recursive functions, label=lst:rec_function]
 fac :: Num a => a -> a
 fac 0 = 1
 fac n = n * fac(n-1)
 \end{lstlisting}
 
-\begin{lstlisting}
-fac :: Num a => a -> a
-fac 0 = 1
-fac n = n * fac(n-1)
+\begin{lstlisting}[caption=Higher order functions, label=lst:ho_functions]
+timesTwo :: Num a => [a] -> [a]
+timesTwo xs = map (*2) xs
+
+sum :: Num a => [a] -> a
+sum xs = foldl (+) 0 xs
 \end{lstlisting}
 
+The concept of higher-order functions also serves as an introduction to another very important concept in Haskell: the type system. Everything has a fixed type and often times, when only looking at the type definition you can already guess what the function is going to do. Consider the type signature of \code{map} in listing \ref{lst:haskell_types}. It requires a \code{(a->b)}, a function to turn something of type \code{a} into something of type \code{b}. Furthermore, it needs a list of \code{a}, \code{[a]} (indicated by the square brackets) and it returns something of type 'list of b' (\code{[b]}). The type signature of the \code{foldl} is slightly harder to understand, but it requires a function which needs an \code{a} and a \code{b} to produce a new \code{b}. Furthermore, an initial value (\code{a}) and a list of b to operate on (\code{[b]}) in order to return the final result, which has again type \code{a}. Function type signatures can be daunting to understand at first, but not all of them are as complicated as the \code{foldl}. For instance, a function which can be used to represent a differential equation, which needs a state of the system (the \code{ODEState}) in order to compute the derivative at that point (the \code{D_ODEState}). As a last example, the type signature of \code{Solver}: it requires some integration scheme, settings for the time (initial time and a time step), it requires an equation and an initial state of the system. All of this combined results in a list of states: the numerical approximation to the solution of the ODE. Note that in this example, the integration scheme \code{Scheme} itself is a function, for which understanding the type signature should pose no problem by now.
 
-\subsubsection{Expressions}
-\subsubsection{Functions}
-\subsubsection{Referential transparency}
-\subsubsection{Referential transparency}
+\begin{lstlisting}[caption=Type signatures, label=lst:haskell_types]
+map :: (a->b) -> [a] -> [b]
+foldl :: (a->b->a) -> a -> [b] -> a
 
-\cite{FPIntro}
+type Equation = ODEState -> D_ODEState
+type Scheme   = TimeSettings -> Equation -> ODEState -> ODEState
+type Solver   = Scheme -> TimeSettings -> Equation -> ODEState  -> [ODEState]
+\end{lstlisting}
+
 \subsection{Using FP for numerical mathematics}
 Functional languages have several properties which make them suitable for the purpose of solving problems in numerical mathematics. First and foremost, Haskell, being based on $\lambda$-calculus is very close to mathematics. The useful mathematical properties here are \textit{referential transparency}, easy \textit{partial function application} and being a \textit{declarative language}. 
 Referential transparency implies that a variable only has a constant value which is the same everywhere in the program. This prevents that changing a variable might have influence on another computation as a side effect and it corresponds to mathematical notation. For instance, in an imperative programming like C you could write \code{i = i + 1}, which is a mathematical impossibility and therefore not allowed in Haskell. 
