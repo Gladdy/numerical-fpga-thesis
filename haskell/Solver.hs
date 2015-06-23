@@ -25,13 +25,7 @@ module Solver where
   solution_homo = sol_start (eq_linear_homo_const sinematrix) initODEState2
   solution_hetr = sol_start (eq_linear_hetr_const sinematrix funcvec) initODEState2
 
-<<<<<<< HEAD
-  
-  testPlot = plotSolutions [s1,s2,s3,s4,s5] "Some graphs!"
-=======
-
   testPlot = plotSolutions [s1,s2,s3,s4,s5] "Haskell solver examples"
->>>>>>> origin/master
     where
       s1 = (solution_expo, "Exponential")
       s2 = (solution_sine, "Sine")
