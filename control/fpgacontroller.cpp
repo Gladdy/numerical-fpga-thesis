@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <fcntl.h>
 
+#include <limits>
 
 FPGAController::FPGAController() {
   fd = open("/dev/mem", O_RDWR);
@@ -34,31 +35,36 @@ FPGAController::~FPGAController() {
 }
 
 void FPGAController::printOutput(uint amount) {
-  for(uint u = 0; u<amount; u++) {
-    double u2 = output.getFP(u);
+
+  //Prefetch the value for the fetching pipeline
+  double d = output.getFP(15); if(d) {}
+  //printf("%lf\t",output.getFP(15));
+
+  //Fetch the standard values with an additional one due to the pipeline
+  for(uint u = 0; u<amount + 1; u++) {
+    //double d = output.getFP(u);
     printf("%lf\t",output.getFP(u));
   }
   printf("\n");
 }
 
-void FPGAController::iterate(uint amount, uint memsize, bool resetState) {
+void FPGAController::iterate(uint amount, uint memsize) {
+
+  const uint maxIterations = 100;
+  uint32_t fpgaValue;
 
   for(uint u = 0; u<amount; u++) {
     //Trigger the computation
     control.write(0,1);
 
-    //possibly sleep
-    usleep(100);
+    //wait until the FPGA blocks
+    uint i = 0;
+    do {
+      fpgaValue = output.get(0);
+      //printf("fpgavalue: %u\n",fpgaValue);
+      i++;
+    }while(fpgaValue != std::numeric_limits<uint32_t>::max() && i < maxIterations);
 
-    double t = output.getFP(15);
-
-    if(resetState && t > 125) {
-      control.write(0,2);
-      input.writeFP(0,50);
-      input.writeFP(1,0);
-    }
-
-    printf("%u:\t t=%lf\t",u,t);
     printOutput(memsize);
   }
 }

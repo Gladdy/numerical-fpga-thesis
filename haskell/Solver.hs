@@ -12,12 +12,10 @@ module Solver where
   ---- CALLERS
   -- general form, stop after a certain time
   solve :: Solver
-  solve solvemethod time equation initState
-    | end = []
-    | otherwise = initState : solve solvemethod time equation newState
+  solve solvemethod time equation initState = states
     where
-      newState = solvemethod time equation initState
-      end = (t initState) > (tMax time)
+      states = take steps $ iterate (solvemethod time equation) initState
+      steps = ceiling $ (tMax time - t initState)/dt time
 
   sol_start = solve rk4 initTimeSettings
 
@@ -28,7 +26,7 @@ module Solver where
   solution_hetr = sol_start (eq_linear_hetr_const sinematrix funcvec) initODEState2
 
 
-  testPlot = plotSolutions [s1,s2,s3,s4,s5] "Some graphs!"
+  testPlot = plotSolutions [s1,s2,s3,s4,s5] "Haskell solver examples"
     where
       s1 = (solution_expo, "Exponential")
       s2 = (solution_sine, "Sine")

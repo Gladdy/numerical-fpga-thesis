@@ -2,4 +2,4 @@
 make clean
 clear
 make
-scp fpgacontroller root@192.168.2.112:~
+scp -P 10022 fpgacontroller root@84.85.97.221:~

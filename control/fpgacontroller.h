@@ -4,9 +4,6 @@
 #include "channel.h"
 
 
-#define END_RESET_STATE true
-#define END_KEEP_STATE false
-
 class FPGAController {
 public:
   FPGAController();
@@ -16,14 +13,8 @@ public:
   Channel input;
   Channel output;
 
-  /*
-  void printMemorycontent();
-  void loadValues(std::vector<uint32_t>);
-  void loadConstants(std::vector<uint32_t>);
-  */
-
   void printOutput(uint);
-  void iterate(uint,uint,bool);
+  void iterate(uint,uint);
 
 private:
 
