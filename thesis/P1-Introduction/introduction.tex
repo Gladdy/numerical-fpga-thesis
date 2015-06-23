@@ -59,7 +59,7 @@ The easiest numerical solver, without doubt, is Euler's method (equation \ref{eq
 \text{maximum error}_{\text{euler}} \leq \frac{M h}{L} (e^{L(b-a)} -1)
 \end{equation}
 
-\subsubsection{Runge-Kutta methods}
+\subsubsection{Runge-Kutta}
 The Runge-Kutta methods are a family of solvers, of which the 4th order version is the most well-known (RK4). The solver used here will be a second-order Runge-Kutta method, also known as the \emph{improved Euler's method} \cite{DE}. This second order method requires the computation of two slopes (equation \ref{eq:rk2}), in contrast to the single one required for Euler's method.
 
 \begin{align}
@@ -118,20 +118,19 @@ Secondly, Haskell has a very strong type system. The type system has three main 
 Lastly, a property which is often very important for numerical mathematics: Haskell is fast. According to the \textit{Computer Language Benchmarks Game} \cite{Bench}, Haskell is almost on par with Java and Fortran but significantly faster than Python and Matlab (not shown), two languages which are often used for numerical mathematics nowadays. There is still a performance gap of around a factor 3 between Haskell and C (the reference), hence if speed is of the absolute highest concern C is still a valid option.
 
 \subsection{Example: Numerical solutions of ODEs in Haskell}
+As mentioned before, the types in Haskell reveal lots of information about the structure and functionality of the program. The three main types constituting the numerical solver for ordinary differential equations are listed in listing \ref{lst:solvertypes}.
 
-As mentioned before, the types in Haskell reveal lots of information about the structure and functionality of the program. The three main types constituting the numerical solver for ordinary differential equations are listed above.
-
-\lstinputlisting[caption=Main types for the ODE solver, label=solvertypes, firstline=18]{../haskell/SolverTypes.hs}
+\lstinputlisting[caption=Main types for the ODE solver, label=lst:solvertypes, firstline=18]{../haskell/SolverTypes.hs}
 
 \subsubsection{Equation}
-In essence, a differential equation is a mapping (function) from a certain state of the system to the change of this system. This is also what the type signature of \code{Equation} signifies, a mapping from an \code{ODEState} to a \code{D_ODEState}. This generic set up allows the specification of any ODE for solving. The implementation in pure Haskell of a simple ODE is given in listing \ref{lst:eq_exponential}, which corresponds to the equation $x' = -x$. However, this representation is not very elegant and a lot of the code is performing unboxing of the types. Using property that this equation is linear, it is possible to use an utility method which takes as input a matrix and returns the Haskell differential equation function belonging to that matrix. The same can be done for heterogeneous linear systems using a different utility function, which does not only takes a matrix as input but also a list of functions representing the heterogeneous part of the equation. The example code for this can be seen in appendix \ref{app:haskellsolver}.
+In essence, a differential equation is a mapping (function) from a certain state of the system to the change of this system. This is also what the type signature of \code{Equation} signifies, a mapping from an \code{ODEState} to a \code{D_ODEState}, the change in state or the derivative. This generic set up allows the specification of any ODE for solving. The implementation in pure Haskell of a simple ODE is given in listing \ref{lst:eq_exponential}, which corresponds to the equation $x' = -x$. However, this representation is not very elegant and a lot of the code is performing unboxing of the types. Using property that this equation is linear, it is possible to use an utility method which takes as input a matrix and returns the Haskell differential equation function belonging to that matrix. The same can be done for heterogeneous linear systems using a different utility function, which does not only takes a matrix as input but also a list of functions representing the heterogeneous part of the equation. The example code for this can be seen in appendix \ref{app:haskellsolver}.
 
 \lstinputlisting[caption=Example equation for exponential decay, label=lst:eq_exponential, firstline=11,lastline=14]{../haskell/SolverEquations.hs}
 
 \subsubsection{SolveMethod}
 The \code{SolveMethod} performs the actual computations on what the next value of the solution should be: the integration scheme. In order to obtain this next state, the scheme needs three input values: It needs information on the timing constraints of the solution, in this case it needs the time step. Furthermore, it needs the equation itself and it requires the state of the system at $t_{n}$ in order to be able to determine the state of the system at $t_{n+1} = t_{n} + \Delta t$.
 
-The most straightforward integration scheme is called forward Euler, given in equation \ref{eq:euler}. Listing \ref{lst:euler} depicts the translation of the mathematical expression \ref{eq:euler} to Haskell. Even though some list operations have been inserted (\code{zipWith} and \code{map}), the structure is still recognizable. It computes the change in state, multiplies this with the time step obtained in line 6 and adds the initial state in line 4. Lastly, the integration scheme returns the new state of the equation, consisting of a list of x-values and a corresponding time value. Implementations of different solvers (eg. 4th order Runge-Kutta) can be found in appendix \ref{app:haskellsolver}.
+The most straightforward integration scheme is called forward Euler, given in equation \ref{eq:euler}. Listing \ref{lst:euler} depicts the translation of the mathematical expression \ref{eq:euler} to Haskell. Even though some list operations have been inserted (\code{zipWith} and \code{map}), the structure is still recognizable. It computes the change in state, multiplies this with the time step obtained in line 6 and adds the initial state in line 4. Lastly, the integration scheme returns the new state of the equation, consisting of a list of x-values and a corresponding time value. Implementations of different solvers (i.e. 4th order Runge-Kutta) can be found in appendix \ref{app:haskellsolver}.
 
 \lstinputlisting[caption=Example code for the Euler integration scheme, label=lst:forward_euler, firstline=9,lastline=15]{../haskell/SolverSolvers.hs}
 
@@ -142,6 +141,17 @@ The solutions of a wide range of equations, both linear and non-linear, both hom
 
 \lstinputlisting[caption=The main controlling function, label=lst:solver_frame, firstline=14,lastline=20]{../haskell/Solver.hs}
 
+\subsubsection{Results}
+
+
+\begin{align}
+	\text{Exponential}\sep{}			x(t)' &= -x(t)  \nonumber \\
+	\text{Simple harmonic}\sep{}		x(t)'' &= -x(t) \nonumber \\
+	\text{Cosine hyperbolic}\sep{}		x(t)' &= \frac{\sqrt{x(t)^{2} - a^{2}}}{a} \\
+	\text{Simple harmonic}\sep{}		\vecb{x}(t)' &= \begin{bmatrix} 0 & 1 \\ -1 & 0 \\ \end{bmatrix}\vecb{x}(t) \nonumber \\
+	\text{Simple forced harmonic}\sep{}	\vecb{x}(t)' &= \begin{bmatrix} 0 & 1 \\ -1 & 0 \\ \end{bmatrix}\vecb{x}(t) + \begin{bmatrix} \sin{(t)} \\ e^{-t} \\ \end{bmatrix} \nonumber
+\end{align}
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{../haskell/output.pdf}
@@ -149,13 +159,6 @@ The solutions of a wide range of equations, both linear and non-linear, both hom
 	\label{f:solver_example}
 \end{figure}
 
-\begin{align}
-\text{Exponential}\sep{}			x(t)' &= -x(t)  \\
-\text{Simple harmonic}\sep{}		x(t)'' &= -x(t) \\
-\text{Cosine hyperbolic}\sep{}		x(t)' &= \frac{\sqrt{x(t)^{2} - a^{2}}}{a} \\
-\text{Simple harmonic}\sep{}		\vecb{x}(t)' &= \begin{bmatrix} 0 & 1 \\ -1 & 0 \\ \end{bmatrix}\vecb{x}(t) \\
-\text{Simple forced harmonic}\sep{}	\vecb{x}(t)' &= \begin{bmatrix} 0 & 1 \\ -1 & 0 \\ \end{bmatrix}\vecb{x}(t) + \begin{bmatrix} \sin{(t)} \\ e^{-t} \\ \end{bmatrix}
-\end{align}
 
 
 

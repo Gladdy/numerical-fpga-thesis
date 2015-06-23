@@ -27,7 +27,7 @@ module Solver where
   solution_homo = sol_start (eq_linear_homo_const sinematrix) initODEState2
   solution_hetr = sol_start (eq_linear_hetr_const sinematrix funcvec) initODEState2
 
-
+  
   testPlot = plotSolutions [s1,s2,s3,s4,s5] "Some graphs!"
     where
       s1 = (solution_expo, "Exponential")
@@ -35,3 +35,4 @@ module Solver where
       s3 = (solution_cosh, "Cosh")
       s4 = (solution_homo, "Matrix form - homogenous")
       s5 = (solution_hetr, "Matrix form - heterogenous")
+  
