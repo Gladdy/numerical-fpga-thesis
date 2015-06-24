@@ -14,7 +14,7 @@ start_time=`date +%s`
 if [[ $1 == clash || $1 == all ]]; then
   cd clash
   rm -rf vhdl 
-  clash --vhdl Solver.hs || goto :error
+  clash --vhdl Solver.hs
   cd ..
 fi
 
@@ -32,7 +32,7 @@ if [[ $1 == synthesis || $1 == all ]]; then
   cd sockit
   rm -rf hdl/*.vhdl # clear all clash-generated .vhdl files (the framework is called .hdl) 
   cp ../clash/vhdl/Solver/* hdl
-  sed -i {s/"signal system1000"/"--signal system1000"/g} hdl/compute_main.vhdl
+  # sed -i {s/"signal system1000"/"--signal system1000"/g} hdl/compute_main.vhdl
   
   #fix up the qsf with all clash-generated files
   #remove all vhdl files from the qsf
@@ -91,7 +91,7 @@ if [[ $1 == run || $1 == all ]]; then
 
   scp -P $PORT root@$HOSTNAME:output.txt verification/output.txt
   du -h verification/output.txt
-  cat verification/output.txt
+  tail verification/output.txt
 fi
 
 echo ""

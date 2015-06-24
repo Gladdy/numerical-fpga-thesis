@@ -2,11 +2,11 @@
 [2 of 4] Compiling SolverSchemes    ( SolverSchemes.hs, SolverSchemes.o )
 [3 of 4] Compiling SolverEquations  ( SolverEquations.hs, SolverEquations.o )
 [4 of 4] Compiling Solver           ( Solver.hs, Solver.o )
-Loading dependencies took 0.7640435s
-Normalisation took 67.1118682s
-Netlist generation took 1.8681036s
-Testbench generation took 0.0030002s
-Total compilation took 70.0980368s
+Loading dependencies took 0.7330414s
+Normalisation took 58.9833979s
+Netlist generation took 1.6650961s
+Testbench generation took 0.0019988s
+Total compilation took 61.7065536s
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Shell
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
@@ -24,21 +24,42 @@ Info: Running Quartus II 64-Bit Shell
     Info: devices manufactured by Altera and sold by Altera or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Wed Jun 24 02:36:52 2015
+    Info: Processing started: Wed Jun 24 12:59:23 2015
 Info: Command: quartus_sh --flow compile sockit
 Info: Quartus(args): compile sockit
 Info: Project Name = E:/Dropbox/numerical-fpga-thesis/sockit/sockit
 Info: Revision Name = sockit
 Info (293032): Detected changes in source files.
-    Info (293027): Source file: hdl/sockit.vhd.bak has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/sockit.sdc has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_matrix3d_10.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_rk4_3.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_16.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satPlus_9.vhdl has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_solveODE_2.vhdl has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_types.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_rk2_3.vhdl has changed.
 Info (293032): Detected changes in source files.
-    Info (293027): Source file: hdl/sockit.vhd.bak has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/sockit.sdc has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_matrix3d_10.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_rk4_3.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_16.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satPlus_9.vhdl has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_solveODE_2.vhdl has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_types.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_rk2_3.vhdl has changed.
 Info (293032): Detected changes in source files.
-    Info (293027): Source file: hdl/sockit.vhd.bak has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/sockit.sdc has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_matrix3d_10.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_rk4_3.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_16.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satPlus_9.vhdl has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_solveODE_2.vhdl has changed.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_types.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_rk2_3.vhdl has changed.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Wed Jun 24 02:36:59 2015
+    Info: Processing started: Wed Jun 24 12:59:30 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sockit -c sockit
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file memory_io/synthesis/memory_io.vhd
@@ -175,9 +196,6 @@ Info (12021): Found 2 design units, including 1 entities, in source file hdl/io_
 Info (12021): Found 2 design units, including 1 entities, in source file hdl/sockit.vhd
     Info (12022): Found design unit 1: sockit-behaviour
     Info (12023): Found entity 1: sockit
-Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_a_17.vhdl
-    Info (12022): Found design unit 1: Solver_a_17-structural
-    Info (12023): Found entity 1: Solver_a_17
 Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_component_15.vhdl
     Info (12022): Found design unit 1: Solver_Component_15-structural
     Info (12023): Found entity 1: Solver_Component_15
@@ -256,7 +274,6 @@ Info (12128): Elaborating entity "Solver_zdfBitsSigned_zdcshiftR_13" for hierarc
 Info (12128): Elaborating entity "Solver_zdfOrdSigned3_14" for hierarchy "compute_main:C2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_rk4_3:Solver_rk4_3_subjLet_116|Solver_matrix3d_10:Solver_matrix3d_10_repANF_4|Solver_satMult_11:Solver_satMult_11_repANF_3|Solver_resizeFzm_12:Solver_resizeFzm_12_topLet_o|Solver_zdfOrdSigned3_14:Solver_zdfOrdSigned3_14_subjLet_1"
 Info (12128): Elaborating entity "Solver_Component_15" for hierarchy "compute_main:C2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_rk4_3:Solver_rk4_3_subjLet_116|Solver_matrix3d_10:Solver_matrix3d_10_repANF_4|Solver_satMult_11:Solver_satMult_11_repANF_3|Solver_resizeFzm_12:Solver_resizeFzm_12_topLet_o|Solver_Component_15:Solver_Component_15_caseApp_5"
 Info (12128): Elaborating entity "Solver_satMult_16" for hierarchy "compute_main:C2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_rk4_3:Solver_rk4_3_subjLet_116|Solver_satMult_16:\map_n_102:mapSN_n_105:mapIter_n_106:0:Solver_satMult_16_101"
-Info (12128): Elaborating entity "Solver_a_17" for hierarchy "compute_main:C2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_rk4_3:Solver_rk4_3_subjLet_116|Solver_satMult_16:\map_n_102:mapSN_n_105:mapIter_n_106:0:Solver_satMult_16_101|Solver_a_17:Solver_a_17_repANF_0"
 Info (12128): Elaborating entity "memory_io" for hierarchy "memory_io:C3"
 Info (12128): Elaborating entity "data_control" for hierarchy "memory_io:C3|data_control:data_control_0"
 Info (12128): Elaborating entity "data_input" for hierarchy "memory_io:C3|data_input:data_in_0"
@@ -453,14 +470,14 @@ Info (21057): Implemented 8176 device resources after synthesis - the final reso
     Info (21066): Implemented 1 delay-locked loops
     Info (21062): Implemented 150 DSP elements
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 43 warnings
-    Info: Peak virtual memory: 953 megabytes
-    Info: Processing ended: Wed Jun 24 02:41:06 2015
-    Info: Elapsed time: 00:04:07
-    Info: Total CPU time (on all processors): 00:04:17
+    Info: Peak virtual memory: 984 megabytes
+    Info: Processing ended: Wed Jun 24 13:03:30 2015
+    Info: Elapsed time: 00:04:00
+    Info: Total CPU time (on all processors): 00:04:12
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Fitter
     Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
-    Info: Processing started: Wed Jun 24 02:41:08 2015
+    Info: Processing started: Wed Jun 24 13:03:32 2015
 Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off sockit -c sockit
 Info: qfit2_default_script.tcl version: #1
 Info: Project  = sockit
@@ -506,18 +523,21 @@ Warning (332049): Ignored set_false_path at hps_sdram_p0.sdc(550): Argument <fro
 Warning (332174): Ignored filter at hps_sdram_p0.sdc(551): *:C3|*:hps_0|*:hps_io|*:border|*:hps_sdram_inst|*s0|*hphy_bridge_s0_translator|av_readdata_pre[*] could not be matched with a clock or keeper or register or port or pin or cell or partition
 Warning (332049): Ignored set_false_path at hps_sdram_p0.sdc(551): Argument <to> is not an object ID
     Info (332050): set_false_path -from [get_clocks $local_pll_write_clk] -to ${prefix}|*s0|*hphy_bridge_s0_translator|av_readdata_pre[*]
+Warning (332087): The master clock for this clock assignment could not be derived.  Clock: C4|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was not created.
+    Warning (332035): No clocks found on or feeding the specified source node: C4|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|refclkin
+Warning (332086): Ignoring clock spec: C4|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk Reason: Clock derived from ignored clock: C4|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0].  Clock assignment is being ignored.
+Warning (332060): Node: CLOCK_50 was determined to be a clock but was found without an associated clock assignment.
+    Info (13166): Register memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga_light_weight~FF_3425 is being clocked by CLOCK_50
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): From: C3|hps_0|fpga_interfaces|hps2fpga_light_weight|clk  to: memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_fpga_interfaces:fpga_interfaces|hps2fpga_light_weight~FF_3425
     Info (332098): Cell: C3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|dqs_delay_chain  from: dqsin  to: dqsbusout
     Info (332098): Cell: C3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|dqs_in_delay_1  from: datain  to: dataout
     Info (332098): Cell: C3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|dqs_out_delay_1  from: datain  to: dataout
     Info (332098): Cell: C3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_inst|phase_align_os  from: muxsel  to: dataout
     Info (332098): Cell: C3|hps_0|hps_io|border|hps_sdram_inst|p0|umemphy|uio_pads|uaddr_cmd_pads|clock_gen[0].umem_ck_pad|auto_generated|ddio_outa[0]  from: muxsel  to: dataout
-    Info (332098): Cell: C4|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
-    Info (332098): Cell: C4|pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER  from: vco0ph[0]  to: divclk
-    Info (332098): Cell: C4|pll_inst|altera_pll_i|general[0].gpll~PLL_REFCLK_SELECT  from: clkin[0]  to: clkout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Info (332152): The following assignments are ignored by the derive_clock_uncertainty command
+Warning (332056): PLL cross checking found inconsistent PLL clock settings:
+    Warning (332056): Node: C4|pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
 Info (332171): The following clock uncertainty values are less than the recommended values that would be applied by the derive_clock_uncertainty command
     Info (332172): Setup clock transfer from hps_memory_mem_dqs_IN (Rise) to hps_memory_mem_dqs_IN (Rise) has uncertainty 0.000 that is less than the recommended uncertainty 0.160
     Info (332172): Setup clock transfer from hps_memory_mem_dqs_IN (Rise) to hps_memory_mem_dqs_IN (Fall) has uncertainty 0.000 that is less than the recommended uncertainty 0.160
@@ -532,4 +552,20 @@ Info (332171): The following clock uncertainty values are less than the recommen
     Info (332172): Setup clock transfer from C3|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock (Fall) to hps_memory_mem_dqs_OUT (Fall) has uncertainty 0.000 that is less than the recommended uncertainty 0.380
     Info (332172): Hold clock transfer from C3|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock (Fall) to hps_memory_mem_dqs_OUT (Fall) has uncertainty 0.000 that is less than the recommended uncertainty 0.380
     Info (332172): Setup clock transfer from memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk (Rise) to hps_memory_mem_dqs_n_OUT (Rise) has uncertainty 0.000 that is less than the recommended uncertainty 0.210
-    Info (332172): Hold clock transfer from memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk (Rise) to hps_memory_mem_dqs_n_OUT (Rise) has uncertainty 0.000 that is less than the recommended 
+    Info (332172): Hold clock transfer from memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk (Rise) to hps_memory_mem_dqs_n_OUT (Rise) has uncertainty 0.000 that is less than the recommended uncertainty 0.210
+    Info (332172): Setup clock transfer from memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk (Fall) to hps_memory_mem_dqs_n_OUT (Rise) has uncertainty 0.000 that is less than the recommended uncertainty 0.210
+    Info (332172): Hold clock transfer from memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk (Fall) to hps_memory_mem_dqs_n_OUT (Rise) has uncertainty 0.000 that is less than the recommended uncertainty 0.210
+Info (332129): Detected timing requirements -- optimizing circuit to achieve only the specified requirements
+Info (332111): Found 8 clocks
+    Info (332111):   Period   Clock Name
+    Info (332111): ======== ============
+    Info (332111):    3.333 C3|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock
+    Info (332111):    3.333 hps_memory_mem_ck
+    Info (332111):    3.333 hps_memory_mem_ck_n
+    Info (332111):    3.333 hps_memory_mem_dqs_IN
+    Info (332111):    3.333 hps_memory_mem_dqs_n_OUT
+    Info (332111):    3.333 hps_memory_mem_dqs_OUT
+    Info (332111):    3.333 memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk
+    Info (332111):    3.333 memory_io:C3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk
+Info (176233): Starting register packing
+Info (176235): Finished register packin

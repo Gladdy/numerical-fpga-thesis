@@ -24,6 +24,17 @@ module Solver where
                       , "control_readdata"
                       , "out_readdata"
                       ]
+      , t_extraIn  =  [ ("clock", 1)
+                      , ("reset", 1)
+                      ]
+      , t_clocks   =  [ ClockSource { c_name = "pll"
+                                    , c_inp = Just ("refclk","clock(0)")
+                                    , c_outp = [("outclk_0","system1000")]
+                                    , c_reset = Just ("rst","not reset(0)")
+                                    , c_lock = "locked"
+                                    , c_sync = False 
+                                  }
+                      ]
       }
     ) 
     #-}
@@ -45,6 +56,9 @@ module Solver where
 
   topEntity :: Signal InputSignals -> Signal OutputSignals
   topEntity = mealy solveODE initialState
+
+  scheme = rk2
+  equation = matrix3d
 
   solveODE (systemState,systemConstants,oul,block) input = ((systemState',systemConstants',oul',block'),output)
     where
@@ -71,42 +85,39 @@ module Solver where
       c_maxstep = maxstep systemConstants
       c_user = userconstants systemConstants
 
-      -- Control signal
-      -- addresses: 
-      -- 0  <- status flags { 1 starts a round of computation, 2 resets the state}
-      -- 1  <- maximal computation time
-      -- 2  <- time step
-      -- 3  <- output step (how much output to generate)
-      -- 4+ <- Custom constants
-      
-      (systemState',oul',block')  --Handle the setup (reset the state, enter a value into the input registers, start the computation)
-                                | i_c == 2 && i_cs == 1 && i_ca == 0  = ( initialSystemState, 0, 0)
-                                | i_is == 1                           = ( systemState{ odestate = s_odestate_in' }, 0, block)
-                                | i_c == 1 && i_cs == 1 && i_ca == 0  = ( systemState{ step = 0 } , 0, 0)
+      (systemState',oul',block')  
+        --Handle the setup (reset the state, insert input values, start the computation)
+        | i_c == 2 && i_cs == 1 && i_ca == 0  = ( initialSystemState, 0, 0)
+        | i_is == 1                           = ( systemState{ odestate = s_odestate_in' }, 0, 1)
+        | i_c == 1 && i_cs == 1 && i_ca == 0  = ( systemState{ step = 0 } , 0, 0)
 
-                                --Handle the computation and output: 
-                                | block == 1 && i_os == 1             = ( systemState, pack (xs !! i_oa), block)
-                                | block == 0 && s_step < c_maxstep    = ( systemState{ odestate = s_odestate_up', step = s_step'}, 0, block)
-                                | block == 0 && s_step >= c_maxstep   = ( systemState{ step = uIntMax}, pack uIntMax, 1)
+        --Handle the computation and output: 
+        | block == 1 && i_os == 1             = ( systemState, pack (xs !! i_oa), block)
+        | block == 0 && s_step < c_maxstep    = ( systemState_up' , 0, block)
+        | block == 0 && s_step >= c_maxstep   = ( systemState{ step = uIntMax}, pack uIntMax, 1)
 
-                                --Default, do nothing
-                                | otherwise                           = ( systemState, oul, block)
-                                where
-                                  s_odestate_in'  = s_odestate {valueVector = replace i_ia (unpack i_i :: Data) xs}
-                                  s_odestate_up   = rk4 systemConstants matrix3d s_odestate
-                                  s_odestate_up'  = s_odestate_up{valueVector = replace 3 (time s_odestate_up) (valueVector s_odestate_up)}
-                                  s_step'         = s_step + 1
+        --Default, do nothing
+        | otherwise                           = ( systemState, oul, block)
+        where
+          s_odestate_in'  = s_odestate {valueVector = replace i_ia (unpack i_i :: Data) xs}
+          
+          s_odestate_up   = scheme systemConstants equation s_odestate
+          valueVector_wt  = replace 3 (time s_odestate_up) (valueVector s_odestate_up)
+          s_odestate_up'  = s_odestate_up {valueVector = valueVector_wt }
+          s_step'         = s_step + 1
+
+          systemState_up' = systemState{ odestate = s_odestate_up', step = s_step'}
 
       systemConstants'  --Enter the constants into the ConstantVector
-                      | i_cs == 1 && i_ca == 1  = systemConstants{ maxtime = i_c_d }
-                      | i_cs == 1 && i_ca == 2  = systemConstants{ timestep = i_c_d }
-                      | i_cs == 1 && i_ca == 3  = systemConstants{ maxstep = i_c_u }
-                      | i_cs == 1 && i_ca >= 4  = systemConstants{ userconstants = c_user' }
-                      | otherwise               = systemConstants
-                      where
-                        c_user' = replace i_ca (unpack i_c :: Data) c_user
-                        i_c_d   = unpack i_c :: Data
-                        i_c_u   = unpack i_c :: UInt
+        | i_cs == 1 && i_ca == 1              = systemConstants{ maxtime = i_c_d }
+        | i_cs == 1 && i_ca == 2              = systemConstants{ timestep = i_c_d }
+        | i_cs == 1 && i_ca == 3              = systemConstants{ maxstep = i_c_u }
+        | i_cs == 1 && i_ca >= 4              = systemConstants{ userconstants = c_user' }
+        | otherwise                           = systemConstants
+        where
+          c_user' = replace i_ca (unpack i_c :: Data) c_user
+          i_c_d   = unpack i_c :: Data
+          i_c_u   = unpack i_c :: UInt
 
       --Set the output
       output = OutputSignals {leds_status = 0b1101 :: BitVector 4, control_readdata = 0, out_readdata = oul'}

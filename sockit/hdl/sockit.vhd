@@ -52,20 +52,19 @@ PORT (
 	in_writedata      : in std_logic_vector(31 downto 0);
 	in_address        : in std_logic_vector(7 downto 0);
 	out_address       : in std_logic_vector(7 downto 0);
-	-- clock
-	system1000        : in std_logic;
-	-- asynchronous reset: active low
-	system1000_rstn   : in std_logic;
+	clock             : in std_logic;
+	reset             : in std_logic;
 	leds_status       : out std_logic_vector(3 downto 0);
 	control_readdata  : out std_logic_vector(31 downto 0);
 	out_readdata      : out std_logic_vector(31 downto 0);
-	out_read		  : in std_logic_vector(0 downto 0)
+	out_read		  		: in std_logic_vector(0 downto 0)
 	);
 END COMPONENT;
 
 COMPONENT memory_io
 PORT (
 	clk_clk                : in    std_logic                     := 'X';             -- clk
+	reset_reset_n          : in    std_logic                     := 'X';             -- reset_n
 	data_control_writedata : out   std_logic_vector(31 downto 0);                    -- writedata
 	data_control_readdata  : in    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 	data_control_address   : out   std_logic_vector(7 downto 0);                     -- address
@@ -76,7 +75,7 @@ PORT (
 	data_in_address        : out   std_logic_vector(7 downto 0);                     -- address
 	data_out_readdata      : in    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 	data_out_address       : out   std_logic_vector(7 downto 0);                     -- address
-	data_out_read 				: out   std_logic;
+	data_out_read 				 : out   std_logic;
 	memory_mem_a           : out   std_logic_vector(12 downto 0);                    -- mem_a
 	memory_mem_ba          : out   std_logic_vector(2 downto 0);                     -- mem_ba
 	memory_mem_ck          : out   std_logic;                                        -- mem_ck
@@ -92,8 +91,7 @@ PORT (
 	memory_mem_dqs_n       : inout std_logic                     := 'X';             -- mem_dqs_n
 	memory_mem_odt         : out   std_logic;                                        -- mem_odt
 	memory_mem_dm          : out   std_logic;                                        -- mem_dm
-	memory_oct_rzqin       : in    std_logic                     := 'X';             -- oct_rzqin
-	reset_reset_n          : in    std_logic                     := 'X'              -- reset_n
+	memory_oct_rzqin       : in    std_logic                     := 'X'              -- oct_rzqin
 );
 END COMPONENT;
 
@@ -101,7 +99,8 @@ COMPONENT pll
 PORT (
 	refclk   : in  std_logic := '0'; --  refclk.clk
 	rst      : in  std_logic := '0'; --   reset.reset
-	outclk_0 : out std_logic         -- outclk0.clk
+	outclk_0 : out std_logic;        -- outclk0.clk
+	locked   : out std_logic         --  locked.export
 );
 END COMPONENT;
 
@@ -123,18 +122,16 @@ SIGNAL out_readdata        : std_logic_vector(31 downto 0);
 SIGNAL out_address         : std_logic_vector(7 downto 0);
 SIGNAL out_read				: std_logic;
 
-SIGNAL pll_clock				: std_logic;
-
 BEGIN
 C1 : io_led PORT MAP (
-	clock           	=> pll_clock,
+	clock           	=> CLOCK_50,
 	reset             => RESET,
 	leds_status   		=> leds_status,
 	leds_output     	=> LED
 	);
 C2 : compute_main PORT MAP (
-	system1000        => pll_clock,
-	system1000_rstn   => RESET,   
+	clock(0)          => CLOCK_50,
+	reset(0)          => RESET,   
 	control_writedata	=> control_writedata,
 	control_readdata  => control_readdata,
 	control_address   => control_address,
@@ -143,7 +140,7 @@ C2 : compute_main PORT MAP (
 	in_write(0)       => in_write,
 	in_writedata      => in_writedata,
 	in_address        => in_address,
-	out_read(0)			=> out_read,
+	out_read(0)				=> out_read,
 	out_readdata      => out_readdata,
 	out_address       => out_address,
 	keys_input        => KEY,
@@ -151,7 +148,8 @@ C2 : compute_main PORT MAP (
 	leds_status       => leds_status
 	);
 C3 : memory_io PORT MAP (
-	clk_clk                	=> pll_clock,                --          clk.clk
+	clk_clk                	=> CLOCK_50,                --          clk.clk
+	reset_reset_n          	=> RESET,                    --        reset.reset_n	
 	memory_mem_a           	=> hps_memory_mem_a,        --     memory.mem_a
 	memory_mem_ba          	=> hps_memory_mem_ba,       --           .mem_ba
 	memory_mem_ck          	=> hps_memory_mem_ck,       --           .mem_ck
@@ -168,7 +166,6 @@ C3 : memory_io PORT MAP (
 	memory_mem_odt         	=> hps_memory_mem_odt,      --           .mem_odt
 	memory_mem_dm          	=> hps_memory_mem_dm,       --           .mem_dm
 	memory_oct_rzqin       	=> hps_memory_oct_rzqin,    --           .oct_rzqin
-	reset_reset_n          	=> RESET,                    --        reset.reset_n
 	data_in_write          	=> in_write,                 --      data_in.write
 	data_in_writedata      	=> in_writedata,             --             .writedata
 	data_in_address        	=> in_address,               --             .address
@@ -179,12 +176,7 @@ C3 : memory_io PORT MAP (
 	data_control_write     	=> control_write,            --             .write
 	data_out_readdata      	=> out_readdata,             --     data_out.readdata
 	data_out_address       	=> out_address,              --             .address
-	data_out_read 				=> out_read
-	);
-C4 : pll PORT MAP (
-	refclk   => CLOCK_50, 	-- refclk.clk
-	rst      => RESET, 		-- reset.reset
-	outclk_0 => pll_clock  	-- outclk0.clk
+	data_out_read 					=> out_read
 	);
 END behaviour;
 

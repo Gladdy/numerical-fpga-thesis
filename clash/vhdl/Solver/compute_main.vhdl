@@ -18,10 +18,8 @@ entity compute_main is
        in_address        : in std_logic_vector(7 downto 0);
        out_address       : in std_logic_vector(7 downto 0);
        out_read          : in std_logic_vector(0 downto 0);
-       -- clock
-       system1000        : in std_logic;
-       -- asynchronous reset: active low
-       system1000_rstn   : in std_logic;
+       clock             : in std_logic_vector(0 downto 0);
+       reset             : in std_logic_vector(0 downto 0);
        leds_status       : out std_logic_vector(3 downto 0);
        control_readdata  : out std_logic_vector(31 downto 0);
        out_readdata      : out std_logic_vector(31 downto 0));
@@ -30,9 +28,36 @@ end;
 architecture structural of compute_main is
   signal system1000      : std_logic;
   signal system1000_rstn : std_logic;
+  signal pll_locked      : std_logic;
   signal input_0         : product0;
   signal output_0        : product1;
 begin
+  pll_inst : entity pll
+    port map
+      (refclk   => clock(0)
+      ,outclk_0 => system1000
+      ,rst      => not reset(0)
+      ,locked   => pll_locked);
+  
+  -- reset system1000_rstn is asynchronously asserted, but synchronously de-asserted
+  resetSync_n_0 : block
+    signal n_1 : std_logic;
+    signal n_2 : std_logic;
+  begin
+    process(system1000,pll_locked)
+    begin
+      if pll_locked = '0' then
+        n_1 <= '0';
+        n_2 <= '0';
+      elsif rising_edge(system1000) then
+        n_1 <= '1';
+        n_2 <= n_1;
+      end if;
+    end process;
+  
+    system1000_rstn <= n_2;
+  end block;
+  
   input_0 <= (product0_sel0 => keys_input
              ,product0_sel1 => switches_input
              ,product0_sel2 => control_write

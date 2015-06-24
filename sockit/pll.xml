@@ -12,7 +12,7 @@
 <generic name="gui_feedback_clock" value="Global Clock" />
 <generic name="gui_fractional_cout" value="32" />
 <generic name="gui_dsm_out_sel" value="1st_order" />
-<generic name="gui_use_locked" value="false" />
+<generic name="gui_use_locked" value="true" />
 <generic name="gui_en_adv_params" value="false" />
 <generic name="gui_number_of_clocks" value="1" />
 <generic name="gui_multiply_factor" value="1" />

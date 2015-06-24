@@ -9,33 +9,33 @@ use work.Solver_types.all;
 entity Solver_solveODE_2 is
   port(ds1_i1   : in product2;
        input_i2 : in product0;
-       topLet_o : out product8);
+       topLet_o : out product3);
 end;
 
 architecture structural of Solver_solveODE_2 is
-  signal bodyVar_0          : product8;
+  signal bodyVar_0          : product3;
   signal repANF_1           : product2;
   signal repANF_2           : product1;
-  signal repANF_3           : product3;
+  signal repANF_3           : product4;
   signal bodyVar_4          : product5;
   signal repANF_5           : std_logic_vector(0 downto 0);
   signal oulzm_6            : std_logic_vector(31 downto 0);
   signal subjLet_7          : boolean;
   signal altLet_8           : product5;
-  signal ds2_9              : product9;
-  signal oulzm1_10          : product3;
+  signal ds2_9              : product6;
+  signal oulzm1_10          : product4;
   signal subjLet_11         : boolean;
   signal altLet_12          : product5;
   signal altLet_13          : product5;
   signal oulzm1_14          : std_logic_vector(0 downto 0);
   signal oulzm1_15          : std_logic_vector(31 downto 0);
   signal subjLet_16         : boolean;
-  signal altLet_17          : product9;
+  signal altLet_17          : product6;
   signal i_cs_18            : std_logic_vector(0 downto 0);
   signal subjLet_19         : boolean;
   signal altLet_20          : product5;
   signal altLet_21          : product5;
-  signal altLet_22          : product9;
+  signal altLet_22          : product6;
   signal i_c_23             : std_logic_vector(31 downto 0);
   signal i_ca_24            : std_logic_vector(7 downto 0);
   signal systemConstants_25 : product5;
@@ -47,7 +47,7 @@ architecture structural of Solver_solveODE_2 is
   signal ds6_31             : array_of_signed_32(0 to 12);
   signal a9_32              : signed(31 downto 0);
   signal subjLet_33         : boolean;
-  signal altLet_34          : product9;
+  signal altLet_34          : product6;
   signal ds4_35             : std_logic_vector(0 downto 0);
   signal subjLet_36         : boolean;
   signal ds3_37             : signed(31 downto 0);
@@ -55,90 +55,90 @@ architecture structural of Solver_solveODE_2 is
   signal altLet_39          : product5;
   signal subjLet_40         : boolean;
   signal ds9_41             : std_logic_vector(0 downto 0);
-  signal altLet_42          : product9;
+  signal altLet_42          : product6;
   signal ds5_43             : std_logic_vector(31 downto 0);
   signal ds6_44             : std_logic_vector(7 downto 0);
-  signal block_45           : std_logic_vector(0 downto 0);
-  signal repANF_46          : unsigned(31 downto 0);
+  signal repANF_45          : unsigned(31 downto 0);
+  signal altLet_46          : product5;
   signal altLet_47          : product5;
-  signal altLet_48          : product5;
+  signal subjLet_48         : boolean;
   signal subjLet_49         : boolean;
-  signal subjLet_50         : boolean;
-  signal altLet_51          : product9;
-  signal altLet_52          : product9;
-  signal systemState_53     : product3;
+  signal altLet_50          : product6;
+  signal altLet_51          : product6;
+  signal systemState_52     : product4;
+  signal altLet_53          : product5;
   signal altLet_54          : product5;
-  signal altLet_55          : product5;
-  signal subjLet_56         : boolean;
-  signal ds15_57            : unsigned(31 downto 0);
-  signal altLet_58          : product9;
-  signal repANF_59          : product3;
+  signal subjLet_55         : boolean;
+  signal ds15_56            : unsigned(31 downto 0);
+  signal altLet_57          : product6;
+  signal repANF_58          : product4;
+  signal block_59           : std_logic_vector(0 downto 0);
   signal altLet_60          : product5;
-  signal altLet_61          : product9;
-  signal ds14_62            : product4;
+  signal altLet_61          : product6;
+  signal ds14_62            : product7;
   signal ds13_63            : std_logic_vector(0 downto 0);
-  signal altLet_64          : product9;
-  signal altLet_65          : product3;
+  signal altLet_64          : product6;
+  signal altLet_65          : product4;
   signal altLet_66          : product5;
-  signal altLet_67          : product9;
+  signal altLet_67          : product6;
   signal ds17_68            : signed(31 downto 0);
   signal subjLet_69         : boolean;
-  signal altLet_70          : product9;
-  signal altLet_71          : product9;
-  signal repANF_72          : product4;
+  signal altLet_70          : product6;
+  signal altLet_71          : product6;
+  signal repANF_72          : product7;
   signal oul_73             : std_logic_vector(31 downto 0);
   signal repANF_74          : integer;
   signal bodyVar_75         : array_of_signed_32(0 to 12);
   signal ds16_76            : array_of_signed_32(0 to 3);
-  signal altLet_77          : product9;
-  signal repANF_78          : product3;
-  signal altLet_79          : product4;
+  signal altLet_77          : product6;
+  signal repANF_78          : product4;
+  signal altLet_79          : product7;
   signal repANF_80          : integer;
   signal repANF_81          : unsigned(31 downto 0);
   signal ds10_82            : std_logic_vector(31 downto 0);
-  signal bodyVar_83         : product9;
-  signal altLet_84          : product9;
-  signal altLet_85          : product3;
+  signal bodyVar_83         : product6;
+  signal altLet_84          : product6;
+  signal altLet_85          : product4;
   signal bodyVar_86         : array_of_signed_32(0 to 3);
   signal wild7_87           : integer;
-  signal altLet_88          : product9;
+  signal altLet_88          : product6;
   signal repANF_89          : std_logic_vector(31 downto 0);
   signal repANF_90          : integer;
   signal repANF_91          : signed(31 downto 0);
   signal ds17_92            : signed(31 downto 0);
   signal ds11_93            : std_logic_vector(7 downto 0);
   signal subjLet_94         : boolean;
-  signal altLet_95          : product9;
-  signal altLet_96          : product9;
+  signal altLet_95          : product6;
+  signal altLet_96          : product6;
   signal altLet_97          : std_logic_vector(31 downto 0);
   signal wild7_98           : integer;
   signal ds16_99            : array_of_signed_32(0 to 3);
   signal subjLet_100        : boolean;
-  signal repANF_101         : product3;
+  signal repANF_101         : product4;
   signal s_step_102         : unsigned(31 downto 0);
   signal c_maxstep_103      : unsigned(31 downto 0);
   signal bodyVar_104        : std_logic_vector(31 downto 0);
   signal repANF_105         : integer;
   signal wild7_106          : integer;
   signal ds12_107           : std_logic_vector(7 downto 0);
-  signal altLet_108         : product9;
-  signal altLet_109         : product3;
+  signal altLet_108         : product6;
+  signal altLet_109         : product4;
   signal repANF_110         : signed(31 downto 0);
   signal repANF_111         : integer;
-  signal repANF_112         : product3;
-  signal repANF_113         : product4;
+  signal repANF_112         : product4;
+  signal repANF_113         : product7;
   signal repANF_114         : integer;
-  signal altLet_115         : product3;
-  signal subjLet_116        : product4;
-  signal altLet_117         : product4;
+  signal altLet_115         : product4;
+  signal subjLet_116        : product7;
+  signal altLet_117         : product7;
   signal repANF_118         : array_of_signed_32(0 to 3);
-  signal tmp_160            : array_of_signed_32(0 to 12);
-  signal tmp_169            : array_of_signed_32(0 to 3);
-  signal tmp_187            : signed(31 downto 0);
-  signal tmp_193            : array_of_signed_32(0 to 3);
+  signal tmp_161            : array_of_signed_32(0 to 12);
+  signal tmp_170            : array_of_signed_32(0 to 3);
+  signal tmp_188            : signed(31 downto 0);
+  signal tmp_194            : array_of_signed_32(0 to 3);
 begin
-  bodyVar_0 <= (product8_sel0 => repANF_1
-               ,product8_sel1 => repANF_2);
+  bodyVar_0 <= (product3_sel0 => repANF_1
+               ,product3_sel1 => repANF_2);
   
   repANF_1 <= (product2_sel0 => repANF_3
               ,product2_sel1 => bodyVar_4
@@ -169,7 +169,7 @@ begin
     ds2_9 <= altLet_17 when (true),
              altLet_34 when others;
   
-  oulzm1_10 <= ds2_9.product9_sel0;
+  oulzm1_10 <= ds2_9.product6_sel0;
   
   subjLet_11 <= i_ca_24 = std_logic_vector'("00000001");
   
@@ -179,9 +179,9 @@ begin
   
   altLet_13 <= altLet_21;
   
-  oulzm1_14 <= ds2_9.product9_sel2;
+  oulzm1_14 <= ds2_9.product6_sel2;
   
-  oulzm1_15 <= ds2_9.product9_sel1;
+  oulzm1_15 <= ds2_9.product6_sel1;
   
   subjLet_16 <= i_c_23 = std_logic_vector'("00000000000000000000000000000010");
   
@@ -203,11 +203,11 @@ begin
                ,product5_sel3 => ds6_31);
   
   with (subjLet_33) select
-    altLet_22 <= (product9_sel0 => (product3_sel0 => (product4_sel0 => array_of_signed_32'(0 to (4)-1 => (shift_left(signed'("00000000000000000000000000000000"),24)))
-                                                     ,product4_sel1 => shift_left(signed'("00000000000000000000000000000000"),24))
-                                   ,product3_sel1 => unsigned'("11111111111111111111111111111111"))
-                 ,product9_sel1 => std_logic_vector'("00000000000000000000000000000000")
-                 ,product9_sel2 => std_logic_vector'("0")) when (true),
+    altLet_22 <= (product6_sel0 => (product4_sel0 => (product7_sel0 => array_of_signed_32'(0 to (4)-1 => (shift_left(signed'("00000000000000000000000000000000"),24)))
+                                                     ,product7_sel1 => shift_left(signed'("00000000000000000000000000000000"),24))
+                                   ,product4_sel1 => unsigned'("11111111111111111111111111111111"))
+                 ,product6_sel1 => std_logic_vector'("00000000000000000000000000000000")
+                 ,product6_sel2 => std_logic_vector'("0")) when (true),
                  altLet_34 when others;
   
   i_c_23 <= ds5_43;
@@ -220,7 +220,7 @@ begin
   
   with (subjLet_7) select
     altLet_27 <= altLet_38 when (true),
-                 altLet_47 when others;
+                 altLet_46 when others;
   
   altLet_28 <= altLet_39;
   
@@ -243,8 +243,8 @@ begin
   ds3_37 <= systemConstants_25.product5_sel0;
   
   with (subjLet_26) select
-    altLet_38 <= altLet_48 when (true),
-                 altLet_47 when others;
+    altLet_38 <= altLet_47 when (true),
+                 altLet_46 when others;
   
   altLet_39 <= (product5_sel0 => ds3_37
                ,product5_sel1 => a9_32
@@ -255,64 +255,64 @@ begin
   
   ds9_41 <= input_i2.product0_sel6;
   
-  with (subjLet_50) select
-    altLet_42 <= altLet_52 when (true),
-                 altLet_51 when others;
+  with (subjLet_49) select
+    altLet_42 <= altLet_51 when (true),
+                 altLet_50 when others;
   
   ds5_43 <= input_i2.product0_sel3;
   
   ds6_44 <= input_i2.product0_sel4;
   
-  block_45 <= ds1_i1.product2_sel3;
-  
-  repANF_46 <= unsigned(i_c_23);
+  repANF_45 <= unsigned(i_c_23);
   
   with (subjLet_7) select
-    altLet_47 <= altLet_54 when (true),
+    altLet_46 <= altLet_53 when (true),
                  systemConstants_25 when others;
   
-  altLet_48 <= altLet_55;
+  altLet_47 <= altLet_54;
   
-  subjLet_49 <= block_45 = std_logic_vector'("1");
+  subjLet_48 <= block_59 = std_logic_vector'("1");
   
-  subjLet_50 <= ds9_41 = std_logic_vector'("1");
+  subjLet_49 <= ds9_41 = std_logic_vector'("1");
   
   with (subjLet_40) select
-    altLet_51 <= altLet_58 when (true),
+    altLet_50 <= altLet_57 when (true),
                  altLet_70 when others;
   
-  altLet_52 <= (product9_sel0 => repANF_59
-               ,product9_sel1 => std_logic_vector'("00000000000000000000000000000000")
-               ,product9_sel2 => block_45);
+  altLet_51 <= (product6_sel0 => repANF_58
+               ,product6_sel1 => std_logic_vector'("00000000000000000000000000000000")
+               ,product6_sel2 => std_logic_vector'("1"));
   
-  systemState_53 <= ds1_i1.product2_sel0;
+  systemState_52 <= ds1_i1.product2_sel0;
   
   with (subjLet_36) select
-    altLet_54 <= altLet_60 when (true),
+    altLet_53 <= altLet_60 when (true),
                  systemConstants_25 when others;
   
-  altLet_55 <= (product5_sel0 => ds3_37
+  altLet_54 <= (product5_sel0 => ds3_37
                ,product5_sel1 => ds4_29
-               ,product5_sel2 => repANF_46
+               ,product5_sel2 => repANF_45
                ,product5_sel3 => ds6_31);
   
-  subjLet_56 <= block_45 = std_logic_vector'("0");
+  subjLet_55 <= block_59 = std_logic_vector'("0");
   
-  ds15_57 <= systemState_53.product3_sel1;
+  ds15_56 <= systemState_52.product4_sel1;
   
   with (subjLet_7) select
-    altLet_58 <= altLet_64 when (true),
+    altLet_57 <= altLet_64 when (true),
                  altLet_70 when others;
   
-  repANF_59 <= altLet_65;
+  repANF_58 <= altLet_65;
+  
+  block_59 <= ds1_i1.product2_sel3;
   
   altLet_60 <= altLet_66;
   
-  altLet_61 <= (product9_sel0 => systemState_53
-               ,product9_sel1 => oul_73
-               ,product9_sel2 => block_45);
+  altLet_61 <= (product6_sel0 => systemState_52
+               ,product6_sel1 => oul_73
+               ,product6_sel2 => block_59);
   
-  ds14_62 <= systemState_53.product3_sel0;
+  ds14_62 <= systemState_52.product4_sel0;
   
   ds13_63 <= input_i2.product0_sel10;
   
@@ -320,8 +320,8 @@ begin
     altLet_64 <= altLet_71 when (true),
                  altLet_70 when others;
   
-  altLet_65 <= (product3_sel0 => repANF_72
-               ,product3_sel1 => ds15_57);
+  altLet_65 <= (product4_sel0 => repANF_72
+               ,product4_sel1 => ds15_56);
   
   altLet_66 <= (product5_sel0 => ds3_37
                ,product5_sel1 => ds4_29
@@ -332,17 +332,17 @@ begin
     altLet_67 <= altLet_108 when (true),
                  altLet_61 when others;
   
-  ds17_68 <= ds14_62.product4_sel1;
+  ds17_68 <= ds14_62.product7_sel1;
   
   subjLet_69 <= ds13_63 = std_logic_vector'("1");
   
-  with (subjLet_49) select
+  with (subjLet_48) select
     altLet_70 <= altLet_77 when (true),
                  bodyVar_83 when others;
   
-  altLet_71 <= (product9_sel0 => repANF_78
-               ,product9_sel1 => std_logic_vector'("00000000000000000000000000000000")
-               ,product9_sel2 => std_logic_vector'("0"));
+  altLet_71 <= (product6_sel0 => repANF_78
+               ,product6_sel1 => std_logic_vector'("00000000000000000000000000000000")
+               ,product6_sel2 => std_logic_vector'("0"));
   
   repANF_72 <= altLet_79;
   
@@ -350,35 +350,35 @@ begin
   
   repANF_74 <= to_integer(unsigned(i_ca_24));
   
-  replaceVec_n_161 : block
-    signal n_162 : array_of_signed_32(0 to 12);
-    signal n_163 : integer;
-    signal n_164 : signed(31 downto 0);
+  replaceVec_n_162 : block
+    signal n_163 : array_of_signed_32(0 to 12);
+    signal n_164 : integer;
+    signal n_165 : signed(31 downto 0);
   begin
-    n_162 <= ds6_31;
-    n_163 <= repANF_80;
-    n_164 <= a9_32;
-    process(n_162,n_163,n_164)
-      variable n_165 : array_of_signed_32(0 to 12);
+    n_163 <= ds6_31;
+    n_164 <= repANF_80;
+    n_165 <= a9_32;
+    process(n_163,n_164,n_165)
+      variable n_166 : array_of_signed_32(0 to 12);
     begin
-      n_165 := n_162;
+      n_166 := n_163;
       -- pragma translate_off
-      if n_163 < n_165'low or n_163 > n_165'high then
-        assert false report ("Index: " & integer'image(n_163) & ", is out of bounds: " & integer'image(n_162'low) & " to " & integer'image(n_162'high)) severity warning;
-        n_165 := (others => (others => 'X'));
+      if n_164 < n_166'low or n_164 > n_166'high then
+        assert false report ("Index: " & integer'image(n_164) & ", is out of bounds: " & integer'image(n_163'low) & " to " & integer'image(n_163'high)) severity warning;
+        n_166 := (others => (others => 'X'));
       else
         -- pragma translate_on
-        n_165(n_163) := n_164;
+        n_166(n_164) := n_165;
         -- pragma translate_off
       end if;
       -- pragma translate_on
-      tmp_160 <= n_165;
+      tmp_161 <= n_166;
     end process;
   end block;
   
-  bodyVar_75 <= tmp_160;
+  bodyVar_75 <= tmp_161;
   
-  ds16_76 <= ds14_62.product4_sel0;
+  ds16_76 <= ds14_62.product7_sel0;
   
   with (subjLet_69) select
     altLet_77 <= altLet_84 when (true),
@@ -386,8 +386,8 @@ begin
   
   repANF_78 <= altLet_85;
   
-  altLet_79 <= (product4_sel0 => bodyVar_86
-               ,product4_sel1 => ds17_68);
+  altLet_79 <= (product7_sel0 => bodyVar_86
+               ,product7_sel1 => ds17_68);
   
   repANF_80 <= wild7_87;
   
@@ -395,44 +395,44 @@ begin
   
   ds10_82 <= input_i2.product0_sel7;
   
-  with (subjLet_56) select
+  with (subjLet_55) select
     bodyVar_83 <= altLet_88 when (true),
                   altLet_95 when others;
   
-  altLet_84 <= (product9_sel0 => systemState_53
-               ,product9_sel1 => repANF_89
-               ,product9_sel2 => block_45);
+  altLet_84 <= (product6_sel0 => systemState_52
+               ,product6_sel1 => repANF_89
+               ,product6_sel2 => block_59);
   
-  altLet_85 <= (product3_sel0 => ds14_62
-               ,product3_sel1 => unsigned'("00000000000000000000000000000000"));
+  altLet_85 <= (product4_sel0 => ds14_62
+               ,product4_sel1 => unsigned'("00000000000000000000000000000000"));
   
-  replaceVec_n_170 : block
-    signal n_171 : array_of_signed_32(0 to 3);
-    signal n_172 : integer;
-    signal n_173 : signed(31 downto 0);
+  replaceVec_n_171 : block
+    signal n_172 : array_of_signed_32(0 to 3);
+    signal n_173 : integer;
+    signal n_174 : signed(31 downto 0);
   begin
-    n_171 <= ds16_76;
-    n_172 <= repANF_90;
-    n_173 <= repANF_91;
-    process(n_171,n_172,n_173)
-      variable n_174 : array_of_signed_32(0 to 3);
+    n_172 <= ds16_76;
+    n_173 <= repANF_90;
+    n_174 <= repANF_91;
+    process(n_172,n_173,n_174)
+      variable n_175 : array_of_signed_32(0 to 3);
     begin
-      n_174 := n_171;
+      n_175 := n_172;
       -- pragma translate_off
-      if n_172 < n_174'low or n_172 > n_174'high then
-        assert false report ("Index: " & integer'image(n_172) & ", is out of bounds: " & integer'image(n_171'low) & " to " & integer'image(n_171'high)) severity warning;
-        n_174 := (others => (others => 'X'));
+      if n_173 < n_175'low or n_173 > n_175'high then
+        assert false report ("Index: " & integer'image(n_173) & ", is out of bounds: " & integer'image(n_172'low) & " to " & integer'image(n_172'high)) severity warning;
+        n_175 := (others => (others => 'X'));
       else
         -- pragma translate_on
-        n_174(n_172) := n_173;
+        n_175(n_173) := n_174;
         -- pragma translate_off
       end if;
       -- pragma translate_on
-      tmp_169 <= n_174;
+      tmp_170 <= n_175;
     end process;
   end block;
   
-  bodyVar_86 <= tmp_169;
+  bodyVar_86 <= tmp_170;
   
   wild7_87 <= repANF_74;
   
@@ -446,31 +446,31 @@ begin
   
   repANF_91 <= signed(ds10_82);
   
-  ds17_92 <= subjLet_116.product4_sel1;
+  ds17_92 <= subjLet_116.product7_sel1;
   
   ds11_93 <= input_i2.product0_sel8;
   
   subjLet_94 <= s_step_102 < c_maxstep_103;
   
-  with (subjLet_56) select
+  with (subjLet_55) select
     altLet_95 <= altLet_67 when (true),
                  altLet_61 when others;
   
-  altLet_96 <= (product9_sel0 => repANF_101
-               ,product9_sel1 => std_logic_vector'("00000000000000000000000000000000")
-               ,product9_sel2 => block_45);
+  altLet_96 <= (product6_sel0 => repANF_101
+               ,product6_sel1 => std_logic_vector'("00000000000000000000000000000000")
+               ,product6_sel2 => block_59);
   
   altLet_97 <= bodyVar_104;
   
   wild7_98 <= repANF_105;
   
-  ds16_99 <= subjLet_116.product4_sel0;
+  ds16_99 <= subjLet_116.product7_sel0;
   
   subjLet_100 <= s_step_102 >= c_maxstep_103;
   
   repANF_101 <= altLet_109;
   
-  s_step_102 <= ds15_57;
+  s_step_102 <= ds15_56;
   
   c_maxstep_103 <= ds5_30;
   
@@ -482,35 +482,35 @@ begin
   
   ds12_107 <= input_i2.product0_sel9;
   
-  altLet_108 <= (product9_sel0 => repANF_112
-                ,product9_sel1 => std_logic_vector(unsigned'("11111111111111111111111111111111"))
-                ,product9_sel2 => std_logic_vector'("1"));
+  altLet_108 <= (product6_sel0 => repANF_112
+                ,product6_sel1 => std_logic_vector(unsigned'("11111111111111111111111111111111"))
+                ,product6_sel2 => std_logic_vector'("1"));
   
-  altLet_109 <= (product3_sel0 => repANF_113
-                ,product3_sel1 => repANF_81);
+  altLet_109 <= (product4_sel0 => repANF_113
+                ,product4_sel1 => repANF_81);
   
-  indexVec_n_188 : block
-    signal n_189 : array_of_signed_32(0 to 3);
-    signal n_190 : integer;
+  indexVec_n_189 : block
+    signal n_190 : array_of_signed_32(0 to 3);
+    signal n_191 : integer;
   begin
-    n_189 <= ds16_76;
-    n_190 <= repANF_114;
+    n_190 <= ds16_76;
+    n_191 <= repANF_114;
     -- pragma translate_off
-    process (n_189,n_190)
+    process (n_190,n_191)
     begin
-      if n_190 < n_189'low or n_190 > n_189'high then
-        assert false report ("Index: " & integer'image(n_190) & ", is out of bounds: " & integer'image(n_189'low) & " to " & integer'image(n_189'high)) severity warning;
-        tmp_187 <= (others => 'X');
+      if n_191 < n_190'low or n_191 > n_190'high then
+        assert false report ("Index: " & integer'image(n_191) & ", is out of bounds: " & integer'image(n_190'low) & " to " & integer'image(n_190'high)) severity warning;
+        tmp_188 <= (others => 'X');
       else
       -- pragma translate_on
-        tmp_187 <= n_189(n_190);
+        tmp_188 <= n_190(n_191);
       -- pragma translate_off
       end if;
     end process;
     -- pragma translate_on
   end block;
   
-  repANF_110 <= tmp_187;
+  repANF_110 <= tmp_188;
   
   repANF_111 <= to_integer(unsigned(ds12_107));
   
@@ -520,45 +520,45 @@ begin
   
   repANF_114 <= wild7_106;
   
-  altLet_115 <= (product3_sel0 => ds14_62
-                ,product3_sel1 => unsigned'("11111111111111111111111111111111"));
+  altLet_115 <= (product4_sel0 => ds14_62
+                ,product4_sel1 => unsigned'("11111111111111111111111111111111"));
   
-  Solver_rk4_3_subjLet_116 : entity Solver_rk4_3
+  Solver_rk2_3_subjLet_116 : entity Solver_rk2_3
     port map
       (bodyVar_o => subjLet_116
       ,pTS_i1    => systemConstants_25
       ,eta_i2    => ds14_62);
   
-  altLet_117 <= (product4_sel0 => repANF_118
-                ,product4_sel1 => ds17_92);
+  altLet_117 <= (product7_sel0 => repANF_118
+                ,product7_sel1 => ds17_92);
   
-  replaceVec_n_194 : block
-    signal n_195 : array_of_signed_32(0 to 3);
-    signal n_196 : integer;
-    signal n_197 : signed(31 downto 0);
+  replaceVec_n_195 : block
+    signal n_196 : array_of_signed_32(0 to 3);
+    signal n_197 : integer;
+    signal n_198 : signed(31 downto 0);
   begin
-    n_195 <= ds16_99;
-    n_196 <= 3;
-    n_197 <= ds17_92;
-    process(n_195,n_196,n_197)
-      variable n_198 : array_of_signed_32(0 to 3);
+    n_196 <= ds16_99;
+    n_197 <= 3;
+    n_198 <= ds17_92;
+    process(n_196,n_197,n_198)
+      variable n_199 : array_of_signed_32(0 to 3);
     begin
-      n_198 := n_195;
+      n_199 := n_196;
       -- pragma translate_off
-      if n_196 < n_198'low or n_196 > n_198'high then
-        assert false report ("Index: " & integer'image(n_196) & ", is out of bounds: " & integer'image(n_195'low) & " to " & integer'image(n_195'high)) severity warning;
-        n_198 := (others => (others => 'X'));
+      if n_197 < n_199'low or n_197 > n_199'high then
+        assert false report ("Index: " & integer'image(n_197) & ", is out of bounds: " & integer'image(n_196'low) & " to " & integer'image(n_196'high)) severity warning;
+        n_199 := (others => (others => 'X'));
       else
         -- pragma translate_on
-        n_198(n_196) := n_197;
+        n_199(n_197) := n_198;
         -- pragma translate_off
       end if;
       -- pragma translate_on
-      tmp_193 <= n_198;
+      tmp_194 <= n_199;
     end process;
   end block;
   
-  repANF_118 <= tmp_193;
+  repANF_118 <= tmp_194;
   
   topLet_o <= bodyVar_0;
 end;

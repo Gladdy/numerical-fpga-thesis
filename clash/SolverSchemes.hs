@@ -23,6 +23,32 @@ module SolverSchemes where
 
       state' = ODEState {valueVector = xs', time = t'}
 
+  rk2 :: Scheme
+  rk2 constants equation state = state'
+    where
+      --Unpack the needed values
+      c_user = userconstants constants
+      c_maxtime = maxtime constants
+
+      h = timestep constants
+      t = time state
+      xs = valueVector state
+
+      h2 = 0.5*h
+      --Apply the RK2 scheme
+      --xs' = xs + 0.5*h*(s1 + s2)
+      --s1 = f(xs,t)
+      --s2 = xs + h*s1
+      rkxs = zipWith (+) xs $ map (*h2) $ zipWith (+) s1 s2
+      s1 = equation (state, c_user)
+      s2 = equation (ODEState { time = t + h, valueVector = zipWith (+) xs $ map (*h) s1}, c_user)
+      
+      --Check the time constraints
+      (xs',t') = if t < c_maxtime then (rkxs, t + h)
+                                  else (xs, t)
+      
+      state' = ODEState {valueVector = xs', time = t'}
+
   rk4 :: Scheme
   rk4 constants equation state = state'
     where
