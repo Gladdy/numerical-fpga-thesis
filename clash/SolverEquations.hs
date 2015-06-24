@@ -3,15 +3,6 @@ module SolverEquations where
   import CLaSH.Prelude
   import SolverTypes
 
-  expDecay :: Equation
-  expDecay (odestate, constants) = dxs
-    where
-      xs = valueVector odestate
-      multiplier = constants !! 4
-      offset = constants !! 5
-      
-      dxs = map (+offset) $ map (*multiplier) xs
-
   matrix2d :: Equation
   matrix2d (odestate, constants) = dxs
     where

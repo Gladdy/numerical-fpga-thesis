@@ -38,7 +38,7 @@ module SolverSchemes where
       h6 = 0.166666666666666666666666666666666*h
 
       --Apply the RK4 method
-      rkxs = zipWith (+) xs $ map (h6*) (zipWith (+) k1 $ zipWith (+) k4 $ map (*2) $ zipWith (+) k3 k4)
+      rkxs = zipWith (+) xs $ map (h6*) $ zipWith (+) (zipWith (+) k1 k4) (map (*2) $ zipWith (+) k3 k4)
       k1 = equation (state, c_user)
       k2 = equation (ODEState { time = t + h2,  valueVector = zipWith (+) xs $ map (h2*) k1} ,c_user)
       k3 = equation (ODEState { time = t + h2,  valueVector = zipWith (+) xs $ map (h2*) k2} ,c_user)

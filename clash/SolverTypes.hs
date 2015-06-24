@@ -2,11 +2,6 @@ module SolverTypes where
 
   import CLaSH.Prelude
 
-  type Data = SFixed 8 24
-  type UInt = Unsigned 32
-  type ValueVector = Vec 9 Data
-  type ConstantVector = ValueVector
-
   data InputSignals = InputSignals { keys_input :: BitVector 4   -- keys_input
                       , switches_input    :: BitVector 4   -- switches_input 
                       , control_write     :: Bit           -- control_write
@@ -25,10 +20,11 @@ module SolverTypes where
                        , out_readdata     :: BitVector 32   -- out_readdata
                        } deriving(Show)
 
+  type Data = SFixed 8 24
+  type UInt = Unsigned 32
+  type ValueVector = Vec 4 Data
+  type ConstantVector = Vec 13 Data
 
-  --
-  --  VARIABLES
-  --
   data ODEState = ODEState { valueVector :: ValueVector 
                             , time :: Data
                             } deriving(Show)
@@ -37,9 +33,6 @@ module SolverTypes where
                       , step :: UInt
                       } deriving(Show)
 
-  --
-  --  CONSTANTS
-  --
   data SystemConstants = SystemConstants { maxtime :: Data
                         , timestep :: Data
                         , maxstep :: UInt

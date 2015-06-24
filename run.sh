@@ -91,7 +91,7 @@ if [[ $1 == run || $1 == all ]]; then
 
   scp -P $PORT root@$HOSTNAME:output.txt verification/output.txt
   du -h verification/output.txt
-  tail verification/output.txt
+  cat verification/output.txt
 fi
 
 echo ""

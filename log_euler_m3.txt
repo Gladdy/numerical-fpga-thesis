@@ -1,0 +1,443 @@
+[H[J[1 of 4] Compiling SolverTypes      ( SolverTypes.hs, SolverTypes.o )
+[2 of 4] Compiling SolverSchemes    ( SolverSchemes.hs, SolverSchemes.o )
+[3 of 4] Compiling SolverEquations  ( SolverEquations.hs, SolverEquations.o )
+[4 of 4] Compiling Solver           ( Solver.hs, Solver.o )
+Loading dependencies took 0.6560371s
+Normalisation took 58.9303927s
+Netlist generation took 1.6700976s
+Testbench generation took 0.0019995s
+Total compilation took 61.5365422s
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Shell
+    Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+    Info: Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, the Altera Quartus II License Agreement,
+    Info: the Altera MegaCore Function License Agreement, or other 
+    Info: applicable license agreement, including, without limitation, 
+    Info: that your use is for the sole purpose of programming logic 
+    Info: devices manufactured by Altera and sold by Altera or its 
+    Info: authorized distributors.  Please refer to the applicable 
+    Info: agreement for further details.
+    Info: Processing started: Wed Jun 24 02:02:53 2015
+Info: Command: quartus_sh --flow compile sockit
+Info: Quartus(args): compile sockit
+Info: Project Name = E:/Dropbox/numerical-fpga-thesis/sockit/sockit
+Info: Revision Name = sockit
+Info (293032): Detected changes in source files.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_Component_9.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_euler_3.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_matrix3d_4.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_resizeFzm_13.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_resizeFzm_6.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_12.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_5.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satPlus_10.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_solveODE_2.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_specF_11.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_types.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_z31U_16.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfBitsSigned_zdcshiftR_7.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfBitsSigned_zdcshiftR1_14.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfFractionalFixed_zdcfromRational21_15.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfOrdSigned3_8.vhdl.
+    Info (293027): Source file: hdl/Solver_a_17.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_Component_15.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_matrix3d_10.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_resizeFzm_12.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_resizeFzm_5.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_rk4_3.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_11.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_16.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_4.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satPlus_9.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_z31U_8.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfBitsSigned_zdcshiftR_13.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfBitsSigned_zdcshiftR1_6.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfFractionalFixed_zdcfromRational21_7.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfOrdSigned3_14.vhdl has changed.
+Info (293032): Detected changes in source files.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_Component_9.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_euler_3.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_matrix3d_4.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_resizeFzm_13.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_resizeFzm_6.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_12.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_5.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satPlus_10.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_solveODE_2.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_specF_11.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_types.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_z31U_16.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfBitsSigned_zdcshiftR_7.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfBitsSigned_zdcshiftR1_14.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfFractionalFixed_zdcfromRational21_15.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfOrdSigned3_8.vhdl.
+    Info (293027): Source file: hdl/Solver_a_17.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_Component_15.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_matrix3d_10.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_resizeFzm_12.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_resizeFzm_5.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_rk4_3.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_11.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_16.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_4.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satPlus_9.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_z31U_8.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfBitsSigned_zdcshiftR_13.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfBitsSigned_zdcshiftR1_6.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfFractionalFixed_zdcfromRational21_7.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfOrdSigned3_14.vhdl has changed.
+Info (293032): Detected changes in source files.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_Component_9.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_euler_3.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_matrix3d_4.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_resizeFzm_13.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_resizeFzm_6.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_12.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satMult_5.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_satPlus_10.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_solveODE_2.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_specF_11.vhdl.
+    Info (293027): Source file: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_types.vhdl has changed.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_z31U_16.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfBitsSigned_zdcshiftR_7.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfBitsSigned_zdcshiftR1_14.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfFractionalFixed_zdcfromRational21_15.vhdl.
+    Info (293033): A new file was added to the project: E:/Dropbox/numerical-fpga-thesis/sockit/hdl/Solver_zdfOrdSigned3_8.vhdl.
+    Info (293027): Source file: hdl/Solver_a_17.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_Component_15.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_matrix3d_10.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_resizeFzm_12.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_resizeFzm_5.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_rk4_3.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_11.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_16.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satMult_4.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_satPlus_9.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_z31U_8.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfBitsSigned_zdcshiftR_13.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfBitsSigned_zdcshiftR1_6.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfFractionalFixed_zdcfromRational21_7.vhdl has changed.
+    Info (293027): Source file: hdl/Solver_zdfOrdSigned3_14.vhdl has changed.
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 14.1.0 Build 186 12/03/2014 SJ Web Edition
+    Info: Processing started: Wed Jun 24 02:02:59 2015
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sockit -c sockit
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file memory_io/synthesis/memory_io.vhd
+    Info (12022): Found design unit 1: memory_io-rtl
+    Info (12023): Found entity 1: memory_io
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_reset_controller.v
+    Info (12023): Found entity 1: altera_reset_controller
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_reset_synchronizer.v
+    Info (12023): Found entity 1: altera_reset_synchronizer
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_mm_interconnect_0.v
+    Info (12023): Found entity 1: memory_io_mm_interconnect_0
+Info (12021): Found 2 design units, including 2 entities, in source file memory_io/synthesis/submodules/altera_merlin_arbitrator.sv
+    Info (12023): Found entity 1: altera_merlin_arbitrator
+    Info (12023): Found entity 2: altera_merlin_arb_adder
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_mm_interconnect_0_rsp_mux.sv
+    Info (12023): Found entity 1: memory_io_mm_interconnect_0_rsp_mux
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_mm_interconnect_0_rsp_demux.sv
+    Info (12023): Found entity 1: memory_io_mm_interconnect_0_rsp_demux
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_mm_interconnect_0_cmd_mux.sv
+    Info (12023): Found entity 1: memory_io_mm_interconnect_0_cmd_mux
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_mm_interconnect_0_cmd_demux.sv
+    Info (12023): Found entity 1: memory_io_mm_interconnect_0_cmd_demux
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_burst_adapter.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_burst_adapter_uncmpr.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_uncompressed_only
+Info (12021): Found 5 design units, including 5 entities, in source file memory_io/synthesis/submodules/altera_merlin_burst_adapter_13_1.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_burstwrap_increment
+    Info (12023): Found entity 2: altera_merlin_burst_adapter_adder
+    Info (12023): Found entity 3: altera_merlin_burst_adapter_subtractor
+    Info (12023): Found entity 4: altera_merlin_burst_adapter_min
+    Info (12023): Found entity 5: altera_merlin_burst_adapter_13_1
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_burst_adapter_new.sv
+    Info (12023): Found entity 1: altera_merlin_burst_adapter_new
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_incr_burst_converter.sv
+    Info (12023): Found entity 1: altera_incr_burst_converter
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_wrap_burst_converter.sv
+    Info (12023): Found entity 1: altera_wrap_burst_converter
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_default_burst_converter.sv
+    Info (12023): Found entity 1: altera_default_burst_converter
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_address_alignment.sv
+    Info (12023): Found entity 1: altera_merlin_address_alignment
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_avalon_st_pipeline_stage.sv
+    Info (12023): Found entity 1: altera_avalon_st_pipeline_stage
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_avalon_st_pipeline_base.v
+    Info (12023): Found entity 1: altera_avalon_st_pipeline_base
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_traffic_limiter.sv
+    Info (12023): Found entity 1: altera_merlin_traffic_limiter
+Info (12021): Found 2 design units, including 2 entities, in source file memory_io/synthesis/submodules/altera_merlin_reorder_memory.sv
+    Info (12023): Found entity 1: altera_merlin_reorder_memory
+    Info (12023): Found entity 2: memory_pointer_controller
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_avalon_sc_fifo.v
+    Info (12023): Found entity 1: altera_avalon_sc_fifo
+Info (12021): Found 2 design units, including 2 entities, in source file memory_io/synthesis/submodules/memory_io_mm_interconnect_0_router_002.sv
+    Info (12023): Found entity 1: memory_io_mm_interconnect_0_router_002_default_decode
+    Info (12023): Found entity 2: memory_io_mm_interconnect_0_router_002
+Info (12021): Found 2 design units, including 2 entities, in source file memory_io/synthesis/submodules/memory_io_mm_interconnect_0_router.sv
+    Info (12023): Found entity 1: memory_io_mm_interconnect_0_router_default_decode
+    Info (12023): Found entity 2: memory_io_mm_interconnect_0_router
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_slave_agent.sv
+    Info (12023): Found entity 1: altera_merlin_slave_agent
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+    Info (12023): Found entity 1: altera_merlin_burst_uncompressor
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_axi_master_ni.sv
+    Info (12023): Found entity 1: altera_merlin_axi_master_ni
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_merlin_slave_translator.sv
+    Info (12023): Found entity 1: altera_merlin_slave_translator
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_hps_0.v
+    Info (12023): Found entity 1: memory_io_hps_0
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_hps_0_hps_io.v
+    Info (12023): Found entity 1: memory_io_hps_0_hps_io
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram.v
+    Info (12023): Found entity 1: hps_sdram
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altdq_dqs2_acv_connect_to_hard_phy_cyclonev.sv
+    Info (12023): Found entity 1: altdq_dqs2_acv_connect_to_hard_phy_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_mem_if_dll_cyclonev.sv
+    Info (12023): Found entity 1: altera_mem_if_dll_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_mem_if_hard_memory_controller_top_cyclonev.sv
+    Info (12023): Found entity 1: altera_mem_if_hard_memory_controller_top_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_mem_if_hhp_qseq_synth_top.v
+    Info (12023): Found entity 1: altera_mem_if_hhp_qseq_synth_top
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/altera_mem_if_oct_cyclonev.sv
+    Info (12023): Found entity 1: altera_mem_if_oct_cyclonev
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0.sv
+    Info (12023): Found entity 1: hps_sdram_p0
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_acv_hard_addr_cmd_pads.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_hard_addr_cmd_pads
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_acv_hard_io_pads.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_hard_io_pads
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_acv_hard_memphy.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_hard_memphy
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_acv_ldc.v
+    Info (12023): Found entity 1: hps_sdram_p0_acv_ldc
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_altdqdqs.v
+    Info (12023): Found entity 1: hps_sdram_p0_altdqdqs
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_clock_pair_generator.v
+    Info (12023): Found entity 1: hps_sdram_p0_clock_pair_generator
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_generic_ddio.v
+    Info (12023): Found entity 1: hps_sdram_p0_generic_ddio
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_iss_probe.v
+    Info (12023): Found entity 1: hps_sdram_p0_iss_probe
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_phy_csr.sv
+    Info (12023): Found entity 1: hps_sdram_p0_phy_csr
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_reset.v
+    Info (12023): Found entity 1: hps_sdram_p0_reset
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_p0_reset_sync.v
+    Info (12023): Found entity 1: hps_sdram_p0_reset_sync
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/hps_sdram_pll.sv
+    Info (12023): Found entity 1: hps_sdram_pll
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_hps_0_hps_io_border.sv
+    Info (12023): Found entity 1: memory_io_hps_0_hps_io_border
+Info (12021): Found 1 design units, including 1 entities, in source file memory_io/synthesis/submodules/memory_io_hps_0_fpga_interfaces.sv
+    Info (12023): Found entity 1: memory_io_hps_0_fpga_interfaces
+Info (12021): Found 2 design units, including 1 entities, in source file memory_io/synthesis/submodules/data_output.vhdl
+    Info (12022): Found design unit 1: data_output-behaviour
+    Info (12023): Found entity 1: data_output
+Info (12021): Found 2 design units, including 1 entities, in source file memory_io/synthesis/submodules/data_input.vhdl
+    Info (12022): Found design unit 1: data_input-behaviour
+    Info (12023): Found entity 1: data_input
+Info (12021): Found 2 design units, including 1 entities, in source file memory_io/synthesis/submodules/data_control.vhdl
+    Info (12022): Found design unit 1: data_control-behaviour
+    Info (12023): Found entity 1: data_control
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/compute_main.vhdl
+    Info (12022): Found design unit 1: compute_main-structural
+    Info (12023): Found entity 1: compute_main
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/io_led.vhd
+    Info (12022): Found design unit 1: io_led-behaviour
+    Info (12023): Found entity 1: io_led
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/sockit.vhd
+    Info (12022): Found design unit 1: sockit-behaviour
+    Info (12023): Found entity 1: sockit
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_component_9.vhdl
+    Info (12022): Found design unit 1: Solver_Component_9-structural
+    Info (12023): Found entity 1: Solver_Component_9
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_euler_3.vhdl
+    Info (12022): Found design unit 1: Solver_euler_3-structural
+    Info (12023): Found entity 1: Solver_euler_3
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_matrix3d_4.vhdl
+    Info (12022): Found design unit 1: Solver_matrix3d_4-structural
+    Info (12023): Found entity 1: Solver_matrix3d_4
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_mealyzm_1.vhdl
+    Info (12022): Found design unit 1: Solver_mealyzm_1-structural
+    Info (12023): Found entity 1: Solver_mealyzm_1
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_resizefzm_13.vhdl
+    Info (12022): Found design unit 1: Solver_resizeFzm_13-structural
+    Info (12023): Found entity 1: Solver_resizeFzm_13
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_resizefzm_6.vhdl
+    Info (12022): Found design unit 1: Solver_resizeFzm_6-structural
+    Info (12023): Found entity 1: Solver_resizeFzm_6
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_satmult_12.vhdl
+    Info (12022): Found design unit 1: Solver_satMult_12-structural
+    Info (12023): Found entity 1: Solver_satMult_12
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_satmult_5.vhdl
+    Info (12022): Found design unit 1: Solver_satMult_5-structural
+    Info (12023): Found entity 1: Solver_satMult_5
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_satplus_10.vhdl
+    Info (12022): Found design unit 1: Solver_satPlus_10-structural
+    Info (12023): Found entity 1: Solver_satPlus_10
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_solveode_2.vhdl
+    Info (12022): Found design unit 1: Solver_solveODE_2-structural
+    Info (12023): Found entity 1: Solver_solveODE_2
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_specf_11.vhdl
+    Info (12022): Found design unit 1: Solver_specF_11-structural
+    Info (12023): Found entity 1: Solver_specF_11
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_testbench.vhdl
+    Info (12022): Found design unit 1: Solver_testbench-structural
+    Info (12023): Found entity 1: Solver_testbench
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_topentity_0.vhdl
+    Info (12022): Found design unit 1: Solver_topEntity_0-structural
+    Info (12023): Found entity 1: Solver_topEntity_0
+Info (12021): Found 2 design units, including 0 entities, in source file hdl/solver_types.vhdl
+    Info (12022): Found design unit 1: Solver_types
+    Info (12022): Found design unit 2: Solver_types-body
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_z31u_16.vhdl
+    Info (12022): Found design unit 1: Solver_z31U_16-structural
+    Info (12023): Found entity 1: Solver_z31U_16
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_zdfbitssigned_zdcshiftr_7.vhdl
+    Info (12022): Found design unit 1: Solver_zdfBitsSigned_zdcshiftR_7-structural
+    Info (12023): Found entity 1: Solver_zdfBitsSigned_zdcshiftR_7
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_zdfbitssigned_zdcshiftr1_14.vhdl
+    Info (12022): Found design unit 1: Solver_zdfBitsSigned_zdcshiftR1_14-structural
+    Info (12023): Found entity 1: Solver_zdfBitsSigned_zdcshiftR1_14
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_zdffractionalfixed_zdcfromrational21_15.vhdl
+    Info (12022): Found design unit 1: Solver_zdfFractionalFixed_zdcfromRational21_15-structural
+    Info (12023): Found entity 1: Solver_zdfFractionalFixed_zdcfromRational21_15
+Info (12021): Found 2 design units, including 1 entities, in source file hdl/solver_zdfordsigned3_8.vhdl
+    Info (12022): Found design unit 1: Solver_zdfOrdSigned3_8-structural
+    Info (12023): Found entity 1: Solver_zdfOrdSigned3_8
+Warning (10236): Verilog HDL Implicit Net warning at hps_sdram_pll.sv(168): created implicit net for "pll_dr_clk"
+Info (12127): Elaborating entity "sockit" for the top level hierarchy
+Info (12128): Elaborating entity "io_led" for hierarchy "io_led:G1"
+Info (12128): Elaborating entity "compute_main" for hierarchy "compute_main:G2"
+Info (12128): Elaborating entity "Solver_topEntity_0" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst"
+Info (12128): Elaborating entity "Solver_mealyzm_1" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o"
+Info (12128): Elaborating entity "Solver_solveODE_2" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1"
+Info (12128): Elaborating entity "Solver_euler_3" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116"
+Info (12128): Elaborating entity "Solver_matrix3d_4" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_matrix3d_4:Solver_matrix3d_4_repANF_2"
+Info (12128): Elaborating entity "Solver_satMult_5" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_matrix3d_4:Solver_matrix3d_4_repANF_2|Solver_satMult_5:Solver_satMult_5_repANF_3"
+Info (12128): Elaborating entity "Solver_resizeFzm_6" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_matrix3d_4:Solver_matrix3d_4_repANF_2|Solver_satMult_5:Solver_satMult_5_repANF_3|Solver_resizeFzm_6:Solver_resizeFzm_6_topLet_o"
+Info (12128): Elaborating entity "Solver_zdfBitsSigned_zdcshiftR_7" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_matrix3d_4:Solver_matrix3d_4_repANF_2|Solver_satMult_5:Solver_satMult_5_repANF_3|Solver_resizeFzm_6:Solver_resizeFzm_6_topLet_o|Solver_zdfBitsSigned_zdcshiftR_7:Solver_zdfBitsSigned_zdcshiftR_7_shiftedR_0"
+Info (12128): Elaborating entity "Solver_zdfOrdSigned3_8" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_matrix3d_4:Solver_matrix3d_4_repANF_2|Solver_satMult_5:Solver_satMult_5_repANF_3|Solver_resizeFzm_6:Solver_resizeFzm_6_topLet_o|Solver_zdfOrdSigned3_8:Solver_zdfOrdSigned3_8_subjLet_1"
+Info (12128): Elaborating entity "Solver_Component_9" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_matrix3d_4:Solver_matrix3d_4_repANF_2|Solver_satMult_5:Solver_satMult_5_repANF_3|Solver_resizeFzm_6:Solver_resizeFzm_6_topLet_o|Solver_Component_9:Solver_Component_9_caseApp_5"
+Info (12128): Elaborating entity "Solver_satPlus_10" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_matrix3d_4:Solver_matrix3d_4_repANF_2|Solver_satPlus_10:Solver_satPlus_10_repANF_9"
+Info (12128): Elaborating entity "Solver_specF_11" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_specF_11:\map_n_18:mapSN_n_21:mapIter_n_22:0:Solver_specF_11_17"
+Info (12128): Elaborating entity "Solver_satMult_12" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_specF_11:\map_n_18:mapSN_n_21:mapIter_n_22:0:Solver_specF_11_17|Solver_satMult_12:Solver_satMult_12_topLet_o"
+Info (12128): Elaborating entity "Solver_resizeFzm_13" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_specF_11:\map_n_18:mapSN_n_21:mapIter_n_22:0:Solver_specF_11_17|Solver_satMult_12:Solver_satMult_12_topLet_o|Solver_resizeFzm_13:Solver_resizeFzm_13_topLet_o"
+Info (12128): Elaborating entity "Solver_zdfBitsSigned_zdcshiftR1_14" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_specF_11:\map_n_18:mapSN_n_21:mapIter_n_22:0:Solver_specF_11_17|Solver_satMult_12:Solver_satMult_12_topLet_o|Solver_resizeFzm_13:Solver_resizeFzm_13_topLet_o|Solver_zdfBitsSigned_zdcshiftR1_14:Solver_zdfBitsSigned_zdcshiftR1_14_shiftedR_0"
+Info (12128): Elaborating entity "Solver_zdfFractionalFixed_zdcfromRational21_15" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_specF_11:\map_n_18:mapSN_n_21:mapIter_n_22:0:Solver_specF_11_17|Solver_satMult_12:Solver_satMult_12_topLet_o|Solver_resizeFzm_13:Solver_resizeFzm_13_topLet_o|Solver_zdfFractionalFixed_zdcfromRational21_15:Solver_zdfFractionalFixed_zdcfromRational21_15_subjLet_1"
+Info (12128): Elaborating entity "Solver_z31U_16" for hierarchy "compute_main:G2|Solver_topEntity_0:Solver_topEntity_0_inst|Solver_mealyzm_1:Solver_mealyzm_1_topLet_o|Solver_solveODE_2:Solver_solveODE_2_bodyVar_1|Solver_euler_3:Solver_euler_3_subjLet_116|Solver_specF_11:\map_n_18:mapSN_n_21:mapIter_n_22:0:Solver_specF_11_17|Solver_satMult_12:Solver_satMult_12_topLet_o|Solver_resizeFzm_13:Solver_resizeFzm_13_topLet_o|Solver_z31U_16:Solver_z31U_16_caseApp_5"
+Info (12128): Elaborating entity "memory_io" for hierarchy "memory_io:G3"
+Info (12128): Elaborating entity "data_control" for hierarchy "memory_io:G3|data_control:data_control_0"
+Info (12128): Elaborating entity "data_input" for hierarchy "memory_io:G3|data_input:data_in_0"
+Info (12128): Elaborating entity "data_output" for hierarchy "memory_io:G3|data_output:data_out_0"
+Info (12128): Elaborating entity "memory_io_hps_0" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0"
+Info (12128): Elaborating entity "memory_io_hps_0_fpga_interfaces" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_fpga_interfaces:fpga_interfaces"
+Info (12128): Elaborating entity "memory_io_hps_0_hps_io" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io"
+Info (12128): Elaborating entity "memory_io_hps_0_hps_io_border" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border"
+Info (12128): Elaborating entity "hps_sdram" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst"
+Info (12128): Elaborating entity "hps_sdram_pll" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll"
+Warning (10036): Verilog HDL or VHDL warning at hps_sdram_pll.sv(168): object "pll_dr_clk" assigned a value but never read
+Warning (10034): Output port "pll_locked" at hps_sdram_pll.sv(91) has no driver
+Info (12128): Elaborating entity "hps_sdram_p0" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0"
+Info (10648): Verilog HDL Display System Task info at hps_sdram_p0.sv(405): Using Regular core emif simulation models
+Info (12128): Elaborating entity "hps_sdram_p0_acv_hard_memphy" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy"
+Warning (10858): Verilog HDL warning at hps_sdram_p0_acv_hard_memphy.v(420): object reset_n_seq_clk used but never assigned
+Warning (10230): Verilog HDL assignment warning at hps_sdram_p0_acv_hard_memphy.v(557): truncated value with size 4 to match size of target (1)
+Warning (10030): Net "reset_n_seq_clk" at hps_sdram_p0_acv_hard_memphy.v(420) has no driver or initial value, using a default initial value '0'
+Warning (10034): Output port "ctl_reset_export_n" at hps_sdram_p0_acv_hard_memphy.v(222) has no driver
+Info (12128): Elaborating entity "hps_sdram_p0_acv_ldc" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_ldc:memphy_ldc"
+Warning (10036): Verilog HDL or VHDL warning at hps_sdram_p0_acv_ldc.v(45): object "phy_clk_dq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at hps_sdram_p0_acv_ldc.v(47): object "phy_clk_dqs_2x" assigned a value but never read
+Info (12128): Elaborating entity "hps_sdram_p0_acv_hard_io_pads" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads"
+Warning (10034): Output port "ddio_phy_dqdin[179..32]" at hps_sdram_p0_acv_hard_io_pads.v(191) has no driver
+Info (12128): Elaborating entity "hps_sdram_p0_acv_hard_addr_cmd_pads" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads"
+Info (12128): Elaborating entity "hps_sdram_p0_generic_ddio" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|hps_sdram_p0_generic_ddio:uaddress_pad"
+Info (12128): Elaborating entity "hps_sdram_p0_generic_ddio" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|hps_sdram_p0_generic_ddio:ubank_pad"
+Info (12128): Elaborating entity "hps_sdram_p0_generic_ddio" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|hps_sdram_p0_generic_ddio:ucmd_pad"
+Info (12128): Elaborating entity "hps_sdram_p0_generic_ddio" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|hps_sdram_p0_generic_ddio:ureset_n_pad"
+Info (12128): Elaborating entity "altddio_out" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|altddio_out:clock_gen[0].umem_ck_pad"
+Info (12130): Elaborated megafunction instantiation "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|altddio_out:clock_gen[0].umem_ck_pad"
+Info (12133): Instantiated megafunction "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|altddio_out:clock_gen[0].umem_ck_pad" with the following parameter:
+    Info (12134): Parameter "extend_oe_disable" = "UNUSED"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "invert_output" = "OFF"
+    Info (12134): Parameter "lpm_hint" = "UNUSED"
+    Info (12134): Parameter "lpm_type" = "altddio_out"
+    Info (12134): Parameter "oe_reg" = "UNUSED"
+    Info (12134): Parameter "power_up_high" = "OFF"
+    Info (12134): Parameter "width" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/ddio_out_uqe.tdf
+    Info (12023): Found entity 1: ddio_out_uqe
+Info (12128): Elaborating entity "ddio_out_uqe" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|altddio_out:clock_gen[0].umem_ck_pad|ddio_out_uqe:auto_generated"
+Info (12128): Elaborating entity "hps_sdram_p0_clock_pair_generator" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|hps_sdram_p0_clock_pair_generator:clock_gen[0].uclk_generator"
+Info (12128): Elaborating entity "hps_sdram_p0_altdqdqs" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_altdqdqs:dq_ddio[0].ubidir_dq_dqs"
+Info (12128): Elaborating entity "altdq_dqs2_acv_connect_to_hard_phy_cyclonev" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_altdqdqs:dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_acv_connect_to_hard_phy_cyclonev:altdq_dqs2_inst"
+Info (12128): Elaborating entity "altera_mem_if_hhp_qseq_synth_top" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_hhp_qseq_synth_top:seq"
+Info (12128): Elaborating entity "altera_mem_if_hard_memory_controller_top_cyclonev" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_hard_memory_controller_top_cyclonev:c0"
+Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1166): truncated value with size 320 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1167): truncated value with size 320 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1168): truncated value with size 320 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1169): truncated value with size 320 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1170): truncated value with size 320 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1171): truncated value with size 320 to match size of target (1)
+Info (12128): Elaborating entity "altera_mem_if_oct_cyclonev" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_oct_cyclonev:oct"
+Info (12128): Elaborating entity "altera_mem_if_dll_cyclonev" for hierarchy "memory_io:G3|memory_io_hps_0:hps_0|memory_io_hps_0_hps_io:hps_io|memory_io_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_dll_cyclonev:dll"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0"
+Info (12128): Elaborating entity "altera_merlin_slave_translator" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:data_in_0_avalon_slave_0_translator"
+Info (12128): Elaborating entity "altera_merlin_axi_master_ni" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_axi_master_ni:hps_0_h2f_lw_axi_master_agent"
+Info (12128): Elaborating entity "altera_merlin_address_alignment" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_axi_master_ni:hps_0_h2f_lw_axi_master_agent|altera_merlin_address_alignment:align_address_to_size"
+Info (12128): Elaborating entity "altera_merlin_slave_agent" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:data_in_0_avalon_slave_0_agent"
+Info (12128): Elaborating entity "altera_merlin_burst_uncompressor" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:data_in_0_avalon_slave_0_agent|altera_merlin_burst_uncompressor:uncompressor"
+Info (12128): Elaborating entity "altera_avalon_sc_fifo" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_avalon_sc_fifo:data_in_0_avalon_slave_0_agent_rsp_fifo"
+Info (12128): Elaborating entity "altera_avalon_sc_fifo" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_avalon_sc_fifo:data_in_0_avalon_slave_0_agent_rdata_fifo"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_router" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_router:router"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_router_default_decode" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_router:router|memory_io_mm_interconnect_0_router_default_decode:the_default_decode"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_router_002" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_router_002:router_002"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_router_002_default_decode" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_router_002:router_002|memory_io_mm_interconnect_0_router_002_default_decode:the_default_decode"
+Info (12128): Elaborating entity "altera_merlin_traffic_limiter" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_traffic_limiter:hps_0_h2f_lw_axi_master_wr_limiter"
+Info (12128): Elaborating entity "altera_merlin_burst_adapter" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_in_0_avalon_slave_0_burst_adapter"
+Info (12128): Elaborating entity "altera_merlin_burst_adapter_13_1" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_in_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter"
+Info (12128): Elaborating entity "altera_merlin_address_alignment" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_in_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|altera_merlin_address_alignment:align_address_to_size"
+Info (12128): Elaborating entity "altera_merlin_burst_adapter_burstwrap_increment" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_in_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|altera_merlin_burst_adapter_burstwrap_increment:the_burstwrap_increment"
+Info (12128): Elaborating entity "altera_merlin_burst_adapter_min" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_in_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|altera_merlin_burst_adapter_min:the_min"
+Info (12128): Elaborating entity "altera_merlin_burst_adapter_subtractor" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_in_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|altera_merlin_burst_adapter_min:the_min|altera_merlin_burst_adapter_subtractor:ab_sub"
+Info (12128): Elaborating entity "altera_merlin_burst_adapter_adder" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:data_in_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|altera_merlin_burst_adapter_min:the_min|altera_merlin_burst_adapter_subtractor:ab_sub|altera_merlin_burst_adapter_adder:subtract"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_cmd_demux" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_cmd_demux:cmd_demux"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_cmd_mux" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_cmd_mux:cmd_mux"
+Info (12128): Elaborating entity "altera_merlin_arbitrator" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_cmd_mux:cmd_mux|altera_merlin_arbitrator:arb"
+Info (12128): Elaborating entity "altera_merlin_arb_adder" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_cmd_mux:cmd_mux|altera_merlin_arbitrator:arb|altera_merlin_arb_adder:adder"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_rsp_demux" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_rsp_demux:rsp_demux"
+Info (12128): Elaborating entity "memory_io_mm_interconnect_0_rsp_mux" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_rsp_mux:rsp_mux"
+Info (12128): Elaborating entity "altera_merlin_arbitrator" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_rsp_mux:rsp_mux|altera_merlin_arbitrator:arb"
+Info (12128): Elaborating entity "altera_merlin_arb_adder" for hierarchy "memory_io:G3|memory_io_mm_interconnect_0:mm_interconnect_0|memory_io_mm_interconnect_0_rsp_mux:rsp_mux|altera_merlin_arbitrator:arb|altera_merlin_arb_adder:adder"
+Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "memory_io:G3|altera_reset_controller:rst_controller"
+Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "memory_io:G3|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1"
+Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "memory_io:G3|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
+Warning (12241): 30 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "hps_memory_mem_dq[0]~synth"
+    Warning (13010): Node "hps_memory_mem_dq[1]~synth"
+    Warning (13010): Node "hps_memory_mem_dq[2]~synth"
+    Warning (13010): Node "hps_memory_mem_dq[3]~synth"
+    Warning (13010): Node "hps_memory_mem_dq[4]~synth"
+    Warning (13010): Node "hps_memory_mem_dq[5]~synth"
+    Warning (13010): Node "hps_memory_mem_dq[6]~synth"
+    Warning (13010): Node "hps_memory_mem_dq[7]~synth"
+    Warning (13010): Node "hps_memory_mem_dqs~synth"
+    Warning (13010): Node "hps_memory_mem_dqs_n~synth"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LED[0]" is stuc

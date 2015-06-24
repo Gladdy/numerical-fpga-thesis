@@ -238,17 +238,11 @@ set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
 set_global_assignment -name ECO_REGENERATE_REPORT ON
 set_global_assignment -name SDC_FILE sockit.sdc
 set_global_assignment -name QIP_FILE memory_io/synthesis/memory_io.qip
+
+
+set_global_assignment -name QIP_FILE pll/pll.qip
+set_global_assignment -name SIP_FILE pll/pll.sip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -257,7 +251,7 @@ set_global_assignment -name VHDL_FILE hdl/io_led.vhd
 set_global_assignment -name VHDL_FILE hdl/sockit.vhd
 set_global_assignment -name VHDL_FILE hdl/Solver_a_17.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_Component_15.vhdl
-set_global_assignment -name VHDL_FILE hdl/Solver_matrix2d_10.vhdl
+set_global_assignment -name VHDL_FILE hdl/Solver_matrix3d_10.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_mealyzm_1.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_12.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_resizeFzm_5.vhdl

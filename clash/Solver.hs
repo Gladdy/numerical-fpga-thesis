@@ -8,7 +8,6 @@ module Solver where
   {-# ANN topEntity
     (defTop
       { t_name     =  "compute_main"
-
       , t_inputs   =  [ "keys_input"
                       , "switches_input"
                       , "control_write"
@@ -21,14 +20,10 @@ module Solver where
                       , "out_address"
                       , "out_read"
                       ]
-
       , t_outputs  =  [ "leds_status"
                       , "control_readdata"
                       , "out_readdata"
                       ]
-      , t_extraIn  =  []
-      , t_extraOut =  []
-      , t_clocks =    []
       }
     ) 
     #-}
@@ -85,33 +80,33 @@ module Solver where
       -- 4+ <- Custom constants
       
       (systemState',oul',block')  --Handle the setup (reset the state, enter a value into the input registers, start the computation)
-                                  | i_c == 2 && i_cs == 1 && i_ca == 0  = ( initialSystemState, 0, 0)
-                                  | i_is == 1                           = ( systemState{ odestate = s_odestate_in' }, 0, block)
-                                  | i_c == 1 && i_cs == 1 && i_ca == 0  = ( systemState{ step = 0 } , 0, 0)
+                                | i_c == 2 && i_cs == 1 && i_ca == 0  = ( initialSystemState, 0, 0)
+                                | i_is == 1                           = ( systemState{ odestate = s_odestate_in' }, 0, block)
+                                | i_c == 1 && i_cs == 1 && i_ca == 0  = ( systemState{ step = 0 } , 0, 0)
 
-                                  --Handle the computation and output: 
-                                  | block == 1 && i_os == 1             = ( systemState, pack (xs !! i_oa), block)
-                                  | block == 0 && s_step < c_maxstep    = ( systemState{ odestate = s_odestate_up', step = s_step'}, 0, block)
-                                  | block == 0 && s_step >= c_maxstep   = ( systemState{ step = uIntMax}, pack uIntMax, 1)
+                                --Handle the computation and output: 
+                                | block == 1 && i_os == 1             = ( systemState, pack (xs !! i_oa), block)
+                                | block == 0 && s_step < c_maxstep    = ( systemState{ odestate = s_odestate_up', step = s_step'}, 0, block)
+                                | block == 0 && s_step >= c_maxstep   = ( systemState{ step = uIntMax}, pack uIntMax, 1)
 
-                                  --Default, do nothing
-                                  | otherwise                           = ( systemState, oul, block)
-                                  where
-                                    s_odestate_in'  = s_odestate {valueVector = replace i_ia (unpack i_i :: Data) xs}
-                                    s_odestate_up   = rk4 systemConstants matrix2d s_odestate
-                                    s_odestate_up'  = s_odestate_up{valueVector = replace 8 (time s_odestate_up) (valueVector s_odestate_up)}
-                                    s_step'         = s_step + 1
+                                --Default, do nothing
+                                | otherwise                           = ( systemState, oul, block)
+                                where
+                                  s_odestate_in'  = s_odestate {valueVector = replace i_ia (unpack i_i :: Data) xs}
+                                  s_odestate_up   = rk4 systemConstants matrix3d s_odestate
+                                  s_odestate_up'  = s_odestate_up{valueVector = replace 3 (time s_odestate_up) (valueVector s_odestate_up)}
+                                  s_step'         = s_step + 1
 
       systemConstants'  --Enter the constants into the ConstantVector
-                        | i_cs == 1 && i_ca == 1  = systemConstants{ maxtime = i_c_d }
-                        | i_cs == 1 && i_ca == 2  = systemConstants{ timestep = i_c_d }
-                        | i_cs == 1 && i_ca == 3  = systemConstants{ maxstep = i_c_u }
-                        | i_cs == 1 && i_ca >= 4  = systemConstants{ userconstants = c_user' }
-                        | otherwise               = systemConstants
-                        where
-                          c_user' = replace i_ca (unpack i_c :: Data) c_user
-                          i_c_d   = unpack i_c :: Data
-                          i_c_u   = unpack i_c :: UInt
+                      | i_cs == 1 && i_ca == 1  = systemConstants{ maxtime = i_c_d }
+                      | i_cs == 1 && i_ca == 2  = systemConstants{ timestep = i_c_d }
+                      | i_cs == 1 && i_ca == 3  = systemConstants{ maxstep = i_c_u }
+                      | i_cs == 1 && i_ca >= 4  = systemConstants{ userconstants = c_user' }
+                      | otherwise               = systemConstants
+                      where
+                        c_user' = replace i_ca (unpack i_c :: Data) c_user
+                        i_c_d   = unpack i_c :: Data
+                        i_c_u   = unpack i_c :: UInt
 
       --Set the output
       output = OutputSignals {leds_status = 0b1101 :: BitVector 4, control_readdata = 0, out_readdata = oul'}

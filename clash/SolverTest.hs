@@ -2,7 +2,7 @@ module SolverTest where
 
   import CLaSH.Prelude
   import SolverTypes
-  import Solver (topEntity)
+  import Solver
   import Data.List
 
   defaultInputSignals = InputSignals  { keys_input = 0

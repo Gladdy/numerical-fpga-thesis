@@ -1,8 +1,8 @@
 \chapter{Introduction} 
-This introduction contains the project goals and some very short introductions on the FPGAs and how they are used, numerical methods for approximating ODEs, functional programming and \clash{}. The short introductions are included for the sake of completeness and are assumed knowledge for the rest of the thesis.
+This introduction contains the project goals and some very short introductions on the FPGAs and how they are used, numerical methods for approximating ODEs, functional programming and \clash{}. The goal of this report is to be understandable and reproducible for any technical BSc student and therefore the short introductions are included for the sake of completeness and are assumed knowledge for the rest of the thesis. 
 
 \section{Project goals}
-From the start, this project has had two main goals: firstly, obtaining information on the feasibility and the advantages and disadvantages of performing numerical mathematics (numerical approximations to ODEs) directly on (programmable) hardware, the FPGA. Secondly: figuring out whether higher-order functions are of much use for numerical mathematics. As per usual, having main goals spawns off several minor goals which support the main parts. Both supporting goals are about simplifying the process of configuring FPGAs: an easy way of setting up projects with complicated IO requirements and furthermore, developing a tool-chain integration which turns the long process of compiling and deploying your FPGA project into the execution of a single command.
+From the start, this project has had two main goals: firstly, obtaining information on the feasibility and the advantages and disadvantages of performing numerical mathematics (numerical approximations to ODEs) directly on (programmable) hardware, the FPGA. Secondly: figuring out whether higher-order functions are of much use for numerical mathematics. As per usual, having main goals spawns off several minor goals which support the main parts. Both supporting goals are about simplifying the process of configuring FPGAs: an easy way of setting up projects with complicated IO requirements and furthermore, developing a toolchain integration which turns the long process of compiling and deploying your FPGA project into the execution of a single command.
 
 Alongside these concrete goals the underlying theme is to do as much work as possible in \clash{}, a library and compiler based on the functional programming language Haskell, developed by Christiaan Baaij at the CAES group at the University of Twente. Further elaboration on \clash{} can be found in section \ref{s:clash}.
 
@@ -96,9 +96,16 @@ timesTwo xs = map (*2) xs
 
 sum :: Num a => [a] -> a
 sum xs = foldl (+) 0 xs
+
+powers :: Num a => a -> a -> [a]
+powers init power = iterate (\x -> x * power) init
+
+powers100 = take 100 $ powers 1 2
 \end{lstlisting}
 
 The concept of higher-order functions also serves as an introduction to another very important concept in Haskell: the type system. Everything has a fixed type and often times, when only looking at the type definition you can already guess what the function is going to do. Consider the type signature of \code{map} in listing \ref{lst:haskell_types}. It requires a \code{(a->b)}, a function to turn something of type \code{a} into something of type \code{b}. Furthermore, it needs a list of \code{a}, \code{[a]} (indicated by the square brackets) and it returns something of type 'list of b' (\code{[b]}). The type signature of the \code{foldl} is slightly harder to understand, but it requires a function which needs an \code{a} and a \code{b} to produce a new \code{b}. Furthermore, an initial value (\code{a}) and a list of b to operate on (\code{[b]}) in order to return the final result, which has again type \code{a}. Function type signatures can be daunting to understand at first, but not all of them are as complicated as the \code{foldl}. For instance, a function which can be used to represent a differential equation, which needs a state of the system (the \code{ODEState}) in order to compute the derivative at that point (the \code{D_ODEState}). As a last example, the type signature of \code{Solver}: it requires some integration scheme, settings for the time (initial time and a time step), it requires an equation and an initial state of the system. All of this combined results in a list of states: the numerical approximation to the solution of the ODE. Note that in this example, the integration scheme \code{Scheme} itself is a function, for which understanding the type signature should pose no problem by now.
+
+The last concept in functional programming which is important to understand is so-called lazy evaluation. In contrast to imperative programming, a value is only evaluated whenever it is needed. For instance, this allows for the concept of an infinite list, which is definitely not attainable in imperative programming as it would run out of memory. An example of this is the higher-order function \code{iterate}, shown in listing \ref{lst:ho_functions}, as part of the \code{powers} function. This function generates an infinite list by repeatedly applying a function (in this case a multiplication by a constant) to its own output, starting at the initial value \code{init}. However, it would be impossible to actually display the entirety of said infinite list and therefore you apply another function, \code{take n}, which only consumes the first \code{n} elements of a list. As the total evaluation only requires the first \code{n} elements, these are the only ones that will actually be computed. \cite{FPintro}
 
 \begin{lstlisting}[caption=Type signatures, label=lst:haskell_types]
 map :: (a->b) -> [a] -> [b]
@@ -118,12 +125,13 @@ Secondly, Haskell has a very strong type system. The type system has three main 
 Lastly, a property which is often very important for numerical mathematics: Haskell is fast. According to the \textit{Computer Language Benchmarks Game} \cite{Bench}, Haskell is almost on par with Java and Fortran but significantly faster than Python and Matlab (not shown), two languages which are often used for numerical mathematics nowadays. There is still a performance gap of around a factor 3 between Haskell and C (the reference), hence if speed is of the absolute highest concern C is still a valid option.
 
 \subsection{Example: Numerical solutions of ODEs in Haskell}
+\label{s:numsolHaskell}
 As mentioned before, the types in Haskell reveal lots of information about the structure and functionality of the program. The three main types constituting the numerical solver for ordinary differential equations are listed in listing \ref{lst:solvertypes}.
 
 \lstinputlisting[caption=Main types for the ODE solver, label=lst:solvertypes, firstline=18]{../haskell/SolverTypes.hs}
 
 \subsubsection{Equation}
-In essence, a differential equation is a mapping (function) from a certain state of the system to the change of this system. This is also what the type signature of \code{Equation} signifies, a mapping from an \code{ODEState} to a \code{D_ODEState}, the change in state or the derivative. This generic set up allows the specification of any ODE for solving. The implementation in pure Haskell of a simple ODE is given in listing \ref{lst:eq_exponential}, which corresponds to the equation $x' = -x$. However, this representation is not very elegant and a lot of the code is performing unboxing of the types. Using property that this equation is linear, it is possible to use an utility method which takes as input a matrix and returns the Haskell differential equation function belonging to that matrix. The same can be done for heterogeneous linear systems using a different utility function, which does not only takes a matrix as input but also a list of functions representing the heterogeneous part of the equation. The example code for this can be seen in appendix \ref{app:haskellsolver}.
+In essence, a differential equation is a mapping (function) from a certain state of the system to the change of this system. This is also what the type signature of \code{Equation} signifies, a mapping from an \code{ODEState} to a \code{D_ODEState}, the change in state or the derivative. This generic set up allows the specification of any ODE for solving. The implementation in pure Haskell of a simple ODE is given in listing \ref{lst:eq_exponential}, which corresponds to the equation $x' = -x$. However, this representation is not very elegant and a lot of the code is performing unboxing of the types. Using property that this equation is linear, it is possible to use an utility method which takes as input a matrix and returns the Haskell differential equation function belonging to that matrix. The same can be done for heterogeneous linear systems using a different utility function, which does not only takes a matrix as input but also a list of functions representing the heterogeneous part of the equation.
 
 \lstinputlisting[caption=Example equation for exponential decay, label=lst:eq_exponential, firstline=11,lastline=14]{../haskell/SolverEquations.hs}
 
@@ -132,19 +140,20 @@ The \code{SolveMethod} performs the actual computations on what the next value o
 
 The most straightforward integration scheme is called forward Euler, given in equation \ref{eq:euler}. Listing \ref{lst:euler} depicts the translation of the mathematical expression \ref{eq:euler} to Haskell. Even though some list operations have been inserted (\code{zipWith} and \code{map}), the structure is still recognizable. It computes the change in state, multiplies this with the time step obtained in line 6 and adds the initial state in line 4. Lastly, the integration scheme returns the new state of the equation, consisting of a list of x-values and a corresponding time value. Implementations of different solvers (i.e. 4th order Runge-Kutta) can be found in appendix \ref{app:haskellsolver}.
 
-\lstinputlisting[caption=Example code for the Euler integration scheme, label=lst:forward_euler, firstline=9,lastline=15]{../haskell/SolverSolvers.hs}
+\lstinputlisting[caption=Example code for the Euler integration scheme, label=lst:euler, firstline=9,lastline=15]{../haskell/SolverSolvers.hs}
 
 \subsubsection{Solver}
-The \code{Solver} function in listing \ref{lst:solver_frame} acts as the main interface to the program. You specify a \code{SolveMethod}, the \code{TimeSettings} (containing the time step and the time at which to stop solving), the equation itself and an initial condition. The \code{Solver} will then return a list of states of the system. As is very common in functional programming, the \code{Solver} has been defined recursively. Line 4 is where the magic happens: the solution list is defined to be the initial condition, followed by the solution list with the new state (computed by the integration scheme on line 6) as initial condition. Additionally, there is a comparison in line 7 which ends the recursion whenever the time of the solution exceeds the maximum time value, set in the \code{TimeSettings}.
+The \code{Solver} function in listing \ref{lst:solver_frame} acts as the main interface to the program. You specify a \code{SolveMethod}, the \code{TimeSettings} (containing the time step and the time at which to stop solving), the equation itself and an initial condition. The \code{Solver} will then return a list of states of the system. This problem could be solved recursively, but a method featuring more clarity is a higher-order function, in this case \code{iterate}. This function keeps applying itself to its own output, starting with some specified initial value, generating an infinite list. However, we are not interested in the infinite list of solutions and therefore we only take the first N elements, in which N depends on the initial time, the final time and the time step used for the solution.
 
 The solutions of a wide range of equations, both linear and non-linear, both homogeneous and heterogeneous and using the input matrix utility functions have been plot with suitable initial conditions to show their behavior in figure \ref{f:solver_example}.
 
-\lstinputlisting[caption=The main controlling function, label=lst:solver_frame, firstline=14,lastline=20]{../haskell/Solver.hs}
+\lstinputlisting[caption=The main controlling function, label=lst:solver_frame, firstline=14,lastline=18]{../haskell/Solver.hs}
 
 \subsubsection{Results}
-
+This example of approximating solutions to ODEs using Haskell shows the versatility the language and especially its type system. Without any trouble, it is possible to exchange solver schemes, equations, settings and initial conditions by merely changing a single identifier in the function call. A variety of equations with suitable initial conditions have been approximated: both linear and non-linear, of multiple orders, both homogeneous and heterogeneous. As an example, the equations of which the solutions (with suitable initial conditions) are depicted in figure \ref{f:solver_example} are listed in equations \ref{eq:overview}. The exact Haskell source generating the plot is shown in \ref{app:haskellsolver}, but depends on an external library for generating the plot \cite{HaskellChart}.
 
 \begin{align}
+	\label{eq:overview}	
 	\text{Exponential}\sep{}			x(t)' &= -x(t)  \nonumber \\
 	\text{Simple harmonic}\sep{}		x(t)'' &= -x(t) \nonumber \\
 	\text{Cosine hyperbolic}\sep{}		x(t)' &= \frac{\sqrt{x(t)^{2} - a^{2}}}{a} \\
@@ -154,19 +163,40 @@ The solutions of a wide range of equations, both linear and non-linear, both hom
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{../haskell/output.pdf}
-	\caption{Graphs}
+	\includegraphics[width=\textwidth]{../haskell/haskell.pdf}
+	\caption{Plots of the ODE solutions, simulated in Haskell.}
 	\label{f:solver_example}
 \end{figure}
 
 
-
-
-
-
-
-
 \section{\clash{}}
 \label{s:clash}
-\subsection{Designing hardware in a functional way}
+Functional programming has several aspects in common with hardware design, which was the original reason for the development of \clash{}, a library and special compiler which is capable of compiling a subset of Haskell into HDL. In \clash{}, every (sufficiently complex) hardware design consists of two parts: a combinatorial part and a synchronous part. It is the combinatorial part which can be modeled with few problems in a functional way: there is no time dependency - the output is merely an evaluation of a certain function of the inputs and for every input the output will be the same. However, complex hardware designs do not merely consist of stateless combinatorial circuits, in order to perform work some statefulness must be included. This is the task of the synchronous part of the design, keeping track of the state. The state is often implement using latches or memory cells which can get updated with new values, computed by the combinatorial part, every clock cycle (hence the name synchronous part). Together, the combinatorial part and the synchronous part of hardware are called sequential logic: the output depends on both the current input and the past inputs.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{mealy_machine}
+	\caption{A flowchart of the Mealy machine}
+	\label{f:mealy_machine}
+\end{figure}
+
 \subsection{Mealy machines}
+It is the synchronous (statefulness) part that cannot be modeled directly in Haskell, but \clash{} gets around this by use of the Mealy machine \cite{BaaijMSc}. On every clock cycle, based on the input and the current state the combinational logic computes an output and a new state. The updated state gets stored in the memory elements, the output forwarded to the external ports of the hardware. When looking at some \clash{}-Haskell, this structure of generating an output and a new state based on an input and the current state is still clearly visible, for example in listing \ref{lst:clash_basic}. After defining a function with the proper type signature for a Mealy machine you can pass this function to the \clash{} built-in function \code{mealy}, which handles the conversion to a valid \code{topEntity}. In this case the specified function is multiply-accumulate, which, for every clock cycle, multiplies its inputs together and adds it to an internal sum which gets forwarded to the output. \cite{CLaSHTut}
+
+
+\begin{lstlisting}[caption=A basic example a multiply-accumulate specification in CλaSH, label=lst:clash_basic]
+topEntity :: Signal (Signed 9, Signed 9) -> Signal (Signed 9)
+topEntity = mealy mac initial
+
+mac state input = (state',output)
+  where
+    (x,y)   = input         -- unpack the two inputs
+    state'  = state + x*y   -- the new state
+    output  = state'        -- output the new state
+\end{lstlisting}
+
+\subsection{Advantages of \clash{}}
+The power of \clash{} is manifold. Firstly, you are writing valid Haskell code, which allows you to simulate and verify your designs by relying on existing debugging techniques for Haskell. Secondly, Haskell enables more clarity in code, partially by use of higher-order functions, partially by use of it's record syntax, which allows you to easily group signals together in a meaningful way. This additional clarity is especially useful in complex designs in combination with the modularity of functional programs (as long as you adhere to the type signature), which allows you to easily swap out parts of design. Thirdly, notice that the only location at which the types of the signals has been specified is in the first line (\code{Signed 9}, a signed integer of length 9). This means that, in order to have our multiply-accumulate circuit work on, for instance, unsigned integers of length 32, the only place that needs modification is the \code{topEntity} function type signature. The other types are inferred from here.
+
+
+After specifying your design in \clash{}, you can invoke the \clash{}-compiler to generate HDL. Both mainstream languages (VHDL and Verilog) are supported. It is then the HDL which can be compiled by a vendor-specific compiler into a binary file which can be flashed to the FPGA. 

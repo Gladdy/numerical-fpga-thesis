@@ -8,68 +8,68 @@ use work.Solver_types.all;
 
 entity Solver_rk4_3 is
   port(pTS_i1    : in product5;
-       eta_i2    : in product7;
-       bodyVar_o : out product7);
+       eta_i2    : in product4;
+       bodyVar_o : out product4);
 end;
 
 architecture structural of Solver_rk4_3 is
-  signal repANF_0   : array_of_signed_32(0 to 8);
-  signal repANF_1   : array_of_signed_32(0 to 8);
-  signal repANF_2   : product7;
-  signal repANF_3   : product8;
-  signal repANF_4   : array_of_signed_32(0 to 8);
+  signal repANF_0   : array_of_signed_32(0 to 3);
+  signal repANF_1   : array_of_signed_32(0 to 3);
+  signal repANF_2   : product4;
+  signal repANF_3   : product6;
+  signal repANF_4   : array_of_signed_32(0 to 3);
   signal h2_5       : signed(31 downto 0);
-  signal repANF_6   : array_of_signed_32(0 to 8);
+  signal repANF_6   : array_of_signed_32(0 to 3);
   signal repANF_7   : signed(31 downto 0);
-  signal repANF_8   : array_of_signed_32(0 to 8);
-  signal bodyVar_9  : product7;
-  signal repANF_10  : array_of_signed_32(0 to 8);
-  signal repANF_11  : product8;
-  signal repANF_12  : array_of_signed_32(0 to 8);
-  signal k3_13      : array_of_signed_32(0 to 8);
-  signal repANF_14  : product7;
-  signal ds5_15     : array_of_signed_32(0 to 8);
-  signal repANF_16  : product8;
-  signal repANF_17  : array_of_signed_32(0 to 8);
-  signal repANF_18  : product8;
-  signal k4_19      : array_of_signed_32(0 to 8);
-  signal repANF_20  : array_of_signed_32(0 to 8);
-  signal k1_21      : array_of_signed_32(0 to 8);
-  signal bodyVar_22 : array_of_signed_32(0 to 8);
+  signal repANF_8   : array_of_signed_32(0 to 3);
+  signal repANF_9   : array_of_signed_32(0 to 3);
+  signal bodyVar_10 : product4;
+  signal repANF_11  : array_of_signed_32(0 to 3);
+  signal ds5_12     : array_of_signed_32(0 to 12);
+  signal repANF_13  : product6;
+  signal repANF_14  : product4;
+  signal repANF_15  : product6;
+  signal k3_16      : array_of_signed_32(0 to 3);
+  signal repANF_17  : product6;
+  signal k1_18      : array_of_signed_32(0 to 3);
+  signal k4_19      : array_of_signed_32(0 to 3);
+  signal repANF_20  : array_of_signed_32(0 to 3);
+  signal repANF_21  : array_of_signed_32(0 to 3);
+  signal repANF_22  : array_of_signed_32(0 to 3);
   signal ds7_23     : signed(31 downto 0);
-  signal ds16_24    : array_of_signed_32(0 to 8);
-  signal repANF_25  : array_of_signed_32(0 to 8);
+  signal ds16_24    : array_of_signed_32(0 to 3);
+  signal repANF_25  : array_of_signed_32(0 to 3);
   signal repANF_26  : signed(31 downto 0);
   signal ds3_27     : signed(31 downto 0);
-  signal bodyVar_28 : array_of_signed_32(0 to 8);
+  signal bodyVar_28 : array_of_signed_32(0 to 3);
   signal ds2_29     : signed(31 downto 0);
   signal repANF_30  : signed(31 downto 0);
-  signal repANF_31  : array_of_signed_32(0 to 8);
-  signal altLet_32  : product10;
-  signal altLet_33  : product10;
+  signal repANF_31  : array_of_signed_32(0 to 3);
+  signal altLet_32  : product7;
+  signal altLet_33  : product7;
   signal subjLet_34 : boolean;
-  signal bodyVar_35 : product10;
+  signal bodyVar_35 : product7;
   signal xszm_36    : signed(31 downto 0);
-  signal xszm_37    : array_of_signed_32(0 to 8);
-  signal tmp_38     : array_of_signed_32(0 to 8);
-  signal tmp_46     : array_of_signed_32(0 to 8);
+  signal xszm_37    : array_of_signed_32(0 to 3);
+  signal tmp_38     : array_of_signed_32(0 to 3);
+  signal tmp_46     : array_of_signed_32(0 to 3);
   signal tmp_56     : signed(31 downto 0);
-  signal tmp_57     : array_of_signed_32(0 to 8);
-  signal tmp_65     : array_of_signed_32(0 to 8);
-  signal tmp_74     : array_of_signed_32(0 to 8);
-  signal tmp_82     : array_of_signed_32(0 to 8);
-  signal tmp_91     : array_of_signed_32(0 to 8);
-  signal tmp_100    : array_of_signed_32(0 to 8);
-  signal tmp_108    : array_of_signed_32(0 to 8);
-  signal tmp_117    : array_of_signed_32(0 to 8);
+  signal tmp_57     : array_of_signed_32(0 to 3);
+  signal tmp_65     : array_of_signed_32(0 to 3);
+  signal tmp_74     : array_of_signed_32(0 to 3);
+  signal tmp_82     : array_of_signed_32(0 to 3);
+  signal tmp_91     : array_of_signed_32(0 to 3);
+  signal tmp_100    : array_of_signed_32(0 to 3);
+  signal tmp_108    : array_of_signed_32(0 to 3);
+  signal tmp_117    : array_of_signed_32(0 to 3);
   signal tmp_127    : signed(31 downto 0);
-  signal tmp_128    : array_of_signed_32(0 to 8);
-  signal tmp_136    : array_of_signed_32(0 to 8);
+  signal tmp_128    : array_of_signed_32(0 to 3);
+  signal tmp_136    : array_of_signed_32(0 to 3);
 begin
   map_n_40 : block
-    signal n_41 : array_of_signed_32(0 to 8);
+    signal n_41 : array_of_signed_32(0 to 3);
   begin
-    n_41 <= k1_21;
+    n_41 <= k1_18;
   
     mapZ_n_42 : if tmp_38'length = 0 generate
       tmp_38 <= (others => (others => 'X'));
@@ -90,8 +90,8 @@ begin
   repANF_0 <= tmp_38;
   
   zipWith_n_48 : block
-    signal n_49 : array_of_signed_32(0 to 8);
-    signal n_50 : array_of_signed_32(0 to 8);
+    signal n_49 : array_of_signed_32(0 to 3);
+    signal n_50 : array_of_signed_32(0 to 3);
   begin
     n_49 <= ds16_24;
     n_50 <= repANF_0;
@@ -114,13 +114,13 @@ begin
   
   repANF_1 <= tmp_46;
   
-  repANF_2 <= (product7_sel0 => repANF_1
-              ,product7_sel1 => repANF_7);
+  repANF_2 <= (product4_sel0 => repANF_1
+              ,product4_sel1 => repANF_7);
   
-  repANF_3 <= (product8_sel0 => repANF_2
-              ,product8_sel1 => ds5_15);
+  repANF_3 <= (product6_sel0 => repANF_2
+              ,product6_sel1 => ds5_12);
   
-  Solver_matrix2d_10_repANF_4 : entity Solver_matrix2d_10
+  Solver_matrix3d_10_repANF_4 : entity Solver_matrix3d_10
     port map
       (x_o   => repANF_4
       ,ds_i1 => repANF_3);
@@ -134,7 +134,7 @@ begin
       ,eta_i2   => ds3_27);
   
   map_n_59 : block
-    signal n_60 : array_of_signed_32(0 to 8);
+    signal n_60 : array_of_signed_32(0 to 3);
   begin
     n_60 <= repANF_4;
   
@@ -163,8 +163,8 @@ begin
       ,eta_i2    => h2_5);
   
   zipWith_n_67 : block
-    signal n_68 : array_of_signed_32(0 to 8);
-    signal n_69 : array_of_signed_32(0 to 8);
+    signal n_68 : array_of_signed_32(0 to 3);
+    signal n_69 : array_of_signed_32(0 to 3);
   begin
     n_68 <= ds16_24;
     n_69 <= repANF_6;
@@ -187,13 +187,10 @@ begin
   
   repANF_8 <= tmp_65;
   
-  bodyVar_9 <= (product7_sel0 => repANF_8
-               ,product7_sel1 => repANF_7);
-  
   map_n_76 : block
-    signal n_77 : array_of_signed_32(0 to 8);
+    signal n_77 : array_of_signed_32(0 to 3);
   begin
-    n_77 <= k3_13;
+    n_77 <= k3_16;
   
     mapZ_n_78 : if tmp_74'length = 0 generate
       tmp_74 <= (others => (others => 'X'));
@@ -211,17 +208,17 @@ begin
     end generate;
   end block;
   
-  repANF_10 <= tmp_74;
+  repANF_9 <= tmp_74;
   
-  repANF_11 <= (product8_sel0 => bodyVar_9
-               ,product8_sel1 => ds5_15);
+  bodyVar_10 <= (product4_sel0 => repANF_8
+                ,product4_sel1 => repANF_7);
   
   zipWith_n_84 : block
-    signal n_85 : array_of_signed_32(0 to 8);
-    signal n_86 : array_of_signed_32(0 to 8);
+    signal n_85 : array_of_signed_32(0 to 3);
+    signal n_86 : array_of_signed_32(0 to 3);
   begin
     n_85 <= ds16_24;
-    n_86 <= repANF_10;
+    n_86 <= repANF_9;
   
     zipWithZ_n_87 : if tmp_82'length = 0 generate
       tmp_82 <= (others => (others => 'X'));
@@ -239,26 +236,42 @@ begin
     end generate;
   end block;
   
-  repANF_12 <= tmp_82;
+  repANF_11 <= tmp_82;
   
-  Solver_matrix2d_10_k3_13 : entity Solver_matrix2d_10
+  ds5_12 <= pTS_i1.product5_sel3;
+  
+  repANF_13 <= (product6_sel0 => bodyVar_10
+               ,product6_sel1 => ds5_12);
+  
+  repANF_14 <= (product4_sel0 => repANF_11
+               ,product4_sel1 => repANF_30);
+  
+  repANF_15 <= (product6_sel0 => eta_i2
+               ,product6_sel1 => ds5_12);
+  
+  Solver_matrix3d_10_k3_16 : entity Solver_matrix3d_10
     port map
-      (x_o   => k3_13
-      ,ds_i1 => repANF_11);
+      (x_o   => k3_16
+      ,ds_i1 => repANF_13);
   
-  repANF_14 <= (product7_sel0 => repANF_12
-               ,product7_sel1 => repANF_30);
+  repANF_17 <= (product6_sel0 => repANF_14
+               ,product6_sel1 => ds5_12);
   
-  ds5_15 <= pTS_i1.product5_sel3;
+  Solver_matrix3d_10_k1_18 : entity Solver_matrix3d_10
+    port map
+      (x_o   => k1_18
+      ,ds_i1 => repANF_15);
   
-  repANF_16 <= (product8_sel0 => repANF_14
-               ,product8_sel1 => ds5_15);
+  Solver_matrix3d_10_k4_19 : entity Solver_matrix3d_10
+    port map
+      (x_o   => k4_19
+      ,ds_i1 => repANF_17);
   
   zipWith_n_93 : block
-    signal n_94 : array_of_signed_32(0 to 8);
-    signal n_95 : array_of_signed_32(0 to 8);
+    signal n_94 : array_of_signed_32(0 to 3);
+    signal n_95 : array_of_signed_32(0 to 3);
   begin
-    n_94 <= k3_13;
+    n_94 <= k3_16;
     n_95 <= k4_19;
   
     zipWithZ_n_96 : if tmp_91'length = 0 generate
@@ -277,20 +290,12 @@ begin
     end generate;
   end block;
   
-  repANF_17 <= tmp_91;
-  
-  repANF_18 <= (product8_sel0 => eta_i2
-               ,product8_sel1 => ds5_15);
-  
-  Solver_matrix2d_10_k4_19 : entity Solver_matrix2d_10
-    port map
-      (x_o   => k4_19
-      ,ds_i1 => repANF_16);
+  repANF_20 <= tmp_91;
   
   map_n_102 : block
-    signal n_103 : array_of_signed_32(0 to 8);
+    signal n_103 : array_of_signed_32(0 to 3);
   begin
-    n_103 <= repANF_17;
+    n_103 <= repANF_20;
   
     mapZ_n_104 : if tmp_100'length = 0 generate
       tmp_100 <= (others => (others => 'X'));
@@ -307,19 +312,14 @@ begin
     end generate;
   end block;
   
-  repANF_20 <= tmp_100;
-  
-  Solver_matrix2d_10_k1_21 : entity Solver_matrix2d_10
-    port map
-      (x_o   => k1_21
-      ,ds_i1 => repANF_18);
+  repANF_21 <= tmp_100;
   
   zipWith_n_110 : block
-    signal n_111 : array_of_signed_32(0 to 8);
-    signal n_112 : array_of_signed_32(0 to 8);
+    signal n_111 : array_of_signed_32(0 to 3);
+    signal n_112 : array_of_signed_32(0 to 3);
   begin
-    n_111 <= k4_19;
-    n_112 <= repANF_20;
+    n_111 <= k1_18;
+    n_112 <= k4_19;
   
     zipWithZ_n_113 : if tmp_108'length = 0 generate
       tmp_108 <= (others => (others => 'X'));
@@ -337,18 +337,18 @@ begin
     end generate;
   end block;
   
-  bodyVar_22 <= tmp_108;
+  repANF_22 <= tmp_108;
   
-  ds7_23 <= eta_i2.product7_sel1;
+  ds7_23 <= eta_i2.product4_sel1;
   
-  ds16_24 <= eta_i2.product7_sel0;
+  ds16_24 <= eta_i2.product4_sel0;
   
   zipWith_n_119 : block
-    signal n_120 : array_of_signed_32(0 to 8);
-    signal n_121 : array_of_signed_32(0 to 8);
+    signal n_120 : array_of_signed_32(0 to 3);
+    signal n_121 : array_of_signed_32(0 to 3);
   begin
-    n_120 <= k1_21;
-    n_121 <= bodyVar_22;
+    n_120 <= repANF_22;
+    n_121 <= repANF_21;
   
     zipWithZ_n_122 : if tmp_117'length = 0 generate
       tmp_117 <= (others => (others => 'X'));
@@ -379,7 +379,7 @@ begin
   ds3_27 <= pTS_i1.product5_sel1;
   
   map_n_130 : block
-    signal n_131 : array_of_signed_32(0 to 8);
+    signal n_131 : array_of_signed_32(0 to 3);
   begin
     n_131 <= repANF_25;
   
@@ -410,8 +410,8 @@ begin
       ,eta_i2    => ds3_27);
   
   zipWith_n_138 : block
-    signal n_139 : array_of_signed_32(0 to 8);
-    signal n_140 : array_of_signed_32(0 to 8);
+    signal n_139 : array_of_signed_32(0 to 3);
+    signal n_140 : array_of_signed_32(0 to 3);
   begin
     n_139 <= ds16_24;
     n_140 <= bodyVar_28;
@@ -434,11 +434,11 @@ begin
   
   repANF_31 <= tmp_136;
   
-  altLet_32 <= (product10_sel0 => repANF_31
-               ,product10_sel1 => repANF_30);
+  altLet_32 <= (product7_sel0 => repANF_31
+               ,product7_sel1 => repANF_30);
   
-  altLet_33 <= (product10_sel0 => ds16_24
-               ,product10_sel1 => ds7_23);
+  altLet_33 <= (product7_sel0 => ds16_24
+               ,product7_sel1 => ds7_23);
   
   subjLet_34 <= ds7_23 < ds2_29;
   
@@ -446,10 +446,10 @@ begin
     bodyVar_35 <= altLet_32 when (true),
                   altLet_33 when others;
   
-  xszm_36 <= bodyVar_35.product10_sel1;
+  xszm_36 <= bodyVar_35.product7_sel1;
   
-  xszm_37 <= bodyVar_35.product10_sel0;
+  xszm_37 <= bodyVar_35.product7_sel0;
   
-  bodyVar_o <= (product7_sel0 => xszm_37
-               ,product7_sel1 => xszm_36);
+  bodyVar_o <= (product4_sel0 => xszm_37
+               ,product4_sel1 => xszm_36);
 end;

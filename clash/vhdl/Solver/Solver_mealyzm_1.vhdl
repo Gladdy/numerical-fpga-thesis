@@ -18,7 +18,7 @@ end;
 
 architecture structural of Solver_mealyzm_1 is
   signal y_0       : product1;
-  signal bodyVar_1 : product3;
+  signal bodyVar_1 : product8;
   signal x_2       : product2;
   signal repANF_3  : product2;
   signal x_4       : product2;
@@ -26,7 +26,7 @@ architecture structural of Solver_mealyzm_1 is
 begin
   bodyVar_o <= y_0;
   
-  y_0 <= bodyVar_1.product3_sel1;
+  y_0 <= bodyVar_1.product8_sel1;
   
   Solver_solveODE_2_bodyVar_1 : entity Solver_solveODE_2
     port map
@@ -56,5 +56,5 @@ begin
   
   repANF_3 <= x_4;
   
-  x_4 <= bodyVar_1.product3_sel0;
+  x_4 <= bodyVar_1.product8_sel0;
 end;
