@@ -6,12 +6,12 @@ use IEEE.MATH_REAL.ALL;
 use work.all;
 use work.Solver_types.all;
 
-entity Solver_zdfOrdSigned3_15 is
+entity Solver_zdfBitsSigned_zdcshiftR1_6 is
   port(pTS_i1   : in signed(63 downto 0);
-       topLet_o : out boolean);
+       topLet_o : out signed(63 downto 0));
 end;
 
-architecture structural of Solver_zdfOrdSigned3_15 is
+architecture structural of Solver_zdfBitsSigned_zdcshiftR1_6 is
 begin
-  topLet_o <= pTS_i1 >= signed'("0000000000000000000000000000000000000000000000000000000000000000");
+  topLet_o <= shift_right(pTS_i1,48 - 24);
 end;

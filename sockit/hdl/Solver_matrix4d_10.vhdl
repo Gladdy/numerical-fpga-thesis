@@ -6,12 +6,12 @@ use IEEE.MATH_REAL.ALL;
 use work.all;
 use work.Solver_types.all;
 
-entity Solver_matrix4d_11 is
+entity Solver_matrix4d_10 is
   port(ds_i1 : in product2;
        x_o   : out array_of_signed_32(0 to 4));
 end;
 
-architecture structural of Solver_matrix4d_11 is
+architecture structural of Solver_matrix4d_10 is
   signal repANF_0     : signed(31 downto 0);
   signal repANF_1     : signed(31 downto 0);
   signal repANF_2     : signed(31 downto 0);
@@ -160,13 +160,13 @@ begin
   
   repANF_2 <= tmp_65;
   
-  Solver_satMult_12_repANF_3 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_3 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_3
       ,eta_i1   => repANF_0
       ,eta_i2   => repANF_23);
   
-  Solver_satMult_12_repANF_4 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_4 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_4
       ,eta_i1   => repANF_1
@@ -241,13 +241,13 @@ begin
   
   repANF_7 <= tmp_77;
   
-  Solver_satMult_12_repANF_8 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_8 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_8
       ,eta_i1   => repANF_2
       ,eta_i2   => repANF_34);
   
-  Solver_satPlus_10_repANF_9 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_9 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_9
       ,eta_i1    => repANF_4
@@ -276,13 +276,13 @@ begin
   
   repANF_10 <= tmp_81;
   
-  Solver_satMult_12_repANF_11 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_11 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_11
       ,eta_i1   => repANF_5
       ,eta_i2   => repANF_23);
   
-  Solver_satMult_12_repANF_12 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_12 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_12
       ,eta_i1   => repANF_6
@@ -334,13 +334,13 @@ begin
   
   repANF_14 <= tmp_89;
   
-  Solver_satMult_12_repANF_15 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_15 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_15
       ,eta_i1   => repANF_7
       ,eta_i2   => repANF_42);
   
-  Solver_satPlus_10_repANF_16 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_16 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_16
       ,eta_i1    => repANF_9
@@ -369,13 +369,13 @@ begin
   
   repANF_17 <= tmp_93;
   
-  Solver_satMult_12_repANF_18 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_18 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_18
       ,eta_i1   => repANF_10
       ,eta_i2   => repANF_34);
   
-  Solver_satPlus_10_repANF_19 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_19 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_19
       ,eta_i1    => repANF_12
@@ -404,13 +404,13 @@ begin
   
   repANF_20 <= tmp_97;
   
-  Solver_satMult_12_repANF_21 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_21 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_21
       ,eta_i1   => repANF_13
       ,eta_i2   => repANF_23);
   
-  Solver_satMult_12_repANF_22 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_22 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_22
       ,eta_i1   => repANF_14
@@ -510,19 +510,19 @@ begin
   
   constants_27 <= ds_i1.product2_sel1;
   
-  Solver_satPlus_10_repANF_28 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_28 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_28
       ,eta_i1    => repANF_16
       ,eta_i2    => repANF_15);
   
-  Solver_satMult_12_repANF_29 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_29 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_29
       ,eta_i1   => repANF_17
       ,eta_i2   => repANF_42);
   
-  Solver_satPlus_10_repANF_30 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_30 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_30
       ,eta_i1    => repANF_19
@@ -551,13 +551,13 @@ begin
   
   repANF_31 <= tmp_117;
   
-  Solver_satMult_12_repANF_32 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_32 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_32
       ,eta_i1   => repANF_20
       ,eta_i2   => repANF_34);
   
-  Solver_satPlus_10_repANF_33 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_33 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_33
       ,eta_i1    => repANF_22
@@ -609,13 +609,13 @@ begin
   
   repANF_35 <= tmp_125;
   
-  Solver_satMult_12_repANF_36 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_36 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_36
       ,eta_i1   => repANF_24
       ,eta_i2   => repANF_23);
   
-  Solver_satMult_12_repANF_37 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_37 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_37
       ,eta_i1   => repANF_26
@@ -623,19 +623,19 @@ begin
   
   repANF_38 <= array_of_signed_32'(0 => repANF_28);
   
-  Solver_satPlus_10_repANF_39 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_39 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_39
       ,eta_i1    => repANF_30
       ,eta_i2    => repANF_29);
   
-  Solver_satMult_12_repANF_40 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_40 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_40
       ,eta_i1   => repANF_31
       ,eta_i2   => repANF_42);
   
-  Solver_satPlus_10_repANF_41 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_41 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_41
       ,eta_i1    => repANF_33
@@ -687,13 +687,13 @@ begin
   
   repANF_43 <= tmp_133;
   
-  Solver_satMult_12_repANF_44 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_44 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_44
       ,eta_i1   => repANF_35
       ,eta_i2   => repANF_34);
   
-  Solver_satPlus_10_repANF_45 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_45 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_45
       ,eta_i1    => repANF_37
@@ -703,19 +703,19 @@ begin
   
   repANF_47 <= array_of_signed_32'(signed'(repANF_39) & repANF_38);
   
-  Solver_satPlus_10_repANF_48 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_48 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_48
       ,eta_i1    => repANF_41
       ,eta_i2    => repANF_40);
   
-  Solver_satMult_12_repANF_49 : entity Solver_satMult_12
+  Solver_satMult_11_repANF_49 : entity Solver_satMult_11
     port map
       (topLet_o => repANF_49
       ,eta_i1   => repANF_43
       ,eta_i2   => repANF_42);
   
-  Solver_satPlus_10_repANF_50 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_50 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_50
       ,eta_i1    => repANF_45
@@ -725,7 +725,7 @@ begin
   
   repANF_52 <= array_of_signed_32'(signed'(repANF_48) & repANF_47);
   
-  Solver_satPlus_10_repANF_53 : entity Solver_satPlus_10
+  Solver_satPlus_9_repANF_53 : entity Solver_satPlus_9
     port map
       (bodyVar_o => repANF_53
       ,eta_i1    => repANF_50

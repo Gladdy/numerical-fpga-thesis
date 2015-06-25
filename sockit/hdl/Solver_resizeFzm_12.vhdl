@@ -6,12 +6,12 @@ use IEEE.MATH_REAL.ALL;
 use work.all;
 use work.Solver_types.all;
 
-entity Solver_resizeFzm_6 is
+entity Solver_resizeFzm_12 is
   port(eta_i1    : in signed(63 downto 0);
        bodyVar_o : out signed(31 downto 0));
 end;
 
-architecture structural of Solver_resizeFzm_6 is
+architecture structural of Solver_resizeFzm_12 is
   signal shiftedR_0 : signed(63 downto 0);
   signal subjLet_1  : boolean;
   signal bodyVar_2  : signed(31 downto 0);
@@ -25,12 +25,12 @@ begin
     bodyVar_o <= bodyVar_2 when (true),
                  bodyVar_4 when others;
   
-  Solver_zdfBitsSigned_zdcshiftR1_7_shiftedR_0 : entity Solver_zdfBitsSigned_zdcshiftR1_7
+  Solver_zdfBitsSigned_zdcshiftR_13_shiftedR_0 : entity Solver_zdfBitsSigned_zdcshiftR_13
     port map
       (topLet_o => shiftedR_0
       ,pTS_i1   => eta_i1);
   
-  Solver_zdfFractionalFixed_zdcfromRational21_8_subjLet_1 : entity Solver_zdfFractionalFixed_zdcfromRational21_8
+  Solver_zdfOrdSigned3_14_subjLet_1 : entity Solver_zdfOrdSigned3_14
     port map
       (topLet_o => subjLet_1
       ,pTS_i1   => eta_i1);
@@ -45,7 +45,7 @@ begin
     bodyVar_4 <= altLet_6 when (true),
                  signed'(0 => '1', 1 to 32-1 => '0') when others;
   
-  Solver_z31U_9_caseApp_5 : entity Solver_z31U_9
+  Solver_Component_15_caseApp_5 : entity Solver_Component_15
     port map
       (topLet_o => caseApp_5
       ,pTS_i1   => shiftedR_0);
