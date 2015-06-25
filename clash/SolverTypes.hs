@@ -22,8 +22,8 @@ module SolverTypes where
 
   type Data = SFixed 8 24
   type UInt = Unsigned 32
-  type ValueVector = Vec 4 Data
-  type ConstantVector = Vec 13 Data
+  type ValueVector = Vec 5 Data
+  type ConstantVector = Vec 20 Data
 
   data ODEState = ODEState { valueVector :: ValueVector 
                             , time :: Data

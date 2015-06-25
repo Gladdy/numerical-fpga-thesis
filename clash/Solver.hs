@@ -24,17 +24,6 @@ module Solver where
                       , "control_readdata"
                       , "out_readdata"
                       ]
-      , t_extraIn  =  [ ("clock", 1)
-                      , ("reset", 1)
-                      ]
-      , t_clocks   =  [ ClockSource { c_name = "pll"
-                                    , c_inp = Just ("refclk","clock(0)")
-                                    , c_outp = [("outclk_0","system1000")]
-                                    , c_reset = Just ("rst","not reset(0)")
-                                    , c_lock = "locked"
-                                    , c_sync = False 
-                                  }
-                      ]
       }
     ) 
     #-}
@@ -57,8 +46,8 @@ module Solver where
   topEntity :: Signal InputSignals -> Signal OutputSignals
   topEntity = mealy solveODE initialState
 
-  scheme = rk2
-  equation = matrix3d
+  scheme = rk4
+  equation = matrix4d
 
   solveODE (systemState,systemConstants,oul,block) input = ((systemState',systemConstants',oul',block'),output)
     where
@@ -102,7 +91,7 @@ module Solver where
           s_odestate_in'  = s_odestate {valueVector = replace i_ia (unpack i_i :: Data) xs}
           
           s_odestate_up   = scheme systemConstants equation s_odestate
-          valueVector_wt  = replace 3 (time s_odestate_up) (valueVector s_odestate_up)
+          valueVector_wt  = replace 4 (time s_odestate_up) (valueVector s_odestate_up)
           s_odestate_up'  = s_odestate_up {valueVector = valueVector_wt }
           s_step'         = s_step + 1
 

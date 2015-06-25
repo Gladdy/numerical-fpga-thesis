@@ -32,7 +32,7 @@ if [[ $1 == synthesis || $1 == all ]]; then
   cd sockit
   rm -rf hdl/*.vhdl # clear all clash-generated .vhdl files (the framework is called .hdl) 
   cp ../clash/vhdl/Solver/* hdl
-  # sed -i {s/"signal system1000"/"--signal system1000"/g} hdl/compute_main.vhdl
+  sed -i {s/"signal system1000"/"--signal system1000"/g} hdl/compute_main.vhdl
   
   #fix up the qsf with all clash-generated files
   #remove all vhdl files from the qsf

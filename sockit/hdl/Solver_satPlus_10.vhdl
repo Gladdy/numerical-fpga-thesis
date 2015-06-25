@@ -20,7 +20,7 @@ architecture structural of Solver_satPlus_10 is
   signal repANF_4   : std_logic_vector(0 downto 0);
   signal repANF_5   : std_logic_vector(0 downto 0);
   signal repANF_6   : std_logic_vector(32 downto 0);
-  signal subjLet_7  : product10;
+  signal subjLet_7  : product9;
   signal repANF_8   : std_logic_vector(0 downto 0);
   signal repANF_9   : std_logic_vector(0 downto 0);
   signal repANF_10  : std_logic_vector(0 downto 0);
@@ -32,7 +32,7 @@ architecture structural of Solver_satPlus_10 is
   signal subjLet_16 : boolean;
   signal tmp_20     : std_logic_vector(0 downto 0);
   signal tmp_25     : std_logic_vector(0 downto 0);
-  signal tmp_31     : product10;
+  signal tmp_31     : product9;
   signal tmp_35     : std_logic_vector(0 downto 0);
   signal tmp_40     : std_logic_vector(0 downto 0);
 begin
@@ -42,7 +42,7 @@ begin
   
   repANF_2 <= std_logic_vector(eta_i1);
   
-  rzm1_3 <= subjLet_7.product10_sel1;
+  rzm1_3 <= subjLet_7.product9_sel1;
   
   msb_n_21 : block
     signal n_22 : std_logic_vector(31 downto 0);
@@ -82,9 +82,9 @@ begin
     signal n_33 : std_logic_vector(32 downto 0);
   begin
     n_33 <= repANF_6;
-    tmp_31 <= ( n_33(tmp_31.product10_sel0'left + tmp_31.product10_sel1'length downto
-                 tmp_31.product10_sel0'right + tmp_31.product10_sel1'length)
-               , n_33(tmp_31.product10_sel1'left downto tmp_31.product10_sel1'right)
+    tmp_31 <= ( n_33(tmp_31.product9_sel0'left + tmp_31.product9_sel1'length downto
+                 tmp_31.product9_sel0'right + tmp_31.product9_sel1'length)
+               , n_33(tmp_31.product9_sel1'left downto tmp_31.product9_sel1'right)
                );
   end block;
   

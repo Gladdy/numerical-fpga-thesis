@@ -7,44 +7,44 @@ use work.all;
 use work.Solver_types.all;
 
 entity Solver_rk2_3 is
-  port(pTS_i1    : in product5;
-       eta_i2    : in product7;
-       bodyVar_o : out product7);
+  port(pTS_i1    : in product8;
+       eta_i2    : in product3;
+       bodyVar_o : out product3);
 end;
 
 architecture structural of Solver_rk2_3 is
-  signal repANF_0   : array_of_signed_32(0 to 3);
-  signal repANF_1   : array_of_signed_32(0 to 3);
-  signal ds5_2      : array_of_signed_32(0 to 12);
-  signal repANF_3   : product7;
-  signal repANF_4   : product8;
-  signal repANF_5   : product8;
-  signal s1_6       : array_of_signed_32(0 to 3);
-  signal repANF_7   : array_of_signed_32(0 to 3);
+  signal repANF_0   : array_of_signed_32(0 to 4);
+  signal repANF_1   : array_of_signed_32(0 to 4);
+  signal ds5_2      : array_of_signed_32(0 to 19);
+  signal repANF_3   : product3;
+  signal repANF_4   : product2;
+  signal repANF_5   : product2;
+  signal s1_6       : array_of_signed_32(0 to 4);
+  signal repANF_7   : array_of_signed_32(0 to 4);
   signal ds7_8      : signed(31 downto 0);
-  signal ds16_9     : array_of_signed_32(0 to 3);
-  signal repANF_10  : array_of_signed_32(0 to 3);
+  signal ds16_9     : array_of_signed_32(0 to 4);
+  signal repANF_10  : array_of_signed_32(0 to 4);
   signal ds6_11     : signed(31 downto 0);
   signal ds3_12     : signed(31 downto 0);
-  signal bodyVar_13 : array_of_signed_32(0 to 3);
+  signal bodyVar_13 : array_of_signed_32(0 to 4);
   signal ds2_14     : signed(31 downto 0);
   signal repANF_15  : signed(31 downto 0);
-  signal repANF_16  : array_of_signed_32(0 to 3);
+  signal repANF_16  : array_of_signed_32(0 to 4);
   signal altLet_17  : product11;
   signal altLet_18  : product11;
   signal subjLet_19 : boolean;
   signal bodyVar_20 : product11;
   signal xszm_21    : signed(31 downto 0);
-  signal xszm_22    : array_of_signed_32(0 to 3);
-  signal tmp_23     : array_of_signed_32(0 to 3);
-  signal tmp_31     : array_of_signed_32(0 to 3);
-  signal tmp_40     : array_of_signed_32(0 to 3);
+  signal xszm_22    : array_of_signed_32(0 to 4);
+  signal tmp_23     : array_of_signed_32(0 to 4);
+  signal tmp_31     : array_of_signed_32(0 to 4);
+  signal tmp_40     : array_of_signed_32(0 to 4);
   signal tmp_50     : signed(31 downto 0);
-  signal tmp_51     : array_of_signed_32(0 to 3);
-  signal tmp_59     : array_of_signed_32(0 to 3);
+  signal tmp_51     : array_of_signed_32(0 to 4);
+  signal tmp_59     : array_of_signed_32(0 to 4);
 begin
   map_n_25 : block
-    signal n_26 : array_of_signed_32(0 to 3);
+    signal n_26 : array_of_signed_32(0 to 4);
   begin
     n_26 <= s1_6;
   
@@ -67,8 +67,8 @@ begin
   repANF_0 <= tmp_23;
   
   zipWith_n_33 : block
-    signal n_34 : array_of_signed_32(0 to 3);
-    signal n_35 : array_of_signed_32(0 to 3);
+    signal n_34 : array_of_signed_32(0 to 4);
+    signal n_35 : array_of_signed_32(0 to 4);
   begin
     n_34 <= ds16_9;
     n_35 <= repANF_0;
@@ -91,34 +91,34 @@ begin
   
   repANF_1 <= tmp_31;
   
-  ds5_2 <= pTS_i1.product5_sel3;
+  ds5_2 <= pTS_i1.product8_sel3;
   
-  repANF_3 <= (product7_sel0 => repANF_1
-              ,product7_sel1 => repANF_15);
+  repANF_3 <= (product3_sel0 => repANF_1
+              ,product3_sel1 => repANF_15);
   
-  repANF_4 <= (product8_sel0 => eta_i2
-              ,product8_sel1 => ds5_2);
+  repANF_4 <= (product2_sel0 => eta_i2
+              ,product2_sel1 => ds5_2);
   
-  repANF_5 <= (product8_sel0 => repANF_3
-              ,product8_sel1 => ds5_2);
+  repANF_5 <= (product2_sel0 => repANF_3
+              ,product2_sel1 => ds5_2);
   
-  Solver_matrix3d_11_s1_6 : entity Solver_matrix3d_11
+  Solver_matrix4d_11_s1_6 : entity Solver_matrix4d_11
     port map
       (x_o   => s1_6
       ,ds_i1 => repANF_4);
   
-  Solver_matrix3d_11_repANF_7 : entity Solver_matrix3d_11
+  Solver_matrix4d_11_repANF_7 : entity Solver_matrix4d_11
     port map
       (x_o   => repANF_7
       ,ds_i1 => repANF_5);
   
-  ds7_8 <= eta_i2.product7_sel1;
+  ds7_8 <= eta_i2.product3_sel1;
   
-  ds16_9 <= eta_i2.product7_sel0;
+  ds16_9 <= eta_i2.product3_sel0;
   
   zipWith_n_42 : block
-    signal n_43 : array_of_signed_32(0 to 3);
-    signal n_44 : array_of_signed_32(0 to 3);
+    signal n_43 : array_of_signed_32(0 to 4);
+    signal n_44 : array_of_signed_32(0 to 4);
   begin
     n_43 <= s1_6;
     n_44 <= repANF_7;
@@ -149,10 +149,10 @@ begin
       ,eta_i1   => tmp_50
       ,eta_i2   => ds3_12);
   
-  ds3_12 <= pTS_i1.product5_sel1;
+  ds3_12 <= pTS_i1.product8_sel1;
   
   map_n_53 : block
-    signal n_54 : array_of_signed_32(0 to 3);
+    signal n_54 : array_of_signed_32(0 to 4);
   begin
     n_54 <= repANF_10;
   
@@ -174,7 +174,7 @@ begin
   
   bodyVar_13 <= tmp_51;
   
-  ds2_14 <= pTS_i1.product5_sel0;
+  ds2_14 <= pTS_i1.product8_sel0;
   
   Solver_satPlus_10_repANF_15 : entity Solver_satPlus_10
     port map
@@ -183,8 +183,8 @@ begin
       ,eta_i2    => ds3_12);
   
   zipWith_n_61 : block
-    signal n_62 : array_of_signed_32(0 to 3);
-    signal n_63 : array_of_signed_32(0 to 3);
+    signal n_62 : array_of_signed_32(0 to 4);
+    signal n_63 : array_of_signed_32(0 to 4);
   begin
     n_62 <= ds16_9;
     n_63 <= bodyVar_13;
@@ -223,6 +223,6 @@ begin
   
   xszm_22 <= bodyVar_20.product11_sel0;
   
-  bodyVar_o <= (product7_sel0 => xszm_22
-               ,product7_sel1 => xszm_21);
+  bodyVar_o <= (product3_sel0 => xszm_22
+               ,product3_sel1 => xszm_21);
 end;

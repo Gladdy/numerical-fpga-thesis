@@ -17,50 +17,17 @@ module SolverTest where
                                   , out_address = 0
                                   , out_read = 0
                                 }
-  --nothing
   dis = defaultInputSignals
 
   --write input
-  cis x y = defaultInputSignals { control_write = 1
-                              , in_address = x
-                              , in_writedata = y
-                            }
+  cis x y = defaultInputSignals { control_write = 1, in_address = x, in_writedata = y }
+  wis x y = defaultInputSignals { in_write = 1, in_address = x, in_writedata = y }
   
-  --write input
-  wis x y = defaultInputSignals { in_write = 1
-                              , in_address = x
-                              , in_writedata = y
-                            }
-  
-  -- start compute
-  scs = defaultInputSignals   { control_write = 1
-                              , control_writedata = 1 
-                            }
+  -- start computation and get output
+  scs = defaultInputSignals { control_write = 1, control_writedata = 1 }
+  fvs x = defaultInputSignals { out_address = x, out_read = 1 }
 
-  -- get output
-  fvs x = defaultInputSignals { out_address = x
-                              , out_read = 1
-                            }
-
-  is =  [ wis 1 10
-        , scs
-        , dis
-        , dis
-        , fvs 1
-        , fvs 2
-        , scs
-        , dis
-        , dis
-        , fvs 1
-        , fvs 2
-        , scs
-        , fvs 1
-        , fvs 2
-        , fvs 1
-        , fvs 2
-        ]
-
-  is2 = [ cis 4 (-1)
+  is  = [ cis 4 (-1)
         , cis 5 7
         , wis 1 10
         , wis 2 20
@@ -76,3 +43,21 @@ module SolverTest where
         ]
 
   test x = Data.List.take (Data.List.length x) $ Data.List.map out_readdata $ simulate topEntity x
+
+  is2 = [ wis 1 10
+        , scs
+        , dis
+        , dis
+        , fvs 1
+        , fvs 2
+        , scs
+        , dis
+        , dis
+        , fvs 1
+        , fvs 2
+        , scs
+        , fvs 1
+        , fvs 2
+        , fvs 1
+        , fvs 2
+        ]

@@ -52,8 +52,8 @@ PORT (
 	in_writedata      : in std_logic_vector(31 downto 0);
 	in_address        : in std_logic_vector(7 downto 0);
 	out_address       : in std_logic_vector(7 downto 0);
-	clock             : in std_logic;
-	reset             : in std_logic;
+  system1000        : in std_logic;
+  system1000_rstn   : in std_logic;
 	leds_status       : out std_logic_vector(3 downto 0);
 	control_readdata  : out std_logic_vector(31 downto 0);
 	out_readdata      : out std_logic_vector(31 downto 0);
@@ -95,43 +95,44 @@ PORT (
 );
 END COMPONENT;
 
-COMPONENT pll
-PORT (
-	refclk   : in  std_logic := '0'; --  refclk.clk
-	rst      : in  std_logic := '0'; --   reset.reset
-	outclk_0 : out std_logic;        -- outclk0.clk
-	locked   : out std_logic         --  locked.export
+COMPONENT sockit_pll
+PORT( 
+  clock     : in std_logic;
+  reset     : in std_logic;
+  clock_pll : out std_logic
 );
 END COMPONENT;
 
 -- Physical
-SIGNAL leds_status 			: std_logic_vector(3 downto 0);
+SIGNAL leds_status 			  : std_logic_vector(3 downto 0);
 
 -- Avalon interface
-SIGNAL in_write      		: std_logic;
+SIGNAL in_write      		  : std_logic;
 SIGNAL in_writedata 			: std_logic_vector(31 downto 0);
-SIGNAL in_address				: std_logic_vector(7 downto 0);
+SIGNAL in_address         : std_logic_vector(7 downto 0);
 
-SIGNAL control_writedata	: std_logic_vector(31 downto 0);
-SIGNAL control_readdata   	: std_logic_vector(31 downto 0);
-SIGNAL control_address     : std_logic_vector(7 downto 0);
-SIGNAL control_read        : std_logic;
-SIGNAL control_write       : std_logic;
+SIGNAL control_writedata  : std_logic_vector(31 downto 0);
+SIGNAL control_readdata   : std_logic_vector(31 downto 0);
+SIGNAL control_address    : std_logic_vector(7 downto 0);
+SIGNAL control_read       : std_logic;
+SIGNAL control_write      : std_logic;
 
-SIGNAL out_readdata        : std_logic_vector(31 downto 0);
-SIGNAL out_address         : std_logic_vector(7 downto 0);
-SIGNAL out_read				: std_logic;
+SIGNAL out_readdata       : std_logic_vector(31 downto 0);
+SIGNAL out_address        : std_logic_vector(7 downto 0);
+SIGNAL out_read				    : std_logic;
+
+SIGNAL clock_pll      : std_logic;
 
 BEGIN
 C1 : io_led PORT MAP (
-	clock           	=> CLOCK_50,
+	clock           	=> clock_pll,
 	reset             => RESET,
 	leds_status   		=> leds_status,
 	leds_output     	=> LED
 	);
 C2 : compute_main PORT MAP (
-	clock(0)          => CLOCK_50,
-	reset(0)          => RESET,   
+  system1000        => clock_pll,
+  system1000_rstn   => RESET,  
 	control_writedata	=> control_writedata,
 	control_readdata  => control_readdata,
 	control_address   => control_address,
@@ -148,7 +149,7 @@ C2 : compute_main PORT MAP (
 	leds_status       => leds_status
 	);
 C3 : memory_io PORT MAP (
-	clk_clk                	=> CLOCK_50,                --          clk.clk
+	clk_clk                	=> clock_pll,                --          clk.clk
 	reset_reset_n          	=> RESET,                    --        reset.reset_n	
 	memory_mem_a           	=> hps_memory_mem_a,        --     memory.mem_a
 	memory_mem_ba          	=> hps_memory_mem_ba,       --           .mem_ba
@@ -178,6 +179,11 @@ C3 : memory_io PORT MAP (
 	data_out_address       	=> out_address,              --             .address
 	data_out_read 					=> out_read
 	);
+C4 : sockit_pll PORT MAP (
+  clock       => CLOCK_50,
+  reset       => RESET,
+  clock_pll   => clock_pll
+  );
 END behaviour;
 
 
