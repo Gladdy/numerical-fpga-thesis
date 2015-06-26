@@ -135,39 +135,34 @@ The RK4 integration scheme \footnote{Which took almost 22 hours or 78894 seconds
 \section{Euler revisited}
 So far it appears that accuracy is inversely proportional to the complexity of the integration scheme, which leads to the question: What accuracy would Euler's method attain for equation \ref{eq:rk2matrix}? Indeed, as shown in figure \ref{f:euler_rv_ts=0,0001_os=10}, Euler's method only reaches maximum errors which are 2 orders of magnitude lower than the best values of the time step for RK2 and of course performs better than RK4 in this scenario. 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{euler_rv_ts=0,0001_os=10}
-	\caption{Simplicity prevails: Euler's method attains better results than RK2 for all different time steps (h=1\e{-4}).}
-	\label{f:euler_rv_ts=0,0001_os=10}
-\end{figure}
-
-
-
-
-\section{Performance}
+\section{Performance - add to conditions to appendix maybe?\textbf{}}
 Performance is one of the main reasons why people use FPGAs over implementations in software and therefore one would expect that a properly written FPGA solution outperforms a CPU. The FPGA used for testing in this thesis is a Cyclone V, which, according to \cite{AlteraFPGA}, is meant for "your low-power, cost-sensitive design needs, enabling you to get to market faster". Furthermore, Altera offers two other FPGA families: Stratix and Arria, which both have mentions of delivering high or optimal performance. 
-
 
 The FPGA runs at a clock speed of 50 MHz and it is capable of executing a single iteration of Euler's method per clock cycle. In theory this would mean that the FPGA is capable of 50\e{6} iterations per second. However, there is still quite some overhead stemming from the system handling the data input and output, which has to wait for the HPS to supply or request the proper information before the FPGA can move on with the computations.
 
 \begin{table}
 	\caption{Performance benchmarks: Euler's method}
 	\label{t:perfomance}
-	\begin{tabular}{l l l l l}
-		Device 	& Iterations 	& time (s)	& IO usage	& iterations per second \\  
-		FPGA 	& 100.000.000 	& 			& [1][3]	& \\
-		FPGA 	& 100.000.000 	& 4,37		& [1][2] 	& \\
-		FPGA 	& 1.000.000 	& 0,64		& [1][2] 	& \\
-		CPU (i7)& 50.000.000 	& 20,25		& [2] 		& \\
-		MATLAB 	& 10.000.000 	& 303,83	& [2] 		& \\
+	\begin{tabular}{l l l l l l}
+		Device 	& Iterations& time (s)	& Output every	& Loop bound	& Iterations per second (\e{6}) \\  
+		FPGA 	& 1\e{8} 	& 6,53		& 1.000			& 75			& 15,3 	\\
+		FPGA 	& 1\e{8} 	& 4,61		& 10.000		& 750			& 21.7 	\\
+		FPGA 	& 1\e{8} 	& 4,50		& 100.000		& 7.500			& 22,2 	\\
+		FPGA 	& 1\e{8} 	& 4,36		& 100.000.000	& 7.500.000		& 22,9 	\\
+		FPGA 	& 1\e{7} 	& 0,77		& 10.000.000	& 750.000		& 13,0 	\\
+		FPGA 	& 1\e{6} 	& 0,42		& 1.000.000		& 75.000		& 2,3 	\\
+		FPGA 	& 1\e{8} 	& 0,39		& 100.000		& 7.500			& 0,3 	\\
+		CPU (i7)& 5\e{7} 	& 20,25		& 50.000.000	& -				& 2,5 	\\
+		MATLAB 	& 1\e{7} 	& 303,83	& 10.000.000	& -				& 0,03	\\
 	\end{tabular}
 \end{table}
 
-[1] HPS provides input
-[2] Read all values at the end
-[3] Read values every 10.000 iterations
-
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{euler_rv_ts=0,0001_os=10}
+	\caption{Simplicity prevails: Euler's method attains better results than RK2 for all different time steps (h=1\e{-4}).}
+	\label{f:euler_rv_ts=0,0001_os=10}
+\end{figure}
 
 
 
