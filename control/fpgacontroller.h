@@ -16,7 +16,13 @@ public:
   void printOutput(uint);
   void iterate(uint,uint);
 
+  void loadMatrix(double [2][2]);
+  void loadMatrix(double [3][3]);
+  void loadMatrix(double [4][4]);
+
 private:
+
+  void loadMatrix(unsigned, double*);
 
   static const int PAGE_SIZE             = 4096;
   static const unsigned BASE             = 0xFF200000;

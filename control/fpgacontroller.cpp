@@ -37,12 +37,10 @@ FPGAController::~FPGAController() {
 void FPGAController::printOutput(uint amount) {
 
   //Prefetch the value for the fetching pipeline
-  double d = output.getFP(15); if(d) {}
-  //printf("%lf\t",output.getFP(15));
+  double d = output.getFP(amount); if(d) {}
 
   //Fetch the standard values with an additional one due to the pipeline
   for(uint u = 0; u<amount + 1; u++) {
-    //double d = output.getFP(u);
     printf("%lf\t",output.getFP(u));
   }
   printf("\n");
@@ -67,4 +65,23 @@ void FPGAController::iterate(uint amount, uint memsize) {
 
     printOutput(memsize);
   }
+}
+
+
+void FPGAController::loadMatrix(unsigned size, double* mat) {
+  for(unsigned i = 0; i < size; i++) {
+    for(unsigned j = 0; j < size; j++) {
+      control.writeFP(i * size + j + 4,mat[i * size + j]);
+    }
+  }
+}
+
+void FPGAController::loadMatrix(double mat [4][4]) {
+  loadMatrix(4,(double*)mat);
+}
+void FPGAController::loadMatrix(double mat [3][3]) {
+  loadMatrix(3,(double*)mat);
+}
+void FPGAController::loadMatrix(double mat [2][2]) {
+  loadMatrix(2,(double*)mat);
 }
