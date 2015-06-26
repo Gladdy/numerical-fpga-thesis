@@ -4,7 +4,7 @@ clear
 HOSTNAME=84.85.97.221
 PORT=10022
 
-start_time=`date +%s`
+
 
 #
 #  CLaSH
@@ -85,14 +85,21 @@ fi
 
 if [[ $1 == run || $1 == all ]]; then
   ssh root@$HOSTNAME -p $PORT ' chmod +x programFPGA.sh;
-                                ~/programFPGA.sh sockit.rbf;
-                                ~/fpgacontroller > output.txt
+                                ~/programFPGA.sh sockit.rbf
                                 '
+
+  start_time=`date +%s%N`
+  ssh root@$HOSTNAME -p $PORT '~/fpgacontroller > output.txt'
+  end_time=`date +%s%N`
 
   scp -P $PORT root@$HOSTNAME:output.txt verification/output.txt
   du -h verification/output.txt
   tail verification/output.txt
 fi
 
+
+
+
 echo ""
-echo "Total execution time: $(expr `date +%s` - $start_time)s"
+timepassed=$(($end_time - $start_time))
+echo "Total execution time: $(($timepassed/1000000))ms"
