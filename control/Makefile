@@ -7,9 +7,12 @@ SRCS=main.cpp fpgacontroller.cpp channel.cpp fixedpointconverter.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 
 
+test: speedtest
+	$(CXX) $(CPPFLAGS) speedtest.cpp -o speedtest
+
 all: $(OBJS)
 	$(CXX) $(LDFLAGS) -o fpgacontroller $(OBJS)
 
 clean:
-	rm -rf $(OBJS) fpgacontroller
+	rm -rf $(OBJS) fpgacontroller speedtest
 

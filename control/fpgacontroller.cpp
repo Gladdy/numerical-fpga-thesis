@@ -48,7 +48,7 @@ void FPGAController::printOutput(uint amount) {
 
 void FPGAController::iterate(uint amount, uint memsize) {
 
-  const uint maxIterations = 100;
+  const uint maxIterations = 7500000;
   uint32_t fpgaValue;
 
   for(uint u = 0; u<amount; u++) {
@@ -62,6 +62,7 @@ void FPGAController::iterate(uint amount, uint memsize) {
       //printf("fpgavalue: %u\n",fpgaValue);
       i++;
     }while(fpgaValue != std::numeric_limits<uint32_t>::max() && i < maxIterations);
+    printf("i: %u\n",i);
 
     printOutput(memsize);
   }
