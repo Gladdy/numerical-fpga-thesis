@@ -30,3 +30,9 @@ $RECYCLE.BIN/
 terasic-cd/*
 *.hdb
 *.cdb
+
+# Matlab files
+*.asv
+
+# sed leftovers
+sed*

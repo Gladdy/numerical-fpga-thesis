@@ -124,46 +124,50 @@ The testing of the RK2 method uses a different matrix (equation \ref{eq:rk2matri
 \section{Runge-Kutta (fourth order)}
 The RK4 integration scheme \footnote{Which took almost 22 hours or 78894 seconds to synthesize.} introduces even more computational steps, which leads to a faster overflow of the internal numbers. This means that at least one of the derivatives overflows almost immediately, which results in plots as shown in figure \ref{f:rk4_ts=0,00001_os=100}.
 
-
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{rk4_ts=0,00001_os=100}
-	\caption{For every value of the time step the numbers overflow, causing derivatives to get stuck, resulting in straight lines instead of solutions to ODEs (h=1\e{-5}).}
+	\includegraphics[width=0.95\textwidth]{rk4_ts=0,00001_os=100}
+	\caption{For every value of the time step the internal number representations overflow, causing fixed values for derivatives and straight lines instead of solutions to ODEs (h=1\e{-5}).}
 	\label{f:rk4_ts=0,00001_os=100}
 \end{figure}
 
 \section{Euler revisited}
-So far it appears that accuracy is inversely proportional to the complexity of the integration scheme, which leads to the question: What accuracy would Euler's method attain for equation \ref{eq:rk2matrix}? Indeed, as shown in figure \ref{f:euler_rv_ts=0,0001_os=10}, Euler's method only reaches maximum errors which are 2 orders of magnitude lower than the best values of the time step for RK2 and of course performs better than RK4 in this scenario. 
+So far it appears that accuracy is inversely proportional to the complexity of the integration scheme, which leads to the question: What accuracy would Euler's method attain for equation \ref{eq:rk2matrix}? As shown in figure \ref{f:euler_rv_ts=0,0001_os=10}, Euler's method only results in errors which are 2 orders of magnitude lower than the best values of the time step for RK2 and of course performs better than RK4 in this scenario. 
 
-\section{Performance - add to conditions to appendix maybe?\textbf{}}
-Performance is one of the main reasons why people use FPGAs over implementations in software and therefore one would expect that a properly written FPGA solution outperforms a CPU. The FPGA used for testing in this thesis is a Cyclone V, which, according to \cite{AlteraFPGA}, is meant for "your low-power, cost-sensitive design needs, enabling you to get to market faster". Furthermore, Altera offers two other FPGA families: Stratix and Arria, which both have mentions of delivering high or optimal performance. 
-
-The FPGA runs at a clock speed of 50 MHz and it is capable of executing a single iteration of Euler's method per clock cycle. In theory this would mean that the FPGA is capable of 50\e{6} iterations per second. However, there is still quite some overhead stemming from the system handling the data input and output, which has to wait for the HPS to supply or request the proper information before the FPGA can move on with the computations.
-
-\begin{table}
-	\caption{Performance benchmarks: Euler's method}
-	\label{t:perfomance}
-	\begin{tabular}{l l l l l l}
-		Device 	& Iterations& time (s)	& Output every	& Loop bound	& Iterations per second (\e{6}) \\  
-		FPGA 	& 1\e{8} 	& 6,53		& 1.000			& 75			& 15,3 	\\
-		FPGA 	& 1\e{8} 	& 4,61		& 10.000		& 750			& 21.7 	\\
-		FPGA 	& 1\e{8} 	& 4,50		& 100.000		& 7.500			& 22,2 	\\
-		FPGA 	& 1\e{8} 	& 4,36		& 100.000.000	& 7.500.000		& 22,9 	\\
-		FPGA 	& 1\e{7} 	& 0,77		& 10.000.000	& 750.000		& 13,0 	\\
-		FPGA 	& 1\e{6} 	& 0,42		& 1.000.000		& 75.000		& 2,3 	\\
-		FPGA 	& 1\e{8} 	& 0,39		& 100.000		& 7.500			& 0,3 	\\
-		CPU (i7)& 5\e{7} 	& 20,25		& 50.000.000	& -				& 2,5 	\\
-		MATLAB 	& 1\e{7} 	& 303,83	& 10.000.000	& -				& 0,03	\\
-	\end{tabular}
-\end{table}
-
-\begin{figure}[h!]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{euler_rv_ts=0,0001_os=10}
+	\includegraphics[width=0.95\textwidth]{euler_rv_ts=0,0001_os=10}
 	\caption{Simplicity prevails: Euler's method attains better results than RK2 for all different time steps (h=1\e{-4}).}
 	\label{f:euler_rv_ts=0,0001_os=10}
 \end{figure}
 
+\section{Performance}
+Performance is one of the main reasons why people use FPGAs over implementations in software and therefore one would expect that a properly written FPGA solution outperforms a CPU. 
+
+The FPGA runs at a clock speed of 50 MHz and it is capable of executing a single iteration of Euler's method per clock cycle. In theory this would mean that the FPGA is capable of 50\e{6} iterations per second. However, there is still quite some overhead stemming from the system handling the data input and output, which has to wait for the HPS to supply or request the proper information before the FPGA can move on with the computations.
+
+\begin{table}
+	\caption{Performance benchmarks: Euler's method, sorted by iterations per second.}
+	\label{t:performance}
+	\begin{tabular}{l l l l l l}
+		\textbf{Device} & \textbf{Iterations} & \textbf{time (s)}	& \textbf{Output interrupts}	& \textbf{Iterations per second (\e{6})} \\  
+		CPU - C++ - int		& 1\e{8} 	& 1,35		& 1					& 74,1 	\\
+		FPGA 				& 1\e{8} 	& 2,18		& 1					& 45,8 	\\
+		FPGA 				& 1\e{8} 	& 2,25		& 1\e{3}			& 44,4 	\\
+		FPGA 				& 1\e{8} 	& 2,30		& 1\e{4}			& 43,4 	\\
+		FPGA 				& 1\e{8} 	& 3,27		& 1\e{5}			& 30,6 	\\
+		FPGA 				& 1\e{7} 	& 0,39		& 1					& 25,6 	\\
+		FPGA 				& 1\e{6} 	& 0,21		& 1					& 4,76 	\\
+		CPU - C++ - float	& 5\e{7} 	& 58,1		& 1					& 0,86 	\\
+		FPGA 				& 1\e{5} 	& 0,19		& 1					& 0,53 	\\
+		CPU - Haskell - float& 1\e{6}	& 3,23		& 1					& 0,31	\\		
+		CPU - \matlab{}	- float	& 1\e{7} 	& 304		& 1					& 0,03	\\
+	\end{tabular}
+\end{table}
+
+From table \ref{t:performance} it can be seen immediately that the difference between the theoretical and measured real-world performance is very small (the measurement indicates an 8\% decrease in performance, but keep in mind that the time taken also includes writing the initial values to the FPGA, a process which is limited by the HPS). Furthermore, as expected, the performance of the FPGA starts to decrease as there are more and more events that require the HPS to read the output (output interrupts). Lastly, the most striking rows of this table are 'CPU - C++': for floating point, a single core of a stock i7-950 loses out to the FPGA by almost 2 orders of magnitude. However, when performing the computations on integers, a single CPU core outperforms the FPGA. This could be considered a more fair comparison as performing operations on fixed point numbers requires the same circuitry as operations on integers (fixed point numbers with 0 fractional bits).
+
+More details on the testing set up and code which was used can be found in appendix \ref{app:performance_benchmark}.
 
 
 
