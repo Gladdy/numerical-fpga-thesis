@@ -2,10 +2,12 @@
 \label{app:haskellsolver}
 \lstset{style=haskellStyle}
 
-\lstinputlisting[caption=Solver.hs]{../haskell/Solver.hs}
-\lstinputlisting[caption=SolverTypes.hs]{../haskell/SolverTypes.hs}
-\lstinputlisting[caption=SolverEquations.hs]{../haskell/SolverEquations.hs}
+\lstinputlisting[caption=SolverTypes.hs - Defining the types that get used in the rest of the application. This is a good place to start reading if you want to understand the entire system. ]{../haskell/SolverTypes.hs}
 
-\lstinputlisting[caption=SolverPresets.hs]{../haskell/SolverPresets.hs}
-\lstinputlisting[caption=SolverHelper.hs]{../haskell/SolverHelper.hs}
-\lstinputlisting[caption=SolverPlotter.hs]{../haskell/SolverPlotter.hs}
+\lstinputlisting[caption=Solver.hs - The main calling code\, responsible for starting and stopping the simulation of the proper equations]{../haskell/Solver.hs}
+
+\lstinputlisting[caption=SolverEquations.hs - Definitions of the equations]{../haskell/SolverEquations.hs}
+
+\lstinputlisting[caption=SolverPresets.hs - The definitions of initial values\, time settings\, auxiliary vectors and other necessities]{../haskell/SolverPresets.hs}
+\lstinputlisting[caption=SolverHelper.hs - An auxiliary function\, used in the RK4 implementation]{../haskell/SolverHelper.hs}
+\lstinputlisting[caption=SolverPlotter.hs - The part responsible for actually creating the plot. This part can be omitted but the result of the program will be a very long list of ODEState's]{../haskell/SolverPlotter.hs}
