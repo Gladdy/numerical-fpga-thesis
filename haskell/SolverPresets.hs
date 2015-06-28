@@ -18,5 +18,5 @@ module SolverPresets where
   initODEState = ODEState [10, 0.0] 0.0
   initODEState2 = ODEState [1, -1] 0.0
 
-  initTimeSettings = TimeSettings 0.01 10
-  initTimeSettings2 = TimeSettings 0.01 3
+  initTimeSettings = TimeSettings 0.0001 10
+  initTimeSettings2 = TimeSettings 0.0001 3
