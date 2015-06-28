@@ -1,104 +1,13 @@
 # Numerical mathematics on FPGAs using CλaSH
 
-### Introduction
-* Approach
-  * What have I tried to accomplish?
-    * Simplifying the creation of hardware accelerators for numerical maths purposes.
-    * Demonstrating the useability of CLaSH for more complex IO projects
-    * Feasibility of numerical methods on FPGAs
-  *
+### Should really be the abstract
 
-* FPGAs
-  * What is it?
-  * How does it work?
-  * Why is it suitable for numerical mathematics
-  * SoCs
+### Conclusion
+Despite the current limitations in accuracy it is definitely feasible to perform the process of solving ODEs directly on hardware, by programming an FPGA. The measured advantage of performing such computations on an FPGA would be the reduced power usage, however, the use of high-performance FPGAs will allow for an increase in performance which could outperform a CPU. Furthermore, an additional advantage of the FPGA is the variable accuracy, which allows for hardware-level performance on non-standard (more accurate) number representations whereas a CPU would have to emulate such operations in software.
 
-* Functional programming
-  * What is it?
-  * What are the advantages?
-  * Why is it suitable for numerical mathematics?
-  * Example: solving ODEs is Haskell.
+Previously it was very hard to write programs which could leverage the performance characteristics of an FPGA without having knowledge of hardware design and/or HDL, but now CλaSH enables a high-level specification of the hardware which is similar to mathematics: Haskell. The already set-up IO system for exchanging data and a toolchain which is entirely integrated ensure an even smoother experience in moving your design from mathematics onto hardware. 
 
-* CLaSH
-  * Description of general program in CLaSH with the resulting VHDL
-  * Mealy machines
-  *
-
-
-### Main part
-
-#### Small systems -- FPGA registers
-* When would you use this?
-* Advantages and disadvantages
-*
-
-##### Protocol description
-1. H Check if control == ones, indicating that the FPGA is ready
-
-for n = 1:N
-  2. H Write a value to the input port.
-  3. H The check if the control port is set to n
-
-4. H If control == ones then the entire system has been specified.
-
-for o = 1:O
-  5. F Calculate some value(s) based on the loaded program and the registry values
-    This might take more than a single clock cycle, but it depends on the
-    program and the amount of output you want to generate (ie. internally use
-    a timestep of 1ms but only output every 100ms).
-
-  for v = 1:V
-    6. F Write the output[v] to the data out bus
-    7. F Set the control bus to v
-    8. H Wait until the control bus reads v to read the output data
-    9. H Write ones to the control bus
-
-##### Notes on methods used in examples
-* Stability (?)
-* What solvers are good on FPGAs and which are used
-* Determining the fixed-point accuracy needed on your FPGA + timesteps
-* Notes on special functions (sine/cosine/exp/tangent: CORDIC)
-
-
-##### Examples
-* Computing of exponential decay (first order linear)
-* Computing of a damped spring (2-system of first order linear)
-* Double pendulum (4-system of first order non-linear)
-
-
-
-
-
-#### Large systems -- Shared memory (requires ReadWrite MM SDRAM interface)
-* When would you use this?
-* Advantages and disadvantages
-*
-
-##### Protocol description
-1. H write all initial values in some predetermined way into memory at
-  the proper location for the FPGA to access.
-2. F alert ones whenever the output is ready to read
-
-##### Short explanation of methods used in examples
-* Numerical methods for solving PDEs
-  * Relaxation
-  * Conversion to system of ODEs
-* Grid choices & timesteps
-
-
-##### Example
-* 2D laplacian (with flag bit indicating fixed points)
-* 2D navier stokes (probably not)
-
-### Results and testing
-* Comparing registers with shared memory
-* Comparison with CPU/GPU implementations
-* Power usage?
-* Ease of specification?
-* Compile time?
-* Optimizations?
-
+Despite the tremendous advantages offered by this work flow, there are some disadvantages. Compared to an implementation in \matlab{}, which can be interpreted, the process of synthesis and deployment takes quite a bit longer due to the step of compiling the CλaSH-generated HDL into a binary file which can be flashed to the FPGA. This process has been measured to take anywhere between 10 minutes (Euler's method) and 22 hours (RK4). Furthermore, including the additional development time of writing your algorithms in Haskell over MATLAB (mainly caused by the large advantage MATLAB has in terms of size of its standard library for numerical mathematics) results in development and synthesis times which are very much longer for FPGA-solutions.
 
 ### Thanks to
 * CUED PhD thesis template - A LaTeX PhD thesis template for Cambridge University Engineering Department by Krishna Kumar [https://github.com/kks32/phd-thesis-template](https://github.com/kks32/phd-thesis-template)
