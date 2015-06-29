@@ -1,5 +1,6 @@
 \chapter{Handling data IO}
 \label{app:data_io}
-Setting up the data IO to the FPGA
+Due to the library code written, the process of controlling the FPGA could not be more simple. Listing \ref{lst:control_main} shows the user-side interface, in which the comments have made any further explanation obsolete. The background library written handles all low-level processes, for instance writing directly to a memory location and converting the doubles to fixed-point numbers. Comments have been added to explain the code in the important sections. The code is very object-oriented, improving clarity and comprehensibility. The sources can be found in the GitHub repository at \url{https://github.com/Gladdy/numerical-fpga-thesis}  
 
-\lstinputlisting[language=C++, caption=CEEEE PLUS PLUS]{../control/main.cpp}
+\lstinputlisting[language=C++, caption=Controlling the FPGA,label=lst:control_main]{../control/main.cpp}
+

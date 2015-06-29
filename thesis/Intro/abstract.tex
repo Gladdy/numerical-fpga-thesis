@@ -1,5 +1,3 @@
-% ************************** Thesis Abstract *****************************
-% Use `abstract' as an option in the document class to print only the titlepage and the abstract.
 \begin{abstract}
-This is where you write your abstract ...
+Performing computations directly in hardware can be a very challenging task for a scientist or engineer only familiar with software, but there is much that can be gained in terms of power reduction and performance improvements using FPGAs. This thesis describes the process of implementing an accelerator in which the computational part is specified using the functional hardware description language \clash{} and discusses the feasibility of performing numerical mathematics on this accelerator by computing approximations to ordinary differential equations. The accelerator is capable of using the methods of Euler and Runge-Kutta (second order) to perform the approximations, but due to the use of a fixed-point number representation the accuracy suffers. The performance of the accelerator, implemented on a low-power, low-cost development FPGA: the Altera Cyclone V is 40\% worse than an i7-950, but the power usage of the accelerator is 2 orders of magnitude lower. 
 \end{abstract}

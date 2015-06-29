@@ -1,6 +1,12 @@
 \chapter{Toolchain integration}
 \label{app:toolchain_integration}
 
-Description of the automation script
+A single script has integrated the entire toolchain, from the process of generating HDL in \clash{} to deploying and running the program on the FPGA. This script has several dependencies, so make sure that all these commands are available in your \code{\$PATH}.
 
-\lstinputlisting[language=bash, caption=SHELL SCRIPT!]{../run.sh}
+\begin{itemizens}
+\item \emph{GnuWin32} - The script is written for the \code{bash} shell and has been tested using the GNUWin32 implementation. It also depends on \code{sed}, \code{ssh}, \code{scp}, \code{rm} and \code{cp}, \code{mv}, which are not available by default on Windows.
+\item \emph{Quartus} - For compiling the VHDL into a \code{.sof} (SDRAM Object File) and converting this into a \code{.rbf} (Raw Binary File), used to flash the FPGA.
+\item \emph{A linux installation running on the SoC} Make sure that the hostname and the port for SSH access are specified properly and the board is running a correct version of Linux. The scripts which automate the set-up of a proper Linux image are also located in the repository, in the folder \code{./kernel}.
+\end{itemizens}
+
+\lstinputlisting[language=bash, caption=Full integration of the toolchain]{../run.sh}

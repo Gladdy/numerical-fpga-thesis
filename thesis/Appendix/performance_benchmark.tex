@@ -1,2 +1,7 @@
 \chapter{Performance benchmark}
 \label{app:performance_benchmark}
+Both code samples have been compiled with the highest optimization settings (\code{-O3})
+\lstinputlisting[language=C++, caption=Matrix multiplication in C++, label=lst:bench_c++, firstline=3,lastline=36]{../benchmark/c++/speedtest.cpp}
+\lstinputlisting[language=Haskell, caption=Matrix multiplication in Haskell]{../benchmark/haskell/bench.hs}
+
+Due to memory limitations (stack overflows) in the naive matrix multiplication test in Haskell, the limit has been set to 1\e{6}, which was still possible. This should not matter for the final benchmark results, as those compare iterations per second.

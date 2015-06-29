@@ -4,6 +4,9 @@ clear
 HOSTNAME=84.85.97.221
 PORT=10022
 
+# Invocation:
+# bash run.sh [clash synthesis upload run all]
+# select one of the commands: either a single section or run everything ("all")
 
 
 #
@@ -61,6 +64,11 @@ fi
 #  FPGA
 #
 #  Upload the binary program to the SoC/FPGA over SCP
+#  Attempt to rebuild the controlling program if possible
+#     If this is not possible on your Windows machine, find an Unix machine
+#     and install the arm-crosscompile version of g++.
+#     Build the controlling executable on that machine and deploy it. 
+#     A deployment script can be found in "control/deploy.sh"
 #
 if [[ $1 == upload || $1 == all ]]; then
   cd sockit

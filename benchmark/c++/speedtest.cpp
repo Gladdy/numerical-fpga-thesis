@@ -1,11 +1,11 @@
 #include <iostream>
 
 int main () {
-  double t = 0;
-  double dt = 0.01;
+  const unsigned maxTime = 50000000;
+  const unsigned dt = 1;
+  unsigned t = 0;
 
   int xs [4] = {1,2,3,4};
-
   int mat [4][4] = {
                 { 2,   3,   2,    0}
               , {-5,  -5,   -3,   1}
@@ -13,25 +13,23 @@ int main () {
               , { 4,   2,   2,   -3}
             };
 
-  unsigned counter = 0;
-
   while(true) {
 
-    double xs_new [4];
-    for(int i = 0; i<4; i++) {
+    //Perform the matrix-vector multiplication
+    int xs_new [4];
+    for(unsigned i = 0; i<4; i++) {
       xs_new[i] = xs[1]*mat[i][1] + xs[1]*mat[i][1] + xs[2]*mat[i][2] + xs[3]*mat[i][3];
     }
 
-    for(int i = 0; i<4; i++) {
+    //Euler's method, multiply with the timestep and add
+    for(unsigned i = 0; i<4; i++) {
       xs[i] += dt*xs_new[i];
     }
 
-    dt += t;
+    t += dt;
 
-    counter++;
-
-    if(counter > 100000000) {
-      std::cout << "done: " <<  xs[0] << '\t' << xs[1] << '\t' << xs[2] << '\t' << xs[3];
+    if(t >= maxTime) {
+      std::cout << "done" << std::endl;
       return 0;
     }
   }

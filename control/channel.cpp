@@ -8,12 +8,6 @@ Channel::Channel(unsigned * _base, unsigned _length) {
     fp = FixedPointConverter(8,24);
 }
 
-/*
-void Channel::print(unsigned addr) {
-  //printf("%u \t %08x\n", addr, get(addr));
-  printf("%u \t %u\n",addr,getWithUpdate(addr));
-}*/
-
 void Channel::write(unsigned addr, uint32_t value) {
   if(addr > length) {
     printf("Invalid address\n");

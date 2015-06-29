@@ -2,16 +2,25 @@
 \label{app:project_structure}
 The entire project is hosted on GitHub - \url{https://github.com/Gladdy/numerical-fpga-thesis}
 
-
-
 \dirtree{%
 	.1 .
-	.2 benchmark.
+	.2 benchmark \DTcomment{Performance comparisons to C++ and Haskell}.
 	.3 c++.
 	.3 haskell.
 	.2 clash.
-	.2 images.
-	.2 kernel.
+	.3 vhdl.
+	.4 Solver \DTcomment{The \clash{}-generated VHDL}.
+	.2 control \DTcomment{C++ for controlling the FPGA from the HPS}.
+	.2 haskell.
+	.2 images \DTcomment{Ready-made numerical solver images for the Cyclone V FPGA}.
+	.2 kernel \DTcomment{Bootloader and scripts for linux kernel generation}.
 	.2 literature.
-	.2 sockit.
+	.2 minified \DTcomment{Sample project for easy modifictation}.
+	.3 clash.
+	.3 control.
+	.3 sockit.
+	.3 minified.zip.
+	.2 sockit \DTcomment{Full quartus project}.
+	.2 thesis.
+	.2 verification \DTcomment{\matlab{} result verification scripts}.
 }
