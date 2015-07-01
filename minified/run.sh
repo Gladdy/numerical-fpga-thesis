@@ -1,8 +1,8 @@
 #!/bin/bash -e
 clear
 
-HOSTNAME=84.85.97.221
-PORT=10022
+HOSTNAME=192.168.1.3
+PORT=22
 
 
 

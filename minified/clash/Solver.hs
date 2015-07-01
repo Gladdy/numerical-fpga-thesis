@@ -46,7 +46,7 @@ module Solver where
   topEntity :: Signal InputSignals -> Signal OutputSignals
   topEntity = mealy solveODE initialState
 
-  scheme = rk4
+  scheme = euler
   equation = matrix4d
 
   solveODE (systemState,systemConstants,oul,block) input = ((systemState',systemConstants',oul',block'),output)

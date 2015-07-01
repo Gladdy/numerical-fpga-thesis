@@ -16,19 +16,20 @@ BEGIN
   PROCESS(clock, reset)
       VARIABLE counter : integer range 0 to 15 := 0;
   BEGIN
-    IF(reset = '0') THEN
-      clock_internal <= '0';
-      counter := 0;
-    ELSIF rising_edge(clock) THEN
-      IF (counter = 6) THEN
-        clock_internal <= NOT(clock_internal);
-        counter := 0; 
-      ELSE
-        counter := counter + 1;
-      END IF;
-    END IF;
+    --IF(reset = '0') THEN
+    --  clock_internal <= '0';
+    --  counter := 0;
+    --ELSIF rising_edge(clock) THEN
+    --  IF (counter = 6) THEN
+    --    clock_internal <= NOT(clock_internal);
+    --    counter := 0; 
+    --  ELSE
+    --    counter := counter + 1;
+    --  END IF;
+    --END IF;
+    --clock_pll <= clock_internal;
   
-    clock_pll <= clock_internal;
+    clock_pll <= clock;
   END PROCESS;
 
 END;
