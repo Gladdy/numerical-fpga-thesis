@@ -16,17 +16,17 @@ entity Solver_topEntity_0 is
 end;
 
 architecture structural of Solver_topEntity_0 is
-  signal tmp_17 : product7;
+  signal tmp_17 : product6;
 begin
-  tmp_17 <= (product7_sel0 => (product9_sel0 => (product3_sel0 => array_of_signed_32'(0 to (5)-1 => (shift_left(signed'("00000000000000000000000000000000"),24)))
+  tmp_17 <= (product6_sel0 => (product8_sel0 => (product3_sel0 => array_of_signed_32'(0 to (5)-1 => (shift_left(signed'("00000000000000000000000000000000"),24)))
                                                 ,product3_sel1 => shift_left(signed'("00000000000000000000000000000000"),24))
-                              ,product9_sel1 => unsigned'("11111111111111111111111111111111"))
-            ,product7_sel1 => (product5_sel0 => shift_left(signed'("00000000000000000000000001111101"),24)
-                              ,product5_sel1 => signed'("00000000000000101000111101011100")
-                              ,product5_sel2 => unsigned'("00000000000000000000000000000101")
-                              ,product5_sel3 => array_of_signed_32'(0 to (20)-1 => (shift_left(signed'("00000000000000000000000000000000"),24))))
-            ,product7_sel2 => std_logic_vector'("00000000000000000000000000000000")
-            ,product7_sel3 => std_logic_vector'("1"));
+                              ,product8_sel1 => unsigned'("11111111111111111111111111111111"))
+            ,product6_sel1 => (product9_sel0 => shift_left(signed'("00000000000000000000000001111101"),24)
+                              ,product9_sel1 => signed'("00000000000000101000111101011100")
+                              ,product9_sel2 => unsigned'("00000000000000000000000000000101")
+                              ,product9_sel3 => array_of_signed_32'(0 to (20)-1 => (shift_left(signed'("00000000000000000000000000000000"),24))))
+            ,product6_sel2 => std_logic_vector'("00000000000000000000000000000000")
+            ,product6_sel3 => std_logic_vector'("1"));
   
   Solver_mealyzm_1_topLet_o : entity Solver_mealyzm_1
     port map

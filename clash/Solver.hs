@@ -42,12 +42,11 @@ module Solver where
   
   initialState = (initialSystemState, initialSystemConstants, 0 :: BitVector 32, 1 :: Bit)
 
+  scheme = euler
+  equation = matrix4d
 
   topEntity :: Signal InputSignals -> Signal OutputSignals
   topEntity = mealy solveODE initialState
-
-  scheme = rk4
-  equation = matrix4d
 
   solveODE (systemState,systemConstants,oul,block) input = ((systemState',systemConstants',oul',block'),output)
     where

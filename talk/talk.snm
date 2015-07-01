@@ -1,0 +1,8 @@
+\beamer@slide {f:euler_o1_ts=0,01_os=1}{35}
+\beamer@slide {f:euler_o1_ts=0,0001_os=100}{36}
+\beamer@slide {f:euler_o1_ts=0,0000001_os=1000}{37}
+\beamer@slide {f:rk2_ts=0,01_os=1}{39}
+\beamer@slide {f:rk2_ts=0,0000005_os=1000}{40}
+\beamer@slide {f:rk4_ts=0,00001_os=100}{41}
+\beamer@slide {f:euler_rv_ts=0,0001_os=10}{42}
+\beamer@slide {t:performance}{43}

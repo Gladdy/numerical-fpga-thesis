@@ -1,0 +1,2 @@
+\frametitle{Example of functional programming}
+	\lstinputlisting[caption=A very short introduction to functional programming, language=Haskell]{material/fpdemo.hs}

@@ -100,6 +100,7 @@ if [[ $1 == run || $1 == all ]]; then
   ssh root@$HOSTNAME -p $PORT '~/fpgacontroller > output.txt'
   end_time=`date +%s%N`
 
+  mkdir verification
   scp -P $PORT root@$HOSTNAME:output.txt verification/output.txt
   du -h verification/output.txt
   tail verification/output.txt

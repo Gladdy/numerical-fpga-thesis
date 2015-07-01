@@ -20,18 +20,9 @@ module SolverTypes where
                        , out_readdata     :: BitVector 32   -- out_readdata
                        } deriving(Show)
 
-  type Data = SFixed 8 24
-  type UInt = Unsigned 32
-  type ValueVector = Vec 5 Data
-  type ConstantVector = Vec 20 Data
-
-  data ODEState = ODEState { valueVector :: ValueVector 
-                            , time :: Data
-                            } deriving(Show)
-  
   data SystemState = SystemState { odestate :: ODEState
-                      , step :: UInt
-                      } deriving(Show)
+                    , step :: UInt
+                    } deriving(Show)
 
   data SystemConstants = SystemConstants { maxtime :: Data
                         , timestep :: Data
@@ -40,6 +31,15 @@ module SolverTypes where
                       } deriving (Show)
 
   uIntMax = 4294967295 :: UInt
+
+  type Data = SFixed 8 24
+  type UInt = Unsigned 32
+  type ValueVector = Vec 5 Data
+  type ConstantVector = Vec 20 Data
+
+  data ODEState = ODEState { valueVector :: ValueVector 
+                            , time :: Data
+                            } deriving(Show)
 
   type Equation = (ODEState, ConstantVector) -> ValueVector
   type Scheme = SystemConstants -> Equation -> ODEState -> ODEState 

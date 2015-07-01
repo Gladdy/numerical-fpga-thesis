@@ -7,41 +7,41 @@ use work.all;
 use work.Solver_types.all;
 
 entity Solver_solveODE_2 is
-  port(ds1_i1   : in product7;
+  port(ds1_i1   : in product6;
        input_i2 : in product0;
-       topLet_o : out product8);
+       topLet_o : out product7);
 end;
 
 architecture structural of Solver_solveODE_2 is
-  signal bodyVar_0          : product8;
-  signal repANF_1           : product7;
+  signal bodyVar_0          : product7;
+  signal repANF_1           : product6;
   signal repANF_2           : product1;
-  signal repANF_3           : product9;
-  signal bodyVar_4          : product5;
+  signal repANF_3           : product8;
+  signal bodyVar_4          : product9;
   signal repANF_5           : std_logic_vector(0 downto 0);
   signal oulzm_6            : std_logic_vector(31 downto 0);
   signal subjLet_7          : boolean;
-  signal altLet_8           : product5;
+  signal altLet_8           : product9;
   signal ds2_9              : product11;
-  signal oulzm1_10          : product9;
+  signal oulzm1_10          : product8;
   signal subjLet_11         : boolean;
-  signal altLet_12          : product5;
-  signal altLet_13          : product5;
+  signal altLet_12          : product9;
+  signal altLet_13          : product9;
   signal oulzm1_14          : std_logic_vector(0 downto 0);
   signal oulzm1_15          : std_logic_vector(31 downto 0);
   signal subjLet_16         : boolean;
   signal altLet_17          : product11;
   signal i_cs_18            : std_logic_vector(0 downto 0);
   signal subjLet_19         : boolean;
-  signal altLet_20          : product5;
-  signal altLet_21          : product5;
+  signal altLet_20          : product9;
+  signal altLet_21          : product9;
   signal altLet_22          : product11;
   signal i_c_23             : std_logic_vector(31 downto 0);
   signal i_ca_24            : std_logic_vector(7 downto 0);
-  signal systemConstants_25 : product5;
+  signal systemConstants_25 : product9;
   signal subjLet_26         : boolean;
-  signal altLet_27          : product5;
-  signal altLet_28          : product5;
+  signal altLet_27          : product9;
+  signal altLet_28          : product9;
   signal ds4_29             : signed(31 downto 0);
   signal ds5_30             : unsigned(31 downto 0);
   signal ds6_31             : array_of_signed_32(0 to 19);
@@ -51,35 +51,35 @@ architecture structural of Solver_solveODE_2 is
   signal ds4_35             : std_logic_vector(0 downto 0);
   signal subjLet_36         : boolean;
   signal ds3_37             : signed(31 downto 0);
-  signal altLet_38          : product5;
-  signal altLet_39          : product5;
+  signal altLet_38          : product9;
+  signal altLet_39          : product9;
   signal subjLet_40         : boolean;
   signal ds9_41             : std_logic_vector(0 downto 0);
   signal altLet_42          : product11;
   signal ds5_43             : std_logic_vector(31 downto 0);
   signal ds6_44             : std_logic_vector(7 downto 0);
   signal repANF_45          : unsigned(31 downto 0);
-  signal altLet_46          : product5;
-  signal altLet_47          : product5;
+  signal altLet_46          : product9;
+  signal altLet_47          : product9;
   signal subjLet_48         : boolean;
   signal subjLet_49         : boolean;
   signal altLet_50          : product11;
   signal altLet_51          : product11;
-  signal systemState_52     : product9;
-  signal altLet_53          : product5;
-  signal altLet_54          : product5;
+  signal systemState_52     : product8;
+  signal altLet_53          : product9;
+  signal altLet_54          : product9;
   signal subjLet_55         : boolean;
   signal ds15_56            : unsigned(31 downto 0);
   signal altLet_57          : product11;
-  signal repANF_58          : product9;
+  signal repANF_58          : product8;
   signal block_59           : std_logic_vector(0 downto 0);
-  signal altLet_60          : product5;
+  signal altLet_60          : product9;
   signal altLet_61          : product11;
   signal ds14_62            : product3;
   signal ds13_63            : std_logic_vector(0 downto 0);
   signal altLet_64          : product11;
-  signal altLet_65          : product9;
-  signal altLet_66          : product5;
+  signal altLet_65          : product8;
+  signal altLet_66          : product9;
   signal altLet_67          : product11;
   signal ds17_68            : signed(31 downto 0);
   signal subjLet_69         : boolean;
@@ -91,14 +91,14 @@ architecture structural of Solver_solveODE_2 is
   signal bodyVar_75         : array_of_signed_32(0 to 19);
   signal ds16_76            : array_of_signed_32(0 to 4);
   signal altLet_77          : product11;
-  signal repANF_78          : product9;
+  signal repANF_78          : product8;
   signal altLet_79          : product3;
   signal repANF_80          : integer;
   signal repANF_81          : unsigned(31 downto 0);
   signal ds10_82            : std_logic_vector(31 downto 0);
   signal bodyVar_83         : product11;
   signal altLet_84          : product11;
-  signal altLet_85          : product9;
+  signal altLet_85          : product8;
   signal bodyVar_86         : array_of_signed_32(0 to 4);
   signal wild7_87           : integer;
   signal altLet_88          : product11;
@@ -114,7 +114,7 @@ architecture structural of Solver_solveODE_2 is
   signal wild7_98           : integer;
   signal ds16_99            : array_of_signed_32(0 to 4);
   signal subjLet_100        : boolean;
-  signal repANF_101         : product9;
+  signal repANF_101         : product8;
   signal s_step_102         : unsigned(31 downto 0);
   signal c_maxstep_103      : unsigned(31 downto 0);
   signal bodyVar_104        : std_logic_vector(31 downto 0);
@@ -122,13 +122,13 @@ architecture structural of Solver_solveODE_2 is
   signal wild7_106          : integer;
   signal ds12_107           : std_logic_vector(7 downto 0);
   signal altLet_108         : product11;
-  signal altLet_109         : product9;
+  signal altLet_109         : product8;
   signal repANF_110         : signed(31 downto 0);
   signal repANF_111         : integer;
-  signal repANF_112         : product9;
+  signal repANF_112         : product8;
   signal repANF_113         : product3;
   signal repANF_114         : integer;
-  signal altLet_115         : product9;
+  signal altLet_115         : product8;
   signal subjLet_116        : product3;
   signal altLet_117         : product3;
   signal repANF_118         : array_of_signed_32(0 to 4);
@@ -137,13 +137,13 @@ architecture structural of Solver_solveODE_2 is
   signal tmp_188            : signed(31 downto 0);
   signal tmp_194            : array_of_signed_32(0 to 4);
 begin
-  bodyVar_0 <= (product8_sel0 => repANF_1
-               ,product8_sel1 => repANF_2);
+  bodyVar_0 <= (product7_sel0 => repANF_1
+               ,product7_sel1 => repANF_2);
   
-  repANF_1 <= (product7_sel0 => repANF_3
-              ,product7_sel1 => bodyVar_4
-              ,product7_sel2 => oulzm_6
-              ,product7_sel3 => repANF_5);
+  repANF_1 <= (product6_sel0 => repANF_3
+              ,product6_sel1 => bodyVar_4
+              ,product6_sel2 => oulzm_6
+              ,product6_sel3 => repANF_5);
   
   repANF_2 <= (product1_sel0 => std_logic_vector'("1101")
               ,product1_sel1 => std_logic_vector'("00000000000000000000000000000000")
@@ -197,15 +197,15 @@ begin
     altLet_20 <= altLet_28 when (true),
                  altLet_27 when others;
   
-  altLet_21 <= (product5_sel0 => a9_32
-               ,product5_sel1 => ds4_29
-               ,product5_sel2 => ds5_30
-               ,product5_sel3 => ds6_31);
+  altLet_21 <= (product9_sel0 => a9_32
+               ,product9_sel1 => ds4_29
+               ,product9_sel2 => ds5_30
+               ,product9_sel3 => ds6_31);
   
   with (subjLet_33) select
-    altLet_22 <= (product11_sel0 => (product9_sel0 => (product3_sel0 => array_of_signed_32'(0 to (5)-1 => (shift_left(signed'("00000000000000000000000000000000"),24)))
+    altLet_22 <= (product11_sel0 => (product8_sel0 => (product3_sel0 => array_of_signed_32'(0 to (5)-1 => (shift_left(signed'("00000000000000000000000000000000"),24)))
                                                       ,product3_sel1 => shift_left(signed'("00000000000000000000000000000000"),24))
-                                    ,product9_sel1 => unsigned'("11111111111111111111111111111111"))
+                                    ,product8_sel1 => unsigned'("11111111111111111111111111111111"))
                  ,product11_sel1 => std_logic_vector'("00000000000000000000000000000000")
                  ,product11_sel2 => std_logic_vector'("0")) when (true),
                  altLet_34 when others;
@@ -214,7 +214,7 @@ begin
   
   i_ca_24 <= ds6_44;
   
-  systemConstants_25 <= ds1_i1.product7_sel1;
+  systemConstants_25 <= ds1_i1.product6_sel1;
   
   subjLet_26 <= i_ca_24 = std_logic_vector'("00000011");
   
@@ -224,11 +224,11 @@ begin
   
   altLet_28 <= altLet_39;
   
-  ds4_29 <= systemConstants_25.product5_sel1;
+  ds4_29 <= systemConstants_25.product9_sel1;
   
-  ds5_30 <= systemConstants_25.product5_sel2;
+  ds5_30 <= systemConstants_25.product9_sel2;
   
-  ds6_31 <= systemConstants_25.product5_sel3;
+  ds6_31 <= systemConstants_25.product9_sel3;
   
   a9_32 <= signed(i_c_23);
   
@@ -240,16 +240,16 @@ begin
   
   subjLet_36 <= i_ca_24 >= std_logic_vector'("00000100");
   
-  ds3_37 <= systemConstants_25.product5_sel0;
+  ds3_37 <= systemConstants_25.product9_sel0;
   
   with (subjLet_26) select
     altLet_38 <= altLet_47 when (true),
                  altLet_46 when others;
   
-  altLet_39 <= (product5_sel0 => ds3_37
-               ,product5_sel1 => a9_32
-               ,product5_sel2 => ds5_30
-               ,product5_sel3 => ds6_31);
+  altLet_39 <= (product9_sel0 => ds3_37
+               ,product9_sel1 => a9_32
+               ,product9_sel2 => ds5_30
+               ,product9_sel3 => ds6_31);
   
   subjLet_40 <= i_c_23 = std_logic_vector'("00000000000000000000000000000001");
   
@@ -283,20 +283,20 @@ begin
                ,product11_sel1 => std_logic_vector'("00000000000000000000000000000000")
                ,product11_sel2 => std_logic_vector'("1"));
   
-  systemState_52 <= ds1_i1.product7_sel0;
+  systemState_52 <= ds1_i1.product6_sel0;
   
   with (subjLet_36) select
     altLet_53 <= altLet_60 when (true),
                  systemConstants_25 when others;
   
-  altLet_54 <= (product5_sel0 => ds3_37
-               ,product5_sel1 => ds4_29
-               ,product5_sel2 => repANF_45
-               ,product5_sel3 => ds6_31);
+  altLet_54 <= (product9_sel0 => ds3_37
+               ,product9_sel1 => ds4_29
+               ,product9_sel2 => repANF_45
+               ,product9_sel3 => ds6_31);
   
   subjLet_55 <= block_59 = std_logic_vector'("0");
   
-  ds15_56 <= systemState_52.product9_sel1;
+  ds15_56 <= systemState_52.product8_sel1;
   
   with (subjLet_7) select
     altLet_57 <= altLet_64 when (true),
@@ -304,7 +304,7 @@ begin
   
   repANF_58 <= altLet_65;
   
-  block_59 <= ds1_i1.product7_sel3;
+  block_59 <= ds1_i1.product6_sel3;
   
   altLet_60 <= altLet_66;
   
@@ -312,7 +312,7 @@ begin
                ,product11_sel1 => oul_73
                ,product11_sel2 => block_59);
   
-  ds14_62 <= systemState_52.product9_sel0;
+  ds14_62 <= systemState_52.product8_sel0;
   
   ds13_63 <= input_i2.product0_sel10;
   
@@ -320,13 +320,13 @@ begin
     altLet_64 <= altLet_71 when (true),
                  altLet_70 when others;
   
-  altLet_65 <= (product9_sel0 => repANF_72
-               ,product9_sel1 => ds15_56);
+  altLet_65 <= (product8_sel0 => repANF_72
+               ,product8_sel1 => ds15_56);
   
-  altLet_66 <= (product5_sel0 => ds3_37
-               ,product5_sel1 => ds4_29
-               ,product5_sel2 => ds5_30
-               ,product5_sel3 => bodyVar_75);
+  altLet_66 <= (product9_sel0 => ds3_37
+               ,product9_sel1 => ds4_29
+               ,product9_sel2 => ds5_30
+               ,product9_sel3 => bodyVar_75);
   
   with (subjLet_100) select
     altLet_67 <= altLet_108 when (true),
@@ -346,7 +346,7 @@ begin
   
   repANF_72 <= altLet_79;
   
-  oul_73 <= ds1_i1.product7_sel2;
+  oul_73 <= ds1_i1.product6_sel2;
   
   repANF_74 <= to_integer(unsigned(i_ca_24));
   
@@ -403,8 +403,8 @@ begin
                ,product11_sel1 => repANF_89
                ,product11_sel2 => block_59);
   
-  altLet_85 <= (product9_sel0 => ds14_62
-               ,product9_sel1 => unsigned'("00000000000000000000000000000000"));
+  altLet_85 <= (product8_sel0 => ds14_62
+               ,product8_sel1 => unsigned'("00000000000000000000000000000000"));
   
   replaceVec_n_171 : block
     signal n_172 : array_of_signed_32(0 to 4);
@@ -486,8 +486,8 @@ begin
                 ,product11_sel1 => std_logic_vector(unsigned'("11111111111111111111111111111111"))
                 ,product11_sel2 => std_logic_vector'("1"));
   
-  altLet_109 <= (product9_sel0 => repANF_113
-                ,product9_sel1 => repANF_81);
+  altLet_109 <= (product8_sel0 => repANF_113
+                ,product8_sel1 => repANF_81);
   
   indexVec_n_189 : block
     signal n_190 : array_of_signed_32(0 to 4);
@@ -520,10 +520,10 @@ begin
   
   repANF_114 <= wild7_106;
   
-  altLet_115 <= (product9_sel0 => ds14_62
-                ,product9_sel1 => unsigned'("11111111111111111111111111111111"));
+  altLet_115 <= (product8_sel0 => ds14_62
+                ,product8_sel1 => unsigned'("11111111111111111111111111111111"));
   
-  Solver_rk4_3_subjLet_116 : entity Solver_rk4_3
+  Solver_euler_3_subjLet_116 : entity Solver_euler_3
     port map
       (bodyVar_o => subjLet_116
       ,pTS_i1    => systemConstants_25
