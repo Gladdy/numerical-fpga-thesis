@@ -1,12 +1,16 @@
 #!/bin/bash -e
-clear
-
-HOSTNAME=192.168.1.3
-PORT=22
 
 # Invocation:
 # bash run.sh [clash synthesis upload run all]
 # select one of the commands: either a single section or run everything ("all")
+
+
+clear
+start_time=`date +%s%N`
+HOSTNAME=192.168.1.3
+PORT=22
+
+
 
 
 #
@@ -96,9 +100,7 @@ if [[ $1 == run || $1 == all ]]; then
                                 ~/programFPGA.sh sockit.rbf
                                 '
 
-  start_time=`date +%s%N`
   ssh root@$HOSTNAME -p $PORT '~/fpgacontroller > output.txt'
-  end_time=`date +%s%N`
 
   mkdir -p verification
   scp -P $PORT root@$HOSTNAME:output.txt verification/output.txt
@@ -106,8 +108,7 @@ if [[ $1 == run || $1 == all ]]; then
   tail verification/output.txt
 fi
 
-
-
+end_time=`date +%s%N`
 
 echo ""
 timepassed=$(($end_time - $start_time))
