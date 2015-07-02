@@ -62,7 +62,6 @@ void FPGAController::iterate(uint amount, uint memsize) {
       //printf("fpgavalue: %u\n",fpgaValue);
       i++;
     }while(fpgaValue != std::numeric_limits<uint32_t>::max() && i < maxIterations);
-    printf("i: %u\n",i);
 
     printOutput(memsize);
   }

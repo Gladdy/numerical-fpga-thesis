@@ -1,5 +1,8 @@
 #!/bin/bash
+HOST=192.168.1.3
+PORT=22
+
 make clean
 clear
 make all
-scp -P 10022 fpgacontroller root@84.85.97.221:~
+scp -P $PORT fpgacontroller root@$HOST:~
