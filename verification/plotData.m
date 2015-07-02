@@ -10,9 +10,11 @@ for i = vectors
     plot(gen(:,1),gen(:,i+1))
 end
 
-%plot(gen(:,1),50*cos(gen(:,1)),'*')
-%plot(gen(:,1),-30*cos(gen(:,1)),'*')
-
 hold off
+
+title('Data');
+ylabel('Value');
+xlabel('time (s)');
+
 end
 

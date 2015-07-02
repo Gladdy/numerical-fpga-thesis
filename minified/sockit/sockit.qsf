@@ -264,6 +264,11 @@ set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_
 
 
 
+
+set_global_assignment -name VHDL_FILE hdl/compute_main.vhdl
+set_global_assignment -name VHDL_FILE hdl/io_led.vhd
+set_global_assignment -name VHDL_FILE hdl/sockit_pll.vhd
+set_global_assignment -name VHDL_FILE hdl/sockit.vhd
 set_global_assignment -name VHDL_FILE hdl/Solver_euler_3.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_matrix4d_4.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_mealyzm_1.vhdl
@@ -277,7 +282,3 @@ set_global_assignment -name VHDL_FILE hdl/Solver_specF_8.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_testbench.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_topEntity_0.vhdl
 set_global_assignment -name VHDL_FILE hdl/Solver_types.vhdl
-set_global_assignment -name VHDL_FILE hdl/compute_main.vhdl
-set_global_assignment -name VHDL_FILE hdl/io_led.vhd
-set_global_assignment -name VHDL_FILE hdl/sockit.vhd
-set_global_assignment -name VHDL_FILE hdl/sockit_pll.vhd

@@ -1,14 +1,14 @@
-#CXX=arm-linux-gnueabihf-g++
-CXX=g++
+CXX=arm-linux-gnueabihf-g++
+#CXX=g++
 RM=rm -f
 CPPFLAGS=-O3 -g -Wall -std=c++11
 
-SRCS=speedtest.cpp
+SRCS=main.cpp channel.cpp fpgacontroller.cpp fixedpointconverter.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 
 all: $(OBJS)
-	$(CXX) $(LDFLAGS) -o speedtest $(OBJS)
+	$(CXX) $(LDFLAGS) -o fpgacontroller $(OBJS)
 
 clean:
-	rm -rf $(OBJS) speedtest
+	rm -rf $(OBJS) fpgacontroller
 
